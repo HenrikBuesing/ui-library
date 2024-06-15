@@ -1,0 +1,46 @@
+{
+  "private": false,
+  "name": "@hbuesing/ui-library",
+  "version": "1.0.0",
+  "description": "Collection of reusable ui components for react based applications",
+  "keywords": [
+    "react",
+    "react-component",
+    "ui"
+  ],
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist && mkdir dist",
+    "lint": "npx eslint src",
+    "build": "npm run lint && microbundle build --jsx react",
+    "dev": "microbundle -w --jsx react",
+    "stats": "microbundle --visualize"
+  },
+  "author": "Henrik Buesing",
+  "license": "MIT",
+  "homepage": "https://github.com/HenrikBuesing/ui-library/tree/main#README.md",
+  "bugs": "https://github.com/HenrikBuesing/ui-library/issues",
+  "repository": "github:HenrikBuesing/ui-library",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.0.3",
+    "@eslint/js": "^9.4.0",
+    "@types/react": "^18.3.3",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.4.0",
+    "microbundle": "^0.15.1",
+    "react": "^18.3.1",
+    "sass": "^1.77.4",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.12.0"
+  }
+}
