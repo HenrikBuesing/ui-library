@@ -3,21 +3,17 @@ on:
   push:
     branches:
       - '*'
+
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
-      - run: npm install
+      - run: npm ci
       - run: npm run build
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
