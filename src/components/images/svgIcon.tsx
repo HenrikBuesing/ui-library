@@ -2,10 +2,10 @@ import React, {CSSProperties} from 'react';
 import './images.scss';
 
 interface ISvgIcon {
-  src: string;
-  color?: string;
+  src    : string;
+  color? : string;
   height?: number;
-  width?: number;
+  width? : number;
 }
 
 export function SVG(props: ISvgIcon) {
