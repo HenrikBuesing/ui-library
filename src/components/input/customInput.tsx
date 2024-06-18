@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import {BaseInput, IBaseInput} from "./baseInput";
+import {BaseInput, IBaseInput} from './baseInput';
 import {SVG} from '../images/svgIcon';
 import './input.scss';
 
-interface ITextInput extends IBaseInput {
-  tooltipIcon?: string;
-  tooltipText?: string;
+interface ICustomInput extends IBaseInput {
+  tooltipIcon? : string;
+  tooltipText? : string;
   tooltipClose?: string
 }
 
-export function TextInput(props: ITextInput) {
+export function CustomInput(props: ICustomInput) {
   const {
     tooltipIcon,
     tooltipText,
