@@ -1,5 +1,5 @@
-import React, {ComponentPropsWithoutRef} from "react";
-import {SVG} from "../images/svgIcon";
+import React, {ComponentPropsWithoutRef} from 'react';
+import {SVG} from '../images/svgIcon';
 import './input.scss';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
@@ -9,6 +9,7 @@ export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   iconColor?  : string;
   iconSrc?    : string;
   inputColor? : string;
+  toggle?     : () => void;
 }
 
 export function BaseInput(props: IBaseInput) {
@@ -18,6 +19,7 @@ export function BaseInput(props: IBaseInput) {
     iconColor,
     iconSrc,
     inputColor,
+    toggle,
     ...inputProps
   } = props;
 
@@ -32,7 +34,7 @@ export function BaseInput(props: IBaseInput) {
       />
 
       {iconSrc &&
-        <div className={'uil-icon'}>
+        <div className={'uil-icon'} onClick={toggle}>
           <SVG src={iconSrc} width={24} height={24} color={iconColor}/>
         </div>
       }
