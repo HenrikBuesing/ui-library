@@ -1,23 +1,25 @@
 import React, {useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
-import {SVG} from '../images/svgIcon';
+import {SVG} from 'components/images/svgIcon';
+import {useOutsideClick} from "hooks/clickOutside";
 import './input.scss';
 
-interface ICustomInput extends IBaseInput {
+export interface ICustomInput extends IBaseInput {
+  tooltipClose?: string;
   tooltipIcon? : string;
   tooltipText? : string;
-  tooltipClose?: string
 }
 
 export function CustomInput(props: ICustomInput) {
   const {
+    tooltipClose,
     tooltipIcon,
     tooltipText,
-    tooltipClose,
     ...inputProps
   } = props;
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
+  const ref = useOutsideClick(closeTooltip);
 
   function closeTooltip() {
     setTooltipVisible(false);
@@ -28,7 +30,7 @@ export function CustomInput(props: ICustomInput) {
       {tooltipIcon ?
         <div className={'uil-tooltip-wrapper'}>
           {tooltipVisible &&
-            <div className={'uil-tooltip'} onClick={closeTooltip}>
+            <div className={'uil-tooltip'} ref={ref}>
               {tooltipClose &&
                 <button className={'uil-tooltip-button'} onClick={closeTooltip}>
                   {tooltipClose}

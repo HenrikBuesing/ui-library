@@ -17,7 +17,7 @@ export function SVG(props: ISvgIcon) {
   } = props;
 
   if (!src.includes('.svg')) {
-    throw new Error('Provided src is not an svg image')
+    throw new Error('Provided src is not an svg image');
   }
 
   const style: CSSProperties = {

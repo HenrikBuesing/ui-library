@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef} from 'react';
-import {SVG} from '../images/svgIcon';
+import {SVG} from 'components/images/svgIcon';
 import './input.scss';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
@@ -14,17 +14,17 @@ export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
 
 export function BaseInput(props: IBaseInput) {
   const {
-    label,
-    valueChanged,
     iconColor,
     iconSrc,
     inputColor,
+    label,
     toggle,
+    valueChanged,
     ...inputProps
   } = props;
 
   return (
-    <label className={'uil-input-wrapper'}>
+    <label className={'uil-input-wrapper'} htmlFor={inputProps.id}>
       <input
         className={'uil-input'}
         onChange={(e) => valueChanged(e.target.value)}
