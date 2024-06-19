@@ -141,3 +141,62 @@
     line-height: var(--uil-font-small);
   }
 }
+
+.uil-check-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--size-xxs);
+  font-size: var(--size-m);
+  line-height: var(--size-m);
+
+  .uil-checkbox {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    font-size: var(--size-xs);
+    min-width: var(--size-xs);;
+    min-height: var(--size-xs);;
+    user-select: none;
+    border: 3px solid var(--grey-dark);
+    border-radius: var(--border-radius-xs);
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked {
+        ~ .uil-checkmark:after {
+          transform: scale(1);
+        }
+      }
+    }
+
+    .uil-checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--size-xs);
+      height: var(--size-xs);
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        background-color: var(--black);
+        width: var(--size-tiny);
+        height: var(--size-tiny);
+        transform: scale(0);
+        transition: .1s ease;
+      }
+    }
+  }
+
+  & span {
+    user-select: none;
+    cursor: pointer;
+  }
+}
