@@ -7,7 +7,7 @@
   & .uil-label {
     position: absolute;
     top: 25%;
-    left: .25rem;
+    left: var(--uil-xxs);
     cursor: text;
     font-size: var(--uil-font-base);
     font-weight: bold;
@@ -15,7 +15,7 @@
     color: var(--uil-black);
     background: linear-gradient(0deg, var(--uil-white) 9px, rgba(0,0,0,0) 0%);
     opacity: .6;
-    padding: 0 .125rem;
+    padding: 0 var(--uil-xxxs);
     transition: top .25s ease-in-out;
   }
 
@@ -108,6 +108,8 @@
     background-color: rgba(34, 34, 34, .9);
     padding: var(--uil-s);
     border-radius: 3px;
+    font-size: var(--uil-font-small);
+    line-height: var(--uil-font-small);
 
     .uil-tooltip-button {
       display: block;
@@ -119,6 +121,23 @@
       border: none;
       padding: 0;
       border-bottom: 1px solid var(--uil-white);
+      cursor: pointer;
     }
+  }
+}
+
+.uil-password-rules {
+  margin-top: var(--uil-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--uil-xs);
+  margin-left: var(--uil-xs);
+
+  .uil-password-rule {
+    display: flex;
+    align-items: center;
+    gap: var(--uil-xxs);
+    font-size: var(--uil-font-small);
+    line-height: var(--uil-font-small);
   }
 }

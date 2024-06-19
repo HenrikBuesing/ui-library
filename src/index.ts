@@ -1,2 +1,3 @@
-export {CustomInput} from './components/input';
-export {SVG} from './components/images';
+export {CustomInput, PasswordInput, PasswordRule, SVG} from './components';
+export {useOutsideClick} from './hooks';
+export {PasswordRuleTypes} from './enums';
