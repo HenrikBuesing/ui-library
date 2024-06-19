@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {SVG} from 'components/images/svgIcon';
-import {PasswordRuleTypes} from "enums/passwordRuleTypes";
+import {PasswordRuleTypes} from 'enums/passwordRuleTypes';
 import './input.scss';
 
 interface IPasswordInput extends ICustomInput {

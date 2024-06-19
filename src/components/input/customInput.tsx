@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
 import {SVG} from 'components/images/svgIcon';
-import {useOutsideClick} from "hooks/clickOutside";
+import {useOutsideClick} from 'hooks/clickOutside';
 import './input.scss';
 
 export interface ICustomInput extends IBaseInput {
