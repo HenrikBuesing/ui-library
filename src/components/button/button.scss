@@ -3,11 +3,11 @@
 .uil-button {
   font-size: var(--uil-font-base);
   line-height: var(--uil-font-base);
-  background-color: var(--uil-white);
+  letter-spacing: 1px;
   color: var(--uil-black);
+  background-color: var(--uil-white);
   border: 1px solid var(--uil-black);
   border-radius: 2px;
-  letter-spacing: 1px;
   width: fit-content;
   cursor: pointer;
   padding: var(--uil-xs) var(--uil-s);
