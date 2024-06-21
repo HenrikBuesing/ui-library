@@ -1,0 +1,22 @@
+@use '../global' as *;
+
+.uil-button {
+  font-size: var(--uil-font-base);
+  line-height: var(--uil-font-base);
+  letter-spacing: 1px;
+  color: var(--uil-black);
+  background-color: var(--uil-white);
+  border: 1px solid var(--uil-black);
+  border-radius: 2px;
+  width: fit-content;
+  cursor: pointer;
+  padding: var(--uil-xs) var(--uil-s);
+  -webkit-box-shadow: 0 0 3px 0 var(--uil-black-alt);
+  box-shadow: 0 0 3px 0 var(--uil-black-alt);
+
+  &.uil-disabled {
+    background-color: var(--uil-grey-dark);
+    color: var(--uil-grey);
+    border: transparent;
+  }
+}
