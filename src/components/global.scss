@@ -5,10 +5,15 @@
   --uil-white: #ffffff;
 
   --uil-grey: #f3f3f3;
+  --uil-grey-alt: #cfcfcf;
   --uil-grey-dark: #878787;
 
   --uil-outline-focus: #1E90FFFF;
   --uil-outline-disabled: #8B0000FF;
+
+  --uil-success: #006A4E;
+  --uil-error: #800020;
+  --uil-question: #00416A;
 
   --uil-xxxs: .125rem;
   --uil-xxs: .25rem;
@@ -22,4 +27,34 @@
 
   --uil-font-base: var(--uil-l);
   --uil-font-small: var(--uil-m);
+}
+
+@mixin uil-mobile {
+  @media (max-width: 1024px) {
+    @content
+  }
+}
+
+@mixin uil-tablet {
+  @media (min-width: 760px) {
+    @content
+  }
+}
+
+@mixin uil-desktop {
+  @media (min-width: 1025px) {
+    @content
+  }
+}
+
+@mixin uil-widescreen {
+  @media (min-width: 1250px) {
+    @content
+  }
+}
+
+@mixin uil-fullHD {
+  @media (min-width: 1920px) {
+    @content
+  }
 }

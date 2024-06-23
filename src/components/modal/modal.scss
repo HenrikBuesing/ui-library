@@ -1,0 +1,118 @@
+@use '../global' as *;
+
+.uil-modal-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .uil-modal {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    -webkit-box-shadow: 0 0 6px 0 var(--uil-black);
+    box-shadow: 0 0 6px 0 var(--uil-black);
+    border-radius: 5px;
+
+    @include uil-desktop {
+      width: 75%;
+    }
+
+    @include uil-widescreen {
+      width: 55%;
+    }
+
+    @include uil-fullHD {
+      width: 35%;
+    }
+
+    .uil-progress-wrapper {
+      background-color: var(--uil-grey-alt);
+
+      & .uil-progress-bar {
+        border: 2px solid var(--uil-grey-dark);
+        animation-duration: 2s;
+        animation-iteration-count: initial;
+        animation-name: uil-progress;
+      }
+    }
+
+    @keyframes uil-progress {
+      0% {
+        width: 100%;
+      }
+
+      100% {
+        width: 0;
+      }
+    }
+
+    .uil-header {
+      color: var(--uil-white);
+      background-color: var(--uil-question);
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--uil-xxl);
+      line-height: var(--uil-xxl);
+      font-weight: bold;
+      min-height: var(--uil-xl);
+      margin: 0;
+      padding: var(--uil-xs);
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+
+      @include uil-desktop {
+        font-size: var(--uil-xxxl);
+        padding: var(--uil-s);
+      }
+
+      &.uil-success {
+        background-color: var(--uil-success);
+      }
+
+      &.uil-error {
+        background-color: var(--uil-error);
+      }
+    }
+
+    .uil-content {
+      background-color: var(--uil-white);
+      padding: var(--uil-m);
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--uil-m);
+
+      @include uil-desktop {
+        padding: var(--uil-l);
+        gap: var(--uil-xxxl);
+      }
+
+      .uil-modal-text {
+        font-size: var(--uil-l);
+        line-height: var(--uil-l);
+        color: var(--uil-black);
+        margin: var(--uil-s) 0;
+
+        @include uil-desktop {
+          font-size: var(--uil-l);
+          line-height: var(--uil-l);
+        }
+      }
+
+      .uil-button-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        &.uil-single {
+          justify-content: end;
+        }
+      }
+    }
+  }
+}
