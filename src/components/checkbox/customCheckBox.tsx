@@ -1,11 +1,12 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
 import './checkbox.scss';
 
 interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
   checked     : boolean;
-  label       : string;
+  label?      : string;
   onCheck     : (value: boolean) => void;
   checkColor? : string;
+  children?   : ReactNode;
 }
 
 export function CustomCheckBox(props: ICustomCheckbox) {
@@ -14,6 +15,7 @@ export function CustomCheckBox(props: ICustomCheckbox) {
     checked,
     onCheck,
     label,
+    children,
     ...checkProps
   } = props;
 
@@ -25,7 +27,7 @@ export function CustomCheckBox(props: ICustomCheckbox) {
           <div className={'uil-checkmark'} style={{backgroundColor: checkColor}}/>
         </label>
 
-        <span>{label}</span>
+        {children ? children : <span>{label}</span>}
       </div>
     </>
   );
