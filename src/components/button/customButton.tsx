@@ -37,14 +37,11 @@ export function CustomButton(props: ICustomButton) {
   const style: CSSProperties = {
     color: setColor(theme),
     backgroundColor: disabled? null : theme,
-    fontSize: small? '1rem' : null,
-    lineHeight: small? '1rem' : null,
-    padding: small? '.25rem .5rem' : null,
     border: theme? 'none': null,
   }
 
   return (
-    <button className={`uil-button ${disabled && 'uil-disabled'}`} style={style} disabled={disabled} {...buttonProps}>
+    <button className={`uil-button ${disabled ? 'uil-disabled' : ''} ${small ? 'uil-small' : ''}`} style={style} disabled={disabled} {...buttonProps}>
       {label}
     </button>
   );

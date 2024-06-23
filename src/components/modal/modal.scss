@@ -56,8 +56,8 @@
       background-color: var(--uil-question);
       display: flex;
       justify-content: space-between;
-      font-size: var(--uil-xxl);
-      line-height: var(--uil-xxl);
+      font-size: var(--uil-xl);
+      line-height: var(--uil-xl);
       font-weight: bold;
       min-height: var(--uil-xl);
       margin: 0;
@@ -66,7 +66,8 @@
       border-top-right-radius: 3px;
 
       @include uil-desktop {
-        font-size: var(--uil-xxxl);
+        font-size: var(--uil-xxl);
+        line-height: var(--uil-xxl);
         padding: var(--uil-s);
       }
 

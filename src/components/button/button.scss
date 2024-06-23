@@ -19,4 +19,16 @@
     color: var(--uil-grey);
     border: transparent;
   }
+
+  &.uil-small {
+    font-size: var(--uil-m);
+    line-height: var(--uil-m);
+    padding: var(--uil-xxs) var(--uil-xs);
+
+    @include uil-desktop {
+      font-size: 1.125rem;
+      line-height: 1.125rem;
+      padding: var(--uil-xs) var(--uil-s);
+    }
+  }
 }
