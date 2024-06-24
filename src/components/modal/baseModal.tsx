@@ -36,7 +36,7 @@ export function BaseModal(props: IBaseModal) {
     }, timeout);
   },[]);
 
-  return visible ?
+  return (visible ?
     <div className={'uil-modal-wrapper'}>
       <div className={'uil-modal'}>
         <div className={`uil-header ${type == ModalType.success ? 'uil-success' : ''} ${type == ModalType.error ? 'uil-error' : ''}`}>
@@ -72,5 +72,6 @@ export function BaseModal(props: IBaseModal) {
           </div>
         </div>
       </div>
-    </div> : <></>;
+    </div> : <></>
+  );
 }
