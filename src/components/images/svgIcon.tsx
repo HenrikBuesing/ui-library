@@ -3,7 +3,7 @@ import './images.scss';
 
 interface ISvgIcon {
   src    : string;
-  color? : string;
+  color? : string | undefined;
   height?: number;
   width? : number;
 }

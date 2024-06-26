@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ModalType} from 'enums/ModalType';
-import {CustomButton} from 'components/button';
+import {CustomButton} from 'components/button/customButton';
 import './modal.scss';
 
 interface IBaseModal {
@@ -45,7 +45,7 @@ export function BaseModal(props: IBaseModal) {
 
         {timeout &&
           <div className={'uil-progress-wrapper'}>
-            <div className={'uil-progress-bar'} style={{animationDuration: `${(props.timeout / 1000) + 1}s`}}/>
+            <div className={'uil-progress-bar'} style={{animationDuration: `${(timeout / 1000) + 1}s`}}/>
           </div>
         }
 
@@ -60,7 +60,7 @@ export function BaseModal(props: IBaseModal) {
 
           <div className={`uil-button-wrapper ${type !== ModalType.question ? 'uil-single' : ''}`}>
             {type !== ModalType.question &&
-              <CustomButton label={closeLabel} small={true} onClick={() => setVisible(false)} type={'button'}/>
+              <CustomButton label={closeLabel?? ''} small={true} onClick={() => setVisible(false)} type={'button'}/>
             }
 
             {type == ModalType.question && props.confirm &&
