@@ -11,6 +11,17 @@
   "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.modern.mjs"
+    },
+    "./dist/*.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist/*"
@@ -18,7 +29,7 @@
   "scripts": {
     "clean": "rimraf ./dist && mkdir dist",
     "lint": "npx eslint src",
-    "build": "npm run lint && microbundle build --jsx react",
+    "build": "npm run lint && microbundle build --jsx react --globals react/jsx-runtime=jsxRuntime",
     "dev": "microbundle -w --jsx react",
     "stats": "microbundle --visualize"
   },
@@ -42,6 +53,7 @@
     "globals": "^15.6.0",
     "microbundle": "^0.15.1",
     "react": "^18.3.1",
+    "rimraf": "^5.0.7",
     "sass": "^1.77.6",
     "typescript": "^5.5.2",
     "typescript-eslint": "^7.13.1"
