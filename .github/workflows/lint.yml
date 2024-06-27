@@ -1,0 +1,29 @@
+name: linting
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  ESLint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: install
+        run: npm install
+      - uses: int128/comment-action@v1
+        with:
+          run: npm run lint:prod
+          post-on-failure: |
+            ## :x: ESLint check failed:
+            ```
+            ${run.output}
+            ```
+          post-on-success: |
+            ## :heavy_check_mark: ESLint check passed

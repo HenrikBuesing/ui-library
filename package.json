@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Collection of reusable ui components for react based applications",
   "keywords": [
     "react",
@@ -28,8 +28,9 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist && mkdir dist",
-    "lint": "npx eslint src",
-    "build": "npm run lint && microbundle build --jsx react --globals react/jsx-runtime=jsxRuntime",
+    "lint": "eslint src",
+    "lint:prod": "eslint src --max-warnings 0",
+    "build": "microbundle build --jsx react --globals react/jsx-runtime=jsxRuntime",
     "dev": "microbundle -w --jsx react",
     "stats": "microbundle --visualize"
   },
@@ -46,7 +47,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.0.3",
-    "@eslint/js": "^9.4.0",
+    "@eslint/js": "^9.5.0",
     "@types/react": "^18.3.3",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.3",
@@ -56,6 +57,6 @@
     "rimraf": "^5.0.7",
     "sass": "^1.77.6",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^7.13.1"
+    "typescript-eslint": "^7.14.1"
   }
 }
