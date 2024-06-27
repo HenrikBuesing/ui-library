@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Collection of reusable ui components for react based applications",
   "keywords": [
     "react",
