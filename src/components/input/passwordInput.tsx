@@ -59,7 +59,7 @@ export function PasswordInput(props: IPasswordInput) {
     setFailedRules(failedRules);
   }
 
-  function checkRule(rule: PasswordRule) {
+  function checkRule(rule: PasswordRule): boolean {
     let pattern: string;
 
     switch (rule.type) {

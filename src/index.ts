@@ -1,8 +1,8 @@
-export {CustomButton} from './components/button';
-export {CustomCheckBox} from './components/checkbox';
-export {SVG} from './components/images';
-export {CustomInput, PasswordInput, PasswordRule} from './components/input';
-export {NotifyModal, QuestionModal} from './components/modal';
+export {CustomButton} from './components/button/index';
+export {CustomCheckBox} from './components/checkbox/index';
+export {SVG} from './components/images/index';
+export {CustomInput, PasswordInput, PasswordRule} from './components/input/index';
+export {NotifyModal, QuestionModal} from './components/modal/index';
 
-export {useOutsideClick} from './hooks';
-export {PasswordRuleTypes} from './enums';
+export {useOutsideClick} from './hooks/index';
+export {PasswordRuleTypes} from './enums/index';

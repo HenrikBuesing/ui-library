@@ -2,15 +2,20 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
-    "jsx": "react-jsx",
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react",
     "jsxFactory": "",
     "jsxFragmentFactory": "",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
     "declaration": true,
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
   "include": [
     "./src/**/*"

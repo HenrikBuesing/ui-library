@@ -17,10 +17,10 @@ export function CustomButton(props: ICustomButton) {
     ...buttonProps
   } = props;
 
-  function setColor(bgColor: string) {
-    if (!theme || disabled) return null;
+  function setColor() {
+    if (!theme || disabled) return undefined;
 
-    const color = (bgColor.charAt(0) === '#') ? bgColor.substring(1, 7) : bgColor;
+    const color = (theme.charAt(0) === '#') ? theme.substring(1, 7) : theme;
     const uiColors = [
       parseInt(color.substring(0, 2), 16) / 255,
       parseInt(color.substring(2, 4), 16) / 255,
@@ -35,9 +35,9 @@ export function CustomButton(props: ICustomButton) {
   }
 
   const style: CSSProperties = {
-    color: setColor(theme),
-    backgroundColor: disabled? null : theme,
-    border: theme? 'none': null,
+    color: setColor(),
+    backgroundColor: disabled? undefined : theme,
+    border: theme? 'none': undefined,
   }
 
   return (
