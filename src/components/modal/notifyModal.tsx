@@ -4,7 +4,7 @@ import {ModalType} from 'enums/ModalType';
 
 export interface INotifyModal {
   closeLabel: string;
-  modalType : 'success' | 'error';
+  modalType : 'success' | 'warning' | 'error';
   message   : string | string[];
   title     : string;
   callback? : (() => void) | undefined;
