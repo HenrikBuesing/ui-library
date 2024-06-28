@@ -7,6 +7,7 @@ export interface INotifyModal {
   isSuccess : boolean;
   message   : string | string[];
   title     : string;
+  callback? : (() => void) | undefined;
   timeout?  : number;
 }
 
@@ -17,6 +18,6 @@ export function NotifyModal(props: INotifyModal) {
   } = props;
 
   return (
-    <BaseModal type={isSuccess? ModalType.success : ModalType.error} {...modalProps}/>
+    <BaseModal type={isSuccess? ModalType.success : ModalType.error} {...modalProps} callback={callback}/>
   );
 }

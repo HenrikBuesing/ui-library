@@ -7,6 +7,7 @@ interface IBaseModal {
   message      : string | string[];
   title        : string;
   type         : ModalType;
+  callback?    : (() => void) | undefined;
   cancelLabel? : string;
   closeLabel?  : string;
   confirm?     : () => void;
@@ -16,6 +17,7 @@ interface IBaseModal {
 
 export function BaseModal(props: IBaseModal) {
   const {
+    callback,
     cancelLabel = '',
     closeLabel,
     confirm,
@@ -33,6 +35,8 @@ export function BaseModal(props: IBaseModal) {
 
     setTimeout(() => {
       setVisible(false);
+
+      callback && callback();
     }, timeout);
   },[]);
 
