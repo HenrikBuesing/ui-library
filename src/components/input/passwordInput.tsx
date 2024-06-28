@@ -42,9 +42,7 @@ export function PasswordInput(props: IPasswordInput) {
 
     document.addEventListener('keydown', setCapsLockState);
 
-    return () => {
-      document.removeEventListener('keydown', setCapsLockState);
-    };
+    return () => document.removeEventListener('keydown', setCapsLockState);
   },[]);
 
   function validateInput() {
@@ -82,10 +80,10 @@ export function PasswordInput(props: IPasswordInput) {
         pattern = `[A-ZÄÖÜ]{${rule.count},}`;
         break;
       default:
-        rule.pattern? pattern = rule.pattern : pattern = '';
+        rule.pattern ? pattern = rule.pattern : pattern = '';
     }
 
-    if (pattern === '') return false;
+    if (pattern === '') throw new Error(`pattern must not be an empty string. Checked rule: ${rule}`);
 
     const reg = new RegExp(pattern);
     return reg.test(props.value);
