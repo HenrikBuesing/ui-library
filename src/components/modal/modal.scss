@@ -80,6 +80,11 @@
       &.uil-error {
         background-color: var(--uil-error);
       }
+
+      &.uil-warning {
+        color: var(--uil-black);
+        background-color: var(--uil-warning);
+      }
     }
 
     .uil-content {

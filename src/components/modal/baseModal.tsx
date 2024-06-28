@@ -7,6 +7,7 @@ interface IBaseModal {
   message      : string | string[];
   title        : string;
   type         : ModalType;
+  callback?    : (() => void) | undefined;
   cancelLabel? : string;
   closeLabel?  : string;
   confirm?     : () => void;
@@ -16,6 +17,7 @@ interface IBaseModal {
 
 export function BaseModal(props: IBaseModal) {
   const {
+    callback,
     cancelLabel = '',
     closeLabel,
     confirm,
@@ -29,17 +31,34 @@ export function BaseModal(props: IBaseModal) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (!timeout) return;
+    if (!timeout || !visible) return;
 
-    setTimeout(() => {
+    const t = setTimeout(() => {
+      callback && callback();
+
       setVisible(false);
     }, timeout);
+
+    return () => clearTimeout(t);
   },[]);
+
+  function setHeaderClass() {
+    switch (type) {
+      case ModalType.error:
+        return 'uil-header uil-error';
+      case ModalType.success:
+        return 'uil-header uil-success';
+      case ModalType.warning:
+        return 'uil-header uil-warning';
+      default:
+        return 'uil-header';
+    }
+  }
 
   return (visible ?
     <div className={'uil-modal-wrapper'}>
       <div className={'uil-modal'}>
-        <div className={`uil-header ${type == ModalType.success ? 'uil-success' : ''} ${type == ModalType.error ? 'uil-error' : ''}`}>
+        <div className={setHeaderClass()}>
           {title}
         </div>
 
@@ -52,9 +71,8 @@ export function BaseModal(props: IBaseModal) {
         <div className={'uil-content'}>
           <div>
             {Array.isArray(message) ?
-              message.map((m, idx) =>
-                <p key={idx} className={'uil-modal-text'}>{m}</p>
-              ) : <p className={'uil-modal-text'}>{message}</p>
+              message.map((m, idx) => <p key={idx} className={'uil-modal-text'}>{m}</p>)
+              : <p className={'uil-modal-text'}>{message}</p>
             }
           </div>
 

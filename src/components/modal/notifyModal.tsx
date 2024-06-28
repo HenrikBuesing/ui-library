@@ -4,19 +4,21 @@ import {ModalType} from 'enums/ModalType';
 
 export interface INotifyModal {
   closeLabel: string;
-  isSuccess : boolean;
+  modalType : 'success' | 'warning' | 'error';
   message   : string | string[];
   title     : string;
+  callback? : (() => void) | undefined;
   timeout?  : number;
 }
 
 export function NotifyModal(props: INotifyModal) {
   const {
-    isSuccess,
+    callback,
+    modalType,
     ...modalProps
   } = props;
 
   return (
-    <BaseModal type={isSuccess? ModalType.success : ModalType.error} {...modalProps}/>
+    <BaseModal type={modalType as ModalType} {...modalProps} callback={callback}/>
   );
 }
