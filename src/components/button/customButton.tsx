@@ -19,8 +19,9 @@ export function CustomButton(props: ICustomButton) {
 
   function setColor() {
     if (!theme || disabled) return undefined;
+    if (theme.charAt(0) !== '#') return '#ffffff';
 
-    const color = (theme.charAt(0) === '#') ? theme.substring(1, 7) : theme;
+    const color = theme.substring(1, 7);
     const uiColors = [
       parseInt(color.substring(0, 2), 16) / 255,
       parseInt(color.substring(2, 4), 16) / 255,
