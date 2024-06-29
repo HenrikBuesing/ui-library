@@ -3,6 +3,7 @@ import {BaseModal} from './baseModal';
 import {ModalType} from 'enums/ModalType';
 
 export interface INotifyModal {
+  close     : () => void;
   closeLabel: string;
   modalType : 'success' | 'warning' | 'error';
   message   : string | string[];
