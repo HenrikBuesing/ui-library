@@ -1,7 +1,7 @@
-import React, {CSSProperties} from 'react';
+import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
 import './images.scss';
 
-interface ISvgIcon {
+interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
   src    : string;
   color? : string | undefined;
   height?: number;
