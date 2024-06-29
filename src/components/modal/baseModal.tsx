@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {ModalType} from 'enums/ModalType';
 import {CustomButton} from 'components/button/customButton';
 import './modal.scss';
 
 interface IBaseModal {
+  close        : () => void;
   message      : string | string[];
   title        : string;
   type         : ModalType;
@@ -19,6 +20,7 @@ export function BaseModal(props: IBaseModal) {
   const {
     callback,
     cancelLabel = '',
+    close,
     closeLabel,
     confirm,
     confirmLabel = '',
@@ -28,15 +30,13 @@ export function BaseModal(props: IBaseModal) {
     type
   } = props;
 
-  const [visible, setVisible] = useState(true);
-
   useEffect(() => {
-    if (!timeout || !visible) return;
+    if (!timeout) return;
 
     const t = setTimeout(() => {
       callback && callback();
 
-      setVisible(false);
+      close();
     }, timeout);
 
     return () => clearTimeout(t);
@@ -55,7 +55,7 @@ export function BaseModal(props: IBaseModal) {
     }
   }
 
-  return (visible ?
+  return (
     <div className={'uil-modal-wrapper'}>
       <div className={'uil-modal'}>
         <div className={setHeaderClass()}>
@@ -78,18 +78,18 @@ export function BaseModal(props: IBaseModal) {
 
           <div className={`uil-button-wrapper ${type !== ModalType.question ? 'uil-single' : ''}`}>
             {type !== ModalType.question &&
-              <CustomButton label={closeLabel?? ''} small={true} onClick={() => setVisible(false)} type={'button'}/>
+              <CustomButton label={closeLabel?? ''} small={true} onClick={close} type={'button'}/>
             }
 
             {type == ModalType.question && props.confirm &&
               <>
                 <CustomButton label={confirmLabel} theme={'#00416A'} small={true} onClick={() => confirm} type={'button'}/>
-                <CustomButton label={cancelLabel} small={true} onClick={callback} type={'button'}/>
+                <CustomButton label={cancelLabel} small={true} onClick={close} type={'button'}/>
               </>
             }
           </div>
         </div>
       </div>
-    </div> : <></>
+    </div>
   );
 }

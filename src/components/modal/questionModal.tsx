@@ -18,6 +18,6 @@ export function QuestionModal(props: IQuestionModal) {
   } = props;
 
   return (
-    <BaseModal type={ModalType.question} callback={cancel} {...modalProps}/>
+    <BaseModal type={ModalType.question} close={cancel} {...modalProps}/>
   );
 }
