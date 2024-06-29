@@ -83,7 +83,7 @@ export function BaseModal(props: IBaseModal) {
 
             {type == ModalType.question && props.confirm &&
               <>
-                <CustomButton label={confirmLabel} theme={'#00416A'} small={true} onClick={() => confirm} type={'button'}/>
+                <CustomButton label={confirmLabel} theme={'#00416A'} small={true} onClick={confirm} type={'button'}/>
                 <CustomButton label={cancelLabel} small={true} onClick={close} type={'button'}/>
               </>
             }
