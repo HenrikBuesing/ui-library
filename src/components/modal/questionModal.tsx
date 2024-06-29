@@ -9,7 +9,6 @@ export interface IQuestionModal {
   confirmLabel: string;
   message     : string | string[];
   title       : string;
-  timeout?    : number;
 }
 
 export function QuestionModal(props: IQuestionModal) {
