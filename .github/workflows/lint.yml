@@ -31,4 +31,4 @@ jobs:
             ```
           post-on-success: |
             ## :heavy_check_mark: ESLint check passed
-            no ESLint warnings or errors found
+            No ESLint warnings or errors found
