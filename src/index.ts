@@ -4,5 +4,5 @@ export {SVG} from './components/images/index';
 export {CustomInput, PasswordInput, PasswordRule} from './components/input/index';
 export {NotifyModal, QuestionModal} from './components/modal/index';
 
-export {useOutsideClick} from './hooks/index';
+export {useClickOutsideRef} from './hooks/index';
 export {PasswordRuleTypes} from './enums/index';
