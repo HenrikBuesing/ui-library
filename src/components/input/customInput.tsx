@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
 import {SVG} from 'components/images/svgIcon';
-import {useOutsideClick} from 'hooks/clickOutside';
+import {useClickOutsideRef} from 'hooks/clickOutside';
 import './input.scss';
 
 export interface ICustomInput extends IBaseInput {
@@ -19,7 +19,7 @@ export function CustomInput(props: ICustomInput) {
   } = props;
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
-  const ref = useOutsideClick(closeTooltip);
+  const ref = useClickOutsideRef<HTMLDivElement>(closeTooltip);
 
   function closeTooltip() {
     setTooltipVisible(false);
