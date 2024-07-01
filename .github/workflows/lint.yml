@@ -23,6 +23,7 @@ jobs:
       - uses: int128/comment-action@v1
         with:
           run: npm run lint:prod
+          update-if-exists: append
           post-on-failure: |
             ## :x: ESLint check failed:
             ```
@@ -30,3 +31,4 @@ jobs:
             ```
           post-on-success: |
             ## :heavy_check_mark: ESLint check passed
+            no ESLint warnings or errors found
