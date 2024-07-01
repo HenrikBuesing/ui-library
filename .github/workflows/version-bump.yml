@@ -4,13 +4,12 @@ on:
     branches: [ main ]
     types:
       - closed
-  push:
-    branches-ignore:
-      - main
 jobs:
   version_bump:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: 'Checkout source code'
         uses: actions/checkout@v4
@@ -20,7 +19,7 @@ jobs:
         run: cat ./package.json
 
       - name: 'Version Bump Minor'
-        #        if: contains(github.event.pull_request.labels.*.name, 'minor')
+        if: contains(github.event.pull_request.labels.*.name, 'minor')
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -38,6 +37,3 @@ jobs:
           version-type: 'patch'
           commit-message: 'CI: bumps version to {{version}} (patch)'
           target-branch: 'main'
-
-      - name: 'cat package.json'
-        run: cat ./package.json
