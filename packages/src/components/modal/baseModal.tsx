@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ModalType} from 'enums/ModalType';
+import {ModalType} from 'enums/modalType';
 import {CustomButton} from 'components/button/customButton';
 import './modal.scss';
 

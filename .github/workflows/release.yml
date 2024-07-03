@@ -1,7 +1,10 @@
 name: release
 on:
-  release:
-    types: [created]
+#  release:
+#    types: [created]
+  push:
+    branches-ignore:
+      - main
 
 jobs:
   publish:
@@ -12,8 +15,10 @@ jobs:
         with:
           node-version: "20"
       - run: npm ci
-      - run: npm run build
+      - run: npm run build:library
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
+          package: packages
+          dry-run: true

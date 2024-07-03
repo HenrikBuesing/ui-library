@@ -1,6 +1,6 @@
 import React from 'react';
 import {BaseModal} from './baseModal';
-import {ModalType} from 'enums/ModalType';
+import {ModalType} from 'enums/modalType';
 
 export interface INotifyModal {
   close     : () => void;
