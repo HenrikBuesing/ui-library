@@ -1,10 +1,7 @@
 name: release
 on:
-#  release:
-#    types: [created]
-  push:
-    branches-ignore:
-      - main
+  release:
+    types: [created]
 
 jobs:
   ESLint:
@@ -17,9 +14,9 @@ jobs:
       - name: install
         run: npm install
       - name: linting
-        run: npm run lint-nw
+        run: npm run lint-nw:library
 
-  publish_npm:
+  publish_npm_package:
     needs: ESLint
     runs-on: ubuntu-latest
     steps:
