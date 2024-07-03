@@ -2,8 +2,9 @@ name: linting
 on:
   pull_request:
     branches: ["main", "v*"]
-    paths:
-      - packages
+  push:
+    branches-ignore:
+      - main
 jobs:
   ESLint:
     runs-on: ubuntu-latest
@@ -19,7 +20,7 @@ jobs:
         run: npm install
       - uses: int128/comment-action@v1
         with:
-          run: npm run lint-nw:library
+          run: npm run lint-nw
           update-if-exists: append
           post-on-failure: |
             ## :x: ESLint check failed:
