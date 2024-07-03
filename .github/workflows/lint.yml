@@ -2,9 +2,6 @@ name: linting
 on:
   pull_request:
     branches: ["main", "v*"]
-  push:
-    branches-ignore:
-      - main
 jobs:
   ESLint:
     runs-on: ubuntu-latest
