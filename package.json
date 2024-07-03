@@ -11,6 +11,7 @@
     "clean:library": "npm run clean --workspace=packages",
     "lint:library": "npm run lint --workspace=packages",
     "lint-nw:library": "npm run lint:nw --workspace=packages",
+    "lint-nw": "npm run lint:nw --workspaces",
     "build:library": "npm run build --workspace=packages",
     "dev:library": "npm run dev --workspace=packages",
     "stats:library": "npm run stats --workspace=packages"
