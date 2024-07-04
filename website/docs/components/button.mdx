@@ -2,17 +2,45 @@
 title: Button
 sidebar_position: 1
 ---
+import ButtonShowcase from '@site/src/components/Button';
 
 # CustomButton
 
-```jsx live
-function ButtonShowcase() {
-  function clickAlert() {
-    window.alert('Button has been clicked!')
+Component to render buttons
+
+## Assignable props
+<AssignableProps
+  data={[
+    {name: 'label', value: 'string', required: true, definition: 'Button label'},
+    {name: 'disabled', value: 'boolean', required: false, definition: 'Enable or disable the button'},
+    {name: 'small', value: 'boolean', required: false, definition: 'Decreases the size of the button'},
+    {name: 'theme', value: 'HEX code | "success" | "warning" | "error"', required: false, definition: 'Set the background color'},
+    {name: 'default button props', value: '', required: false, definition: 'Default html button attributes, e.g. "onClick" event'},
+  ]}>
+</AssignableProps>
+
+
+:::info[Providing a custom color for the theme prop]
+The provided HEX code must be 7 (including the '#') characters long, e.g. '#1A2B3C'
+:::
+
+## Examples
+
+<ButtonShowcase/>
+
+## Playground
+```tsx live
+function Playground() {
+  function clickAlert(msg: string) {
+    alert(msg)
   }
 
   return (
-    <CustomButton label={'label'} type={'button'} onClick={() => clickAlert()} />
+    <div style={{display: 'flex', gap: '1rem'}}>
+      <CustomButton label={'Click me!'} theme={'#0047CC'} type={'button'} onClick={() => clickAlert('Themed button click')} />
+      <CustomButton label={'Click warning'} theme={'warning'} type={'button'} onClick={() => clickAlert('Warning!')} />
+      <CustomButton label={'Click me!'} small={true} type={'button'} onClick={() => clickAlert('Default button click')} />
+    </div>
   );
 }
 ```
