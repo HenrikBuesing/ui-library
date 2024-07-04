@@ -1,0 +1,16 @@
+.table {
+  text-align: left;
+
+  td, th {
+    border: none;
+  }
+
+  tbody {
+    border: 1px solid darkgrey;
+  }
+
+  thead {
+    background-color: #0047CC;
+    color: white;
+  }
+}
