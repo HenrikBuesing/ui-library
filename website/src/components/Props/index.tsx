@@ -2,10 +2,11 @@ import React from 'react';
 import './index.scss';
 
 interface Data {
-  name: string;
-  value: string;
-  required: boolean;
+  name      : string;
+  value     : string;
+  required  : boolean;
   definition: string;
+  default?  : string | undefined;
 }
 
 interface Props {
@@ -14,6 +15,8 @@ interface Props {
 
 
 export default function AssignableProps({ data }: Props) {
+  const defaultAvailable = !!data.find(d => d.default !== undefined);
+
   return (
     <table className={'table'}>
       <thead>
@@ -22,6 +25,9 @@ export default function AssignableProps({ data }: Props) {
         <th>Type</th>
         <th>required</th>
         <th>Definition</th>
+        {defaultAvailable &&
+          <th>Default</th>
+        }
       </tr>
       </thead>
 
@@ -32,6 +38,9 @@ export default function AssignableProps({ data }: Props) {
           <td style={{ color: 'orange' }}>{d.value}</td>
           <td style={{ fontWeight: d.required ? 'bold' : 'normal' }}>{String(d.required)}</td>
           <td>{d.definition}</td>
+          {defaultAvailable &&
+            <td>{d.default?? ''}</td>
+          }
         </tr>
       )}
       </tbody>
