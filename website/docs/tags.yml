@@ -1,0 +1,14 @@
+components:
+  label: 'Components'
+  permalink: '/components'
+  description: 'Usable components'
+
+button:
+  label: 'Button'
+  permalink: '/components/button'
+  description: 'Button component'
+
+input:
+  label: 'Input'
+  permalink: '/components/input'
+  description: 'Input component'

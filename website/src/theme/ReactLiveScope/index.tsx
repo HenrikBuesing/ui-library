@@ -1,11 +1,9 @@
 import React from 'react';
-import { CustomButton } from '../../../../packages/dist/index';
+import {CustomButton, CustomInput} from '../../../../packages/dist/index';
 
-// Add react-live imports you need here
-const ReactLiveScope = {
-  React,
+export default {
   CustomButton,
+  CustomInput,
+  React,
   ...React,
 };
-
-export default ReactLiveScope;

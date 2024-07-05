@@ -37,3 +37,7 @@
   display: flex;
   gap: 2rem;
 }
+
+.bottom-m {
+  margin-bottom: 2rem;
+}

@@ -62,13 +62,21 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Getting started',
+              to: '/docs/category/getting-started',
+            },
+            {
+              label: 'Components',
+              to: '/docs/category/components',
+            },
+            {
+              label: 'Hooks',
+              to: '/docs/category/hooks',
             },
           ],
         },
         {
-          // title: 'More',
+          title: 'Socials',
           items: [
             {
               label: 'GitHub',
@@ -77,7 +85,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} UI-Library Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} UI-Library`,
     },
     prism: {
       theme: prismThemes.github,
