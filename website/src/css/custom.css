@@ -36,6 +36,11 @@
 .showcase {
   display: flex;
   gap: 2rem;
+  padding: 1rem;
+
+  .uil-input-wrapper {
+    width: 60%;
+  }
 }
 
 .bottom-m {
