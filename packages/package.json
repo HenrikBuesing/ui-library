@@ -6,7 +6,6 @@
   "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -25,7 +24,8 @@
     "clean": "rimraf ./dist && mkdir dist",
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
-    "build": "microbundle build --jsx react --globals react/jsx-runtime=jsxRuntime",
+    "build": "microbundle build --output ./dist --generateTypes true --jsx react --globals react/jsx-runtime=jsxRuntime",
+    "build:uil": "microbundle build --output ../website/src/uil-bundle --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime",
     "dev": "microbundle -w --jsx react",
     "stats": "microbundle --visualize"
   },
