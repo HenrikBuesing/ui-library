@@ -2,6 +2,7 @@
 title: Install
 description: How to install the package
 sidebar_position: 1
+tags: [getting-started]
 ---
 
 # Installing the package
@@ -13,5 +14,30 @@ Install via npm:
 ```
 
 ## Importing the stylesheet
-To be able to use the components properly you have to import a stylesheet.
+To be able to use the components properly you have to import the required stylesheet.
+You can import the stylesheet on the same page where you use a component, or you can import it globally.
+It can be imported within your React component or inside another stylesheet file.
 
+```js title="JavaScript import"
+import '@hbuesing/ui-library/dist/index.css';
+```
+
+```css title="Stylesheet import"
+@import '@hbuesing/ui-library/dist/index.css';
+```
+
+
+## Basic usage
+```tsx
+import React from 'react';
+import '@hbuesing/ui-library/dist/index.css';
+import {CustomButton} from "@hbuesing/ui-library";
+
+export default function AlertButton() {
+  return (
+    <div>
+      <CustomButton label={'Alert'} onClick={() => alert('Button clicked!')}/>
+    </div>
+  );
+}
+```
