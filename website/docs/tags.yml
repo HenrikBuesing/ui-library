@@ -1,3 +1,8 @@
+getting-started:
+  label: 'Getting started'
+  permalink: '/getting-started'
+  description: 'Install and setup the library'
+
 components:
   label: 'Components'
   permalink: '/components'
@@ -12,3 +17,18 @@ input:
   label: 'Input'
   permalink: '/components/input'
   description: 'Input component'
+
+checkbox:
+  label: 'Checkbox'
+  permalink: '/components/checkbox'
+  description: 'Checkbox component'
+
+images:
+  label: 'Images'
+  permalink: '/components/images'
+  description: 'Image components'
+
+modal:
+  label: 'Modal'
+  permalink: '/components/modal'
+  description: 'Modal components'
