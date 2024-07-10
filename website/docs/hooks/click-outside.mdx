@@ -5,3 +5,27 @@ sidebar_position: 1
 
 # useClickOutsideRef
 
+The `useClickOutsideRef` hook detects whether the user clicked outside the ref's scope. \
+It expects a callback function that runs whenever the user clicks outside.
+The expected HTML element (e.g. HTMLDivElement) should also be specified, if not the ref type will be React.RefObject\<HTMLElement>.
+
+```tsx title="Example usage"
+function RefShowcase() {
+  const ref = useClickOutsideRef<HTMLDivElement>(clickedOutside);
+
+  function clickedOutside() {
+    alert("User clicked outside");
+  }
+
+  return (
+    <div>
+      <span>Hello</span>
+
+      <div ref={ref}>
+        <span>world</span>
+        <span>!</span>
+      </div>
+    </div>
+  );
+}
+```
