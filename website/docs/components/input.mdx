@@ -4,6 +4,8 @@ description: Usage of the input component
 sidebar_position: 2
 tags: [components, input]
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 
 # CustomInput
 Component to render an input field. Below is a list of all required and optional properties.
@@ -31,7 +33,12 @@ Provided icons must be svg files. Can be single svg or sprites file (foo.svg#bar
 ## Examples
 
 ### Default input
-<CustomInput label={'Default input'} value={''} valueChanged={() => {}}/>
+<CustomInput label={'Label'} value={''} valueChanged={() => {}}/>
+
+### Input with tooltip
+
+[//]: # (TODO check image render error)
+<CustomInput label={'Label'} value={''} valueChanged={() => {}} iconSrc={useBaseUrl('/img/example.svg')}/>
 
 ## Playground
 
