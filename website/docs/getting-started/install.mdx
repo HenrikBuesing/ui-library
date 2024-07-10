@@ -26,7 +26,6 @@ import '@hbuesing/ui-library/dist/index.css';
 @import '@hbuesing/ui-library/dist/index.css';
 ```
 
-
 ## Basic usage
 ```tsx
 import React from 'react';
@@ -41,3 +40,20 @@ export default function AlertButton() {
   );
 }
 ```
+
+## Customization
+Most components can be customized by providing themes or colors to directly influence the component's design. There
+are some options that are not directly customizable for a single component. For instance, you can't provide a custom
+color for the outline of a focused input component. If you want to change the styling for every component, you can override
+the corresponding css variables.
+
+```css title="Overriding the focused outline color"
+:root {
+--uil-outline-focus: green;
+}
+```
+
+:::danger[Overriding css variables]
+Overriding css variables may cause unexpected component behavior. \
+It is not recommended to override them, only do so if it is absolutely necessary.
+:::
