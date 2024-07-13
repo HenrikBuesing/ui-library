@@ -33,11 +33,11 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    // image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'UI Library',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'UI Library Site Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -81,7 +81,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} UI-Library`,
+      copyright: `Copyright © ${new Date().getFullYear()} UI Library`,
     },
     prism: {
       theme: prismThemes.github,

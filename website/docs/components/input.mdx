@@ -31,13 +31,24 @@ Provided icons must be svg files. Can be single svg or sprites file (foo.svg#bar
 ## Examples
 
 ### Default input
-<CustomInput label={'Label'} value={''} valueChanged={() => {}}/>
+<DefaultInput/>
 
 ### Input with tooltip
-<TooltipInput/>
+<div style={{marginBottom: "2rem"}}>
+  <TooltipInput/>
+</div>
+
+The [clickOutside](../hooks/click-outside) hook is used for hiding the tooltip.
+
+:::note
+Tooltips are hidden if you don't provide an icon
+:::
 
 ### Input with icon
 <IconInput/>
+
+### Disabled input
+<DisabledInput/>
 
 ## Playground
 ```tsx live
