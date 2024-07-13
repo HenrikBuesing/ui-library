@@ -1,44 +1,26 @@
 {
-  "private": false,
-  "name": "@hbuesing/ui-library",
-  "version": "2.0.3",
-  "description": "Collection of reusable ui components for react based applications",
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.modern.mjs"
-    },
-    "./dist/*.css": {
-      "import": "./dist/index.css",
-      "require": "./dist/index.css"
-    }
-  },
-  "files": [
-    "dist/*"
+  "name": "root",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages",
+    "website"
   ],
   "scripts": {
-    "clean": "rimraf ./dist && mkdir dist",
-    "lint": "eslint src",
-    "lint:prod": "eslint src --max-warnings 0",
-    "build": "microbundle build --jsx react --globals react/jsx-runtime=jsxRuntime",
-    "dev": "microbundle -w --jsx react",
-    "stats": "microbundle --visualize"
-  },
-  "author": "Henrik Buesing",
-  "license": "MIT",
-  "homepage": "https://github.com/HenrikBuesing/ui-library/tree/main#README.md",
-  "bugs": "https://github.com/HenrikBuesing/ui-library/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/HenrikBuesing/ui-library.git"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0"
+    "lint:library": "npm run lint --workspace=packages",
+    "lint-nw:library": "npm run lint:nw --workspace=packages",
+
+    "clean:library": "npm run clean --workspace=packages",
+    "clear:docs": "npm run clear --workspace=website",
+
+    "dev:library": "npm run dev --workspace=packages",
+    "dev:docs": "npm run start --workspace=website",
+
+    "build:library": "npm run build --workspace=packages",
+    "build:docs": "npm run build --workspace=website",
+    "build:docs-uil": "npm run build:uil --workspace=packages",
+
+    "stats:library": "npm run stats --workspace=packages"
   },
   "devDependencies": {
     "@eslint/compat": "^1.0.3",
@@ -47,17 +29,9 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.3",
     "globals": "^15.6.0",
-    "microbundle": "^0.15.1",
     "react": "^18.3.1",
-    "rimraf": "^5.0.7",
     "sass": "^1.77.6",
     "typescript": "^5.5.2",
     "typescript-eslint": "^7.14.1"
-  },
-  "keywords": [
-    "next",
-    "react",
-    "ui",
-    "ui-library"
-  ]
+  }
 }

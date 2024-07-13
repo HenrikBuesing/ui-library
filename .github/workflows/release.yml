@@ -4,7 +4,20 @@ on:
     types: [created]
 
 jobs:
-  publish:
+  ESLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: install
+        run: npm install
+      - name: linting
+        run: npm run lint-nw:library
+
+  publish_npm_package:
+    needs: ESLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,8 +25,10 @@ jobs:
         with:
           node-version: "20"
       - run: npm ci
-      - run: npm run build
+      - run: npm run build:library
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
+          package: packages
+          dry-run: true

@@ -1,0 +1,59 @@
+---
+title: Install
+description: How to install the package
+sidebar_position: 1
+tags: [getting-started]
+---
+
+# Installing the package
+
+Install via npm:
+
+```npm
+  npm install @hbuesing/ui-library
+```
+
+## Importing the stylesheet
+To be able to use the components properly you have to import the required stylesheet.
+You can import the stylesheet on the same page where you use a component, or you can import it globally.
+It can be imported within your React component or inside another stylesheet file.
+
+```js title="JavaScript import"
+import '@hbuesing/ui-library/dist/index.css';
+```
+
+```css title="Stylesheet import"
+@import '@hbuesing/ui-library/dist/index.css';
+```
+
+## Basic usage
+```tsx
+import React from 'react';
+import '@hbuesing/ui-library/dist/index.css';
+import {CustomButton} from "@hbuesing/ui-library";
+
+export default function AlertButton() {
+  return (
+    <div>
+      <CustomButton label={'Alert'} onClick={() => alert('Button clicked!')}/>
+    </div>
+  );
+}
+```
+
+## Customization
+Most components can be customized by providing themes or colors to directly influence the component's design. There
+are some options that are not directly customizable for a single component. For instance, you can't provide a custom
+color for the outline of a focused input component. If you want to change the styling for every component, you can override
+the corresponding css variables.
+
+```css title="Overriding the focused outline color"
+:root {
+--uil-outline-focus: green;
+}
+```
+
+:::danger[Overriding css variables]
+Overriding css variables may cause unexpected component behavior. \
+It is not recommended to override them, only do so if it is absolutely necessary.
+:::
