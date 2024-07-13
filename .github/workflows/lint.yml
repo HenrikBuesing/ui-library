@@ -17,7 +17,7 @@ jobs:
         run: npm install
       - uses: int128/comment-action@v1
         with:
-          run: npm run lint-nw
+          run: npm run lint-nw:library
           update-if-exists: append
           post-on-failure: |
             ## :x: ESLint check failed:

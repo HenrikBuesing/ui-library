@@ -8,10 +8,7 @@
   ],
   "scripts": {
     "lint:library": "npm run lint --workspace=packages",
-    "lint:docs": "npm run lint --workspace=website",
     "lint-nw:library": "npm run lint:nw --workspace=packages",
-    "lint-nw:docs": "npm run lint:nw --workspace=website",
-    "lint-nw": "npm run lint:nw --workspaces",
 
     "clean:library": "npm run clean --workspace=packages",
     "clear:docs": "npm run clear --workspace=website",

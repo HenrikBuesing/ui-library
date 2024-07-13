@@ -9,9 +9,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "lint": "eslint src",
-    "lint:nw": "eslint src --no-warn-ignored --max-warnings 0 --ignore-pattern src/uil-bundle/*"
+    "serve": "docusaurus serve"
   },
   "dependencies": {
     "@docusaurus/core": "3.4.0",
