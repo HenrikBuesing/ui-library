@@ -28,9 +28,9 @@ export function CustomInput(props: ICustomInput) {
   return (
     <>
       {tooltipIcon ?
-        <div className={'uil-tooltip-wrapper'}>
+        <div className={'uil-tooltip-wrapper'} ref={ref}>
           {tooltipVisible &&
-            <div className={'uil-tooltip'} ref={ref}>
+            <div className={'uil-tooltip'}>
               {tooltipClose &&
                 <button className={'uil-tooltip-button'} onClick={closeTooltip}>
                   {tooltipClose}

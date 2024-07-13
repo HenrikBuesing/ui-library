@@ -1,0 +1,64 @@
+---
+title: Input
+description: Usage of the input component
+sidebar_position: 2
+tags: [components, input]
+---
+
+# CustomInput
+Component to render an input field. Below is a list of all required and optional properties.
+
+## Assignable props
+<AssignableProps
+  data={[
+    {name: 'label', value: 'string', required: true, definition: 'input label/placeholder'},
+    {name: 'value', value: 'string', required: true, definition: 'current value'},
+    {name: 'valueChanged', value: '(value: string) => void', required: true, definition: 'function to retrieve user input'},
+    {name: 'iconSrc', value: '.svg file', required: false, definition: 'Display an icon for the input'},
+    {name: 'iconColor', value: 'string', required: false, definition: 'set the color of the icon'},
+    {name: 'toggle', value: '() => void', required: false, definition: 'function that runs when clicking on the icon, e.g. toggling between input type password & text'},
+    {name: 'tooltipIcon', value: '.svg file', required: false, definition: 'Display a tooltip icon'},
+    {name: 'tooltipText', value: 'string', required: false, definition: 'Tooltip text'},
+    {name: 'tooltipClose', value: 'string', required: false, definition: 'Tooltip close label'},
+    {name: 'default input props', value: '', required: false, definition: 'Default html input attributes, e.g. "type"'},
+  ]}
+/>
+
+:::warning[Providing icons]
+Provided icons must be svg files. Can be single svg or sprites file (foo.svg#bar)
+:::
+
+## Examples
+
+### Default input
+<DefaultInput/>
+
+### Input with tooltip
+<div style={{marginBottom: "2rem"}}>
+  <TooltipInput/>
+</div>
+
+The [clickOutside](../hooks/click-outside) hook is used for hiding the tooltip.
+
+:::note
+Tooltips are hidden if you don't provide an icon
+:::
+
+### Input with icon
+<IconInput/>
+
+### Disabled input
+<DisabledInput/>
+
+## Playground
+```tsx live
+function Playground() {
+  const [value, setValue] = useState('Hello!');
+
+  return (
+    <div className={'showcase'}>
+      <CustomInput label={'Default Input'} value={value} valueChanged={setValue}/>
+    </div>
+  );
+}
+```
