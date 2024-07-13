@@ -20,6 +20,8 @@
     "build:docs": "npm run build --workspace=website",
     "build:docs-uil": "npm run build:uil --workspace=packages",
 
+    "serve:docs": "npm run serve --workspace=website",
+
     "stats:library": "npm run stats --workspace=packages"
   },
   "devDependencies": {
