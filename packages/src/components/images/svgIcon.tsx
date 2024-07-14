@@ -1,5 +1,5 @@
-import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
-import './images.scss';
+import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
+import useInjectStyleSheet from "utils/useInjectStyles";
 
 interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
   src    : string;
@@ -20,6 +20,9 @@ export function SVG(props: ISvgIcon) {
     throw new Error('Provided src is not an svg image');
   }
 
+  const nodeRef = useRef<HTMLDivElement>(null);
+  useInjectStyleSheet(nodeRef);
+
   const style: CSSProperties = {
     fill: color,
     height: `${height}px`,
@@ -27,8 +30,10 @@ export function SVG(props: ISvgIcon) {
   }
 
   return (
-    <svg aria-hidden={true} className={'uil-svg'} style={style}>
-      <use href={src}/>
-    </svg>
+    <div ref={nodeRef}>
+      <svg aria-hidden={true} className={'uil-svg'} style={style}>
+        <use href={src}/>
+      </svg>
+    </div>
   );
 }

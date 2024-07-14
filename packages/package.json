@@ -4,23 +4,13 @@
   "version": "3.0.0",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
-  "module": "dist/index.mjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.modern.mjs"
-    },
-    "./dist/*.css": {
-      "import": "./dist/index.css",
-      "require": "./dist/index.css"
-    }
-  },
+  "exports": "./dist/bundle.mjs",
   "scripts": {
     "clean": "rimraf ./dist && mkdir dist",
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
-    "build": "microbundle build --output ./dist --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime",
-    "build:uil": "microbundle build --output ../website/src/uil-bundle --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime",
+    "build": "microbundle build --output ./dist/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
+    "build:uil": "microbundle build --output ../website/src/uil-bundle/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "dev": "microbundle -w --jsx react",
     "stats": "microbundle --visualize"
   },
