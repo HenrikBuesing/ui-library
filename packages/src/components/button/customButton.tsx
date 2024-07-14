@@ -1,5 +1,5 @@
-import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
-import './button.scss';
+import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
+import useInjectStyleSheet from "utils/useInjectStyles";
 
 type HEXColor = `#${string}`
 
@@ -18,6 +18,9 @@ export function CustomButton(props: ICustomButton) {
     theme,
     ...buttonProps
   } = props;
+
+  const nodeRef = useRef<HTMLButtonElement>(null);
+  useInjectStyleSheet(nodeRef);
 
   function setColor(color: string) {
     if (!color || disabled) return undefined;
@@ -81,23 +84,25 @@ export function CustomButton(props: ICustomButton) {
   const style: CSSProperties = getStyle();
 
   function getClassName() {
+    const base = 'uil-button uil-hf uil-wf'
+
     if (disabled && !small) {
-      return 'uil-button uil-disabled';
+      return `${base} uil-font-base uil-disabled`;
     }
 
     if (disabled && small) {
-      return 'uil-button uil-disabled uil-small';
+      return `${base} uil-disabled uil-small`;
     }
 
     if (small) {
-      return 'uil-button uil-small';
+      return `${base} uil-small`;
     }
 
-    return 'uil-button';
+    return `${base} uil-font-base`;
   }
 
   return (
-    <button className={getClassName()} style={style} disabled={disabled} {...buttonProps}>
+    <button className={getClassName()} style={style} disabled={disabled} {...buttonProps} ref={nodeRef}>
       {label}
     </button>
   );

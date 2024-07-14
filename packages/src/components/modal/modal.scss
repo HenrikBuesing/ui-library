@@ -1,4 +1,4 @@
-@use '../global' as *;
+@use '../variables' as *;
 
 .uil-modal-wrapper {
   position: fixed;
@@ -102,12 +102,12 @@
       }
 
       .uil-modal-text {
-        font-size: var(--uil-l);
-        line-height: var(--uil-l);
+        font-size: var(--uil-m);
+        line-height: var(--uil-m);
         color: var(--uil-black);
         margin: var(--uil-s) 0;
 
-        @include uil-desktop {
+        @include uil-tablet {
           font-size: var(--uil-l);
           line-height: var(--uil-l);
         }

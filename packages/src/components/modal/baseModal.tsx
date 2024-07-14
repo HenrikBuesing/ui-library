@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {ModalType} from 'enums/modalType';
 import {CustomButton} from 'components/button/customButton';
-import './modal.scss';
+import useInjectStyleSheet from "utils/useInjectStyles";
 
 interface IBaseModal {
   close        : () => void;
@@ -29,6 +29,9 @@ export function BaseModal(props: IBaseModal) {
     title,
     type
   } = props;
+
+  const nodeRef = useRef<HTMLDivElement>(null);
+  useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     if (!timeout) return;
@@ -59,7 +62,7 @@ export function BaseModal(props: IBaseModal) {
   }
 
   return (
-    <div className={'uil-modal-wrapper'}>
+    <div className={'uil-modal-wrapper'} ref={nodeRef}>
       <div className={'uil-modal'}>
         <div className={setHeaderClass()}>
           {title}
