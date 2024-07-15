@@ -1,0 +1,24 @@
+---
+title: Question modal
+description: Usage of the question modal component
+sidebar_position: 6
+tags: [components, modal]
+---
+
+# QuestionModal
+
+## Component props
+<AssignableProps
+  data={[
+    {name: 'cancel', value: '() => void', required: true, definition: 'Function that executes whenever a user aborts the question'},
+    {name: 'cancelLabel', value: 'string', required: true, definition: 'Label for the cancel button'},
+    {name: 'confirm', value: '() => void', required: true, definition: 'Function that executes whenever a user confirms the question'},
+    {name: 'confirmLabel', value: 'string', required: true, definition: 'Label for the confirm button'},
+    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message, each string will be wrapped in paragraphs'},
+    {name: 'title', value: 'string', required: true, definition: 'Modal title'},
+  ]}
+/>
+
+# Example usage
+
+<QuestionExample/>
