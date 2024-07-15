@@ -62,7 +62,7 @@ export function BaseModal(props: IBaseModal) {
 
         {timeout &&
           <div className={'uil-progress-wrapper'}>
-            <div className={'uil-progress-bar'} style={{animationDuration: `${(timeout / 1000) + 1}s`}}/>
+            <div className={'uil-progress-bar'} style={{animationDuration: `${(timeout / 1000) + .5}s`}}/>
           </div>
         }
 
