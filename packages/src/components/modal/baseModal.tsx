@@ -81,13 +81,13 @@ export function BaseModal(props: IBaseModal) {
 
           <div className={`uil-button-wrapper ${type !== ModalType.question ? 'uil-single' : ''}`}>
             {type !== ModalType.question &&
-              <CustomButton label={closeLabel?? ''} small={true} onClick={handleClose} type={'button'}/>
+              <CustomButton label={closeLabel?? ''} onClick={handleClose} type={'button'}/>
             }
 
             {type == ModalType.question && props.confirm &&
               <>
-                <CustomButton label={confirmLabel} theme={'#00416A'} small={true} onClick={confirm} type={'button'}/>
-                <CustomButton label={cancelLabel} small={true} onClick={close} type={'button'}/>
+                <CustomButton label={confirmLabel} theme={'#00416A'} onClick={confirm} type={'button'}/>
+                <CustomButton label={cancelLabel} onClick={close} type={'button'}/>
               </>
             }
           </div>

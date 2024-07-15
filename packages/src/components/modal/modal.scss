@@ -63,14 +63,14 @@
       font-weight: bold;
       min-height: var(--uil-xl);
       margin: 0;
-      padding: var(--uil-xs);
+      padding: var(--uil-s);
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
 
       @include uil-desktop {
-        font-size: var(--uil-xxl);
-        line-height: var(--uil-xxl);
-        padding: var(--uil-s);
+        font-size: var(--uil-xxxl);
+        line-height: var(--uil-xxxl);
+        padding: var(--uil-m);
       }
 
       &.uil-success {
