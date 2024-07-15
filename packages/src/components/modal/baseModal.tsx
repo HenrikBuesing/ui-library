@@ -53,6 +53,11 @@ export function BaseModal(props: IBaseModal) {
     }
   }
 
+  //run callback if timeout and callback are set
+  function handleClose() {
+    timeout && callback ? callback() : close();
+  }
+
   return (
     <div className={'uil-modal-wrapper'}>
       <div className={'uil-modal'}>
@@ -76,7 +81,7 @@ export function BaseModal(props: IBaseModal) {
 
           <div className={`uil-button-wrapper ${type !== ModalType.question ? 'uil-single' : ''}`}>
             {type !== ModalType.question &&
-              <CustomButton label={closeLabel?? ''} small={true} onClick={close} type={'button'}/>
+              <CustomButton label={closeLabel?? ''} small={true} onClick={handleClose} type={'button'}/>
             }
 
             {type == ModalType.question && props.confirm &&
