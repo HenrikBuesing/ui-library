@@ -34,9 +34,7 @@ export function BaseModal(props: IBaseModal) {
     if (!timeout) return;
 
     const t = setTimeout(() => {
-      callback && callback();
-
-      close();
+      return callback ? callback() : close();
     }, timeout);
 
     return () => clearTimeout(t);
