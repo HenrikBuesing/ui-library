@@ -12,7 +12,7 @@ tags: [components, modal]
   data={[
     {name: 'close', value: '() => void', required: true, definition: 'Function that executes whenever a user closes the modal'},
     {name: 'closeLabel', value: 'string', required: true, definition: 'Label for the close button'},
-    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message, each string will be wrapped in paragraphs'},
+    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message'},
     {name: 'modalType', value: '"success" | "warning" | "error"', required: true, definition: 'Specify the modal type'},
     {name: 'title', value: 'string', required: true, definition: 'Modal title'},
     {name: 'callback', value: '() => void', required: false, definition: 'Execute the function after the set timeout'},
@@ -20,7 +20,7 @@ tags: [components, modal]
   ]}
 />
 
-## Examples
+## Example usage
 
 ### Success
 <SuccessModal/>
@@ -39,13 +39,13 @@ If you would like to separate the message into different paragraphs, use an arra
 ### Timeout
 Execute a `callback` function after the set `timeout`. The `callback` function will also be executed if a
 user closes the modal before the timer runs out. \
-Note that `callback` functions will be ignored if a `timeout` is not provided.
+Note that `callback` functions will be ignored if you don't set a `timeout`.
 
 <CallbackModal/>
 
 :::info[Omitting the callback function]
-If you set a timeout you should also set the `callback` function. But there is a case where it is recommended to omit it,
-since not providing a `callback` function will result in the `close` function being used as a fallback. \
+If you set a `timeout` you should also set the `callback` function. But there is a case where it is recommended to omit it,
+since omitting the `callback` function will result in the `close` function being used as a fallback. \
 This is useful for when both functions are identical, as you won't have to provide the same function twice.
 :::
 

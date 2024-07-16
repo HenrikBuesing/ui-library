@@ -10,15 +10,44 @@ tags: [components, modal]
 ## Component props
 <AssignableProps
   data={[
-    {name: 'cancel', value: '() => void', required: true, definition: 'Function that executes whenever a user aborts the question'},
+    {name: 'cancel', value: '() => void', required: true, definition: 'Function that executes whenever a user cancels'},
     {name: 'cancelLabel', value: 'string', required: true, definition: 'Label for the cancel button'},
-    {name: 'confirm', value: '() => void', required: true, definition: 'Function that executes whenever a user confirms the question'},
+    {name: 'confirm', value: '() => void', required: true, definition: 'Function that executes whenever a user confirms'},
     {name: 'confirmLabel', value: 'string', required: true, definition: 'Label for the confirm button'},
-    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message, each string will be wrapped in paragraphs'},
+    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message'},
     {name: 'title', value: 'string', required: true, definition: 'Modal title'},
   ]}
 />
 
-# Example usage
-
+## Example usage
 <QuestionExample/>
+
+## Playground
+```tsx live
+function Playground() {
+  const [modalVis, setModalVis] = useState(false);
+
+  function confirmModal() {
+    setModalVis(false);
+
+    alert('Modal confirmed!');
+  }
+
+  return (
+    <>
+      <CustomButton label={'show Modal'} onClick={() => setModalVis(true)} />
+
+      {modalVis &&
+        <QuestionModal
+          title={'Modal title'}
+          message={'Modal message'}
+          cancel={() => setModalVis(false)}
+          cancelLabel={'cancel label'}
+          confirm={confirmModal}
+          confirmLabel={'confirm label'}
+        />
+      }
+    </>
+  );
+}
+```
