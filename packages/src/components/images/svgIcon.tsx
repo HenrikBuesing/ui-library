@@ -30,7 +30,7 @@ export function SVG(props: ISvgIcon) {
   }
 
   return (
-    <div ref={nodeRef}>
+    <div ref={nodeRef} className={'uil-svg-wrapper'}>
       <svg aria-hidden={true} className={'uil-svg'} style={style}>
         <use href={src}/>
       </svg>

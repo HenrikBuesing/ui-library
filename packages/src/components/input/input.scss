@@ -88,10 +88,13 @@
   .uil-tooltip-icon {
     cursor: pointer;
     fill: var(--uil-black-alt);
+    margin-bottom: var(--uil-xxs);
   }
 
   & .uil-tooltip-icon:has(~ .uil-input-wrapper > .uil-input:not(:placeholder-shown), ~ .uil-input-wrapper:focus-within) {
+    opacity: 0;
     visibility: hidden;
+    transition: opacity .3s, visibility .3s;
   }
 
   .uil-tooltip {
