@@ -15,7 +15,6 @@ button:
 
 input:
   label: 'Input'
-  permalink: '/components/input'
   description: 'Input component'
 
 checkbox:
@@ -30,5 +29,4 @@ images:
 
 modal:
   label: 'Modal'
-  permalink: '/components/modal'
   description: 'Modal components'
