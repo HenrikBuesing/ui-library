@@ -7,7 +7,7 @@ on:
     branches-ignore:
       - main
     paths:
-      - website
+      - website/**
 jobs:
   docs-deployment-preview:
     runs-on: ubuntu-latest
