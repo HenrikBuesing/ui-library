@@ -41,7 +41,7 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {to: 'docs/getting-started/install', label: 'Getting started', position: 'left'},
+        {to: 'docs/getting-started', label: 'Getting started', position: 'left'},
         {to: 'docs/category/components', label: 'Components', position: 'left'},
         {to: 'docs/category/hooks', label: 'Hooks', position: 'left'},
         {
@@ -59,7 +59,7 @@ const config: Config = {
           items: [
             {
               label: 'Getting started',
-              to: '/docs/category/getting-started',
+              to: '/docs/getting-started',
             },
             {
               label: 'Components',
