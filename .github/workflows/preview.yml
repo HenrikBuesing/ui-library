@@ -10,6 +10,7 @@ on:
       - website/**
 jobs:
   docs-deployment-preview:
+    environment: Preview
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
