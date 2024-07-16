@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
 import {SVG} from 'components/images/svgIcon';
 import {useClickOutsideRef} from 'hooks/clickOutside';
-import './input.scss';
+import useInjectStyleSheet from "utils/useInjectStyles";
 
 export interface ICustomInput extends IBaseInput {
   tooltipClose?: string;
@@ -20,19 +20,21 @@ export function CustomInput(props: ICustomInput) {
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const ref = useClickOutsideRef<HTMLDivElement>(closeTooltip);
+  const nodeRef = useRef<HTMLDivElement>(null);
+  useInjectStyleSheet(nodeRef);
 
   function closeTooltip() {
     setTooltipVisible(false);
   }
 
   return (
-    <>
+    <div ref={nodeRef}>
       {tooltipIcon ?
         <div className={'uil-tooltip-wrapper'} ref={ref}>
           {tooltipVisible &&
             <div className={'uil-tooltip'}>
               {tooltipClose &&
-                <button className={'uil-tooltip-button'} onClick={closeTooltip}>
+                <button className={'uil-tooltip-button uil-wf'} onClick={closeTooltip}>
                   {tooltipClose}
                 </button>
               }
@@ -41,7 +43,7 @@ export function CustomInput(props: ICustomInput) {
             </div>
           }
 
-          <div className={'uil-tooltip-icon'} onClick={() => setTooltipVisible(!tooltipVisible)}>
+          <div className={'uil-tooltip-icon uil-hf uil-wf'} onClick={() => setTooltipVisible(!tooltipVisible)}>
             <SVG src={tooltipIcon} height={16} width={16}/>
           </div>
 
@@ -50,6 +52,6 @@ export function CustomInput(props: ICustomInput) {
 
         <BaseInput {...inputProps}/>
       }
-    </>
+    </div>
   );
 }

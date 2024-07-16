@@ -11,7 +11,7 @@
     "lint-nw:library": "npm run lint:nw --workspace=packages",
 
     "clean:library": "npm run clean --workspace=packages",
-    "clear:docs": "npm run clear --workspace=website",
+    "clean:docs": "npm run clear --workspace=website",
 
     "dev:library": "npm run dev --workspace=packages",
     "dev:docs": "npm run start --workspace=website",
@@ -19,6 +19,8 @@
     "build:library": "npm run build --workspace=packages",
     "build:docs": "npm run build --workspace=website",
     "build:docs-uil": "npm run build:uil --workspace=packages",
+
+    "serve:docs": "npm run serve --workspace=website",
 
     "stats:library": "npm run stats --workspace=packages"
   },

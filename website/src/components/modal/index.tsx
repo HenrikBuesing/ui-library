@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NotifyModal, QuestionModal, CustomButton } from '../../uil-bundle/ui-library.modern.mjs';
+import { NotifyModal, QuestionModal, CustomButton } from '../../uil-bundle/bundle.mjs';
 
 export default function SuccessModal() {
   const [modalVis, setModalVis] = useState(false);

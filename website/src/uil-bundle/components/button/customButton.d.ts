@@ -1,5 +1,4 @@
 import React, { ComponentPropsWithoutRef } from 'react';
-import './button.scss';
 type HEXColor = `#${string}`;
 interface ICustomButton extends ComponentPropsWithoutRef<'button'> {
     label: string;

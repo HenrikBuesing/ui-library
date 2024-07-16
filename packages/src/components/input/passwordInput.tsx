@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {SVG} from 'components/images/svgIcon';
 import {PasswordRuleTypes} from 'enums/passwordRuleTypes';
-import './input.scss';
+import useInjectStyleSheet from "utils/useInjectStyles";
 
 interface IPasswordInput extends ICustomInput {
   capsLockWarning: string;
@@ -30,10 +30,12 @@ export function PasswordInput(props: IPasswordInput) {
   } = props;
 
   const [capsLock, setCapsLock] = useState(false);
+  const nodeRef = useRef<HTMLDivElement>(null);
+  useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     validateInput();
-  },[props.value]);
+  }, [props.value]);
 
   useEffect(() => {
     function setCapsLockState(event: globalThis.KeyboardEvent) {
@@ -43,11 +45,11 @@ export function PasswordInput(props: IPasswordInput) {
     document.addEventListener('keydown', setCapsLockState);
 
     return () => document.removeEventListener('keydown', setCapsLockState);
-  },[]);
+  }, []);
 
   function validateInput() {
     const failedRules: PasswordRule[] = [];
-    
+
     rules.forEach(rule => {
       if (!checkRule(rule)) {
         failedRules.push(rule);
@@ -90,24 +92,22 @@ export function PasswordInput(props: IPasswordInput) {
   }
 
   return (
-    <>
-      <div>
-        <CustomInput {...inputProps}/>
+    <div ref={nodeRef}>
+      <CustomInput {...inputProps}/>
 
-        <div className={'uil-password-rules'}>
-          {capsLock &&
-            <div className={'uil-password-rule'}>{capsLockWarning}</div>
-          }
+      <div className={'uil-password-rules'}>
+        {capsLock &&
+          <div className={'uil-password-rule'}>{capsLockWarning}</div>
+        }
 
-          {rules.map((rule, idx) =>
-            <div key={idx} className={'uil-password-rule'}>
-              <SVG src={checkRule(rule)? ruleChecked : ruleUnchecked} height={12} width={12}/>
+        {rules.map((rule, idx) =>
+          <div key={idx} className={'uil-password-rule'}>
+            <SVG src={checkRule(rule) ? ruleChecked : ruleUnchecked} height={12} width={12}/>
 
-              <span>{rule.label}</span>
-            </div>
-          )}
-        </div>
+            <span>{rule.label}</span>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

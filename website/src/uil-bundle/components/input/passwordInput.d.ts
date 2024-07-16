@@ -1,7 +1,6 @@
 import React from 'react';
 import { ICustomInput } from './customInput';
 import { PasswordRuleTypes } from 'enums/passwordRuleTypes';
-import './input.scss';
 interface IPasswordInput extends ICustomInput {
     capsLockWarning: string;
     setFailedRules: (value: PasswordRule[]) => void;

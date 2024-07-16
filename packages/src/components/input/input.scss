@@ -1,4 +1,4 @@
-@use '../global' as *;
+@use '../variables' as *;
 
 .uil-input-wrapper {
   position: relative;
@@ -9,9 +9,7 @@
     top: 25%;
     left: var(--uil-xxs);
     cursor: text;
-    font-size: var(--uil-font-base);
     font-weight: bold;
-    line-height: var(--uil-font-base);
     color: var(--uil-black);
     background: linear-gradient(0deg, var(--uil-white) 9px, rgba(0,0,0,0) 0%);
     opacity: .6;
@@ -21,8 +19,6 @@
 
   & .uil-input {
     box-sizing: border-box;
-    font-size: var(--uil-font-base);
-    line-height: var(--uil-font-base);
     width: 100%;
     color: var(--uil-black);
     background-color: var(--uil-white);
@@ -91,13 +87,14 @@
 
   .uil-tooltip-icon {
     cursor: pointer;
-    height: fit-content;
-    width: fit-content;
     fill: var(--uil-black-alt);
+    margin-bottom: var(--uil-xxs);
   }
 
   & .uil-tooltip-icon:has(~ .uil-input-wrapper > .uil-input:not(:placeholder-shown), ~ .uil-input-wrapper:focus-within) {
+    opacity: 0;
     visibility: hidden;
+    transition: opacity .3s, visibility .3s;
   }
 
   .uil-tooltip {
@@ -116,7 +113,6 @@
 
     .uil-tooltip-button {
       display: block;
-      width: fit-content;
       margin-left: auto;
       margin-bottom: var(--uil-m);
       color: var(--uil-white);
