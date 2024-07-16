@@ -1,6 +1,5 @@
 import React from 'react';
 import { IBaseInput } from './baseInput';
-import './input.scss';
 export interface ICustomInput extends IBaseInput {
     tooltipClose?: string;
     tooltipIcon?: string;

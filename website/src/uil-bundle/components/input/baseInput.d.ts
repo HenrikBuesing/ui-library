@@ -1,5 +1,4 @@
 import React, { ComponentPropsWithoutRef } from 'react';
-import './input.scss';
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
     label: string;
     value: string;
