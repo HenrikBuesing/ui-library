@@ -53,6 +53,11 @@ export function BaseModal(props: IBaseModal) {
     }
   }
 
+  //run callback if timeout and callback are set
+  function handleClose() {
+    timeout && callback ? callback() : close();
+  }
+
   return (
     <div className={'uil-modal-wrapper'}>
       <div className={'uil-modal'}>
@@ -62,7 +67,7 @@ export function BaseModal(props: IBaseModal) {
 
         {timeout &&
           <div className={'uil-progress-wrapper'}>
-            <div className={'uil-progress-bar'} style={{animationDuration: `${(timeout / 1000) + 1}s`}}/>
+            <div className={'uil-progress-bar'} style={{animationDuration: `${(timeout / 1000) + .5}s`}}/>
           </div>
         }
 
@@ -76,13 +81,13 @@ export function BaseModal(props: IBaseModal) {
 
           <div className={`uil-button-wrapper ${type !== ModalType.question ? 'uil-single' : ''}`}>
             {type !== ModalType.question &&
-              <CustomButton label={closeLabel?? ''} small={true} onClick={close} type={'button'}/>
+              <CustomButton label={closeLabel?? ''} onClick={handleClose} type={'button'}/>
             }
 
             {type == ModalType.question && props.confirm &&
               <>
-                <CustomButton label={confirmLabel} theme={'#00416A'} small={true} onClick={confirm} type={'button'}/>
-                <CustomButton label={cancelLabel} small={true} onClick={close} type={'button'}/>
+                <CustomButton label={confirmLabel} theme={'#00416A'} onClick={confirm} type={'button'}/>
+                <CustomButton label={cancelLabel} onClick={close} type={'button'}/>
               </>
             }
           </div>
