@@ -1,5 +1,4 @@
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
-import './checkbox.scss';
 interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
     checked: boolean;
     label?: string;

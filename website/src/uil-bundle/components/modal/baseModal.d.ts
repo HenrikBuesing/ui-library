@@ -1,6 +1,5 @@
 import React from 'react';
 import { ModalType } from 'enums/modalType';
-import './modal.scss';
 interface IBaseModal {
     close: () => void;
     message: string | string[];

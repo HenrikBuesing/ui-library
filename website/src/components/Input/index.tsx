@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {CustomInput} from '../../uil-bundle/ui-library.modern.mjs';
+import {CustomInput} from '../../uil-bundle/bundle.mjs';
 
 export default function DefaultInput() {
   const [value, setValue] = useState('');
