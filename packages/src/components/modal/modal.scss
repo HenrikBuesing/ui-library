@@ -61,7 +61,6 @@
       font-size: var(--uil-xl);
       line-height: var(--uil-xl);
       font-weight: bold;
-      min-height: var(--uil-xl);
       margin: 0;
       padding: var(--uil-s);
       border-top-left-radius: 3px;
@@ -102,14 +101,14 @@
       }
 
       .uil-modal-text {
-        font-size: var(--uil-m);
-        line-height: var(--uil-m);
+        font-size: var(--uil-font-small);
+        line-height: var(--uil-font-small);
         color: var(--uil-black);
         margin: var(--uil-s) 0;
 
         @include uil-tablet {
-          font-size: var(--uil-l);
-          line-height: var(--uil-l);
+          font-size: var(--uil-font-base);
+          line-height: var(--uil-font-base);
         }
       }
 
