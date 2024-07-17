@@ -44,19 +44,21 @@ export function BaseModal(props: IBaseModal) {
   },[]);
 
   function setHeaderClass() {
+    const base = 'uil-header';
+
     switch (type) {
       case ModalType.error:
-        return 'uil-header uil-error';
+        return `${base} uil-error`;
       case ModalType.success:
-        return 'uil-header uil-success';
+        return `${base} uil-success`;
       case ModalType.warning:
-        return 'uil-header uil-warning';
+        return `${base} uil-warning`;
       default:
-        return 'uil-header';
+        return base;
     }
   }
 
-  //run callback if timeout and callback are set
+  //run callback if timeout and callback are set, otherwise close
   function handleClose() {
     timeout && callback ? callback() : close();
   }
