@@ -6,8 +6,7 @@ const config: Config = {
   title: 'UI Library Docs',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://uil-docs.vercel.app',
   baseUrl: '/',
   trailingSlash: false,
   i18n: {
