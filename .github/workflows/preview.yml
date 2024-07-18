@@ -20,7 +20,8 @@ jobs:
         with:
           message: |
             ## preview deployment
-            File change detected in website dir, generating new preview deployment
+            Changes detected in website directory or preview workflow.
+            Deploying new preview site
           comment_tag: docs-preview
           mode: 'recreate'
 
