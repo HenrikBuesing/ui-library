@@ -19,7 +19,7 @@ jobs:
       - name: lint src directory
         run: npm run lint-nw:library
 
-  publish:
+  publish_package:
     name: Publish npm package
     needs: ESLint
     runs-on: ubuntu-latest
@@ -40,17 +40,17 @@ jobs:
           dry-run: true
 
   #TODO move docs release into separate workflow
-  docs-deployment-production:
-    needs: publish_npm_package
-    environment: Production
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+#  docs-deployment-production:
+#    needs: publish_npm_package
+#    environment: Production
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Install Vercel CLI
+#        run: npm install --global vercel@latest
+#      - name: Pull Vercel Environment Information
+#        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+#      - name: Build Project Artifacts
+#        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+#      - name: Deploy Project Artifacts to Vercel
+#        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
