@@ -3,16 +3,28 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
-  push:
-    branches-ignore:
-      - main
+  pull_request:
+    branches: ["main", "v*"]
     paths:
       - website/**
+      - .github/workflows/preview.yml
 jobs:
   docs-deployment-preview:
     environment: Preview
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
+      - if: ${{ github.event_name == 'pull_request' }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            ## preview deployment
+            Changes detected in website directory or preview workflow.
+            Deploying new preview site
+          comment_tag: docs-preview
+          mode: 'recreate'
+
       - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
