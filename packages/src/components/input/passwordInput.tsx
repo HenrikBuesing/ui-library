@@ -85,7 +85,7 @@ export function PasswordInput(props: IPasswordInput) {
         rule.pattern ? pattern = rule.pattern : pattern = '';
     }
 
-    if (pattern === '') throw new Error(`pattern must not be an empty string. Checked rule: ${rule}`);
+    if (pattern === '') throw new Error('pattern must not be an empty string');
 
     const reg = new RegExp(pattern);
     return reg.test(props.value);
