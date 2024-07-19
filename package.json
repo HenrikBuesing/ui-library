@@ -6,6 +6,7 @@
     "packages",
     "website"
   ],
+  "type": "module",
   "scripts": {
     "lint:library": "npm run lint --workspace=packages",
     "lint-nw:library": "npm run lint:nw --workspace=packages",
