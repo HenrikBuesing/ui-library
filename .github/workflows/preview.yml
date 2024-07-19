@@ -10,13 +10,13 @@ on:
       - .github/workflows/preview.yml
 jobs:
   docs-deployment-preview:
+    if: github.event.pull_request.draft == false
     environment: Preview
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - if: ${{ github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@v2
+      - uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             ## preview deployment
@@ -24,7 +24,6 @@ jobs:
             Deploying new preview site
           comment_tag: docs-preview
           mode: 'recreate'
-
       - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
