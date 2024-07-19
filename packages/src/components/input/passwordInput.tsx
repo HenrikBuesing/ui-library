@@ -39,7 +39,7 @@ export function PasswordInput(props: IPasswordInput) {
 
   useEffect(() => {
     function setCapsLockState(event: globalThis.KeyboardEvent) {
-      setCapsLock(event.getModifierState && event.getModifierState('CapsLock'));
+      setCapsLock(event.getModifierState?.('CapsLock'));
     }
 
     document.addEventListener('keydown', setCapsLockState);
