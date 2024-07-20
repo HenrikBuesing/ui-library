@@ -8,23 +8,19 @@ on:
     paths:
       - website/**
       - .github/workflows/preview.yml
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
 jobs:
   docs-deployment-preview:
+    if: github.event.pull_request.draft == false
     environment: Preview
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - if: ${{ github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@v2
-        with:
-          message: |
-            ## preview deployment
-            Changes detected in website directory or preview workflow.
-            Deploying new preview site
-          comment_tag: docs-preview
-          mode: 'recreate'
-
       - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
