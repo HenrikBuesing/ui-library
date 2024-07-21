@@ -63,7 +63,7 @@ export function CustomRadio(props: ICustomRadio) {
               <div className={'uil-checkmark uil-radio-check'} style={{backgroundColor: checkColor}}/>
             </label>
 
-            <span>{option.label}</span>
+            <span className={'uil-font-base'}>{option.label}</span>
           </div>
         )}
       </div>
