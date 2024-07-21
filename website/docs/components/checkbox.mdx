@@ -7,4 +7,25 @@ tags: [components, checkbox]
 
 # Checkbox
 
-WIP docs will be added at a later date
+
+## Assignable props
+<AssignableProps
+  data={[
+    {name: 'label', value: 'string', required: true, definition: 'Button label'},
+    {name: 'disabled', value: 'boolean', required: false, definition: 'Enable or disable the button', default: 'false'},
+    {name: 'small', value: 'boolean', required: false, definition: 'Decreases the size of the button', default: 'false'},
+    {name: 'theme', value: 'HEX code | "success" | "warning" | "error"', required: false, definition: 'Set the background color'},
+    {name: 'default button props', value: '', required: false, definition: 'Default html button attributes, e.g. "onClick" event'},
+  ]}
+/>
+
+## Example usage
+
+### Checkbox with label
+<CheckboxLabel/>
+
+### Checkbox with custom checked color
+<CheckboxColor/>
+
+### Checkbox with custom content
+<CheckboxBody/>

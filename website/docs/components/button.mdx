@@ -1,12 +1,11 @@
 ---
-title: Button
+title: <CustomButton />
 description: Usage of the button component
 sidebar_position: 1
 tags: [components, button]
 ---
 
-# CustomButton
-Component to render a button. Below is a list of all required and optional properties.
+# \<CustomButton />
 
 ## Assignable props
 <AssignableProps
@@ -14,51 +13,87 @@ Component to render a button. Below is a list of all required and optional prope
     {name: 'label', value: 'string', required: true, definition: 'Button label'},
     {name: 'disabled', value: 'boolean', required: false, definition: 'Enable or disable the button', default: 'false'},
     {name: 'small', value: 'boolean', required: false, definition: 'Decreases the size of the button', default: 'false'},
-    {name: 'theme', value: 'HEX code | "success" | "warning" | "error"', required: false, definition: 'Set the background color'},
-    {name: 'default button props', value: '', required: false, definition: 'Default html button attributes, e.g. "onClick" event'},
+    {name: 'theme', value: 'HEX code | "success" | "warning" | "error"', required: false, definition: 'Set the button theme', default: 'undefined'},
+    {name: 'HTML button props', value: '', required: false, definition: 'HTML button attributes, e.g. "onClick"'},
   ]}
 />
-
-[//]: # (TODO set default value of theme to null)
 
 :::note[Providing a custom color for the theme prop]
 The provided HEX code must be 7 (including '#') characters long, e.g. '#1A2B3C'
 :::
 
-The font color (either black or white) will be chosen based on the provided theme.
+The font color (either black or white) will be chosen based on the provided theme. \
 Not providing a theme will generate the default styled button.
 
-## Available button styles
-Below is a list of available button configurations.
+## Example usage
 
 ### Default button
 <div className={'showcase'}>
-  <CustomButton label={'Default'}/>
-  <CustomButton label={'Default small'} small={true}/>
+  <CustomButton label={'Without theme'} onClick={() => alert('Button clicked')}/>
+  <CustomButton label={'small'} small={true}/>
 </div>
+
+&NewLine;
+
+```tsx
+<CustomButton label={'Without theme'} onClick={() => alert('Button clicked')}/>
+
+<CustomButton label={'small'} small={true}/>
+```
 
 ### Themed button
 <div className={'showcase'}>
   <CustomButton label={'Success'} theme={'success'}/>
   <CustomButton label={'Warning'} theme={'warning'}/>
   <CustomButton label={'Error'} theme={'error'}/>
-  <CustomButton label={'Error small'} theme={'error'} small={true}/>
+  <CustomButton label={'small'} theme={'error'} small={true}/>
 </div>
+
+&NewLine;
+
+```tsx
+<CustomButton label={'Success'} theme={'success'}/>
+
+<CustomButton label={'Warning'} theme={'warning'}/>
+
+<CustomButton label={'Error'} theme={'error'}/>
+
+<CustomButton label={'small'} theme={'error'} small={true}/>
+```
 
 ### Custom theme
 <div className={'showcase'}>
   <CustomButton label={'#2ce8b8'} theme={'#2ce8b8'}/>
-  <CustomButton label={'small'} theme={'#2ce8b8'} small={true}/>
   <CustomButton label={'#9900cc'} theme={'#9900cc'}/>
   <CustomButton label={'#0047CC'} theme={'#0047CC'}/>
   <CustomButton label={'small'} theme={'#0047CC'} small={true}/>
 </div>
 
+&NewLine;
+
+```tsx
+<CustomButton label={'#2ce8b8'} theme={'#2ce8b8'}/>
+
+<CustomButton label={'#9900cc'} theme={'#9900cc'}/>
+
+<CustomButton label={'#0047CC'} theme={'#0047CC'}/>
+
+<CustomButton label={'small'} theme={'#0047CC'} small={true}/>
+```
+
 ### disabled button
 <div className={'showcase bottom-m'}>
   <CustomButton label={'disabled'} theme={'error'} disabled={true}/>
-  <CustomButton label={'disabled small'} theme={'#0047CC'} disabled={true} small={true}/>
+  <CustomButton label={'small'} theme={'#0047CC'} disabled={true} small={true}/>
 </div>
+
+&NewLine;
+
+```tsx
+<CustomButton label={'disabled'} theme={'error'} disabled={true}/>
+
+<CustomButton label={'small'} theme={'#0047CC'} disabled={true} small={true}/>
+```
 
 :::info[Disabling a button]
 The provided theme will be ignored if the button is disabled
@@ -67,16 +102,13 @@ The provided theme will be ignored if the button is disabled
 ## Playground
 ```tsx live
 function Playground() {
-  function clickAlert(msg: string) {
-    alert(msg);
-  }
-
   return (
-    <div className={'showcase'}>
-      <CustomButton label={'Click me!'} theme={'#0047CC'} type={'button'} onClick={() => clickAlert('Themed button click')} />
-      <CustomButton label={'Click warning'} theme={'warning'} type={'button'} onClick={() => clickAlert('Warning!')} />
-      <CustomButton label={'Button disabled'} small={true} disabled={true} type={'button'} onClick={() => clickAlert('Default button click')} />
-    </div>
+    <CustomButton
+      label={'Click me!'}
+      theme={'#0047CC'}
+      type={'button'}
+      onClick={() => alert('Themed button click')}
+    />
   );
 }
 ```
