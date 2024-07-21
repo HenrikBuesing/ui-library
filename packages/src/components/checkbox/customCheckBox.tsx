@@ -24,12 +24,12 @@ export function CustomCheckBox(props: ICustomCheckbox) {
 
   return (
     <div className={'uil-check-wrapper'} ref={nodeRef}>
-      <label className={'uil-checkbox'}>
+      <label className={'uil-checkbox uil-check'}>
         <input type={'checkbox'} checked={checked} onChange={() => {onCheck(!checked)}} {...checkProps}/>
         <div className={'uil-checkmark'} style={{backgroundColor: checkColor}}/>
       </label>
 
-      {children ? children : <span>{label}</span>}
+      {children ? children : <span onClick={() => onCheck(!checked)}>{label}</span>}
     </div>
   );
 }
