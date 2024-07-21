@@ -23,7 +23,7 @@ export default function AssignableProps({ data }: Props) {
       <tr>
         <th>Name</th>
         <th>Type</th>
-        <th>required</th>
+        <th>Required</th>
         <th>Definition</th>
         {defaultAvailable &&
           <th>Default</th>
