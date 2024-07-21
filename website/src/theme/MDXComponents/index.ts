@@ -3,6 +3,7 @@ import AssignableProps from '@site/src/components/Props';
 import DefaultInput , {TooltipInput, IconInput, DisabledInput} from '@site/src/components/Input';
 import SuccessModal, {ErrorModal, WarningModal, MultiLineModal, CallbackModal, QuestionExample} from '@site/src/components/modal';
 import {CustomButton, CustomInput, useClickOutsideRef} from '../../uil-bundle/bundle.mjs';
+import RadioExample from "@site/src/components/check";
 
 export default {
   ...MDXComponents,
@@ -19,5 +20,6 @@ export default {
   MultiLineModal,
   CallbackModal,
   QuestionExample,
+  RadioExample,
   useClickOutsideRef,
 };

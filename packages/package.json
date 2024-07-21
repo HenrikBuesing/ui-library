@@ -11,7 +11,7 @@
     "lint:nw": "eslint src --max-warnings 0",
     "build": "microbundle build --output ./dist/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "build:uil": "microbundle build --output ../website/src/uil-bundle/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
-    "dev": "microbundle -w --jsx react",
+    "dev": "microbundle -w --output ./dist/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "stats": "microbundle --visualize"
   },
   "license": "MIT",
