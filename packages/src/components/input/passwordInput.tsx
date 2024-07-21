@@ -1,15 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {SVG} from 'components/images/svgIcon';
 import {PasswordRuleTypes} from 'enums/passwordRuleTypes';
-import useInjectStyleSheet from "utils/useInjectStyles";
 
 interface IPasswordInput extends ICustomInput {
-  capsLockWarning: string;
-  setFailedRules : (value: PasswordRule[]) => void;
-  ruleChecked    : string;
-  rules          : PasswordRule[];
-  ruleUnchecked  : string;
+  ruleChecked     : string;
+  rules           : PasswordRule[];
+  ruleUnchecked   : string;
+  capsLockWarning?: string;
+  setFailedRules? : (value: PasswordRule[]) => void;
 }
 
 export interface PasswordRule {
@@ -30,14 +29,14 @@ export function PasswordInput(props: IPasswordInput) {
   } = props;
 
   const [capsLock, setCapsLock] = useState(false);
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     validateInput();
   }, [props.value]);
 
   useEffect(() => {
+    if (!capsLockWarning) return;
+
     function setCapsLockState(event: globalThis.KeyboardEvent) {
       setCapsLock(event.getModifierState?.('CapsLock'));
     }
@@ -56,7 +55,7 @@ export function PasswordInput(props: IPasswordInput) {
       }
     });
 
-    setFailedRules(failedRules);
+    setFailedRules?.(failedRules);
   }
 
   function checkRule(rule: PasswordRule): boolean {
@@ -92,7 +91,7 @@ export function PasswordInput(props: IPasswordInput) {
   }
 
   return (
-    <div ref={nodeRef}>
+    <>
       <CustomInput {...inputProps}/>
 
       <div className={'uil-password-rules'}>
@@ -108,6 +107,6 @@ export function PasswordInput(props: IPasswordInput) {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
