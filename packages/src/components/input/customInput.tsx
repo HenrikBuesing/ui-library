@@ -1,8 +1,7 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
 import {SVG} from 'components/images/svgIcon';
 import {useClickOutsideRef} from 'hooks/clickOutside';
-import useInjectStyleSheet from "utils/useInjectStyles";
 
 export interface ICustomInput extends IBaseInput {
   tooltipClose?: string;
@@ -20,15 +19,13 @@ export function CustomInput(props: ICustomInput) {
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const ref = useClickOutsideRef<HTMLDivElement>(closeTooltip);
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   function closeTooltip() {
     setTooltipVisible(false);
   }
 
   return (
-    <div ref={nodeRef}>
+    <>
       {tooltipIcon ?
         <div className={'uil-tooltip-wrapper'} ref={ref}>
           {tooltipVisible &&
@@ -52,6 +49,6 @@ export function CustomInput(props: ICustomInput) {
 
         <BaseInput {...inputProps}/>
       }
-    </div>
+    </>
   );
 }
