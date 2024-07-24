@@ -4,7 +4,7 @@ import useInjectStyleSheet from "utils/useInjectStyles";
 interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
   checked     : boolean;
   label?      : string;
-  onCheck     : (value: boolean) => void;
+  toggleCheck : (value: boolean) => void;
   checkColor? : string;
   children?   : ReactNode;
 }
@@ -13,7 +13,7 @@ export function CustomCheckBox(props: ICustomCheckbox) {
   const {
     checkColor,
     checked,
-    onCheck,
+    toggleCheck,
     label,
     children,
     ...checkProps
@@ -25,11 +25,11 @@ export function CustomCheckBox(props: ICustomCheckbox) {
   return (
     <div className={'uil-check-wrapper'} ref={nodeRef}>
       <label className={'uil-checkbox uil-check'}>
-        <input type={'checkbox'} checked={checked} onChange={() => {onCheck(!checked)}} {...checkProps}/>
+        <input type={'checkbox'} checked={checked} onChange={() => {toggleCheck(!checked)}} {...checkProps}/>
         <div className={'uil-checkmark'} style={{backgroundColor: checkColor}}/>
       </label>
 
-      {children ? children : <span onClick={() => onCheck(!checked)}>{label}</span>}
+      {children ? children : <span onClick={() => toggleCheck(!checked)} style={{cursor: 'pointer', userSelect: 'none'}}>{label}</span>}
     </div>
   );
 }
