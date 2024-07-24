@@ -1,13 +1,10 @@
 import React from 'react';
-import {CustomButton, CustomInput, useClickOutsideRef, NotifyModal, QuestionModal, CustomCheckBox} from '../../uil-bundle/bundle.mjs';
+import * as Components from '../../uil-bundle/bundle.mjs';
+import useBaseUrl from "@docusaurus/core/lib/client/exports/useBaseUrl";
 
 export default {
-  CustomButton,
-  CustomInput,
-  NotifyModal,
-  QuestionModal,
-  useClickOutsideRef,
-  CustomCheckBox,
+  useBaseUrl,
+  ...Components,
   React,
   ...React,
 };

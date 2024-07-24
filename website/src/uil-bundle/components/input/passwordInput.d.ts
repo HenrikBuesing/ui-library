@@ -9,9 +9,9 @@ interface IPasswordInput extends ICustomInput {
     setFailedRules?: (value: PasswordRule[]) => void;
 }
 export interface PasswordRule {
-    count: number;
     label: string;
-    type: PasswordRuleTypes | string;
+    count?: number;
+    type?: PasswordRuleTypes;
     pattern?: string;
 }
 export declare function PasswordInput(props: IPasswordInput): React.JSX.Element;

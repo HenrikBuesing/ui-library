@@ -44,16 +44,33 @@ export function TooltipInput() {
   );
 }
 
+const rules: PasswordRule[] = [
+  {label: '1 number', count: 1, type: PasswordRuleTypes.numbers},
+  {label: 'min length 6 characters', count: 6, type: PasswordRuleTypes.minLength},
+  {label: '1 special character', count: 1, type: PasswordRuleTypes.special},
+  {label: '1 uppercase', count: 1, type: PasswordRuleTypes.upper},
+];
+
 export function PasswordExample() {
   const [password, setPassword] = useState('');
-  const [passVis, setPassVis] = useState(false);
 
-  const rules: PasswordRule[] = [
-    {label: 'include 1 number', count: 1, type: PasswordRuleTypes.numbers},
-    {label: 'min length 6', count: 6, type: PasswordRuleTypes.minLength},
-    {label: 'include 1 special char', count: 1, type: PasswordRuleTypes.special},
-    {label: '1 uppercase', count: 1, type: PasswordRuleTypes.upper},
-  ];
+  return (
+    <PasswordInput
+      label={'New password'}
+      type={'password'}
+      value={password}
+      valueChanged={setPassword}
+      rules={rules}
+      ruleChecked={useBaseUrl('/img/example.svg#check')}
+      ruleUnchecked={useBaseUrl('/img/example.svg#uncheck')}
+      name={'password'}
+    />
+  );
+}
+
+export function PasswordToggle() {
+  const [password, setPassword] = useState('');
+  const [passVis, setPassVis] = useState(false);
 
   return (
     <PasswordInput
@@ -65,15 +82,49 @@ export function PasswordExample() {
       rules={rules}
       ruleChecked={useBaseUrl('/img/example.svg#check')}
       ruleUnchecked={useBaseUrl('/img/example.svg#uncheck')}
-      // setFailedRules={setFailedRules}
-      iconSrc={`/icons/sprites.svg#${passVis? 'eyeSlash' : 'eyeOpen'}`}
-      required={true}
-      autoComplete={'new-password'}
-      name={'password'}
-      // capsLockWarning={'caps lock warning'}
-      // tooltipClose={t('controls.close')}
-      // tooltipIcon={'/icons/sprites.svg#question'}
-      // tooltipText={t('controls.tooltips.password-new')}
+      iconSrc={useBaseUrl(`/img/example.svg#${passVis? 'eyeSlash' : 'eyeOpen'}`)}
+      name={'password-toggle'}
+    />
+  );
+}
+
+export function PasswordTooltip() {
+  const [password, setPassword] = useState('');
+  const [passVis, setPassVis] = useState(false);
+
+  return (
+    <PasswordInput
+      label={'New password'}
+      type={passVis? 'text' : 'password'}
+      toggle={() => {setPassVis(!passVis)}}
+      value={password}
+      valueChanged={setPassword}
+      rules={rules}
+      ruleChecked={useBaseUrl('/img/example.svg#check')}
+      ruleUnchecked={useBaseUrl('/img/example.svg#uncheck')}
+      iconSrc={useBaseUrl(`/img/example.svg#${passVis? 'eyeSlash' : 'eyeOpen'}`)}
+      name={'password-tooltip'}
+      tooltipIcon={useBaseUrl('/img/example.svg#question')}
+      tooltipText={'This is a tooltip text. You can click anywhere on the screen to dismiss'}
+      tooltipClose={'optional close label'}
+    />
+  );
+}
+
+export function PasswordCaps() {
+  const [password, setPassword] = useState('');
+
+  return (
+    <PasswordInput
+      label={'New password'}
+      type={'password'}
+      value={password}
+      valueChanged={setPassword}
+      rules={rules}
+      ruleChecked={useBaseUrl('/img/example.svg#check')}
+      ruleUnchecked={useBaseUrl('/img/example.svg#uncheck')}
+      name={'password-caps'}
+      capsLockWarning={'caps lock enabled'}
     />
   );
 }
