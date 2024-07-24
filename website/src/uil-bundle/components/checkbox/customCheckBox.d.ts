@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
 interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
     checked: boolean;
     label?: string;
-    onCheck: (value: boolean) => void;
+    toggleCheck: (value: boolean) => void;
     checkColor?: string;
     children?: ReactNode;
 }

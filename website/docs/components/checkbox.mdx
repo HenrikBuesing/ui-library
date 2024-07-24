@@ -1,31 +1,84 @@
 ---
-title: Checkbox
+title: <CustomCheckBox />
 description: Usage of the checkbox component
 sidebar_position: 4
 tags: [components, checkbox]
 ---
 
-# Checkbox
-
+# \<CustomCheckBox />
 
 ## Assignable props
 <AssignableProps
   data={[
-    {name: 'label', value: 'string', required: true, definition: 'Button label'},
-    {name: 'disabled', value: 'boolean', required: false, definition: 'Enable or disable the button', default: 'false'},
-    {name: 'small', value: 'boolean', required: false, definition: 'Decreases the size of the button', default: 'false'},
-    {name: 'theme', value: 'HEX code | "success" | "warning" | "error"', required: false, definition: 'Set the background color'},
-    {name: 'default button props', value: '', required: false, definition: 'Default html button attributes, e.g. "onClick" event'},
+    {name: 'checked', value: 'boolean', required: true, definition: 'Current value'},
+    {name: 'toggleCheck', value: '(value: boolean) => void', required: true, definition: 'Check or uncheck'},
+    {name: 'checkColor', value: 'string', required: false, definition: 'Set the check color'},
+    {name: 'label', value: 'string', required: false, definition: 'Label for the checkbox'},
+    {name: 'children', value: 'ReactNode', required: false, definition: 'Use custom content instead of the label'},
+    {name: 'HTML input props', value: '', required: false, definition: 'HTML input attributes, e.g. "name"'},
   ]}
 />
 
+:::note
+You can only use either the label prop or children. If both are provided children will be used.
+:::
+
 ## Example usage
 
-### Checkbox with label
+### Label property
 <CheckboxLabel/>
 
-### Checkbox with custom checked color
+&NewLine;
+
+```tsx
+<CustomCheckBox
+  checked={value}
+  toggleCheck={setValue}
+  label={'label property'}
+  name={'check-with-label'}
+/>
+```
+
+### Custom checked color
 <CheckboxColor/>
 
-### Checkbox with custom content
+&NewLine;
+
+```tsx
+<CustomCheckBox
+  checked={value}
+  toggleCheck={setValue}
+  label={'Custom check Color'}
+  checkColor={'red'}
+  name={'check-with-custom-color'}
+/>
+```
+
+### Custom content
 <CheckboxBody/>
+
+&NewLine;
+
+```tsx
+<CustomCheckBox checked={value} toggleCheck={setValue} name={'check-with-custom-label'}>
+  <div>
+    <span>You can provide html elements as a label alternative</span>
+  </div>
+</CustomCheckBox>
+```
+
+## Playground
+```tsx live
+function Playground() {
+  const [value, setValue] = useState(false);
+  return (
+    <CustomCheckBox
+      checked={value}
+      toggleCheck={setValue}
+      label={'Checkbox with the label prop'}
+      checkColor={'#0047CC'}
+      name={'check-playground'}
+    />
+  );
+}
+```
