@@ -15,7 +15,7 @@
     "stats": "microbundle --visualize"
   },
   "license": "MIT",
-  "homepage": "https://github.com/HenrikBuesing/ui-library/tree/main#README.md",
+  "homepage": "https://hb-ui-library-docs.vercel.app",
   "bugs": "https://github.com/HenrikBuesing/ui-library/issues",
   "repository": {
     "type": "git",
