@@ -24,6 +24,7 @@
 
   &:has(input:disabled) {
     background-color: var(--uil-grey-alt);
+    border-color: var(--uil-grey-dark);
   }
 
   input {
