@@ -23,7 +23,7 @@
   box-sizing: border-box;
 
   &:has(input:disabled) {
-    background-color: var(--uil-grey-alt);
+    background-color: var(--uil-grey);
     border-color: var(--uil-grey-dark);
   }
 
@@ -37,6 +37,12 @@
     &:checked {
       ~ .uil-checkmark {
         transform: scale(1);
+      }
+    }
+
+    &:disabled {
+      ~ .uil-checkmark {
+        background-color: var(--uil-grey-dark);
       }
     }
   }
