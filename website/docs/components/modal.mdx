@@ -1,11 +1,11 @@
 ---
-title: Notification modal
+title: <NotifyModal />
 description: Usage of the notification modal component
 sidebar_position: 6
 tags: [components, modal]
 ---
 
-# NotifyModal
+# \<NotifyModal />
 
 ## Component props
 <AssignableProps
@@ -25,16 +25,64 @@ tags: [components, modal]
 ### Success
 <SuccessModal/>
 
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Success'}
+  message={'This is a success message'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'success'}
+/>
+```
+
 ### Warning
 <WarningModal/>
 
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Warning'}
+  message={'This is a warning message'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'warning'}
+/>
+```
+
 ### Error
 <ErrorModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Error'}
+  message={'This is an error'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'error'}
+/>
+```
 
 ### Separate message in paragraphs
 If you would like to separate the message into different paragraphs, use an array of strings.
 
 <MultiLineModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Multiple messages'}
+  message={['first string', 'this is a second text', 'Each string is wrapped in a paragraph']}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'success'}
+/>
+```
 
 ### Timeout
 Execute a `callback` function after the set `timeout`. The `callback` function will also be executed if a
@@ -42,6 +90,20 @@ user closes the modal before the timer runs out. \
 Note that `callback` functions will be ignored if you don't set a `timeout`.
 
 <CallbackModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Modal with timeout'}
+  message={'Display an alert after 3 second timeout'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'success'}
+  timeout={3000}
+  callback={alertTimeout}
+/>
+```
 
 :::info[Omitting the callback function]
 If you set a `timeout` you should also set the `callback` function. But there is a case where it is recommended to omit it,
@@ -59,7 +121,13 @@ function Playground() {
       <CustomButton label={'show Modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
-        <NotifyModal title={'Modal title'} message={'Modal message'} close={() => setModalVis(false)} closeLabel={'close label'} modalType={'success'} />
+        <NotifyModal
+          title={'Modal title'}
+          message={'Modal message'}
+          close={() => setModalVis(false)}
+          closeLabel={'close label'}
+          modalType={'success'}
+        />
       }
     </>
   );
