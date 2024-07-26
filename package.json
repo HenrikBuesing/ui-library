@@ -1,24 +1,26 @@
 {
   "name": "root",
   "private": true,
-  "license": "MIT",
   "workspaces": [
     "packages",
     "website"
   ],
+  "type": "module",
   "scripts": {
     "lint:library": "npm run lint --workspace=packages",
     "lint-nw:library": "npm run lint:nw --workspace=packages",
 
     "clean:library": "npm run clean --workspace=packages",
-    "clear:docs": "npm run clear --workspace=website",
+    "clean:docs": "npm run clear --workspace=website",
 
     "dev:library": "npm run dev --workspace=packages",
     "dev:docs": "npm run start --workspace=website",
 
     "build:library": "npm run build --workspace=packages",
-    "build:docs": "npm run build --workspace=website",
+    "build:docs": "npm run build:uil --workspace=packages && npm run build --workspace=website",
     "build:docs-uil": "npm run build:uil --workspace=packages",
+
+    "serve:docs": "npm run serve --workspace=website",
 
     "stats:library": "npm run stats --workspace=packages"
   },
@@ -27,11 +29,11 @@
     "@eslint/js": "^9.5.0",
     "@types/react": "^18.3.3",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react": "^7.35.0",
     "globals": "^15.6.0",
     "react": "^18.3.1",
     "sass": "^1.77.6",
-    "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.17.0"
   }
 }

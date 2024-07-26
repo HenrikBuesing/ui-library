@@ -14,12 +14,11 @@ export interface INotifyModal {
 
 export function NotifyModal(props: INotifyModal) {
   const {
-    callback,
     modalType,
     ...modalProps
   } = props;
 
   return (
-    <BaseModal type={modalType as ModalType} {...modalProps} callback={callback}/>
+    <BaseModal type={modalType as ModalType} {...modalProps}/>
   );
 }

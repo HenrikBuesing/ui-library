@@ -1,0 +1,127 @@
+---
+title: <CustomRadio />
+description: Usage of the radio component
+sidebar_position: 5
+tags: [components, radio]
+---
+
+# \<CustomRadio />
+
+## Assignable props
+<AssignableProps
+  data={[
+    {name: 'options', value: 'RadioOption[]', required: true, definition: 'Radio options'},
+    {name: 'value', value: 'string', required: true, definition: 'Current value'},
+    {name: 'valueChanged', value: '(value: string) => void', required: true, definition: 'Update the current value'},
+    {name: 'checkColor', value: 'string', required: false, definition: 'Set the check color'},
+    {name: 'disabled', value: 'boolean', required: false, definition: 'disable all options'},
+    {name: 'label', value: 'string', required: false, definition: 'Display a label for the radio options'},
+  ]}
+/>
+
+## RadioOption
+<AssignableProps
+  data={[
+    {name: 'label', value: 'string', required: true, definition: 'Label of the option'},
+    {name: 'value', value: 'string', required: true, definition: 'value of the option'},
+    {name: 'checked', value: 'boolean', required: false, definition: 'Check the option'},
+    {name: 'disabled', value: 'boolean', required: false, definition: 'Disable the option'},
+  ]}
+/>
+
+:::info
+If one of your options has the `checked` property, the current value will be automatically set to the option's value. \
+Note that if you provide more than one option with the `checked` property, the last one will be selected.
+:::
+
+## Example usage
+
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-a', label: 'option-a'},
+  {value: 'option-b', label: 'option-b'},
+  {value: 'option-c', label: 'option-c'},
+  {value: 'option-d', label: 'option-d', disabled: true},
+];
+```
+
+### Radio options without a label
+<RadioExample/>
+
+&NewLine;
+
+```tsx
+<CustomRadio
+  options={options}
+  value={value}
+  valueChanged={setValue}
+/>
+```
+
+### Radio options with a label
+<RadioLabel/>
+
+&NewLine;
+
+```tsx
+<CustomRadio
+  options={options}
+  value={value}
+  valueChanged={setValue}
+  label={'Label property'}
+/>
+```
+
+### Radio options with custom check color
+<RadioColor/>
+
+&NewLine;
+
+```tsx
+<CustomRadio
+  options={options}
+  value={value}
+  valueChanged={setValue}
+  checkColor={'red'}
+/>
+```
+
+### Disabled radio options
+<RadioDisabled/>
+
+&NewLine;
+
+```tsx
+<CustomRadio
+  options={options}
+  value={value}
+  valueChanged={setValue}
+  disabled={true}
+/>
+```
+
+## Playground
+```tsx live
+function Playground() {
+  const [value, setValue] = useState('');
+  const options: RadioOption[] = [
+    {value: 'a', label: 'option-a', checked: true},
+    {value: 'b', label: 'option-b'},
+    {value: 'c', label: 'option-c'},
+    {value: 'd', label: 'option-d', disabled: true},
+  ];
+
+  return (
+    <>
+      <CustomRadio
+        options={options}
+        value={value}
+        valueChanged={setValue}
+        label={'Select one of the following options:'}
+      />
+
+      <div style={{marginTop: '2rem'}}>current value: {value}</div>
+    </>
+  );
+}
+```

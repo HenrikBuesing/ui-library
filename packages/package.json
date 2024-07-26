@@ -4,29 +4,14 @@
   "version": "3.0.0",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.modern.mjs"
-    },
-    "./dist/*.css": {
-      "import": "./dist/index.css",
-      "require": "./dist/index.css"
-    }
-  },
-  "files": [
-    "dist/*"
-  ],
+  "exports": "./dist/bundle.mjs",
   "scripts": {
     "clean": "rimraf ./dist && mkdir dist",
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
-    "build": "microbundle build --output ./dist --generateTypes true --jsx react --globals react/jsx-runtime=jsxRuntime",
-    "build:uil": "microbundle build --output ../website/src/uil-bundle --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime",
-    "dev": "microbundle -w --jsx react",
+    "build": "microbundle build --output ./dist/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
+    "build:uil": "microbundle build --output ../website/src/uil-bundle/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
+    "dev": "microbundle -w --output ./dist/bundle.mjs --no-pkg-main --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "stats": "microbundle --visualize"
   },
   "license": "MIT",
@@ -42,6 +27,6 @@
   },
   "devDependencies": {
     "microbundle": "^0.15.1",
-    "rimraf": "^5.0.7"
+    "rimraf": "^6.0.1"
   }
 }

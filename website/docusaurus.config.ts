@@ -6,8 +6,7 @@ const config: Config = {
   title: 'UI Library Docs',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://uil-docs.vercel.app',
   baseUrl: '/',
   trailingSlash: false,
   i18n: {
@@ -25,7 +24,7 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/custom.scss',
         },
       } satisfies Preset.Options,
     ],
@@ -41,7 +40,7 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {to: 'docs/getting-started/install', label: 'Getting started', position: 'left'},
+        {to: 'docs/getting-started', label: 'Getting started', position: 'left'},
         {to: 'docs/category/components', label: 'Components', position: 'left'},
         {to: 'docs/category/hooks', label: 'Hooks', position: 'left'},
         {
@@ -59,7 +58,7 @@ const config: Config = {
           items: [
             {
               label: 'Getting started',
-              to: '/docs/category/getting-started',
+              to: '/docs/getting-started',
             },
             {
               label: 'Components',

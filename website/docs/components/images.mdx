@@ -1,10 +1,64 @@
 ---
-title: Images
-description: Usage of the images components
-sidebar_position: 6
+title: <SVG />
+description: Usage of the SVG component
+sidebar_position: 8
 tags: [components, images]
 ---
 
-# Images
+import useBaseUrl from "@docusaurus/core/lib/client/exports/useBaseUrl";
 
-WIP docs will be added at a later date
+# \<SVG />
+
+## Assignable props
+<AssignableProps
+  data={[
+    {name: 'src', value: 'string', required: true, definition: 'Source path'},
+    {name: 'color', value: 'string', required: false, definition: 'Override svg color'},
+    {name: 'height', value: 'number', required: false, definition: 'Height of the svg', default: '32px'},
+    {name: 'width', value: 'number', required: false, definition: 'Width of the svg', default: '32px'},
+  ]}
+/>
+
+## Example usage
+
+### Default svg
+<SVG src={useBaseUrl('/img/example.svg#question')}/>
+
+&NewLine;
+
+```tsx
+<SVG src={'path/to/file.svg'}/>
+```
+
+### Large svg
+<SVG src={useBaseUrl('/img/example.svg#question')} height={64} width={64}/>
+
+&NewLine;
+
+```tsx
+<SVG src={'path/to/file.svg'} height={64} width={64}/>
+```
+
+### Custom color
+<SVG src={useBaseUrl('/img/example.svg#question')} color={'#0047CC'}/>
+
+&NewLine;
+
+```tsx
+<SVG src={'path/to/file.svg'} color={'#0047CC'}/>
+```
+
+## Playground
+```tsx live
+function Playground() {
+  return (
+    <SVG
+      //useBaseUrl is used to import static assets for docusaurus
+      src={useBaseUrl('/img/example.svg#question')}
+      color={'#0047CC'}
+      height={64}
+      width={64}
+    />
+  );
+}
+```

@@ -4,8 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import styles from './index.module.css';
-import '../uil-bundle/ui-library.modern.css';
+import styles from './index.module.scss';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -20,7 +19,7 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
 
         <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/getting-started/install">
+          <Link className="button button--secondary button--lg" to="/docs/getting-started">
             Getting started
           </Link>
         </div>

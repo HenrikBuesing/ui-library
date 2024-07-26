@@ -1,11 +1,135 @@
 ---
-title: Modal
-description: Usage of the modal components
-sidebar_position: 5
+title: <NotifyModal />
+description: Usage of the notification modal component
+sidebar_position: 6
 tags: [components, modal]
 ---
 
+# \<NotifyModal />
 
-# Modal
+## Component props
+<AssignableProps
+  data={[
+    {name: 'close', value: '() => void', required: true, definition: 'Function that executes whenever a user closes the modal'},
+    {name: 'closeLabel', value: 'string', required: true, definition: 'Label for the close button'},
+    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message'},
+    {name: 'modalType', value: '"success" | "warning" | "error"', required: true, definition: 'Specify the modal type'},
+    {name: 'title', value: 'string', required: true, definition: 'Modal title'},
+    {name: 'callback', value: '() => void', required: false, definition: 'Execute the function after the set timeout'},
+    {name: 'timeout', value: 'number', required: false, definition: 'set a timeout for the modal, if no callback is provided the close function will be used instead'},
+  ]}
+/>
 
-WIP docs will be added at a later date
+## Example usage
+
+### Success
+<SuccessModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Success'}
+  message={'This is a success message'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'success'}
+/>
+```
+
+### Warning
+<WarningModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Warning'}
+  message={'This is a warning message'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'warning'}
+/>
+```
+
+### Error
+<ErrorModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Error'}
+  message={'This is an error'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'error'}
+/>
+```
+
+### Separate message in paragraphs
+If you would like to separate the message into different paragraphs, use an array of strings.
+
+<MultiLineModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Multiple messages'}
+  message={['first string', 'this is a second text', 'Each string is wrapped in a paragraph']}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'success'}
+/>
+```
+
+### Timeout
+Execute a `callback` function after the set `timeout`. The `callback` function will also be executed if a
+user closes the modal before the timer runs out. \
+Note that `callback` functions will be ignored if you don't set a `timeout`.
+
+<CallbackModal/>
+
+&NewLine;
+
+```tsx
+<NotifyModal
+  title={'Modal with timeout'}
+  message={'Display an alert after 3 second timeout'}
+  close={() => setModalVis(false)}
+  closeLabel={'close'}
+  modalType={'success'}
+  timeout={3000}
+  callback={alertTimeout}
+/>
+```
+
+:::info[Omitting the callback function]
+If you set a `timeout` you should also set the `callback` function. But there is a case where it is recommended to omit it,
+since omitting the `callback` function will result in the `close` function being used as a fallback. \
+This is useful for when both functions are identical, as you won't have to provide the same function twice.
+:::
+
+## Playground
+```tsx live
+function Playground() {
+  const [modalVis, setModalVis] = useState(false);
+
+  return (
+    <>
+      <CustomButton label={'show Modal'} onClick={() => setModalVis(true)} />
+
+      {modalVis &&
+        <NotifyModal
+          title={'Modal title'}
+          message={'Modal message'}
+          close={() => setModalVis(false)}
+          closeLabel={'close label'}
+          modalType={'success'}
+        />
+      }
+    </>
+  );
+}
+```

@@ -1,15 +1,11 @@
-@use '../global' as *;
+@use '../variables' as *;
 
 .uil-button {
-  font-size: var(--uil-font-base);
-  line-height: var(--uil-font-base);
   letter-spacing: 1px;
   color: var(--uil-black);
   background-color: var(--uil-white);
   border: 1px solid var(--uil-black);
   border-radius: 2px;
-  height: fit-content;
-  width: fit-content;
   cursor: pointer;
   padding: var(--uil-xs) var(--uil-s);
   -webkit-box-shadow: 0 0 3px 0 var(--uil-black-alt);
@@ -22,8 +18,8 @@
   }
 
   &.uil-small {
-    font-size: var(--uil-m);
-    line-height: var(--uil-m);
+    font-size: var(--uil-font-small);
+    line-height: var(--uil-font-small);
     padding: var(--uil-xxs) var(--uil-xs);
   }
 }

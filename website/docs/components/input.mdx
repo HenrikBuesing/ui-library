@@ -1,54 +1,104 @@
 ---
-title: Input
+title: <CustomInput />
 description: Usage of the input component
 sidebar_position: 2
 tags: [components, input]
 ---
 
-# CustomInput
-Component to render an input field. Below is a list of all required and optional properties.
+# \<CustomInput />
 
 ## Assignable props
 <AssignableProps
   data={[
-    {name: 'label', value: 'string', required: true, definition: 'input label/placeholder'},
-    {name: 'value', value: 'string', required: true, definition: 'current value'},
-    {name: 'valueChanged', value: '(value: string) => void', required: true, definition: 'function to retrieve user input'},
+    {name: 'label', value: 'string', required: true, definition: 'Label for the input'},
+    {name: 'value', value: 'string', required: true, definition: 'Current value'},
+    {name: 'valueChanged', value: '(value: string) => void', required: true, definition: 'Function to get the entered value'},
     {name: 'iconSrc', value: '.svg file', required: false, definition: 'Display an icon for the input'},
-    {name: 'iconColor', value: 'string', required: false, definition: 'set the color of the icon'},
-    {name: 'toggle', value: '() => void', required: false, definition: 'function that runs when clicking on the icon, e.g. toggling between input type password & text'},
+    {name: 'iconColor', value: 'string', required: false, definition: 'Set the color of the icon'},
+    {name: 'inputColor', value: 'string', required: false, definition: 'Set the color of the entered text'},
+    {name: 'toggle', value: '() => void', required: false, definition: 'Function that runs when clicking on the icon, e.g. toggling between input type password & text'},
     {name: 'tooltipIcon', value: '.svg file', required: false, definition: 'Display a tooltip icon'},
     {name: 'tooltipText', value: 'string', required: false, definition: 'Tooltip text'},
     {name: 'tooltipClose', value: 'string', required: false, definition: 'Tooltip close label'},
-    {name: 'default input props', value: '', required: false, definition: 'Default html input attributes, e.g. "type"'},
+    {name: 'HTML input props', value: '', required: false, definition: 'HTML input attributes, e.g. "name"'},
   ]}
 />
 
-:::warning[Providing icons]
-Provided icons must be svg files. Can be single svg or sprites file (foo.svg#bar)
+:::warning[Using icons]
+Provided icons must be in svg format. Can be single svg (foo.svg) or sprites file (foo.svg#bar)
 :::
 
-## Examples
+## Example usage
+:::info
+If you need an input for password creation and verification, consider using the [PasswordInput](./passwordInput) component instead.
+:::
 
-### Default input
+### Basic input
 <DefaultInput/>
 
-### Input with tooltip
-<div style={{marginBottom: "2rem"}}>
-  <TooltipInput/>
-</div>
+&NewLine;
 
-The [clickOutside](../hooks/click-outside) hook is used for hiding the tooltip.
+```tsx
+<CustomInput
+  label={'Label'}
+  value={value}
+  valueChanged={setValue}
+  name={'input-name'}
+/>
+```
+
+### Input with tooltip
+<TooltipInput/>
+
+&NewLine;
+
+```tsx
+<CustomInput
+  label={'Label'}
+  value={value}
+  valueChanged={setValue}
+  tooltipIcon={'path/to/file.svg'}
+  tooltipText={'This is a tooltip text. You can click anywhere on the screen to dismiss'}
+  tooltipClose={'optional close label'}
+  name={'tooltip-input'}
+/>
+```
+
+The [clickOutside](../hooks/click-outside) hook is used to hide the tooltip.
 
 :::note
-Tooltips are hidden if you don't provide an icon
+Tooltips are hidden if you don't provide an icon. Make sure to provide both if you would like to display tooltips.
 :::
 
 ### Input with icon
 <IconInput/>
 
+&NewLine;
+
+```tsx
+<CustomInput
+  label={'Label'}
+  value={value}
+  valueChanged={setValue}
+  iconSrc={'path/to/file.svg'}
+  name={'icon-input'}
+/>
+```
+
 ### Disabled input
 <DisabledInput/>
+
+&NewLine;
+
+```tsx
+<CustomInput
+  label={'Label'}
+  value={'you can still set a value'}
+  valueChanged={setValue}
+  name={'disabled-input'}
+  disabled={true}
+/>
+```
 
 ## Playground
 ```tsx live
@@ -56,9 +106,12 @@ function Playground() {
   const [value, setValue] = useState('Hello!');
 
   return (
-    <div className={'showcase'}>
-      <CustomInput label={'Default Input'} value={value} valueChanged={setValue}/>
-    </div>
+    <CustomInput
+      label={'Hello world'}
+      value={value}
+      valueChanged={setValue}
+      name={'playground-input'}
+    />
   );
 }
 ```

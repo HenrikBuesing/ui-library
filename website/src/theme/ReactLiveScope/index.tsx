@@ -1,10 +1,10 @@
 import React from 'react';
-import {CustomButton, CustomInput, useClickOutsideRef} from '../../uil-bundle/ui-library.modern.mjs';
+import * as Components from '../../uil-bundle/bundle.mjs';
+import useBaseUrl from "@docusaurus/core/lib/client/exports/useBaseUrl";
 
 export default {
-  CustomButton,
-  CustomInput,
-  useClickOutsideRef,
+  useBaseUrl,
+  ...Components,
   React,
   ...React,
 };

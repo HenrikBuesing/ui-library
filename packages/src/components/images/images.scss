@@ -1,6 +1,12 @@
-@use '../global' as *;
+@use '../variables' as *;
 
-.uil-svg {
-  height: var(--uil-xxxl);
-  width: var(--uil-xxxl);
+.uil-svg-wrapper {
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+
+  .uil-svg {
+    height: var(--uil-xxxl);
+    width: var(--uil-xxxl);
+  }
 }

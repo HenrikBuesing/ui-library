@@ -1,5 +1,5 @@
 export enum PasswordRuleTypes {
-  minLength,
+  minLength = 1,
   maxLength,
   letters,
   numbers,

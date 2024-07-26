@@ -1,6 +1,6 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import React, {ComponentPropsWithoutRef, useRef} from 'react';
 import {SVG} from 'components/images/svgIcon';
-import './input.scss';
+import useInjectStyleSheet from "../../utils/useInjectStyles";
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   label       : string;
@@ -23,10 +23,13 @@ export function BaseInput(props: IBaseInput) {
     ...inputProps
   } = props;
 
+  const nodeRef = useRef<HTMLLabelElement>(null);
+  useInjectStyleSheet(nodeRef);
+
   return (
-    <label className={'uil-input-wrapper'} htmlFor={inputProps.id}>
+    <label className={'uil-input-wrapper'} htmlFor={inputProps.id} ref={nodeRef}>
       <input
-        className={'uil-input'}
+        className={'uil-input uil-font-base'}
         onChange={(e) => valueChanged(e.target.value)}
         placeholder={label}
         style={{color: inputColor}}
@@ -39,7 +42,7 @@ export function BaseInput(props: IBaseInput) {
         </div>
       }
 
-      <span className={'uil-label'} style={{color: inputColor}}>{label}</span>
+      <span className={'uil-label uil-font-base'} style={{color: inputColor}}>{label}</span>
     </label>
   );
 }

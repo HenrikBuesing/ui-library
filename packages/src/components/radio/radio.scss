@@ -1,0 +1,28 @@
+@use "../variables" as *;
+
+.uil-radio-title {
+  display: block;
+  font-size: var(--uil-xl);
+  line-height: var(--uil-xl);
+  margin-bottom: var(--uil-m);
+}
+
+.uil-radio-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uil-m);
+
+  .uil-radio-option {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+
+    .uil-radio {
+      border-radius: 50%;
+
+      .uil-radio-check {
+        border-radius: 50%;
+      }
+    }
+  }
+}
