@@ -5,9 +5,6 @@ env:
 on:
   release:
     types: [created]
-  push:
-    branches-ignore:
-      - main
 
 jobs:
   ESLint:
@@ -40,4 +37,4 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
           package: packages
-          dry-run: true
+          dry-run: false
