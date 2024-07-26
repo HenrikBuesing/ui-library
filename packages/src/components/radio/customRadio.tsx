@@ -1,12 +1,13 @@
-import React, {ComponentPropsWithoutRef, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import generateKey from 'utils/generateKey';
 import useInjectStyleSheet from "utils/useInjectStyles";
 
-interface ICustomRadio extends ComponentPropsWithoutRef<'input'> {
+interface ICustomRadio {
   options     : RadioOption[];
   value       : string;
   valueChanged: (value: string) => void;
   checkColor? : string;
+  disabled?   : boolean;
   label?      : string;
 }
 
@@ -20,11 +21,11 @@ export interface RadioOption {
 export function CustomRadio(props: ICustomRadio) {
   const {
     checkColor,
+    disabled,
     label,
     options,
     value,
     valueChanged,
-    ...inputProps
   } = props;
 
   const nodeRef = useRef<HTMLDivElement>(null);
@@ -57,8 +58,7 @@ export function CustomRadio(props: ICustomRadio) {
                 value={option.value}
                 checked={value === option.value || value === '' && option.checked}
                 onChange={() => handleRadioChange(option.value)}
-                disabled={option.disabled}
-                {...inputProps}
+                disabled={disabled? disabled : option.disabled}
               />
               <div className={'uil-checkmark uil-radio-check'} style={{backgroundColor: checkColor}}/>
             </label>

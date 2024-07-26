@@ -1,9 +1,9 @@
 import MDXComponents from '@theme-original/MDXComponents';
 import AssignableProps from '@site/src/components/Props';
-import DefaultInput , {TooltipInput, IconInput, DisabledInput} from '@site/src/components/Input';
+import DefaultInput , {TooltipInput, IconInput, DisabledInput, PasswordExample, PasswordToggle, PasswordTooltip, PasswordCaps} from '@site/src/components/Input';
 import SuccessModal, {ErrorModal, WarningModal, MultiLineModal, CallbackModal, QuestionExample} from '@site/src/components/modal';
-import {CustomButton, CustomInput, useClickOutsideRef} from '../../uil-bundle/bundle.mjs';
-import RadioExample from "@site/src/components/check";
+import {CustomButton, CustomInput, useClickOutsideRef, SVG} from '../../uil-bundle/bundle.mjs';
+import RadioExample, {CheckboxBody, CheckboxColor, CheckboxLabel, RadioLabel, RadioColor, RadioDisabled} from "@site/src/components/check";
 
 export default {
   ...MDXComponents,
@@ -22,4 +22,15 @@ export default {
   QuestionExample,
   RadioExample,
   useClickOutsideRef,
+  CheckboxLabel,
+  CheckboxBody,
+  CheckboxColor,
+  PasswordExample,
+  PasswordToggle,
+  PasswordTooltip,
+  PasswordCaps,
+  RadioLabel,
+  RadioColor,
+  RadioDisabled,
+  SVG,
 };

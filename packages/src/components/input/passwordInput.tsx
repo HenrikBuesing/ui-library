@@ -1,21 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {SVG} from 'components/images/svgIcon';
 import {PasswordRuleTypes} from 'enums/passwordRuleTypes';
-import useInjectStyleSheet from "utils/useInjectStyles";
 
 interface IPasswordInput extends ICustomInput {
-  capsLockWarning: string;
-  setFailedRules : (value: PasswordRule[]) => void;
-  ruleChecked    : string;
-  rules          : PasswordRule[];
-  ruleUnchecked  : string;
+  ruleChecked     : string;
+  rules           : PasswordRule[];
+  ruleUnchecked   : string;
+  capsLockWarning?: string;
+  setFailedRules? : (value: PasswordRule[]) => void;
 }
 
 export interface PasswordRule {
-  count   : number;
   label   : string;
-  type    : PasswordRuleTypes | string;
+  count?  : number;
+  type?   : PasswordRuleTypes;
   pattern?: string;
 }
 
@@ -30,14 +29,14 @@ export function PasswordInput(props: IPasswordInput) {
   } = props;
 
   const [capsLock, setCapsLock] = useState(false);
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     validateInput();
   }, [props.value]);
 
   useEffect(() => {
+    if (!capsLockWarning) return;
+
     function setCapsLockState(event: globalThis.KeyboardEvent) {
       setCapsLock(event.getModifierState?.('CapsLock'));
     }
@@ -56,33 +55,39 @@ export function PasswordInput(props: IPasswordInput) {
       }
     });
 
-    setFailedRules(failedRules);
+    setFailedRules?.(failedRules);
   }
 
   function checkRule(rule: PasswordRule): boolean {
     let pattern: string;
 
-    switch (rule.type) {
-      case PasswordRuleTypes.minLength:
-        pattern = `[a-zA-Z0-9ßÄäÖöÜü._!"\`'#%&§,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{${rule.count},}`;
-        break;
-      case PasswordRuleTypes.maxLength:
-        pattern = `^[a-zA-Z0-9ßÄäÖöÜü._!"\`'#%&,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{0,${rule.count}}$`;
-        break;
-      case PasswordRuleTypes.letters:
-        pattern = `[a-zA-ZßÄäÖöÜü]{${rule.count},}`;
-        break;
-      case PasswordRuleTypes.numbers:
-        pattern = `[0-9]{${rule.count},}`;
-        break;
-      case PasswordRuleTypes.special:
-        pattern = `[._!"\`'#%&§,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{${rule.count},}`;
-        break;
-      case PasswordRuleTypes.upper:
-        pattern = `[A-ZÄÖÜ]{${rule.count},}`;
-        break;
-      default:
-        rule.pattern ? pattern = rule.pattern : pattern = '';
+    if (rule.type) {
+      if (!rule.count) throw new Error('count must not be empty if a type is provided');
+
+      switch (rule.type) {
+        case PasswordRuleTypes.minLength:
+          pattern = `[a-zA-Z0-9ßÄäÖöÜü._!"\`'#%&§,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{${rule.count},}`;
+          break;
+        case PasswordRuleTypes.maxLength:
+          pattern = `^[a-zA-Z0-9ßÄäÖöÜü._!"\`'#%&,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{0,${rule.count}}$`;
+          break;
+        case PasswordRuleTypes.letters:
+          pattern = `[a-zA-ZßÄäÖöÜü]{${rule.count},}`;
+          break;
+        case PasswordRuleTypes.numbers:
+          pattern = `[0-9]{${rule.count},}`;
+          break;
+        case PasswordRuleTypes.special:
+          pattern = `[._!"\`'#%&§,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{${rule.count},}`;
+          break;
+        case PasswordRuleTypes.upper:
+          pattern = `[A-ZÄÖÜ]{${rule.count},}`;
+          break;
+        default:
+          throw new Error('unrecognized rule type provided');
+      }
+    } else {
+      pattern = rule.pattern ? rule.pattern : '';
     }
 
     if (pattern === '') throw new Error('pattern must not be an empty string');
@@ -92,7 +97,7 @@ export function PasswordInput(props: IPasswordInput) {
   }
 
   return (
-    <div ref={nodeRef}>
+    <>
       <CustomInput {...inputProps}/>
 
       <div className={'uil-password-rules'}>
@@ -108,6 +113,6 @@ export function PasswordInput(props: IPasswordInput) {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

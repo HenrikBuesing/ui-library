@@ -30,3 +30,8 @@ images:
 modal:
   label: 'Modal'
   description: 'Modal components'
+
+radio:
+  label: 'Radio button'
+  permalink: '/components/radio'
+  description: 'Radio button component'

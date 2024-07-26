@@ -62,6 +62,7 @@ export function CallbackModal() {
 
   function alertTimeout() {
     alert('3 second timeout alert');
+    setModalVis(false);
   }
 
   return (
@@ -69,7 +70,7 @@ export function CallbackModal() {
       <CustomButton label={'show timeout modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
-        <NotifyModal title={'Multiple messages'} message={'Display an alert after 3 second timeout'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'success'} timeout={3000} callback={alertTimeout}/>
+        <NotifyModal title={'Modal with timeout'} message={'Display an alert after 3 second timeout'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'success'} timeout={3000} callback={alertTimeout}/>
       }
     </div>
   );

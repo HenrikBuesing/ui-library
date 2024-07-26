@@ -30,17 +30,18 @@ export function BaseModal(props: IBaseModal) {
     type
   } = props;
 
+  let timer: NodeJS.Timeout | undefined = undefined;
   const nodeRef = useRef<HTMLDivElement>(null);
   useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     if (!timeout) return;
 
-    const t = setTimeout(() => {
+    timer = setTimeout(() => {
       return callback ? callback() : close();
     }, timeout);
 
-    return () => clearTimeout(t);
+    return () => clearTimeout(timer);
   },[]);
 
   function setHeaderClass() {
@@ -60,6 +61,7 @@ export function BaseModal(props: IBaseModal) {
 
   //run callback if timeout and callback are set, otherwise close
   function handleClose() {
+    clearTimeout(timer);
     timeout && callback ? callback() : close();
   }
 

@@ -1,11 +1,11 @@
 ---
-title: Question modal
+title: <QuestionModal />
 description: Usage of the question modal component
 sidebar_position: 7
 tags: [components, modal]
 ---
 
-# QuestionModal
+# \<QuestionModal />
 
 ## Component props
 <AssignableProps
@@ -21,6 +21,19 @@ tags: [components, modal]
 
 ## Example usage
 <QuestionExample/>
+
+&NewLine;
+
+```tsx
+<QuestionModal
+  title={'Question title'}
+  message={['Confirm to display an alert', 'cancel to close this modal']}
+  cancel={() => setModalVis(false)}
+  cancelLabel={'cancel'}
+  confirm={() => alert('Hello!')}
+  confirmLabel={'confirm'}
+/>
+```
 
 ## Playground
 ```tsx live
