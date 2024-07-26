@@ -6,7 +6,7 @@ const config: Config = {
   title: 'UI Library Docs',
   favicon: 'img/favicon.ico',
 
-  url: 'https://uil-docs.vercel.app',
+  url: 'https://hb-ui-library-docs.vercel.app',
   baseUrl: '/',
   trailingSlash: false,
   i18n: {
