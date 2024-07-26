@@ -17,7 +17,7 @@
     "dev:docs": "npm run start --workspace=website",
 
     "build:library": "npm run build --workspace=packages",
-    "build:docs": "npm run build --workspace=website",
+    "build:docs": "npm run build:uil --workspace=packages && npm run build --workspace=website",
     "build:docs-uil": "npm run build:uil --workspace=packages",
 
     "serve:docs": "npm run serve --workspace=website",
