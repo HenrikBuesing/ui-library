@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import {ModalType} from 'enums/modalType';
 import {CustomButton} from 'components/button/customButton';
-import useInjectStyleSheet from "utils/useInjectStyles";
+import useInjectStyleSheet from 'utils/useInjectStyles';
+import generateKey from 'utils/generateKey';
 
 interface IBaseModal {
   close        : () => void;
@@ -81,7 +82,7 @@ export function BaseModal(props: IBaseModal) {
         <div className={'uil-content'}>
           <div>
             {Array.isArray(message) ?
-              message.map((m, idx) => <p key={idx} className={'uil-modal-text'}>{m}</p>)
+              message.map((m, idx) => <p key={generateKey(idx)} className={'uil-modal-text'}>{m}</p>)
               : <p className={'uil-modal-text'}>{message}</p>
             }
           </div>

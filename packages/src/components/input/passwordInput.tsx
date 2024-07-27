@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {SVG} from 'components/images/svgIcon';
 import {PasswordRuleTypes} from 'enums/passwordRuleTypes';
+import generateKey from 'utils/generateKey';
 
 interface IPasswordInput extends ICustomInput {
   ruleChecked     : string;
@@ -97,7 +98,7 @@ export function PasswordInput(props: IPasswordInput) {
   }
 
   return (
-    <>
+    <div>
       <CustomInput {...inputProps}/>
 
       <div className={'uil-password-rules'}>
@@ -106,13 +107,13 @@ export function PasswordInput(props: IPasswordInput) {
         }
 
         {rules.map((rule, idx) =>
-          <div key={idx} className={'uil-password-rule'}>
+          <div key={generateKey(idx)} className={'uil-password-rule'}>
             <SVG src={checkRule(rule) ? ruleChecked : ruleUnchecked} height={12} width={12}/>
 
             <span>{rule.label}</span>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
