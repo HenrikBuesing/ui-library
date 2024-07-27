@@ -9,7 +9,7 @@ interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
   children?   : ReactNode;
 }
 
-export function CustomCheckBox(props: ICustomCheckbox) {
+export function CustomCheckbox(props: ICustomCheckbox) {
   const {
     checkColor,
     checked,

@@ -1,11 +1,11 @@
 ---
-title: <CustomCheckBox />
+title: <CustomCheckbox />
 description: Usage of the checkbox component
 sidebar_position: 4
 tags: [components, checkbox]
 ---
 
-# \<CustomCheckBox />
+# \<CustomCheckbox />
 
 ## Assignable props
 <AssignableProps
@@ -31,7 +31,7 @@ You can only use either the label prop or children. If both are provided childre
 &NewLine;
 
 ```tsx
-<CustomCheckBox
+<CustomCheckbox
   checked={value}
   toggleCheck={setValue}
   label={'label property'}
@@ -45,7 +45,7 @@ You can only use either the label prop or children. If both are provided childre
 &NewLine;
 
 ```tsx
-<CustomCheckBox
+<CustomCheckbox
   checked={value}
   toggleCheck={setValue}
   label={'Custom check Color'}
@@ -60,11 +60,11 @@ You can only use either the label prop or children. If both are provided childre
 &NewLine;
 
 ```tsx
-<CustomCheckBox checked={value} toggleCheck={setValue} name={'check-with-custom-label'}>
+<CustomCheckbox checked={value} toggleCheck={setValue} name={'check-with-custom-label'}>
   <div>
     <span>You can provide html elements as a label alternative</span>
   </div>
-</CustomCheckBox>
+</CustomCheckbox>
 ```
 
 ## Playground
@@ -72,7 +72,7 @@ You can only use either the label prop or children. If both are provided childre
 function Playground() {
   const [value, setValue] = useState(false);
   return (
-    <CustomCheckBox
+    <CustomCheckbox
       checked={value}
       toggleCheck={setValue}
       label={'Checkbox with the label prop'}
