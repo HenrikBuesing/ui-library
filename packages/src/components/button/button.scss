@@ -7,9 +7,13 @@
   border: 1px solid var(--uil-black);
   border-radius: 2px;
   cursor: pointer;
-  padding: var(--uil-xs) var(--uil-s);
+  padding: .375rem var(--uil-xxs);
   -webkit-box-shadow: 0 0 3px 0 var(--uil-black-alt);
   box-shadow: 0 0 3px 0 var(--uil-black-alt);
+
+  @include uil-tablet {
+    padding: var(--uil-xs) var(--uil-s);
+  }
 
   &.uil-disabled {
     background-color: var(--uil-grey-dark);
