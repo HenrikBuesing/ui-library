@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import generateKey from 'utils/generateKey';
-import useInjectStyleSheet from "utils/useInjectStyles";
+import useInjectStyleSheet from 'utils/useInjectStyles';
 
 interface ICustomRadio {
   options     : RadioOption[];

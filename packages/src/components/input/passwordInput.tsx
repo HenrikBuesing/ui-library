@@ -88,10 +88,12 @@ export function PasswordInput(props: IPasswordInput) {
           throw new Error('unrecognized rule type provided');
       }
     } else {
-      pattern = rule.pattern ? rule.pattern : '';
-    }
+      if (!rule.pattern) {
+        throw new Error('pattern must not be an empty string');
+      }
 
-    if (pattern === '') throw new Error('pattern must not be an empty string');
+      pattern = rule.pattern;
+    }
 
     const reg = new RegExp(pattern);
     return reg.test(props.value);

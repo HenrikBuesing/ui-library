@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef, useRef} from 'react';
 import {SVG} from 'components/images/svgIcon';
-import useInjectStyleSheet from "../../utils/useInjectStyles";
+import useInjectStyleSheet from 'utils/useInjectStyles';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   label       : string;

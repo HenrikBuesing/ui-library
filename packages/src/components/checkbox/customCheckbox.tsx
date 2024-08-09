@@ -1,21 +1,21 @@
 import React, {ComponentPropsWithoutRef, ReactNode, useRef} from 'react';
-import useInjectStyleSheet from "utils/useInjectStyles";
+import useInjectStyleSheet from 'utils/useInjectStyles';
 
 interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
-  checked     : boolean;
-  label?      : string;
-  toggleCheck : (value: boolean) => void;
-  checkColor? : string;
-  children?   : ReactNode;
+  checked    : boolean;
+  toggleCheck: (value: boolean) => void;
+  checkColor?: string;
+  children?  : ReactNode;
+  label?     : string;
 }
 
 export function CustomCheckbox(props: ICustomCheckbox) {
   const {
     checkColor,
     checked,
+    children,
     toggleCheck,
     label,
-    children,
     ...checkProps
   } = props;
 
