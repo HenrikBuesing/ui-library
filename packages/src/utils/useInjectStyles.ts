@@ -1,5 +1,5 @@
-import {RefObject, useEffect} from "react";
-import styles from "./styles.scss";
+import {RefObject, useEffect} from 'react';
+import styles from './styles.scss';
 
 const injectedStyles: Document[] = [];
 

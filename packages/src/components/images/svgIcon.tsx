@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
-import useInjectStyleSheet from "utils/useInjectStyles";
+import useInjectStyleSheet from 'utils/useInjectStyles';
 
 interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
   src    : string;
@@ -10,9 +10,9 @@ interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
 
 export function SVG(props: ISvgIcon) {
   const {
-    src,
     color,
     height,
+    src,
     width
   } = props;
 

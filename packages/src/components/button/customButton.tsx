@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
-import useInjectStyleSheet from "utils/useInjectStyles";
+import useInjectStyleSheet from 'utils/useInjectStyles';
 import {useGetColor} from 'hooks/getColor';
 
 type HEXColor = `#${string}`
@@ -61,12 +61,12 @@ export function CustomButton(props: ICustomButton) {
   function getClassName(): string {
     const base = 'uil-button uil-fit'
 
-    if (disabled && !small) {
-      return `${base} uil-font-base uil-disabled`;
-    }
+    if (disabled) {
+      if (small) {
+        return `${base} uil-disabled uil-small`;
+      }
 
-    if (disabled && small) {
-      return `${base} uil-disabled uil-small`;
+      return `${base} uil-font-base uil-disabled`;
     }
 
     if (small) {
@@ -77,7 +77,7 @@ export function CustomButton(props: ICustomButton) {
   }
 
   return (
-    <button className={getClassName()} style={getStyle()} disabled={disabled} {...buttonProps} ref={nodeRef}>
+    <button className={getClassName()} style={getStyle()} disabled={disabled} ref={nodeRef} {...buttonProps}>
       {label}
     </button>
   );
