@@ -60,10 +60,15 @@ export function BaseModal(props: IBaseModal) {
     }
   }
 
-  //run callback if timeout and callback are set, otherwise close
   function handleClose() {
     clearTimeout(timer);
-    timeout && callback ? callback() : close();
+
+    //run callback if timeout and callback are set, otherwise close
+    if (timeout && callback) {
+      return callback();
+    }
+
+    return close();
   }
 
   return (
