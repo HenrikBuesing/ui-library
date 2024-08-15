@@ -5,8 +5,8 @@
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
-  "exports": "./dist/bundle.js",
   "types": "dist/index.d.ts",
+  "exports": "./dist/bundle.js",
   "files": [
     "dist/*"
   ],
