@@ -29,7 +29,7 @@ export function CustomCheckbox(props: ICustomCheckbox) {
         <div className={'uil-checkmark'} style={{backgroundColor: checkColor}}/>
       </label>
 
-      {children ? children : <span onClick={() => toggleCheck(!checked)} style={{cursor: 'pointer', userSelect: 'none'}}>{label}</span>}
+      {children ? children : <span onClick={() => {toggleCheck(!checked)}} style={{cursor: 'pointer', userSelect: 'none'}}>{label}</span>}
     </div>
   );
 }

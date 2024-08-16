@@ -57,7 +57,7 @@ export function CustomRadio(props: ICustomRadio) {
                 type={'radio'}
                 value={option.value}
                 checked={value === option.value || value === '' && option.checked}
-                onChange={() => handleRadioChange(option.value)}
+                onChange={() => {handleRadioChange(option.value)}}
                 disabled={disabled? disabled : option.disabled}
               />
               <div className={'uil-checkmark uil-radio-check'} style={{backgroundColor: checkColor}}/>

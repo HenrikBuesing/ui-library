@@ -39,12 +39,12 @@ export function PasswordInput(props: IPasswordInput) {
     if (!capsLockWarning) return;
 
     function setCapsLockState(event: globalThis.KeyboardEvent) {
-      setCapsLock(event.getModifierState?.('CapsLock'));
+      setCapsLock(event.getModifierState('CapsLock'));
     }
 
     document.addEventListener('keydown', setCapsLockState);
 
-    return () => document.removeEventListener('keydown', setCapsLockState);
+    return () => {document.removeEventListener('keydown', setCapsLockState)};
   }, []);
 
   function validateInput() {

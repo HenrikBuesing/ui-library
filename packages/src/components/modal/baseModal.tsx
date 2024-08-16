@@ -42,7 +42,7 @@ export function BaseModal(props: IBaseModal) {
       return callback ? callback() : close();
     }, timeout);
 
-    return () => clearTimeout(timer);
+    return () => {clearTimeout(timer)};
   },[]);
 
   function setHeaderClass() {
