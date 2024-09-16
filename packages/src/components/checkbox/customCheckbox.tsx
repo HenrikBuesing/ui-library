@@ -26,13 +26,13 @@ export function CustomCheckbox(props: ICustomCheckbox) {
 
   return (
     <div className={'uil-check-wrapper'} ref={nodeRef}>
-      <div className={'uil-checkbox uil-check'}>
+      <div className={'uil-checkbox uil-check'} onClick={() => {toggleCheck(!checked)}}>
         <input type={'checkbox'} checked={checked} onChange={() => {toggleCheck(!checked)}} {...checkProps} id={id}/>
         <div className={'uil-checkmark'} style={{backgroundColor: checkColor}}/>
       </div>
 
-      <label htmlFor={id}>
-        {children ? children : <span onClick={() => {toggleCheck(!checked)}} style={{cursor: 'pointer', userSelect: 'none'}}>{label}</span>}
+      <label htmlFor={id} className={'uil-check-label'}>
+        {children ? children : label}
       </label>
     </div>
   );
