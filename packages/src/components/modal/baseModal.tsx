@@ -74,9 +74,7 @@ export function BaseModal(props: IBaseModal) {
   return (
     <div className={'uil-modal-wrapper'} ref={nodeRef}>
       <div className={'uil-modal'}>
-        <div className={setHeaderClass()}>
-          {title}
-        </div>
+        <div className={setHeaderClass()}>{title}</div>
 
         {timeout &&
           <div className={'uil-progress-wrapper'}>

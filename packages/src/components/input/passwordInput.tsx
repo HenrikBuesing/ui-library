@@ -104,9 +104,7 @@ export function PasswordInput(props: IPasswordInput) {
       <CustomInput {...inputProps}/>
 
       <div className={'uil-password-rules'}>
-        {capsLock &&
-          <div className={'uil-password-rule'}>{capsLockWarning}</div>
-        }
+        {capsLock && <div className={'uil-password-rule'}>{capsLockWarning}</div>}
 
         {rules.map((rule, idx) =>
           <div key={generateKey(idx)} className={'uil-password-rule'}>
