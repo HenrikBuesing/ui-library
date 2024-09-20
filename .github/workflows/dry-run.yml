@@ -16,6 +16,7 @@ on:
 
 jobs:
   test_publish:
+    if: github.event.pull_request.draft == false
     name: NPM publish dry-run
     runs-on: ubuntu-latest
     steps:
