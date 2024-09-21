@@ -28,20 +28,21 @@ export function CustomRadio(props: ICustomRadio) {
     valueChanged,
   } = props;
 
+  const id = generateKey('radio');
   const nodeRef = useRef<HTMLDivElement>(null);
   useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     // prevents multiple radio options being checked at the same time
     options.forEach(option => {
-      if (option.checked) handleRadioChange(option.value);
+      if (option.checked) handleRadioChange(option);
     });
   },[]);
 
-  function handleRadioChange(newValue: string) {
-    if (value === newValue) return;
+  function handleRadioChange(option: RadioOption) {
+    if (value === option.value || option.disabled || disabled) return;
 
-    valueChanged(newValue);
+    valueChanged(option.value);
   }
 
   return (
@@ -51,20 +52,20 @@ export function CustomRadio(props: ICustomRadio) {
       <div className={'uil-radio-wrapper'}>
         {options.map((option, idx) =>
           <div key={generateKey(idx)} className={'uil-radio-option'}>
-            <div className={'uil-radio uil-check'}>
+            <div className={'uil-radio uil-check'} onClick={() => {handleRadioChange(option)}}>
               <input
-                id={`${idx}-radio`}
+                id={`${idx}-${id}`}
                 name={option.label}
                 type={'radio'}
                 value={option.value}
                 checked={value === option.value || value === '' && option.checked}
-                onChange={() => {handleRadioChange(option.value)}}
+                onChange={() => {handleRadioChange(option)}}
                 disabled={disabled? disabled : option.disabled}
               />
               <div className={'uil-checkmark uil-radio-check'} style={{backgroundColor: checkColor}}/>
             </div>
 
-            <label htmlFor={`${idx}-radio`} className={'uil-font-base'}>{option.label}</label>
+            <label htmlFor={`${idx}-${id}`} className={'uil-font-base'}>{option.label}</label>
           </div>
         )}
       </div>

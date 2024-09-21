@@ -1,3 +1,5 @@
 export default function generateKey(prefix: string | number) {
-  return `${prefix}-${new Date().getTime()}`;
+  const id = String(Date.now().toString(32) + Math.random().toString(16)).replace(/\./g, '');
+
+  return `${prefix}-${id}`;
 }
