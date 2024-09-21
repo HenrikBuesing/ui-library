@@ -16,7 +16,7 @@
     "build": "microbundle build --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "build:uil": "microbundle build --output ../website/src/uil-bundle/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "dev": "microbundle -w --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
-    "stats": "microbundle --visualize"
+    "stats": "microbundle build --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline --visualize --raw"
   },
   "license": "MIT",
   "homepage": "https://hb-ui-library-docs.vercel.app",
