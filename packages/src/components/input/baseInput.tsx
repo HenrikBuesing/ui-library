@@ -30,7 +30,7 @@ export function BaseInput(props: IBaseInput) {
     <label className={'uil-input-wrapper'} htmlFor={inputProps.id} ref={nodeRef}>
       <input
         className={'uil-input uil-font-base'}
-        onChange={(e) => valueChanged(e.target.value)}
+        onChange={(e) => {valueChanged(e.target.value)}}
         placeholder={label}
         style={{color: inputColor}}
         {...inputProps}

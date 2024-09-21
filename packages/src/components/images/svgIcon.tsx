@@ -20,14 +20,14 @@ export function SVG(props: ISvgIcon) {
     throw new Error('Provided src is not an svg image');
   }
 
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
-
   const style: CSSProperties = {
     fill: color,
-    height: `${height}px`,
-    width: `${width}px`
+    height: height,
+    width: width,
   }
+
+  const nodeRef = useRef<HTMLDivElement>(null);
+  useInjectStyleSheet(nodeRef);
 
   return (
     <div ref={nodeRef} className={'uil-svg-wrapper'}>

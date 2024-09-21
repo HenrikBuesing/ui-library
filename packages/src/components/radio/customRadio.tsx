@@ -51,19 +51,20 @@ export function CustomRadio(props: ICustomRadio) {
       <div className={'uil-radio-wrapper'}>
         {options.map((option, idx) =>
           <div key={generateKey(idx)} className={'uil-radio-option'}>
-            <label className={'uil-radio uil-check'}>
+            <div className={'uil-radio uil-check'}>
               <input
+                id={`${idx}-radio`}
                 name={option.label}
                 type={'radio'}
                 value={option.value}
                 checked={value === option.value || value === '' && option.checked}
-                onChange={() => handleRadioChange(option.value)}
+                onChange={() => {handleRadioChange(option.value)}}
                 disabled={disabled? disabled : option.disabled}
               />
               <div className={'uil-checkmark uil-radio-check'} style={{backgroundColor: checkColor}}/>
-            </label>
+            </div>
 
-            <span className={'uil-font-base'}>{option.label}</span>
+            <label htmlFor={`${idx}-radio`} className={'uil-font-base'}>{option.label}</label>
           </div>
         )}
       </div>

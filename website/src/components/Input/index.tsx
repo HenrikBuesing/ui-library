@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {PasswordRuleTypes, CustomInput, PasswordInput} from "@site/src/uil-bundle/bundle.mjs";
+import {PasswordRuleTypes, CustomInput, PasswordInput} from "@site/src/uil-bundle/bundle.js";
 import {PasswordRule} from "@site/src/uil-bundle";
 
 export default function DefaultInput() {

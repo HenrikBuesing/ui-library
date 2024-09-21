@@ -39,12 +39,12 @@ export function PasswordInput(props: IPasswordInput) {
     if (!capsLockWarning) return;
 
     function setCapsLockState(event: globalThis.KeyboardEvent) {
-      setCapsLock(event.getModifierState?.('CapsLock'));
+      setCapsLock(event.getModifierState('CapsLock'));
     }
 
     document.addEventListener('keydown', setCapsLockState);
 
-    return () => document.removeEventListener('keydown', setCapsLockState);
+    return () => {document.removeEventListener('keydown', setCapsLockState)};
   }, []);
 
   function validateInput() {
@@ -104,9 +104,7 @@ export function PasswordInput(props: IPasswordInput) {
       <CustomInput {...inputProps}/>
 
       <div className={'uil-password-rules'}>
-        {capsLock &&
-          <div className={'uil-password-rule'}>{capsLockWarning}</div>
-        }
+        {capsLock && <div className={'uil-password-rule'}>{capsLockWarning}</div>}
 
         {rules.map((rule, idx) =>
           <div key={generateKey(idx)} className={'uil-password-rule'}>

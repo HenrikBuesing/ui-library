@@ -40,7 +40,7 @@ export function CustomInput(props: ICustomInput) {
             </div>
           }
 
-          <div className={'uil-tooltip-icon uil-fit'} onClick={() => setTooltipVisible(!tooltipVisible)}>
+          <div className={'uil-tooltip-icon uil-fit'} onClick={() => {setTooltipVisible(!tooltipVisible)}}>
             <SVG src={tooltipIcon} height={16} width={16}/>
           </div>
 
