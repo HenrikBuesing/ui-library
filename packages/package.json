@@ -1,10 +1,11 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": "./dist/bundle.js",
   "files": [
     "dist/*"
