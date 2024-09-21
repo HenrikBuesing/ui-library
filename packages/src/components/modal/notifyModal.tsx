@@ -1,6 +1,5 @@
 import React from 'react';
 import {BaseModal} from './baseModal';
-import {ModalType} from 'enums/modalType';
 
 export interface INotifyModal {
   close     : () => void;
@@ -19,6 +18,6 @@ export function NotifyModal(props: INotifyModal) {
   } = props;
 
   return (
-    <BaseModal type={modalType as ModalType} {...modalProps}/>
+    <BaseModal type={modalType} {...modalProps}/>
   );
 }

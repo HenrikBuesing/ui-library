@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import {ModalType} from 'enums/modalType';
 import {CustomButton} from 'components/button/customButton';
 import useInjectStyleSheet from 'utils/useInjectStyles';
 import generateKey from 'utils/generateKey';
@@ -8,7 +7,7 @@ interface IBaseModal {
   close        : () => void;
   message      : string | string[];
   title        : string;
-  type         : ModalType;
+  type         : 'success' | 'warning' | 'error' | 'question';
   callback?    : (() => void) | undefined;
   cancelLabel? : string;
   closeLabel?  : string;
@@ -49,11 +48,11 @@ export function BaseModal(props: IBaseModal) {
     const base = 'uil-header';
 
     switch (type) {
-      case ModalType.error:
+      case 'error':
         return `${base} uil-error`;
-      case ModalType.success:
+      case 'success':
         return `${base} uil-success`;
-      case ModalType.warning:
+      case 'warning':
         return `${base} uil-warning`;
       default:
         return base;
@@ -90,12 +89,12 @@ export function BaseModal(props: IBaseModal) {
             }
           </div>
 
-          <div className={`uil-button-wrapper ${type !== ModalType.question ? 'uil-single' : ''}`}>
-            {type !== ModalType.question &&
+          <div className={`uil-button-wrapper ${type !== 'question' ? 'uil-single' : ''}`}>
+            {type !== 'question' &&
               <CustomButton label={closeLabel?? ''} onClick={handleClose} type={'button'}/>
             }
 
-            {type == ModalType.question && props.confirm &&
+            {type == 'question' && props.confirm &&
               <>
                 <CustomButton label={confirmLabel} theme={'#00416A'} onClick={confirm} type={'button'}/>
                 <CustomButton label={cancelLabel} onClick={close} type={'button'}/>
