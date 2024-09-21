@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {SVG} from 'components/images/svgIcon';
-import {PasswordRuleTypes} from 'enums/passwordRuleTypes';
 import generateKey from 'utils/generateKey';
 
 interface IPasswordInput extends ICustomInput {
@@ -15,7 +14,7 @@ interface IPasswordInput extends ICustomInput {
 export interface PasswordRule {
   label   : string;
   count?  : number;
-  type?   : PasswordRuleTypes;
+  type?   : 'minLength' | 'maxLength' | 'letters' | 'numbers' | 'special' | 'upper';
   pattern?: string;
 }
 
@@ -66,22 +65,22 @@ export function PasswordInput(props: IPasswordInput) {
       if (!rule.count) throw new Error('count must not be empty if a type is provided');
 
       switch (rule.type) {
-        case PasswordRuleTypes.minLength:
+        case 'minLength':
           pattern = `[a-zA-Z0-9ßÄäÖöÜü._!"\`'#%&§,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{${rule.count},}`;
           break;
-        case PasswordRuleTypes.maxLength:
+        case 'maxLength':
           pattern = `^[a-zA-Z0-9ßÄäÖöÜü._!"\`'#%&,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{0,${rule.count}}$`;
           break;
-        case PasswordRuleTypes.letters:
+        case 'letters':
           pattern = `[a-zA-ZßÄäÖöÜü]{${rule.count},}`;
           break;
-        case PasswordRuleTypes.numbers:
+        case 'numbers':
           pattern = `[0-9]{${rule.count},}`;
           break;
-        case PasswordRuleTypes.special:
+        case 'special':
           pattern = `[._!"\`'#%&§,:;<>=@{}~\\$\\(\\)\\*\\+\\/\\\\\\?\\[\\]\\^\\|\\-]{${rule.count},}`;
           break;
-        case PasswordRuleTypes.upper:
+        case 'upper':
           pattern = `[A-ZÄÖÜ]{${rule.count},}`;
           break;
         default:

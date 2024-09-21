@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {PasswordRuleTypes, CustomInput, PasswordInput} from "@site/src/uil-bundle/bundle.js";
+import {CustomInput, PasswordInput} from "@site/src/uil-bundle/bundle.js";
 import {PasswordRule} from "@site/src/uil-bundle";
 
 export default function DefaultInput() {
@@ -45,10 +45,10 @@ export function TooltipInput() {
 }
 
 const rules: PasswordRule[] = [
-  {label: '1 number', count: 1, type: PasswordRuleTypes.numbers},
-  {label: 'min length 6 characters', count: 6, type: PasswordRuleTypes.minLength},
-  {label: '1 special character', count: 1, type: PasswordRuleTypes.special},
-  {label: '1 uppercase', count: 1, type: PasswordRuleTypes.upper},
+  {label: '1 number', count: 1, type: 'numbers'},
+  {label: 'min length 6 characters', count: 6, type: 'minLength'},
+  {label: '1 special character', count: 1, type: 'special'},
+  {label: '1 uppercase', count: 1, type: 'upper'},
 ];
 
 export function PasswordExample() {

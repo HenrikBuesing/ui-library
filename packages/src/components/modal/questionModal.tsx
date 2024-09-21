@@ -1,6 +1,5 @@
 import React from 'react';
 import {BaseModal} from './baseModal';
-import {ModalType} from 'enums/modalType';
 
 export interface IQuestionModal {
   cancel      : () => void;
@@ -18,6 +17,6 @@ export function QuestionModal(props: IQuestionModal) {
   } = props;
 
   return (
-    <BaseModal type={ModalType.question} close={cancel} {...modalProps}/>
+    <BaseModal type={'question'} close={cancel} {...modalProps}/>
   );
 }
