@@ -36,15 +36,6 @@ Note that if you provide more than one option with the `checked` property, the l
 
 ## Example usage
 
-```tsx title="Radio options"
-const options: RadioOption[] = [
-  {value: 'option-a', label: 'option-a'},
-  {value: 'option-b', label: 'option-b'},
-  {value: 'option-c', label: 'option-c'},
-  {value: 'option-d', label: 'option-d', disabled: true},
-];
-```
-
 ### Radio options without a label
 <RadioExample/>
 
@@ -56,6 +47,15 @@ const options: RadioOption[] = [
   value={value}
   valueChanged={setValue}
 />
+```
+
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-a', label: 'option-a', checked: true},
+  {value: 'option-b', label: 'option-b'},
+  {value: 'option-c', label: 'option-c'},
+  {value: 'option-d', label: 'option-d', disabled: true},
+];
 ```
 
 ### Radio options with a label
@@ -72,6 +72,15 @@ const options: RadioOption[] = [
 />
 ```
 
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-e', label: 'option-e'},
+  {value: 'option-f', label: 'option-f'},
+  {value: 'option-g', label: 'option-g'},
+  {value: 'option-h', label: 'option-h', disabled: true},
+];
+```
+
 ### Radio options with custom check color
 <RadioColor/>
 
@@ -84,6 +93,15 @@ const options: RadioOption[] = [
   valueChanged={setValue}
   checkColor={'red'}
 />
+```
+
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-i', label: 'option-i'},
+  {value: 'option-j', label: 'option-j'},
+  {value: 'option-k', label: 'option-k'},
+  {value: 'option-l', label: 'option-l', disabled: true},
+];
 ```
 
 ### Disabled radio options
@@ -100,15 +118,24 @@ const options: RadioOption[] = [
 />
 ```
 
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-m', label: 'option-m'},
+  {value: 'option-n', label: 'option-n'},
+  {value: 'option-o', label: 'option-o'},
+  {value: 'option-p', label: 'option-p', disabled: true},
+];
+```
+
 ## Playground
 ```tsx live
 function Playground() {
   const [value, setValue] = useState('');
   const options: RadioOption[] = [
-    {value: 'a', label: 'option-a', checked: true},
-    {value: 'b', label: 'option-b'},
-    {value: 'c', label: 'option-c'},
-    {value: 'd', label: 'option-d', disabled: true},
+    {value: 'foo', label: 'foo', checked: true},
+    {value: 'bar', label: 'bar'},
+    {value: 'baz', label: 'baz'},
+    {value: 'disabled', label: 'disabled', disabled: true},
   ];
 
   return (
