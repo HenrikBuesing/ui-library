@@ -11,6 +11,15 @@ interface ICustomButton extends ComponentPropsWithoutRef<'button'> {
   theme?   : HEXColor | 'success' | 'warning' | 'error';
 }
 
+/**
+ * Button component
+ * @example
+ * ```
+ * <CustomButton label={'Click Me!'} disabled={false} small={true} theme={'success'} onClick={() => {ClickFunction()}} />
+ * ```
+ *
+ * Read more in our [docs](placeholder.com).
+ */
 export function CustomButton(props: ICustomButton) {
   const {
     disabled = false,
