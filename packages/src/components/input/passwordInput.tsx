@@ -95,7 +95,7 @@ export function PasswordInput(props: IPasswordInput) {
     }
 
     const reg = new RegExp(pattern);
-    return reg.test(props.value);
+    return reg.test(props.value.toString());
   }
 
   return (

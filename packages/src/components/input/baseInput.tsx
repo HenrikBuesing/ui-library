@@ -4,7 +4,7 @@ import useInjectStyleSheet from 'utils/useInjectStyles';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   label       : string;
-  value       : string;
+  value       : string | number;
   valueChanged: (value: string) => void;
   iconColor?  : string;
   iconSrc?    : string;
