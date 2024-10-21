@@ -18,6 +18,21 @@ export interface RadioOption {
   disabled?: boolean;
 }
 
+/**
+ * Radio buttons component
+ * @example
+ * ```jsx
+ * const options = [
+ *  { label: "foo", value: "foo" },
+ *  { label: "bar", value: "bar" }
+ * ];
+ * const [value, setValue] = useState("");
+ *
+ * <CustomRadio value={value} valueChanged={setValue} label={"Choose one of the options"}  options={options}/>
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function CustomRadio(props: ICustomRadio) {
   const {
     checkColor,

@@ -8,6 +8,15 @@ interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
   width? : number;
 }
 
+/**
+ * SVG component
+ * @example
+ * ```jsx
+ * <SVG src={"foo/bar.png"} />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function SVG(props: ISvgIcon) {
   const {
     color,
