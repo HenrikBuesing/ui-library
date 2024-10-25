@@ -11,6 +11,17 @@ interface ICustomRadio {
   label?      : string;
 }
 
+/**
+ * @example
+ * ```js
+ * const option = {
+ *  label: "foo",
+ *  value: "foo",
+ * }
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export interface RadioOption {
   label    : string;
   value    : string;
@@ -19,16 +30,14 @@ export interface RadioOption {
 }
 
 /**
- * Radio buttons component
  * @example
  * ```jsx
- * const options = [
- *  { label: "foo", value: "foo" },
- *  { label: "bar", value: "bar" }
- * ];
- * const [value, setValue] = useState("");
- *
- * <CustomRadio value={value} valueChanged={setValue} label={"Choose one of the options"}  options={options}/>
+ * <CustomRadio
+ *  value={...}
+ *  valueChanged={...}
+ *  label={"..."}
+ *  options={[...]}
+ * />
  * ```
  *
  * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).

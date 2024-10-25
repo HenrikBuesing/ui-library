@@ -11,12 +11,13 @@ interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
 }
 
 /**
- * Checkbox component
  * @example
  * ```jsx
- * const [isChecked, setIsChecked] = useState(false);
- *
- * <CustomCheckbox checked={isChecked} toggleCheck={setIsChecked} label={"Check this checkbox"} />
+ * <CustomCheckbox
+ *  checked={...}
+ *  toggleCheck={...}
+ *  label={"Check this checkbox"}
+ * />
  * ```
  *
  * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).

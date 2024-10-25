@@ -9,7 +9,6 @@ interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
 }
 
 /**
- * SVG component
  * @example
  * ```jsx
  * <SVG src={"foo/bar.png"} />

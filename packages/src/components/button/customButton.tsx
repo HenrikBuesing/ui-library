@@ -12,10 +12,15 @@ interface ICustomButton extends ComponentPropsWithoutRef<'button'> {
 }
 
 /**
- * Button component
  * @example
  * ```jsx
- * <CustomButton label={'Click Me!'} disabled={false} small={true} theme={'success'} onClick={() => {ClickFunction()}} />
+ * <CustomButton
+ *  label={'Click Me!'}
+ *  disabled={false}
+ *  small={true}
+ *  theme={'success'}
+ *  onClick={() => {ClickFunction()}}
+ * />
  * ```
  *
  * For more information go to the [docs](https://www.ui-library.docs.hbsng.com)
