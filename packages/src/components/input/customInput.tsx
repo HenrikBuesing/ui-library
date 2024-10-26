@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
 import {SVG} from 'components/images/svgIcon';
-import {useClickOutsideRef} from 'hooks/clickOutside';
+import {useClickOutsideRef} from 'hooks/clickOutside/clickOutside';
 
 export interface ICustomInput extends IBaseInput {
   tooltipClose?: string;

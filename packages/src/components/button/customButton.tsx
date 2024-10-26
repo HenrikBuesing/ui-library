@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
 import useInjectStyleSheet from 'utils/useInjectStyles';
-import {useGetColor} from 'hooks/getColor';
+import {useGetColor} from 'hooks/getColor/getColor';
 
 type HEXColor = `#${string}`
 

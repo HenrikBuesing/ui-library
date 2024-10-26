@@ -6,7 +6,12 @@
   "source": "src/index.ts",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "exports": "./dist/bundle.js",
+  "exports": {
+    "customButton": {
+      "import": "./dist/components/button/index.js",
+      "types": "./dist/components/button/index.d.ts"
+    }
+  },
   "files": [
     "dist/*"
   ],
@@ -14,7 +19,8 @@
     "clean": "rimraf ./dist && mkdir dist",
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
-    "build": "microbundle build --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
+    "build": "node ./esbuild.js",
+    "postbuild": "tsc --emitDeclarationOnly --project tsconfig.build.json",
     "build:uil": "microbundle build --output ../website/src/uil-bundle/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "dev": "microbundle -w --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
     "stats": "microbundle build --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline --visualize --raw"
@@ -31,6 +37,8 @@
     "react": "^18.0.0"
   },
   "devDependencies": {
+    "esbuild": "0.24.0",
+    "esbuild-sass-plugin": "^3.3.1",
     "microbundle": "^0.15.1",
     "rimraf": "^6.0.1"
   }
