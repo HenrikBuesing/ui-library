@@ -20,7 +20,7 @@ interface ICustomRadio {
  * }
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/radio).
  */
 export interface RadioOption {
   label    : string;
@@ -40,7 +40,7 @@ export interface RadioOption {
  * />
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/radio).
  */
 export function CustomRadio(props: ICustomRadio) {
   const {

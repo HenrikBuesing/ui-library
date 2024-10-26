@@ -19,7 +19,7 @@ export interface ICustomInput extends IBaseInput {
  * />
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/input).
  */
 export function CustomInput(props: ICustomInput) {
   const {

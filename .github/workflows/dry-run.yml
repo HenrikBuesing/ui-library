@@ -5,9 +5,6 @@ env:
 on:
   pull_request:
     branches: [ "main" ]
-    paths:
-      - packages/**
-      - .github/workflows/dry-run.yml
     types:
       - opened
       - reopened

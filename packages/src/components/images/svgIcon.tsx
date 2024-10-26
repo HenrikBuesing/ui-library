@@ -14,7 +14,7 @@ interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
  * <SVG src={"foo/bar.png"} />
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/images).
  */
 export function SVG(props: ISvgIcon) {
   const {

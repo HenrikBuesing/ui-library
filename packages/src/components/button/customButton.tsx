@@ -23,7 +23,7 @@ interface ICustomButton extends ComponentPropsWithoutRef<'button'> {
  * />
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com)
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/button)
  */
 export function CustomButton(props: ICustomButton) {
   const {

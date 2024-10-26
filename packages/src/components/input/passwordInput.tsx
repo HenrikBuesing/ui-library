@@ -22,7 +22,7 @@ interface IPasswordInput extends ICustomInput {
  * }
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/passwordInput).
  */
 export interface PasswordRule {
   label   : string;
@@ -44,7 +44,7 @@ export interface PasswordRule {
  * />
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/passwordInput).
  */
 export function PasswordInput(props: IPasswordInput) {
   const {
