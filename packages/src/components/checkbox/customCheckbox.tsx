@@ -20,7 +20,7 @@ interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
  * />
  * ```
  *
- * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/checkbox).
  */
 export function CustomCheckbox(props: ICustomCheckbox) {
   const {
