@@ -1,7 +1,7 @@
 import React from 'react';
 import {BaseModal} from './baseModal';
 
-export interface IQuestionModal {
+interface IQuestionModal {
   cancel      : () => void;
   cancelLabel : string;
   confirm     : () => void;
@@ -10,6 +10,21 @@ export interface IQuestionModal {
   title       : string;
 }
 
+/**
+ * @example
+ * ```jsx
+ * <QuestionModal
+ *  cancel={...}
+ *  cancelLabel={"..."}
+ *  confirm={...}
+ *  confirmLabel={"..."}
+ *  title={"..."}
+ *  message={"..."}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function QuestionModal(props: IQuestionModal) {
   const {
     cancel,

@@ -9,6 +9,18 @@ export interface ICustomInput extends IBaseInput {
   tooltipText? : string;
 }
 
+/**
+ * @example
+ * ```jsx
+ * <PasswordInput
+ *  value={...}
+ *  valueChanged={...}
+ *  label={"..."}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function CustomInput(props: ICustomInput) {
   const {
     tooltipClose,

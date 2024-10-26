@@ -1,7 +1,7 @@
 import React from 'react';
 import {BaseModal} from './baseModal';
 
-export interface INotifyModal {
+interface INotifyModal {
   close     : () => void;
   closeLabel: string;
   modalType : 'success' | 'warning' | 'error';
@@ -11,6 +11,20 @@ export interface INotifyModal {
   timeout?  : number;
 }
 
+/**
+ * @example
+ * ```jsx
+ * <NotifyModal
+ *  close={...}
+ *  closeLabel={"..."}
+ *  modalType={"success"}
+ *  title={"..."}
+ *  message={"..."}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function NotifyModal(props: INotifyModal) {
   const {
     modalType,

@@ -11,6 +11,20 @@ interface ICustomButton extends ComponentPropsWithoutRef<'button'> {
   theme?   : HEXColor | 'success' | 'warning' | 'error';
 }
 
+/**
+ * @example
+ * ```jsx
+ * <CustomButton
+ *  label={'Click Me!'}
+ *  disabled={false}
+ *  small={true}
+ *  theme={'success'}
+ *  onClick={() => {ClickFunction()}}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com)
+ */
 export function CustomButton(props: ICustomButton) {
   const {
     disabled = false,

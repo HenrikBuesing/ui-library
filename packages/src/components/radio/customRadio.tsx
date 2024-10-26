@@ -11,6 +11,17 @@ interface ICustomRadio {
   label?      : string;
 }
 
+/**
+ * @example
+ * ```js
+ * const option = {
+ *  label: "foo",
+ *  value: "foo",
+ * }
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export interface RadioOption {
   label    : string;
   value    : string;
@@ -18,6 +29,19 @@ export interface RadioOption {
   disabled?: boolean;
 }
 
+/**
+ * @example
+ * ```jsx
+ * <CustomRadio
+ *  value={...}
+ *  valueChanged={...}
+ *  label={"..."}
+ *  options={[...]}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function CustomRadio(props: ICustomRadio) {
   const {
     checkColor,

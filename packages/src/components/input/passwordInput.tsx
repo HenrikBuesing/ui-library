@@ -11,6 +11,19 @@ interface IPasswordInput extends ICustomInput {
   setFailedRules? : (value: PasswordRule[]) => void;
 }
 
+/**
+ * Password rule
+ * @example
+ * ```js
+ * const rule = {
+ *  label: "minimum password length",
+ *  count: 5
+ *  type: "minLength"
+ * }
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export interface PasswordRule {
   label   : string;
   count?  : number;
@@ -18,6 +31,21 @@ export interface PasswordRule {
   pattern?: string;
 }
 
+/**
+ * @example
+ * ```jsx
+ * <PasswordInput
+ *  ruleChecked={"/foo/bar.svg"}
+ *  ruleUnchecked={"/foo/bar.svg"}
+ *  rules={[...]}
+ *  value={...}
+ *  valueChanged={...}
+ *  label={"..."}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function PasswordInput(props: IPasswordInput) {
   const {
     capsLockWarning,

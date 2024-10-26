@@ -10,6 +10,18 @@ interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
   label?     : string;
 }
 
+/**
+ * @example
+ * ```jsx
+ * <CustomCheckbox
+ *  checked={...}
+ *  toggleCheck={...}
+ *  label={"Check this checkbox"}
+ * />
+ * ```
+ *
+ * For more information go to the [docs](https://www.ui-library.docs.hbsng.com).
+ */
 export function CustomCheckbox(props: ICustomCheckbox) {
   const {
     checkColor,
