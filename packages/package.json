@@ -6,12 +6,7 @@
   "source": "src/index.ts",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "exports": {
-    "customButton": {
-      "import": "./dist/components/button/index.js",
-      "types": "./dist/components/button/index.d.ts"
-    }
-  },
+  "exports": "./dist/index.js",
   "files": [
     "dist/*"
   ],

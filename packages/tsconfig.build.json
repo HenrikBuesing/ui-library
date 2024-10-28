@@ -15,7 +15,8 @@
   },
   "include": [
     "./src/components/**/index.ts",
-    "./src/hooks/**/index.ts"
+    "./src/hooks/**/index.ts",
+    "./src/index.ts"
   ],
   "exclude": [
     "node_modules"
