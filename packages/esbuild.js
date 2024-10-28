@@ -1,6 +1,6 @@
 import * as esbuild from "esbuild";
-import {sassPlugin} from 'esbuild-sass-plugin';
 import {writeFileSync} from "node:fs";
+import { inlineSass } from "esbuild-inline-sass";
 
 try {
   const result = await esbuild.build({
@@ -12,7 +12,7 @@ try {
     metafile: true,
     format: 'esm',
     target: ['esnext'],
-    plugins: [sassPlugin({type: "css-text"})],
+    plugins: [inlineSass({minify: true})],
     external: ['react'],
   });
 

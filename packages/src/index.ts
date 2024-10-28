@@ -6,3 +6,4 @@ export {CustomButton} from './components/button/index';
 export {SVG} from './components/images/index';
 
 export {useClickOutsideRef, useGetColor} from './hooks/index';
+import './utils/styles.scss';

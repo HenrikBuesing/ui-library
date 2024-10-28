@@ -1,5 +1,4 @@
-import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
-import useInjectStyleSheet from 'utils/useInjectStyles';
+import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
 import {useGetColor} from 'hooks/getColor';
 
 type HEXColor = `#${string}`
@@ -34,8 +33,6 @@ export function CustomButton(props: ICustomButton) {
     ...buttonProps
   } = props;
 
-  const nodeRef = useRef<HTMLButtonElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   function getStyle(): CSSProperties | undefined {
     if (disabled || !theme) return undefined;
@@ -91,7 +88,7 @@ export function CustomButton(props: ICustomButton) {
   }
 
   return (
-    <button className={getClassName()} style={getStyle()} disabled={disabled} ref={nodeRef} {...buttonProps}>
+    <button className={getClassName()} style={getStyle()} disabled={disabled} {...buttonProps}>
       {label}
     </button>
   );

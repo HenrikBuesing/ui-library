@@ -1,6 +1,5 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import generateKey from 'utils/generateKey';
-import useInjectStyleSheet from 'utils/useInjectStyles';
 
 interface ICustomRadio {
   options     : RadioOption[];
@@ -53,8 +52,6 @@ export function CustomRadio(props: ICustomRadio) {
   } = props;
 
   const id = generateKey('radio');
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   useEffect(() => {
     // prevents multiple radio options being checked at the same time
@@ -70,7 +67,7 @@ export function CustomRadio(props: ICustomRadio) {
   }
 
   return (
-    <div ref={nodeRef}>
+    <div>
       {label && <div className={'uil-radio-title'}>{label}</div>}
 
       <div className={'uil-radio-wrapper'}>

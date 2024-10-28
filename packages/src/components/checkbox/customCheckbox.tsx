@@ -1,5 +1,4 @@
-import React, {ComponentPropsWithoutRef, ReactNode, useRef} from 'react';
-import useInjectStyleSheet from 'utils/useInjectStyles';
+import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
 import generateKey from 'utils/generateKey';
 
 interface ICustomCheckbox extends ComponentPropsWithoutRef<'input'> {
@@ -33,11 +32,9 @@ export function CustomCheckbox(props: ICustomCheckbox) {
   } = props;
 
   const id = generateKey('check');
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   return (
-    <div className={'uil-check-wrapper'} ref={nodeRef}>
+    <div className={'uil-check-wrapper'}>
       <div className={'uil-checkbox uil-check'} onClick={() => {toggleCheck(!checked)}}>
         <input type={'checkbox'} checked={checked} onChange={() => {toggleCheck(!checked)}} {...checkProps} id={id}/>
         <div className={'uil-checkmark'} style={{backgroundColor: checkColor}}/>
