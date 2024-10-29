@@ -10,7 +10,7 @@ export {SVG} from './components/images/index';
 export {useClickOutsideRef, useGetColor} from './hooks/index';
 
 if (typeof document !== "undefined") {
-  let style = document.createElement("style");
+  const style = document.createElement("style");
   const node = document.createTextNode(styles);
   style.appendChild(node);
   document.head.appendChild(style);
