@@ -1,6 +1,8 @@
 import * as esbuild from "esbuild";
 import {writeFileSync} from "node:fs";
-import { inlineSass } from "esbuild-inline-sass";
+import {sassPlugin} from "esbuild-sass-plugin";
+import postcss from "postcss";
+import cssnanoPlugin from "cssnano";
 
 try {
   const result = await esbuild.build({
@@ -12,7 +14,17 @@ try {
     metafile: true,
     format: 'esm',
     target: ['esnext'],
-    plugins: [inlineSass({minify: true})],
+    plugins: [sassPlugin({
+      type: "css-text",
+      async transform(source) {
+        const {css} = await postcss([
+          cssnanoPlugin({
+            preset: 'cssnano-preset-advanced',
+          })
+        ]).process(source, {from: 'undefined'})
+        return css
+      }
+    })],
     external: ['react'],
   });
 

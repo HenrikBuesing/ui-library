@@ -1,3 +1,5 @@
+import styles from './utils/styles.scss';
+
 export {CustomInput, PasswordInput, PasswordRule} from './components/input/index';
 export {NotifyModal, QuestionModal} from './components/modal/index';
 export {CustomRadio, RadioOption} from './components/radio/index';
@@ -6,4 +8,10 @@ export {CustomButton} from './components/button/index';
 export {SVG} from './components/images/index';
 
 export {useClickOutsideRef, useGetColor} from './hooks/index';
-import './utils/styles.scss';
+
+if (typeof document !== "undefined") {
+  let style = document.createElement("style");
+  const node = document.createTextNode(styles);
+  style.appendChild(node);
+  document.head.appendChild(style);
+}

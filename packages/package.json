@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "5.0.0-beta.6",
+  "version": "5.0.0-beta.7",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
@@ -11,14 +11,12 @@
     "dist/*"
   ],
   "scripts": {
-    "clean": "rimraf ./dist && mkdir dist",
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
     "build": "node ./esbuild.js",
     "postbuild": "tsc --emitDeclarationOnly --project tsconfig.build.json",
     "build:uil": "microbundle build --output ../website/src/uil-bundle/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
-    "dev": "microbundle -w --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline",
-    "stats": "microbundle build --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline --visualize --raw"
+    "dev": "microbundle -w --output ./dist/bundle.js --generateTypes true --format modern --jsx react --globals react/jsx-runtime=jsxRuntime --css inline"
   },
   "license": "MIT",
   "homepage": "https://hb-ui-library-docs.vercel.app",
@@ -32,10 +30,9 @@
     "react": "^18.0.0"
   },
   "devDependencies": {
+    "cssnano": "^7.0.6",
     "esbuild": "0.24.0",
-    "esbuild-inline-sass": "^0.4.4",
     "esbuild-sass-plugin": "^3.3.1",
-    "microbundle": "^0.15.1",
-    "rimraf": "^6.0.1"
+    "postcss": "^8.4.47"
   }
 }
