@@ -1,4 +1,4 @@
-import styles from './utils/styles.scss';
+import styles from './styles.scss';
 
 export {CustomInput, PasswordInput, PasswordRule} from './components/input/index';
 export {NotifyModal, QuestionModal} from './components/modal/index';
