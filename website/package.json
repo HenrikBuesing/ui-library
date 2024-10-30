@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build:uil": "node esbuild.mjs",
+    "postbuild:uil": "tsc --emitDeclarationOnly --project tsconfig.build.json",
+    "build": "npm run build:uil && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve"

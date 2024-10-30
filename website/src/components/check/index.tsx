@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {CustomRadio, CustomCheckbox} from "../../uil-bundle/bundle.js";
+import {CustomRadio, CustomCheckbox} from "@site/src/uil-bundle";
 import {RadioOption} from "../../uil-bundle";
 
 export default function RadioExample() {

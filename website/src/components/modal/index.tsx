@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { NotifyModal, QuestionModal, CustomButton } from '../../uil-bundle/bundle.js';
+import { NotifyModal, QuestionModal, CustomButton } from '@site/src/uil-bundle';
 
 export default function SuccessModal() {
   const [modalVis, setModalVis] = useState(false);
 
   return (
     <>
-      <CustomButton label={'show success'} theme={'#006A4E'} onClick={() => setModalVis(true)} />
+      <CustomButton label={'show success'} theme={'success'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Success'} message={'This is a success message'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'success'} />
@@ -20,7 +20,7 @@ export function WarningModal() {
 
   return (
     <>
-      <CustomButton label={'show warning'} theme={'#FFD700'} onClick={() => setModalVis(true)} />
+      <CustomButton label={'show warning'} theme={'warning'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Warning'} message={'This is a warning message'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'warning'} />
@@ -34,7 +34,7 @@ export function ErrorModal() {
 
   return (
     <>
-      <CustomButton label={'show error'} theme={'#800020'} onClick={() => setModalVis(true)} />
+      <CustomButton label={'show error'} theme={'error'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Error'} message={'This is an error'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'error'} />
