@@ -1,5 +1,4 @@
-import React, {ComponentPropsWithoutRef, CSSProperties, useRef} from 'react';
-import useInjectStyleSheet from 'utils/useInjectStyles';
+import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
 
 interface ISvgIcon extends ComponentPropsWithoutRef<'svg'>{
   src    : string;
@@ -34,11 +33,9 @@ export function SVG(props: ISvgIcon) {
     width: width,
   }
 
-  const nodeRef = useRef<HTMLDivElement>(null);
-  useInjectStyleSheet(nodeRef);
 
   return (
-    <div ref={nodeRef} className={'uil-svg-wrapper'}>
+    <div className={'uil-svg-wrapper'}>
       <svg aria-hidden={true} className={'uil-svg'} style={style}>
         <use href={src}/>
       </svg>

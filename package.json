@@ -9,28 +9,23 @@
   "scripts": {
     "lint:library": "npm run lint --workspace=packages",
     "lint-nw:library": "npm run lint:nw --workspace=packages",
-
-    "clean:library": "npm run clean --workspace=packages",
     "clean:docs": "npm run clear --workspace=website",
-
-    "dev:library": "npm run dev --workspace=packages",
     "dev:docs": "npm run start --workspace=website",
-
     "build:library": "npm run build --workspace=packages",
-    "build:docs": "npm run build:uil --workspace=packages && npm run build --workspace=website",
-    "build:docs-uil": "npm run build:uil --workspace=packages",
-
-    "serve:docs": "npm run serve --workspace=website",
-
-    "stats:library": "npm run stats --workspace=packages"
+    "build:docs": "npm run build --workspace=website",
+    "serve:docs": "npm run serve --workspace=website"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.1",
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.12",
+    "cssnano": "^7.0.6",
+    "esbuild": "0.24.0",
+    "esbuild-sass-plugin": "^3.3.1",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.11.0",
+    "postcss": "^8.4.47",
     "react": "^18.3.1",
     "sass": "^1.80.4",
     "typescript": "^5.6.3",
