@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "sourceMap": true,
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "Node",
     "jsx": "react",
-    "jsxFactory": "",
-    "jsxFragmentFactory": "",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
@@ -20,5 +17,9 @@
   },
   "include": [
     "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }
