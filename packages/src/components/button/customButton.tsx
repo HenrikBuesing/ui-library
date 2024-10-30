@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
-import {useGetColor} from 'hooks/getColor';
+import {useContrastColor} from 'hooks/contrastColor';
 
 type HEXColor = `#${string}`
 
@@ -39,7 +39,7 @@ export function CustomButton(props: ICustomButton) {
 
     if (theme.includes('#')) {
       return {
-        color: useGetColor(theme),
+        color: useContrastColor(theme),
         backgroundColor: theme,
         border: 'transparent'
       };
@@ -48,7 +48,7 @@ export function CustomButton(props: ICustomButton) {
     switch (theme) {
       case 'success':
         return {
-          color: useGetColor('#006A4E'),
+          color: useContrastColor('#006A4E'),
           backgroundColor: '#006A4E',
           border: 'transparent'
         };
@@ -60,7 +60,7 @@ export function CustomButton(props: ICustomButton) {
         };
       case 'error':
         return {
-          color: useGetColor('#800020'),
+          color: useContrastColor('#800020'),
           backgroundColor: '#800020',
           border: 'transparent'
         };

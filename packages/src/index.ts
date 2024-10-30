@@ -7,7 +7,7 @@ export {CustomCheckbox} from './components/checkbox/index';
 export {CustomButton} from './components/button/index';
 export {SVG} from './components/images/index';
 
-export {useClickOutsideRef, useGetColor} from './hooks/index';
+export {useClickOutsideRef, useContrastColor} from './hooks/index';
 
 if (typeof document !== "undefined") {
   const style = document.createElement("style");

@@ -1,2 +1,2 @@
 export * from './clickOutside';
-export * from './getColor';
+export * from './contrastColor';
