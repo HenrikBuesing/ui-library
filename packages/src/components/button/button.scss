@@ -1,24 +1,159 @@
 @use '../variables' as *;
 
 .uil-button {
-  letter-spacing: 1px;
-  color: var(--uil-black);
-  background-color: var(--uil-white);
-  border: 1px solid var(--uil-black);
-  border-radius: 2px;
   cursor: pointer;
+  letter-spacing: 1px;
   padding: .375rem var(--uil-xxs);
-  -webkit-box-shadow: 0 0 3px 0 var(--uil-black-alt);
-  box-shadow: 0 0 3px 0 var(--uil-black-alt);
+  border: 1px solid var(--uil-black-light);
+  border-radius: 5px;
+  box-shadow: 0 0 2px 0 var(--uil-black-alt);
+  -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
 
   @include uil-tablet {
     padding: var(--uil-xs) var(--uil-s);
   }
 
+  &:hover {
+    box-shadow: inset 0 0 0 10rem rgba(0, 0, 0, .15);
+    -webkit-box-shadow: inset 0 0 0 10rem rgba(0, 0, 0, .15);
+  }
+
+  &.uil-secondary {
+    color: var(--uil-black-light);
+    background-color: var(--uil-white);
+  }
+
+  &.uil-dark {
+    color: var(--uil-white);
+    background-color: var(--uil-black-alt);
+    border-color: var(--uil-grey-dark);
+
+    &:hover {
+      box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+      -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+    }
+
+    &.uil-text {
+      color: var(--uil-white);
+      background-color: transparent;
+      border-color: transparent;
+
+      &:hover {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        background-color: rgba(255, 255, 255, .1);
+      }
+
+      &.uil-disabled {
+        color: var(--uil-grey-dark);
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+
+  &.uil-success {
+    color: var(--uil-white);
+    background-color: var(--uil-success);
+    border-color: var(--uil-grey-darker);
+
+    &.uil-dark {
+      color: var(--uil-success-light);
+      background-color: var(--uil-success-dark);
+      border-color: var(--uil-black-light);
+    }
+
+    &.uil-outline {
+      color: var(--uil-black);
+      background-color: var(--uil-white);
+      border-color: var(--uil-success);
+      box-shadow: none;
+      -webkit-box-shadow: none;
+
+      &:hover {
+        box-shadow: inset 0 0 0 10rem rgba(0, 156, 115, 0.15);
+        -webkit-box-shadow: inset 0 0 0 10rem rgba(0, 156, 115, .15);
+      }
+
+      &.uil-dark {
+        color: var(--uil-success);
+        background-color: var(--uil-black-alt);
+        border-color: var(--uil-success);
+      }
+    }
+  }
+
+  &.uil-warning {
+    color: var(--uil-black);
+    background-color: var(--uil-warning);
+    border-color: var(--uil-grey-darker);
+
+    &.uil-dark {
+      color: var(--uil-warning);
+      background-color: var(--uil-warning-dark);
+      border-color: var(--uil-black-light);
+    }
+
+    &.uil-outline {
+      color: var(--uil-black);
+      background-color: rgba(255, 215, 0, 0.1); //TODO this should be secondary and no color tertiary
+      border-color: var(--uil-warning);
+      box-shadow: none;
+      -webkit-box-shadow: none;
+
+      &:hover {
+        box-shadow: inset 0 0 0 10rem rgba(255, 215, 0, 0.1);
+        -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 215, 0, 0.1);
+      }
+
+      &.uil-dark {
+        color: var(--uil-warning);
+        background-color: var(--uil-black-alt);
+        border-color: var(--uil-warning);
+      }
+    }
+  }
+
+  &.uil-error {
+    color: var(--uil-white);
+    background-color: var(--uil-error);
+    border-color: var(--uil-black-light);
+
+    &.uil-dark {
+      color: var(--uil-error-light);
+      background-color: var(--uil-error-dark);
+      border-color: var(--uil-black-light);
+    }
+  }
+
   &.uil-disabled {
-    background-color: var(--uil-grey-dark);
-    color: var(--uil-grey);
-    border: transparent;
+    cursor: not-allowed;
+    color: var(--uil-grey-darker);
+    background-color: var(--uil-grey);
+    border-color: var(--uil-black-alt);
+
+    &:hover {
+      box-shadow: 0 0 2px 0 var(--uil-black-alt);
+      -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
+    }
+
+    &.uil-dark {
+      color: var(--uil-grey-alt);
+      background-color: var(--uil-black-light);
+      border-color: var(--uil-grey-dark);
+    }
+  }
+
+  &.uil-text {
+    color: var(--uil-black-alt);
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      background-color: rgba(0, 0, 0, .05);
+    }
   }
 
   &.uil-small {

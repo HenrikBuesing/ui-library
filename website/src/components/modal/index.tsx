@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { NotifyModal, QuestionModal, CustomButton } from '@site/src/uil-bundle';
+import { NotifyModal, QuestionModal, Button} from '@site/src/uil-bundle';
 
 export default function SuccessModal() {
   const [modalVis, setModalVis] = useState(false);
 
   return (
     <>
-      <CustomButton label={'show success'} theme={'success'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} label={'show success'} color={'success'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Success'} message={'This is a success message'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'success'} />
@@ -20,7 +20,7 @@ export function WarningModal() {
 
   return (
     <>
-      <CustomButton label={'show warning'} theme={'warning'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} label={'show warning'} color={'warning'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Warning'} message={'This is a warning message'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'warning'} />
@@ -34,7 +34,7 @@ export function ErrorModal() {
 
   return (
     <>
-      <CustomButton label={'show error'} theme={'error'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} label={'show error'} color={'error'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Error'} message={'This is an error'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'error'} />
@@ -48,7 +48,7 @@ export function MultiLineModal() {
 
   return (
     <>
-      <CustomButton label={'show modal'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} color={'success'} label={'show modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Multiple messages'} message={['first string', 'this is a second text', 'Each string is wrapped in a paragraph']} close={() => setModalVis(false)} closeLabel={'close'} modalType={'success'} />
@@ -67,7 +67,7 @@ export function CallbackModal() {
 
   return (
     <div style={{marginBottom: '2rem'}}>
-      <CustomButton label={'show timeout modal'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} color={'success'} label={'show timeout modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <NotifyModal title={'Modal with timeout'} message={'Display an alert after 3 second timeout'} close={() => setModalVis(false)} closeLabel={'close'} modalType={'success'} timeout={3000} callback={alertTimeout}/>
@@ -81,7 +81,7 @@ export function QuestionExample() {
 
   return (
     <>
-      <CustomButton label={'show question modal'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} color={'success'} label={'show question modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
         <QuestionModal
