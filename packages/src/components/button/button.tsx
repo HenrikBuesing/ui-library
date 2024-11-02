@@ -3,89 +3,91 @@ import {useContrastColor} from 'hooks/contrastColor';
 
 export type HEX = `#${string}`
 
-interface ICustomButton extends ComponentPropsWithoutRef<'button'> {
-  buttonType : 'primary' | 'secondary' | 'outline' | 'text';
-  theme?     : HEX | 'success' | 'warning' | 'error' | null;
+interface IBaseButton extends ComponentPropsWithoutRef<'button'> {
   label      : string;
   dark?      : boolean;
   disabled?  : boolean;
-  small?     : boolean;
+  size?      : 'small' | 'medium' | 'large';
 }
+
+interface ITheme {
+  buttonType : 'primary' | 'outline';
+  theme: HEX | 'success' | 'warning' | 'error';
+}
+
+interface INoTheme {
+  buttonType : 'secondary' | 'text';
+  theme?: never;
+}
+
+type IButton = IBaseButton & (ITheme | INoTheme);
 
 /**
  * @example
  * ```jsx
  * <CustomButton
+ *  buttonType={'primary'}
  *  label={'Click Me!'}
+ *  dark={true}
  *  disabled={false}
- *  small={true}
+ *  size={'large'}
  *  theme={'success'}
- *  onClick={() => {ClickFunction()}}
+ *  onClick={() => {alert('click)}}
  * />
  * ```
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/button)
  */
-export function Button(props: ICustomButton) {
+export function Button(props: IButton) {
   const {
     buttonType,
     theme,
     label,
     dark,
     disabled,
-    small,
+    size = 'medium',
     ...buttonProps
   } = props;
 
   function setStyle(): CSSProperties | undefined {
-    if (buttonType !== 'primary' && buttonType !== 'outline') return undefined;
+    if (buttonType !== 'primary' && buttonType !== 'outline' || disabled || !theme?.includes('#')) return undefined;
 
-    if (disabled || !theme || !theme.includes('#')) return undefined;
-
-    let styles: CSSProperties = {
+    return buttonType === 'primary' ? {
       color: useContrastColor(theme),
       backgroundColor: theme,
-      borderColor: 'var(--uil-grey-darker)'
+      borderColor: dark ? 'var(--uil-black-light)' : 'var(--uil-grey-darker)'
+    } : {
+      color: theme,
+      backgroundColor: dark ? 'var(--uil-black-light)' : 'var(--uil-white)',
+      borderColor: theme
     };
-
-    if (dark) {
-      styles.borderColor = 'var(--uil-black-light)';
-    }
-
-    return styles;
-  }
-
-  function getTheme() {
-    switch (theme) {
-      case 'success':
-        return 'uil-success';
-      case 'warning':
-        return  'uil-warning';
-      case 'error':
-        return 'uil-error';
-      default: return '';
-    }
   }
 
   function setClassName() {
-    let className: string;
+    const customTheme = theme?.includes('#');
+    let className = `uil-button uil-fit uil-${size}`;
+
+    if (dark) className += ' uil-dark';
+    if (disabled) className += ' uil-disabled';
 
     switch (buttonType) {
       case 'primary':
-        className = getTheme();
+        className += ' uil-primary';
+        if (!customTheme) className += ` uil-${theme}`;
         break;
       case 'secondary':
-        className = 'uil-secondary';
+        className += ' uil-secondary';
         break;
       case 'outline':
-        className = `uil-outline ${getTheme()}`;
+        className += ' uil-outline';
+        if (!customTheme) className += ` uil-${theme}`;
         break;
       case 'text':
-        className = 'uil-text';
+        className += ' uil-text';
         break;
     }
 
-    return `uil-button uil-fit ${small ? 'uil-small' : 'uil-font-base'} ${disabled ? 'uil-disabled' : ''} ${dark ? 'uil-dark' : ''} ${className}`;
+    return className;
   }
 
   return (

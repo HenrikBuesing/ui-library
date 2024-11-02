@@ -8,6 +8,7 @@
   border-radius: 5px;
   box-shadow: 0 0 2px 0 var(--uil-black-alt);
   -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
+  box-sizing: border-box;
 
   @include uil-tablet {
     padding: var(--uil-xs) var(--uil-s);
@@ -18,22 +19,125 @@
     -webkit-box-shadow: inset 0 0 0 10rem rgba(0, 0, 0, .15);
   }
 
+  &.uil-primary {
+    color: var(--uil-white);
+    border-color: var(--uil-grey-darker);
+
+    &.uil-success {
+      background-color: var(--uil-success);
+    }
+
+    &.uil-warning {
+      color: var(--uil-black);
+      background-color: var(--uil-warning);
+    }
+
+    &.uil-error {
+      background-color: var(--uil-error);
+      border-color: var(--uil-black-light);
+    }
+
+    &.uil-dark {
+      &.uil-success {
+        color: var(--uil-success-light);
+        background-color: var(--uil-success-dark);
+        border-color: var(--uil-success);
+      }
+
+      &.uil-warning {
+        color: var(--uil-warning-light);
+        background-color: var(--uil-warning-dark);
+        border-color: var(--uil-warning);
+      }
+
+      &.uil-error {
+        color: var(--uil-error-light);
+        background-color: var(--uil-error-dark);
+        border-color: var(--uil-error);
+      }
+    }
+  }
+
   &.uil-secondary {
     color: var(--uil-black-light);
     background-color: var(--uil-white);
   }
 
-  &.uil-dark {
-    color: var(--uil-white);
-    background-color: var(--uil-black-alt);
-    border-color: var(--uil-grey-dark);
+  &.uil-outline {
+    background-color: var(--uil-white);
+    box-shadow: none;
+    -webkit-box-shadow: none;
 
     &:hover {
-      box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
-      -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+      border-width: 2px;
+      margin: -1px;
     }
 
-    &.uil-text {
+    &.uil-success {
+      color: var(--uil-success-dark);
+      border-color: var(--uil-success);
+    }
+
+    &.uil-warning {
+      color: var(--uil-warning-dark);
+      //background-color: rgba(255, 215, 0, 0.1); //TODO this should be secondary and no color tertiary
+      border-color: var(--uil-warning);
+    }
+
+    &.uil-error {
+      color: var(--uil-error);
+      border-color: var(--uil-error);
+    }
+
+    &.uil-dark {
+      background-color: var(--uil-black-alt);
+
+      &:hover {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+
+      &.uil-success {
+        color: var(--uil-success);
+        border-color: var(--uil-success);
+
+        &:hover {
+          color: var(--uil-success-light);
+        }
+      }
+
+      &.uil-warning {
+        color: var(--uil-warning);
+        border-color: var(--uil-warning);
+
+        &:hover {
+          color: var(--uil-warning-light);
+        }
+      }
+
+      &.uil-error {
+        color: var(--uil-error);
+        border-color: var(--uil-error);
+
+        &:hover {
+          color: var(--uil-error-light);
+        }
+      }
+    }
+  }
+
+  &.uil-text {
+    color: var(--uil-black-alt);
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      background-color: rgba(0, 0, 0, .05);
+    }
+
+    &.uil-dark {
       color: var(--uil-white);
       background-color: transparent;
       border-color: transparent;
@@ -52,80 +156,6 @@
     }
   }
 
-  &.uil-success {
-    color: var(--uil-white);
-    background-color: var(--uil-success);
-    border-color: var(--uil-grey-darker);
-
-    &.uil-dark {
-      color: var(--uil-success-light);
-      background-color: var(--uil-success-dark);
-      border-color: var(--uil-black-light);
-    }
-
-    &.uil-outline {
-      color: var(--uil-black);
-      background-color: var(--uil-white);
-      border-color: var(--uil-success);
-      box-shadow: none;
-      -webkit-box-shadow: none;
-
-      &:hover {
-        box-shadow: inset 0 0 0 10rem rgba(0, 156, 115, 0.15);
-        -webkit-box-shadow: inset 0 0 0 10rem rgba(0, 156, 115, .15);
-      }
-
-      &.uil-dark {
-        color: var(--uil-success);
-        background-color: var(--uil-black-alt);
-        border-color: var(--uil-success);
-      }
-    }
-  }
-
-  &.uil-warning {
-    color: var(--uil-black);
-    background-color: var(--uil-warning);
-    border-color: var(--uil-grey-darker);
-
-    &.uil-dark {
-      color: var(--uil-warning);
-      background-color: var(--uil-warning-dark);
-      border-color: var(--uil-black-light);
-    }
-
-    &.uil-outline {
-      color: var(--uil-black);
-      background-color: rgba(255, 215, 0, 0.1); //TODO this should be secondary and no color tertiary
-      border-color: var(--uil-warning);
-      box-shadow: none;
-      -webkit-box-shadow: none;
-
-      &:hover {
-        box-shadow: inset 0 0 0 10rem rgba(255, 215, 0, 0.1);
-        -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 215, 0, 0.1);
-      }
-
-      &.uil-dark {
-        color: var(--uil-warning);
-        background-color: var(--uil-black-alt);
-        border-color: var(--uil-warning);
-      }
-    }
-  }
-
-  &.uil-error {
-    color: var(--uil-white);
-    background-color: var(--uil-error);
-    border-color: var(--uil-black-light);
-
-    &.uil-dark {
-      color: var(--uil-error-light);
-      background-color: var(--uil-error-dark);
-      border-color: var(--uil-black-light);
-    }
-  }
-
   &.uil-disabled {
     cursor: not-allowed;
     color: var(--uil-grey-darker);
@@ -138,21 +168,29 @@
     }
 
     &.uil-dark {
-      color: var(--uil-grey-alt);
+      color: var(--uil-grey-dark);
       background-color: var(--uil-black-light);
       border-color: var(--uil-grey-dark);
+      box-shadow: none;
+      -webkit-box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
     }
   }
 
-  &.uil-text {
-    color: var(--uil-black-alt);
-    background-color: transparent;
-    border-color: transparent;
+  &.uil-dark {
+    color: var(--uil-white);
+    background-color: var(--uil-black-alt);
+    border-color: var(--uil-black-light);
+    box-shadow: none;
+    -webkit-box-shadow: none;
 
     &:hover {
-      box-shadow: none;
-      -webkit-box-shadow: none;
-      background-color: rgba(0, 0, 0, .05);
+      box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+      -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
     }
   }
 
@@ -160,5 +198,15 @@
     font-size: var(--uil-font-small);
     line-height: var(--uil-font-small);
     padding: var(--uil-xxs) var(--uil-xs);
+  }
+
+  &.uil-medium {
+    font-size: var(--uil-font-base);
+    line-height: var(--uil-font-base);
+  }
+
+  &.uil-large {
+    font-size: var(--uil-font-base);
+    line-height: var(--uil-font-base);
   }
 }
