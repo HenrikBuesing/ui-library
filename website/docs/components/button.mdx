@@ -33,7 +33,7 @@ Buttons can be rendered with different styles and come with a light and dark ver
 
 ### Primary button
 
-<div className={'showcase'}>
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
   <Button buttonType={'primary'} label={'Success'} theme={'success'}/>
   <Button buttonType={'primary'} label={'Warning'} theme={'warning'}/>
   <Button buttonType={'primary'} label={'Error'} theme={'error'}/>
@@ -52,7 +52,7 @@ Buttons can be rendered with different styles and come with a light and dark ver
 <Button buttonType={'primary'} label={'custom color'} theme={'#b554e6'}/>
 ```
 
-<div className={'showcase'}>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
   <Button buttonType={'primary'} label={'Success'} theme={'success'} dark={true}/>
   <Button buttonType={'primary'} label={'Warning'} theme={'warning'} dark={true}/>
   <Button buttonType={'primary'} label={'Error'} theme={'error'} dark={true}/>
@@ -73,7 +73,7 @@ Buttons can be rendered with different styles and come with a light and dark ver
 
 ### Secondary button
 
-<div className={'showcase'}>
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
   <Button buttonType={'secondary'} label={'secondary button'}/>
 </div>
 
@@ -83,7 +83,7 @@ Buttons can be rendered with different styles and come with a light and dark ver
 <Button buttonType={'secondary'} label={'secondary button'}/>
 ```
 
-<div className={'showcase'}>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
   <Button buttonType={'secondary'} label={'secondary button'} dark={true}/>
 </div>
 
@@ -95,7 +95,7 @@ Buttons can be rendered with different styles and come with a light and dark ver
 
 ### Outline button
 
-<div className={'showcase'}>
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
   <Button buttonType={'outline'} label={'Success'} theme={'success'}/>
   <Button buttonType={'outline'} label={'Warning'} theme={'warning'}/>
   <Button buttonType={'outline'} label={'Error'} theme={'error'}/>
@@ -114,7 +114,7 @@ Buttons can be rendered with different styles and come with a light and dark ver
 <Button buttonType={'outline'} label={'custom color'} theme={'#b554e6'}/>
 ```
 
-<div className={'showcase'}>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
   <Button buttonType={'outline'} label={'Success'} theme={'success'} dark={true}/>
   <Button buttonType={'outline'} label={'Warning'} theme={'warning'} dark={true}/>
   <Button buttonType={'outline'} label={'Error'} theme={'error'} dark={true}/>
@@ -134,32 +134,133 @@ Buttons can be rendered with different styles and come with a light and dark ver
 ```
 
 ### Text button
-WIP
-
-### Disabled button
-<div className={'showcase bottom-m'}>
-  <Button label={'disabled'} theme={'error'} disabled={true}/>
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'text'} label={'Text button'}/>
 </div>
 
 &NewLine;
 
 ```tsx
-<Button label={'disabled'} theme={'error'} disabled={true}/>
+<Button buttonType={'text'} label={'Text button'}/>
 ```
 
-<div className={'showcase bottom-m'}>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <Button buttonType={'text'} label={'Text button'} dark={true}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'text'} label={'Text button'} dark={true}/>
+```
+
+### Disabled button
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'error'} disabled={true}/>
+  <Button buttonType={'secondary'} label={'Secondary'} disabled={true}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true}/>
+  <Button buttonType={'text'} label={'Text'} disabled={true}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'error'} disabled={true}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} disabled={true}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true}/>
+
+<Button buttonType={'text'} label={'Text'} disabled={true}/>
+```
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#222222'}}>
   <Button label={'disabled'} theme={'error'} disabled={true} dark={true}/>
+  <Button buttonType={'secondary'} label={'Secondary'} disabled={true} dark={true}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true} dark={true}/>
+  <Button buttonType={'text'} label={'Text'} disabled={true} dark={true}/>
 </div>
 
 &NewLine;
 
 ```tsx
 <Button label={'disabled'} theme={'error'} disabled={true} dark={true}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} disabled={true} dark={true}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true} dark={true}/>
+
+<Button buttonType={'text'} label={'Text'} disabled={true} dark={true}/>
 ```
 
 :::info[Disabling a button]
 The provided theme will be ignored if the button is disabled
 :::
+
+### Button sizes
+
+Available sizes are small, medium (default) and large.
+
+:::note
+All Button sizes are scaled down for mobile devices.
+:::
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'small'}/>
+  <Button buttonType={'secondary'} label={'Secondary'} size={'small'}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'small'}/>
+  <Button buttonType={'text'} label={'Text'} size={'small'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'small'}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} size={'small'}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'small'}/>
+
+<Button buttonType={'text'} label={'Text'} size={'small'}/>
+```
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'medium'}/>
+  <Button buttonType={'secondary'} label={'Secondary'} size={'medium'}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'medium'}/>
+  <Button buttonType={'text'} label={'Text'} size={'medium'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'medium'}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} size={'medium'}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'medium'}/>
+
+<Button buttonType={'text'} label={'Text'} size={'medium'}/>
+```
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'large'}/>
+  <Button buttonType={'secondary'} label={'Secondary'} size={'large'}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'large'}/>
+  <Button buttonType={'text'} label={'Text'} size={'large'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'large'}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} size={'large'}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'large'}/>
+
+<Button buttonType={'text'} label={'Text'} size={'large'}/>
+```
 
 ## Playground
 ```tsx live

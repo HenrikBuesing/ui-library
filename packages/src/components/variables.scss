@@ -2,6 +2,7 @@
   --uil-black: #000000;
   --uil-black-alt: #222222;
   --uil-black-light: #2b2b2b;
+  --uil-black-lighter: #333333;
 
   --uil-white: #ffffff;
 
@@ -37,8 +38,9 @@
   --uil-xxl: 1.75rem;
   --uil-xxxl: 2rem;
 
-  --uil-font-base: var(--uil-l);
   --uil-font-small: var(--uil-m);
+  --uil-font-medium: var(--uil-l);
+  --uil-font-large: var(--uil-xxxl);
 }
 
 @mixin uil-mobile {

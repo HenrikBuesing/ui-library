@@ -3,16 +3,11 @@
 .uil-button {
   cursor: pointer;
   letter-spacing: 1px;
-  padding: .375rem var(--uil-xxs);
   border: 1px solid var(--uil-black-light);
   border-radius: 5px;
   box-shadow: 0 0 2px 0 var(--uil-black-alt);
   -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
   box-sizing: border-box;
-
-  @include uil-tablet {
-    padding: var(--uil-xs) var(--uil-s);
-  }
 
   &:hover {
     box-shadow: inset 0 0 0 10rem rgba(0, 0, 0, .15);
@@ -36,8 +31,101 @@
       background-color: var(--uil-error);
       border-color: var(--uil-black-light);
     }
+  }
 
-    &.uil-dark {
+  &.uil-secondary {
+    color: var(--uil-black-light);
+    background-color: var(--uil-white);
+  }
+
+  &.uil-outline {
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+
+    &:hover {
+      border-width: 2px;
+      margin: -1px;
+    }
+
+    &.uil-success {
+      color: var(--uil-success-dark);
+      border-color: var(--uil-success);
+    }
+
+    &.uil-warning {
+      color: var(--uil-warning-dark);
+      border-color: var(--uil-warning);
+    }
+
+    &.uil-error {
+      color: var(--uil-error);
+      border-color: var(--uil-error);
+    }
+  }
+
+  &.uil-text {
+    color: var(--uil-black-alt);
+    text-decoration: underline;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, .05);
+    }
+  }
+
+  &.uil-disabled {
+    color: var(--uil-grey-darker);
+    cursor: not-allowed;
+
+    &.uil-primary, &.uil-secondary {
+      background-color: var(--uil-grey);
+      border-color: var(--uil-grey-darker);
+
+      &:hover {
+        box-shadow: 0 0 2px 0 var(--uil-black-alt);
+        -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
+      }
+    }
+
+    &.uil-secondary {
+      background-color: transparent;
+    }
+
+    &.uil-outline {
+      color: var(--uil-grey-darker);
+      border-color: var(--uil-grey-darker);
+
+      &:hover {
+        border-width: 1px;
+        margin: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+    }
+
+    &.uil-text {
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.uil-dark {
+    color: var(--uil-white);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+
+    &:hover {
+      box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+      -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+    }
+
+    &.uil-primary {
       &.uil-success {
         color: var(--uil-success-light);
         background-color: var(--uil-success-dark);
@@ -56,41 +144,13 @@
         border-color: var(--uil-error);
       }
     }
-  }
 
-  &.uil-secondary {
-    color: var(--uil-black-light);
-    background-color: var(--uil-white);
-  }
-
-  &.uil-outline {
-    background-color: var(--uil-white);
-    box-shadow: none;
-    -webkit-box-shadow: none;
-
-    &:hover {
-      border-width: 2px;
-      margin: -1px;
+    &.uil-secondary {
+      background-color: var(--uil-black-lighter);
+      border-color: var(--uil-grey-dark);
     }
 
-    &.uil-success {
-      color: var(--uil-success-dark);
-      border-color: var(--uil-success);
-    }
-
-    &.uil-warning {
-      color: var(--uil-warning-dark);
-      //background-color: rgba(255, 215, 0, 0.1); //TODO this should be secondary and no color tertiary
-      border-color: var(--uil-warning);
-    }
-
-    &.uil-error {
-      color: var(--uil-error);
-      border-color: var(--uil-error);
-    }
-
-    &.uil-dark {
-      background-color: var(--uil-black-alt);
+    &.uil-outline {
 
       &:hover {
         box-shadow: none;
@@ -124,52 +184,18 @@
         }
       }
     }
-  }
 
-  &.uil-text {
-    color: var(--uil-black-alt);
-    background-color: transparent;
-    border-color: transparent;
-
-    &:hover {
-      box-shadow: none;
-      -webkit-box-shadow: none;
-      background-color: rgba(0, 0, 0, .05);
-    }
-
-    &.uil-dark {
-      color: var(--uil-white);
-      background-color: transparent;
-      border-color: transparent;
-
+    &.uil-text {
       &:hover {
         box-shadow: none;
         -webkit-box-shadow: none;
         background-color: rgba(255, 255, 255, .1);
       }
-
-      &.uil-disabled {
-        color: var(--uil-grey-dark);
-        background-color: transparent;
-        border-color: transparent;
-      }
-    }
-  }
-
-  &.uil-disabled {
-    cursor: not-allowed;
-    color: var(--uil-grey-darker);
-    background-color: var(--uil-grey);
-    border-color: var(--uil-black-alt);
-
-    &:hover {
-      box-shadow: 0 0 2px 0 var(--uil-black-alt);
-      -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
     }
 
-    &.uil-dark {
+    &.uil-disabled {
       color: var(--uil-grey-dark);
-      background-color: var(--uil-black-light);
+      background-color: var(--uil-black-lighter);
       border-color: var(--uil-grey-dark);
       box-shadow: none;
       -webkit-box-shadow: none;
@@ -178,35 +204,68 @@
         box-shadow: none;
         -webkit-box-shadow: none;
       }
-    }
-  }
 
-  &.uil-dark {
-    color: var(--uil-white);
-    background-color: var(--uil-black-alt);
-    border-color: var(--uil-black-light);
-    box-shadow: none;
-    -webkit-box-shadow: none;
+      &.uil-secondary {
+        background-color: var(--uil-black-light);
+      }
 
-    &:hover {
-      box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
-      -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
+      &.uil-outline {
+        color: var(--uil-grey-dark);
+        background-color: transparent;
+        border-color: var(--uil-grey-dark);
+
+        &:hover {
+          color: var(--uil-grey-dark);
+          border-color: var(--uil-grey-dark);
+          border-width: 1px;
+          margin: 0;
+          box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+
+      &.uil-text {
+        background-color: transparent;
+        border-color: transparent;
+      }
     }
   }
 
   &.uil-small {
-    font-size: var(--uil-font-small);
-    line-height: var(--uil-font-small);
-    padding: var(--uil-xxs) var(--uil-xs);
+    font-size: var(--uil-s);
+    line-height: var(--uil-s);
+    padding: var(--uil-xxs);
+
+    @include uil-tablet {
+      font-size: var(--uil-font-small);
+      line-height: var(--uil-font-small);
+      padding: var(--uil-xs);
+    }
   }
 
   &.uil-medium {
-    font-size: var(--uil-font-base);
-    line-height: var(--uil-font-base);
+    font-size: var(--uil-m);
+    line-height: var(--uil-m);
+    letter-spacing: 2px;
+    padding: var(--uil-xs);
+
+    @include uil-tablet {
+      font-size: var(--uil-font-medium);
+      line-height: var(--uil-font-medium);
+      padding: var(--uil-s);
+    }
   }
 
   &.uil-large {
-    font-size: var(--uil-font-base);
-    line-height: var(--uil-font-base);
+    font-size: var(--uil-xl);
+    line-height: var(--uil-xl);
+    letter-spacing: 3px;
+    padding: var(--uil-s);
+
+    @include uil-tablet {
+      font-size: var(--uil-font-large);
+      line-height: var(--uil-font-large);
+      padding: var(--uil-m);
+    }
   }
 }
