@@ -1,20 +1,32 @@
 :root {
   --uil-black: #000000;
   --uil-black-alt: #222222;
+  --uil-black-light: #2b2b2b;
+  --uil-black-lighter: #333333;
 
   --uil-white: #ffffff;
 
   --uil-grey: #f3f3f3;
   --uil-grey-alt: #cfcfcf;
   --uil-grey-dark: #878787;
+  --uil-grey-darker: #676767;
 
   --uil-outline-focus: #1E90FFFF;
   --uil-outline-disabled: #8B0000FF;
 
-  --uil-success: #006A4E;
-  --uil-error: #800020;
+  --uil-success-light: #01dfa5;
+  --uil-success: #009c73;
+  --uil-success-dark: #014334;
+
+  --uil-error-light: #FF073A;
+  --uil-error: #a30029;
+  --uil-error-dark: #4e0015;
+
   --uil-question: #00416A;
+
+  --uil-warning-light: #FFFF8A;
   --uil-warning: #FFD700;
+  --uil-warning-dark: #7b6300;
 
   --uil-xxxs: .125rem;
   --uil-xxs: .25rem;
@@ -26,8 +38,9 @@
   --uil-xxl: 1.75rem;
   --uil-xxxl: 2rem;
 
-  --uil-font-base: var(--uil-l);
   --uil-font-small: var(--uil-m);
+  --uil-font-medium: var(--uil-l);
+  --uil-font-large: var(--uil-xxxl);
 }
 
 @mixin uil-mobile {

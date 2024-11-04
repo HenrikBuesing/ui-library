@@ -1,113 +1,277 @@
 ---
-title: <CustomButton />
+title: Button
 description: Usage of the button component
 sidebar_position: 1
 tags: [components, button]
 ---
 
-# \<CustomButton />
+# \<Button />
 
 ## Assignable props
 <AssignableProps
   data={[
+    {name: 'buttonType', value: '"primary" | "secondary" | "outline" | "text"', required: true, definition: 'Button style'},
     {name: 'label', value: 'string', required: true, definition: 'Button label'},
+    {name: 'dark', value: 'boolean', required: false, definition: 'Enables dark mode', default: 'false'},
     {name: 'disabled', value: 'boolean', required: false, definition: 'Enable or disable the button', default: 'false'},
-    {name: 'small', value: 'boolean', required: false, definition: 'Decreases the size of the button', default: 'false'},
-    {name: 'theme', value: 'HEX code | "success" | "warning" | "error"', required: false, definition: 'Set the button theme', default: 'undefined'},
+    {name: 'size', value: '"small" | "medium" | "large"', required: false, definition: 'Set the size of the button', default: 'medium'},
+    {name: 'theme', value: 'HEX | "success" | "warning" | "error"', required: '', definition: 'Set the button theme'},
     {name: 'HTML button props', value: '', required: false, definition: 'HTML button attributes, e.g. "onClick"'},
   ]}
 />
 
-:::note[Providing a custom color for the theme prop]
-The provided HEX code must be 7 (including '#') characters long, e.g. '#1A2B3C'
+:::warning[When to use a theme]
+The theme prop must only be used for button types `primary` & `outline`.
 :::
 
-The font color (either black or white) will be chosen based on the provided theme. \
-Not providing a theme will generate the default styled button.
+
+If you want to use a custom color note that the provided `HEX` code must be a valid `HEX Color` with a maximum length of 6 characters (e.g. `#0F0` or `#00FF00`). \
+The font color (either black or white) will be chosen based on the provided theme.
 
 ## Example usage
+Buttons can be rendered with different styles and come with a light and dark version.
 
-### Default button
-<div className={'showcase'}>
-  <CustomButton label={'Without theme'} onClick={() => alert('Button clicked')}/>
-  <CustomButton label={'small'} small={true}/>
+### Primary button
+
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Success'} theme={'success'}/>
+  <Button buttonType={'primary'} label={'Warning'} theme={'warning'}/>
+  <Button buttonType={'primary'} label={'Error'} theme={'error'}/>
+  <Button buttonType={'primary'} label={'custom color'} theme={'#b554e6'}/>
 </div>
 
 &NewLine;
 
 ```tsx
-<CustomButton label={'Without theme'} onClick={() => alert('Button clicked')}/>
+<Button buttonType={'primary'} label={'Success'} theme={'success'}/>
 
-<CustomButton label={'small'} small={true}/>
+<Button buttonType={'primary'} label={'Warning'} theme={'warning'}/>
+
+<Button buttonType={'primary'} label={'Error'} theme={'error'}/>
+
+<Button buttonType={'primary'} label={'custom color'} theme={'#b554e6'}/>
 ```
 
-### Themed button
-<div className={'showcase'}>
-  <CustomButton label={'Success'} theme={'success'}/>
-  <CustomButton label={'Warning'} theme={'warning'}/>
-  <CustomButton label={'Error'} theme={'error'}/>
-  <CustomButton label={'small'} theme={'error'} small={true}/>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <Button buttonType={'primary'} label={'Success'} theme={'success'} dark={true}/>
+  <Button buttonType={'primary'} label={'Warning'} theme={'warning'} dark={true}/>
+  <Button buttonType={'primary'} label={'Error'} theme={'error'} dark={true}/>
+  <Button buttonType={'primary'} label={'custom color'} theme={'#b554e6'} dark={true}/>
 </div>
 
 &NewLine;
 
 ```tsx
-<CustomButton label={'Success'} theme={'success'}/>
+<Button buttonType={'primary'} label={'Success'} theme={'success'} dark={true}/>
 
-<CustomButton label={'Warning'} theme={'warning'}/>
+<Button buttonType={'primary'} label={'Warning'} theme={'warning'} dark={true}/>
 
-<CustomButton label={'Error'} theme={'error'}/>
+<Button buttonType={'primary'} label={'Error'} theme={'error'} dark={true}/>
 
-<CustomButton label={'small'} theme={'error'} small={true}/>
+<Button buttonType={'primary'} label={'custom color'} theme={'#b554e6'} dark={true}/>
 ```
 
-### Custom theme
-<div className={'showcase'}>
-  <CustomButton label={'#2ce8b8'} theme={'#2ce8b8'}/>
-  <CustomButton label={'#9900cc'} theme={'#9900cc'}/>
-  <CustomButton label={'#0047CC'} theme={'#0047CC'}/>
-  <CustomButton label={'small'} theme={'#0047CC'} small={true}/>
+### Secondary button
+
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'secondary'} label={'secondary button'}/>
 </div>
 
 &NewLine;
 
 ```tsx
-<CustomButton label={'#2ce8b8'} theme={'#2ce8b8'}/>
+<Button buttonType={'secondary'} label={'secondary button'}/>
+```
 
-<CustomButton label={'#9900cc'} theme={'#9900cc'}/>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <Button buttonType={'secondary'} label={'secondary button'} dark={true}/>
+</div>
 
-<CustomButton label={'#0047CC'} theme={'#0047CC'}/>
+&NewLine;
 
-<CustomButton label={'small'} theme={'#0047CC'} small={true}/>
+```tsx
+<Button buttonType={'secondary'} label={'secondary button'} dark={true}/>
+```
+
+### Outline button
+
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'outline'} label={'Success'} theme={'success'}/>
+  <Button buttonType={'outline'} label={'Warning'} theme={'warning'}/>
+  <Button buttonType={'outline'} label={'Error'} theme={'error'}/>
+  <Button buttonType={'outline'} label={'custom color'} theme={'#b554e6'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'outline'} label={'Success'} theme={'success'}/>
+
+<Button buttonType={'outline'} label={'Warning'} theme={'warning'}/>
+
+<Button buttonType={'outline'} label={'Error'} theme={'error'}/>
+
+<Button buttonType={'outline'} label={'custom color'} theme={'#b554e6'}/>
+```
+
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <Button buttonType={'outline'} label={'Success'} theme={'success'} dark={true}/>
+  <Button buttonType={'outline'} label={'Warning'} theme={'warning'} dark={true}/>
+  <Button buttonType={'outline'} label={'Error'} theme={'error'} dark={true}/>
+  <Button buttonType={'outline'} label={'custom color'} theme={'#b554e6'} dark={true}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'outline'} label={'Success'} theme={'success'} dark={true}/>
+
+<Button buttonType={'outline'} label={'Warning'} theme={'warning'} dark={true}/>
+
+<Button buttonType={'outline'} label={'Error'} theme={'error'} dark={true}/>
+
+<Button buttonType={'outline'} label={'custom color'} theme={'#b554e6'} dark={true}/>
+```
+
+### Text button
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'text'} label={'Text button'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'text'} label={'Text button'}/>
+```
+
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <Button buttonType={'text'} label={'Text button'} dark={true}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'text'} label={'Text button'} dark={true}/>
 ```
 
 ### Disabled button
-<div className={'showcase bottom-m'}>
-  <CustomButton label={'disabled'} theme={'error'} disabled={true}/>
-  <CustomButton label={'small'} theme={'#0047CC'} disabled={true} small={true}/>
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'error'} disabled={true}/>
+  <Button buttonType={'secondary'} label={'Secondary'} disabled={true}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true}/>
+  <Button buttonType={'text'} label={'Text'} disabled={true}/>
 </div>
 
 &NewLine;
 
 ```tsx
-<CustomButton label={'disabled'} theme={'error'} disabled={true}/>
+<Button buttonType={'primary'} label={'Primary'} theme={'error'} disabled={true}/>
 
-<CustomButton label={'small'} theme={'#0047CC'} disabled={true} small={true}/>
+<Button buttonType={'secondary'} label={'Secondary'} disabled={true}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true}/>
+
+<Button buttonType={'text'} label={'Text'} disabled={true}/>
+```
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#222222'}}>
+  <Button label={'disabled'} theme={'error'} disabled={true} dark={true}/>
+  <Button buttonType={'secondary'} label={'Secondary'} disabled={true} dark={true}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true} dark={true}/>
+  <Button buttonType={'text'} label={'Text'} disabled={true} dark={true}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button label={'disabled'} theme={'error'} disabled={true} dark={true}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} disabled={true} dark={true}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'error'} disabled={true} dark={true}/>
+
+<Button buttonType={'text'} label={'Text'} disabled={true} dark={true}/>
 ```
 
 :::info[Disabling a button]
 The provided theme will be ignored if the button is disabled
 :::
 
+### Button sizes
+
+Available sizes are small, medium (default) and large.
+
+:::note
+All Button sizes are scaled down for mobile devices.
+:::
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'small'}/>
+  <Button buttonType={'secondary'} label={'Secondary'} size={'small'}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'small'}/>
+  <Button buttonType={'text'} label={'Text'} size={'small'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'small'}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} size={'small'}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'small'}/>
+
+<Button buttonType={'text'} label={'Text'} size={'small'}/>
+```
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'medium'}/>
+  <Button buttonType={'secondary'} label={'Secondary'} size={'medium'}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'medium'}/>
+  <Button buttonType={'text'} label={'Text'} size={'medium'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'medium'}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} size={'medium'}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'medium'}/>
+
+<Button buttonType={'text'} label={'Text'} size={'medium'}/>
+```
+
+<div className={'showcase bottom-m'} style={{backgroundColor:'#FFFFFF'}}>
+  <Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'large'}/>
+  <Button buttonType={'secondary'} label={'Secondary'} size={'large'}/>
+  <Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'large'}/>
+  <Button buttonType={'text'} label={'Text'} size={'large'}/>
+</div>
+
+&NewLine;
+
+```tsx
+<Button buttonType={'primary'} label={'Primary'} theme={'success'} size={'large'}/>
+
+<Button buttonType={'secondary'} label={'Secondary'} size={'large'}/>
+
+<Button buttonType={'outline'} label={'Outline'} theme={'success'} size={'large'}/>
+
+<Button buttonType={'text'} label={'Text'} size={'large'}/>
+```
+
 ## Playground
 ```tsx live
 function Playground() {
   return (
-    <CustomButton
+    <Button
+      buttonType={'primary'}
       label={'Click me!'}
       theme={'#0047CC'}
       type={'button'}
-      onClick={() => alert('Themed button click')}
+      onClick={() => alert('Button clicked')}
     />
   );
 }

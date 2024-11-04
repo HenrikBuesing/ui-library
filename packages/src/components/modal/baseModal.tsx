@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import {CustomButton} from 'components/button/customButton';
 import generateKey from 'utils/generateKey';
+import {Button} from "../button";
 
 interface IBaseModal {
   close        : () => void;
@@ -88,13 +88,13 @@ export function BaseModal(props: IBaseModal) {
 
           <div className={`uil-button-wrapper ${type !== 'question' ? 'uil-single' : ''}`}>
             {type !== 'question' &&
-              <CustomButton label={closeLabel?? ''} onClick={handleClose} type={'button'}/>
+              <Button label={closeLabel?? ''} onClick={handleClose} type={'button'} buttonType={'secondary'}/>
             }
 
             {type == 'question' && props.confirm &&
               <>
-                <CustomButton label={confirmLabel} theme={'#00416A'} onClick={confirm} type={'button'}/>
-                <CustomButton label={cancelLabel} onClick={close} type={'button'}/>
+                <Button buttonType={'primary'} label={confirmLabel} theme={'#00416A'} onClick={confirm} type={'button'}/>
+                <Button buttonType={'secondary'} label={cancelLabel} onClick={close} type={'button'}/>
               </>
             }
           </div>

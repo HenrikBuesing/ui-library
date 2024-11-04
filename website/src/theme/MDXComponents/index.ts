@@ -2,7 +2,7 @@ import MDXComponents from '@theme-original/MDXComponents';
 import AssignableProps from '@site/src/components/Props';
 import DefaultInput , {TooltipInput, IconInput, DisabledInput, PasswordExample, PasswordToggle, PasswordTooltip, PasswordCaps} from '@site/src/components/Input';
 import SuccessModal, {ErrorModal, WarningModal, MultiLineModal, CallbackModal, QuestionExample} from '@site/src/components/modal';
-import {CustomButton, CustomInput, useClickOutsideRef, SVG} from '@site/src/uil-bundle';
+import {Button, CustomInput, useClickOutsideRef, SVG} from '@site/src/uil-bundle';
 import RadioExample, {CheckboxBody, CheckboxColor, CheckboxLabel, RadioLabel, RadioColor, RadioDisabled} from "@site/src/components/check";
 
 export default {
@@ -12,7 +12,7 @@ export default {
   TooltipInput,
   DefaultInput,
   DisabledInput,
-  CustomButton,
+  Button,
   CustomInput,
   SuccessModal,
   WarningModal,
