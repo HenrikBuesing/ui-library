@@ -23,7 +23,7 @@ type ICheckbox = ICheckBase & (ICheckLabel | ICheckHTML);
 /**
  * @example
  * ```jsx
- * <CustomCheckbox
+ * <Checkbox
  *  checked={...}
  *  toggleCheck={...}
  *  label={"Toggle checkbox"}
