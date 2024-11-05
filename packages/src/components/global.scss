@@ -23,8 +23,18 @@
   box-sizing: border-box;
 
   &:has(input:disabled) {
+    cursor: not-allowed;
     background-color: var(--uil-grey);
     border-color: var(--uil-grey-dark);
+  }
+
+  &.uil-dark {
+    border-color: var(--uil-grey);
+
+    &:has(input:disabled) {
+      background-color: var(--uil-black-light);
+      border-color: var(--uil-grey-dark);
+    }
   }
 
   input {
@@ -56,5 +66,9 @@
     height: var(--uil-xs);
     transform: scale(0);
     transition: .1s ease;
+
+    &.uil-dark {
+      background-color: var(--uil-white);
+    }
   }
 }
