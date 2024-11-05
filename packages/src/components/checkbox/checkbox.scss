@@ -12,7 +12,12 @@
   }
 
   .uil-check-label {
+    color: var(--uil-black);
     cursor: pointer;
     user-select: none;
+
+    &.uil-dark {
+      color: var(--uil-white);
+    }
   }
 }

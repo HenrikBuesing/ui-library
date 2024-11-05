@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {CustomRadio, CustomCheckbox} from "@site/src/uil-bundle";
+import {CustomRadio, Checkbox} from "@site/src/uil-bundle";
 import {RadioOption} from "../../uil-bundle";
 
 export default function RadioExample() {
@@ -66,7 +66,19 @@ export function CheckboxLabel() {
   const [value, setValue] = useState(false);
 
   return (
-    <CustomCheckbox checked={value} toggleCheck={setValue} label={'label property'} name={'check-with-label'}/>
+    <div style={{backgroundColor: '#ffffff', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} label={'light checkbox'} name={'check-with-label'}/>
+    </div>
+  );
+}
+
+export function CheckboxLabelDark() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <div style={{backgroundColor: '#222222', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} label={'dark checkbox'} name={'check-with-label-dark'} dark={true}/>
+    </div>
   );
 }
 
@@ -74,7 +86,19 @@ export function CheckboxColor() {
   const [value, setValue] = useState(false);
 
   return (
-    <CustomCheckbox checked={value} toggleCheck={setValue} label={'Custom check Color'} checkColor={'red'} name={'check-with-custom-color'}/>
+    <div style={{backgroundColor: '#ffffff', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} label={'Custom check Color'} color={'red'} name={'check-with-custom-color'}/>
+    </div>
+  );
+}
+
+export function CheckboxColorDark() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <div style={{backgroundColor: '#222222', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} label={'Custom check Color dark'} color={'red'} name={'check-with-custom-color-dark'} dark={true}/>
+    </div>
   );
 }
 
@@ -82,10 +106,42 @@ export function CheckboxBody() {
   const [value, setValue] = useState(false);
 
   return (
-    <CustomCheckbox checked={value} toggleCheck={setValue} name={'check-with-custom-label'}>
-      <div>
-        <span>You can provide html elements as a label alternative</span>
-      </div>
-    </CustomCheckbox>
+    <div style={{backgroundColor:'#ffffff', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} name={'check-with-custom-label'}>
+        <span>You can provide html elements as a label alternative with <a href={'/docs/components/checkbox#custom-content'}>links</a></span>
+      </Checkbox>
+    </div>
+  );
+}
+
+export function CheckboxBodyDark() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <div style={{backgroundColor:'#222222', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} name={'check-with-custom-label-dark'} dark={true}>
+        <span>You can provide html elements as a label alternative with <a href={'/docs/components/checkbox#custom-content'}>links</a></span>
+      </Checkbox>
+    </div>
+  );
+}
+
+export function CheckboxDisabled() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <div style={{backgroundColor:'#ffffff', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} name={'check-disabled'} disabled={true} label={'disabled light'}/>
+    </div>
+  );
+}
+
+export function CheckboxDisabledDark() {
+  const [value, setValue] = useState(false);
+
+  return (
+    <div style={{backgroundColor:'#222222', padding: '1rem'}}>
+      <Checkbox checked={value} toggleCheck={setValue} name={'check-disabled-dark'} dark={true} disabled={true} label={'disabled dark'}/>
+    </div>
   );
 }

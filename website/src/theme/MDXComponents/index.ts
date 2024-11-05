@@ -3,7 +3,15 @@ import AssignableProps from '@site/src/components/Props';
 import DefaultInput , {TooltipInput, IconInput, DisabledInput, PasswordExample, PasswordToggle, PasswordTooltip, PasswordCaps} from '@site/src/components/Input';
 import SuccessModal, {ErrorModal, WarningModal, MultiLineModal, CallbackModal, QuestionExample} from '@site/src/components/modal';
 import {Button, CustomInput, useClickOutsideRef, SVG} from '@site/src/uil-bundle';
-import RadioExample, {CheckboxBody, CheckboxColor, CheckboxLabel, RadioLabel, RadioColor, RadioDisabled} from "@site/src/components/check";
+import RadioExample, {
+  CheckboxBody,
+  CheckboxColor,
+  CheckboxLabel,
+  RadioLabel,
+  RadioColor,
+  RadioDisabled,
+  CheckboxLabelDark, CheckboxColorDark, CheckboxBodyDark, CheckboxDisabled, CheckboxDisabledDark
+} from "@site/src/components/check";
 
 export default {
   ...MDXComponents,
@@ -23,8 +31,13 @@ export default {
   RadioExample,
   useClickOutsideRef,
   CheckboxLabel,
+  CheckboxLabelDark,
   CheckboxBody,
+  CheckboxBodyDark,
+  CheckboxDisabled,
+  CheckboxDisabledDark,
   CheckboxColor,
+  CheckboxColorDark,
   PasswordExample,
   PasswordToggle,
   PasswordTooltip,

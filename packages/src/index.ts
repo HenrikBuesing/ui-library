@@ -3,7 +3,7 @@ import styles from './styles.scss';
 export {CustomInput, PasswordInput, PasswordRule} from './components/input/index';
 export {NotifyModal, QuestionModal} from './components/modal/index';
 export {CustomRadio, RadioOption} from './components/radio/index';
-export {CustomCheckbox} from './components/checkbox/index';
+export {Checkbox} from './components/checkbox/index';
 export {Button} from './components/button/index';
 export {SVG} from './components/images/index';
 
