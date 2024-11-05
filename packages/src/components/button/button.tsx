@@ -25,7 +25,7 @@ type IButton = IBaseButton & (ITheme | INoTheme);
 /**
  * @example
  * ```jsx
- * <CustomButton
+ * <Button
  *  buttonType={'primary'}
  *  label={'Click Me!'}
  *  dark={true}
