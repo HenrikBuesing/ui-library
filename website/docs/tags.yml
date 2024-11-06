@@ -22,10 +22,10 @@ checkbox:
   permalink: '/components/checkbox'
   description: 'Checkbox component'
 
-images:
-  label: 'Images'
-  permalink: '/components/images'
-  description: 'Image components'
+icon:
+  label: 'Icon'
+  permalink: '/components/icon'
+  description: 'Icon component'
 
 modal:
   label: 'Modal'
