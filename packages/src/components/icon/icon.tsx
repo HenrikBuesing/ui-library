@@ -53,7 +53,7 @@ export function Icon(props: IconType) {
       case 'large':
         return '3rem';
       default:
-        throw new Error(`Unsupported icon size: ${size}`);
+        throw new Error('Unsupported icon size');
     }
   }
 
