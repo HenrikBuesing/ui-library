@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
-import {SVG} from 'components/images/svgIcon';
+import {Icon} from 'components/icon/icon';
 import generateKey from 'utils/generateKey';
 
 interface IPasswordInput extends ICustomInput {
@@ -135,7 +135,7 @@ export function PasswordInput(props: IPasswordInput) {
 
         {rules.map((rule, idx) =>
           <div key={generateKey(idx)} className={'uil-password-rule'}>
-            <SVG src={checkRule(rule) ? ruleChecked : ruleUnchecked} height={12} width={12}/>
+            <Icon type={'svg'} src={checkRule(rule) ? ruleChecked : ruleUnchecked} height={12} width={12}/>
 
             <span>{rule.label}</span>
           </div>

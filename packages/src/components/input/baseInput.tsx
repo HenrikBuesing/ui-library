@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef} from 'react';
-import {SVG} from 'components/images/svgIcon';
+import {Icon} from 'components/icon/icon';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   label       : string;
@@ -35,7 +35,7 @@ export function BaseInput(props: IBaseInput) {
 
       {iconSrc &&
         <div className={'uil-icon'} onClick={toggle}>
-          <SVG src={iconSrc} width={24} height={24} color={iconColor}/>
+          <Icon type={'svg'} src={iconSrc} width={24} height={24} color={iconColor}/>
         </div>
       }
 

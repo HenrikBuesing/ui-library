@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {BaseInput, IBaseInput} from './baseInput';
-import {SVG} from 'components/images/svgIcon';
+import {Icon} from 'components/icon/icon';
 import {useClickOutsideRef} from 'hooks/clickOutside';
 
 export interface ICustomInput extends IBaseInput {
@@ -53,7 +53,7 @@ export function CustomInput(props: ICustomInput) {
           }
 
           <div className={'uil-tooltip-icon uil-fit'} onClick={() => {setTooltipVisible(!tooltipVisible)}}>
-            <SVG src={tooltipIcon} height={16} width={16}/>
+            <Icon src={tooltipIcon} size={'small'} type={'svg'}/>
           </div>
 
           <BaseInput {...inputProps}/>
