@@ -5,7 +5,7 @@ export {NotifyModal, QuestionModal} from './components/modal/index';
 export {CustomRadio, RadioOption} from './components/radio/index';
 export {Checkbox} from './components/checkbox/index';
 export {Button} from './components/button/index';
-export {SVG} from './components/images/index';
+export {Icon} from './components/icon/index';
 
 export {useClickOutsideRef, useContrastColor} from './hooks/index';
 
