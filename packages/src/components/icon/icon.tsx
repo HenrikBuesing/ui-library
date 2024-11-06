@@ -40,8 +40,8 @@ export function Icon(props: IconType) {
 
   const style: CSSProperties = {
     fill: isSvg ? color : undefined,
-    height: getSize(),
-    width: getSize(),
+    height: iconProps.height ? undefined : getSize(),
+    width: iconProps.width ? undefined : getSize(),
   }
 
   function getSize() {
