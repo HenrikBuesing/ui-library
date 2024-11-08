@@ -7,10 +7,10 @@ import RadioExample, {
   CheckboxBody,
   CheckboxColor,
   CheckboxLabel,
-  RadioLabel,
   RadioColor,
   RadioDisabled,
-  CheckboxLabelDark, CheckboxColorDark, CheckboxBodyDark, CheckboxDisabled, CheckboxDisabledDark
+  CheckboxLabelDark, CheckboxColorDark, CheckboxBodyDark, CheckboxDisabled, CheckboxDisabledDark, RadioExampleDark,
+  RadioColorDark, RadioDisabledDark
 } from "@site/src/components/check";
 
 export default {
@@ -29,6 +29,7 @@ export default {
   CallbackModal,
   QuestionExample,
   RadioExample,
+  RadioExampleDark,
   useClickOutsideRef,
   CheckboxLabel,
   CheckboxLabelDark,
@@ -42,8 +43,9 @@ export default {
   PasswordToggle,
   PasswordTooltip,
   PasswordCaps,
-  RadioLabel,
   RadioColor,
+  RadioColorDark,
   RadioDisabled,
+  RadioDisabledDark,
   Icon,
 };

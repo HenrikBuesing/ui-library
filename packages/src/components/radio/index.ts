@@ -1,1 +1,1 @@
-export * from './customRadio';
+export * from './radio';

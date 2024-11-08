@@ -1,11 +1,11 @@
 ---
-title: <CustomRadio />
+title: Radio
 description: Usage of the radio component
 sidebar_position: 5
 tags: [components, radio]
 ---
 
-# \<CustomRadio />
+# \<Radio />
 
 ## Assignable props
 <AssignableProps
@@ -13,36 +13,31 @@ tags: [components, radio]
     {name: 'options', value: 'RadioOption[]', required: true, definition: 'Radio options'},
     {name: 'value', value: 'string', required: true, definition: 'Current value'},
     {name: 'valueChanged', value: '(value: string) => void', required: true, definition: 'Update the current value'},
-    {name: 'checkColor', value: 'string', required: false, definition: 'Set the check color'},
+    {name: 'color', value: 'string', required: false, definition: 'Set the check color'},
     {name: 'disabled', value: 'boolean', required: false, definition: 'disable all options'},
-    {name: 'label', value: 'string', required: false, definition: 'Display a label for the radio options'},
   ]}
 />
 
 ## RadioOption
 <AssignableProps
   data={[
-    {name: 'label', value: 'string', required: true, definition: 'Label of the option'},
+    {name: 'name', value: 'string', required: true, definition: 'name of the option'},
     {name: 'value', value: 'string', required: true, definition: 'value of the option'},
-    {name: 'checked', value: 'boolean', required: false, definition: 'Check the option'},
     {name: 'disabled', value: 'boolean', required: false, definition: 'Disable the option'},
   ]}
 />
 
-:::info
-If one of your options has the `checked` property, the current value will be automatically set to the option's value. \
-Note that if you provide more than one option with the `checked` property, the last one will be selected.
-:::
-
 ## Example usage
 
-### Radio options without a label
-<RadioExample/>
+### default radio options
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <RadioExample/>
+</div>
 
 &NewLine;
 
 ```tsx
-<CustomRadio
+<Radio
   options={options}
   value={value}
   valueChanged={setValue}
@@ -51,66 +46,96 @@ Note that if you provide more than one option with the `checked` property, the l
 
 ```tsx title="Radio options"
 const options: RadioOption[] = [
-  {value: 'option-a', label: 'option-a', checked: true},
-  {value: 'option-b', label: 'option-b'},
-  {value: 'option-c', label: 'option-c'},
-  {value: 'option-d', label: 'option-d', disabled: true},
+  {value: 'option-a', name: 'option-a'},
+  {value: 'option-b', name: 'option-b'},
+  {value: 'option-c', name: 'option-c'},
+  {value: 'option-d', name: 'option-d', disabled: true},
 ];
 ```
 
-### Radio options with a label
-<RadioLabel/>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <RadioExampleDark/>
+</div>
 
 &NewLine;
 
 ```tsx
-<CustomRadio
+<Radio
   options={options}
   value={value}
   valueChanged={setValue}
-  label={'Label property'}
+  dark={true}
 />
 ```
 
 ```tsx title="Radio options"
 const options: RadioOption[] = [
-  {value: 'option-e', label: 'option-e'},
-  {value: 'option-f', label: 'option-f'},
-  {value: 'option-g', label: 'option-g'},
-  {value: 'option-h', label: 'option-h', disabled: true},
+  {value: 'option-a-dark', name: 'option-a-dark'},
+  {value: 'option-b-dark', name: 'option-b-dark'},
+  {value: 'option-c-dark', name: 'option-c-dark'},
+  {value: 'option-d-dark', name: 'option-d-dark', disabled: true},
 ];
 ```
 
 ### Radio options with custom check color
-<RadioColor/>
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <RadioColor/>
+</div>
 
 &NewLine;
 
 ```tsx
-<CustomRadio
+<Radio
   options={options}
   value={value}
   valueChanged={setValue}
-  checkColor={'red'}
+  color={'red'}
 />
 ```
 
 ```tsx title="Radio options"
 const options: RadioOption[] = [
-  {value: 'option-i', label: 'option-i'},
-  {value: 'option-j', label: 'option-j'},
-  {value: 'option-k', label: 'option-k'},
-  {value: 'option-l', label: 'option-l', disabled: true},
+  {value: 'option-i', name: 'option-i'},
+  {value: 'option-j', name: 'option-j'},
+  {value: 'option-k', name: 'option-k'},
+  {value: 'option-l', name: 'option-l', disabled: true},
 ];
 ```
 
-### Disabled radio options
-<RadioDisabled/>
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <RadioColorDark/>
+</div>
 
 &NewLine;
 
 ```tsx
-<CustomRadio
+<Radio
+  options={options}
+  value={value}
+  valueChanged={setValue}
+  checkColor={'red'}
+  dark={true}
+/>
+```
+
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-i-dark', name: 'option-i-dark'},
+  {value: 'option-j-dark', name: 'option-j-dark'},
+  {value: 'option-k-dark', name: 'option-k-dark'},
+  {value: 'option-l-dark', name: 'option-l-dark', disabled: true},
+];
+```
+
+### Disabled radio options
+<div className={'showcase'} style={{backgroundColor:'#FFFFFF'}}>
+  <RadioDisabled/>
+</div>
+
+&NewLine;
+
+```tsx
+<Radio
   options={options}
   value={value}
   valueChanged={setValue}
@@ -120,10 +145,35 @@ const options: RadioOption[] = [
 
 ```tsx title="Radio options"
 const options: RadioOption[] = [
-  {value: 'option-m', label: 'option-m'},
-  {value: 'option-n', label: 'option-n'},
-  {value: 'option-o', label: 'option-o'},
-  {value: 'option-p', label: 'option-p', disabled: true},
+  {value: 'option-m', name: 'option-m'},
+  {value: 'option-n', name: 'option-n'},
+  {value: 'option-o', name: 'option-o'},
+  {value: 'option-p', name: 'option-p', disabled: true},
+];
+```
+
+<div className={'showcase'} style={{backgroundColor:'#222222'}}>
+  <RadioDisabledDark/>
+</div>
+
+&NewLine;
+
+```tsx
+<Radio
+  options={options}
+  value={value}
+  valueChanged={setValue}
+  disabled={true}
+  dark={true}
+/>
+```
+
+```tsx title="Radio options"
+const options: RadioOption[] = [
+  {value: 'option-m-dark', name: 'option-m-dark'},
+  {value: 'option-n-dark', name: 'option-n-dark'},
+  {value: 'option-o-dark', name: 'option-o-dark'},
+  {value: 'option-p-dark', name: 'option-p-dark', disabled: true},
 ];
 ```
 
@@ -132,19 +182,18 @@ const options: RadioOption[] = [
 function Playground() {
   const [value, setValue] = useState('');
   const options: RadioOption[] = [
-    {value: 'foo', label: 'foo', checked: true},
-    {value: 'bar', label: 'bar'},
-    {value: 'baz', label: 'baz'},
-    {value: 'disabled', label: 'disabled', disabled: true},
+    {value: 'foo', name: 'foo', checked: true},
+    {value: 'bar', name: 'bar'},
+    {value: 'baz', name: 'baz'},
+    {value: 'disabled', name: 'disabled', disabled: true},
   ];
 
   return (
     <>
-      <CustomRadio
+      <Radio
         options={options}
         value={value}
         valueChanged={setValue}
-        label={'Select one of the following options:'}
       />
 
       <div style={{marginTop: '2rem'}}>current value: {value}</div>
