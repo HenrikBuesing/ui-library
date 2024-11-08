@@ -1,64 +1,94 @@
 import React, {useState} from 'react';
-import {CustomRadio, Checkbox} from "@site/src/uil-bundle";
+import {Radio, Checkbox} from "@site/src/uil-bundle";
 import {RadioOption} from "../../uil-bundle";
 
 export default function RadioExample() {
   const options: RadioOption[] = [
-    {value: 'option-a', label: 'option-a', checked: true},
-    {value: 'option-b', label: 'option-b'},
-    {value: 'option-c', label: 'option-c'},
-    {value: 'option-d', label: 'option-d', disabled: true},
+    {value: 'option-a', name: 'option-a'},
+    {value: 'option-b', name: 'option-b'},
+    {value: 'option-c', name: 'option-c'},
+    {value: 'option-d', name: 'option-d', disabled: true},
   ];
 
   const [value, setValue] = useState<string>('');
 
   return (
-    <CustomRadio options={options} value={value} valueChanged={setValue}/>
+    <Radio options={options} value={value} valueChanged={setValue}/>
   );
 }
 
-export function RadioLabel() {
-  const optionsB: RadioOption[] = [
-    {value: 'option-e', label: 'option-e'},
-    {value: 'option-f', label: 'option-f'},
-    {value: 'option-g', label: 'option-g'},
-    {value: 'option-h', label: 'option-h', disabled: true},
+export function RadioExampleDark() {
+  const options: RadioOption[] = [
+    {value: 'option-a-dark', name: 'option-a-dark'},
+    {value: 'option-b-dark', name: 'option-b-dark'},
+    {value: 'option-c-dark', name: 'option-c-dark'},
+    {value: 'option-d-dark', name: 'option-d-dark', disabled: true},
   ];
 
   const [value, setValue] = useState<string>('');
 
   return (
-    <CustomRadio options={optionsB} value={value} valueChanged={setValue} label={'Label property'}/>
+    <Radio options={options} value={value} valueChanged={setValue} dark={true}/>
   );
 }
 
 export function RadioColor() {
   const optionsC: RadioOption[] = [
-    {value: 'option-i', label: 'option-i'},
-    {value: 'option-j', label: 'option-j'},
-    {value: 'option-k', label: 'option-k'},
-    {value: 'option-l', label: 'option-l', disabled: true},
+    {value: 'option-i', name: 'option-i'},
+    {value: 'option-j', name: 'option-j'},
+    {value: 'option-k', name: 'option-k'},
+    {value: 'option-l', name: 'option-l', disabled: true},
   ];
 
   const [value, setValue] = useState<string>('');
 
   return (
-    <CustomRadio options={optionsC} value={value} valueChanged={setValue} checkColor={'red'}/>
+    <Radio options={optionsC} value={value} valueChanged={setValue} color={'red'}/>
+  );
+}
+
+export function RadioColorDark() {
+  const optionsC: RadioOption[] = [
+    {value: 'option-i-dark', name: 'option-i-dark'},
+    {value: 'option-j-dark', name: 'option-j-dark'},
+    {value: 'option-k-dark', name: 'option-k-dark'},
+    {value: 'option-l-dark', name: 'option-l-dark', disabled: true},
+  ];
+
+  const [value, setValue] = useState<string>('');
+
+  return (
+    <Radio options={optionsC} value={value} valueChanged={setValue} color={'red'} dark={true}/>
   );
 }
 
 export function RadioDisabled() {
   const optionsD: RadioOption[] = [
-    {value: 'option-m', label: 'option-m'},
-    {value: 'option-n', label: 'option-n'},
-    {value: 'option-o', label: 'option-o'},
-    {value: 'option-p', label: 'option-p', disabled: true},
+    {value: 'option-m', name: 'option-m'},
+    {value: 'option-n', name: 'option-n'},
+    {value: 'option-o', name: 'option-o'},
+    {value: 'option-p', name: 'option-p', disabled: true},
   ];
 
   const [value, setValue] = useState<string>('');
 
   return (
-    <CustomRadio options={optionsD} value={value} valueChanged={setValue} disabled={true}/>
+    <Radio options={optionsD} value={value} valueChanged={setValue} disabled={true}/>
+  );
+}
+
+export function RadioDisabledDark() {
+  const optionsD: RadioOption[] = [
+    {value: 'option-m-dark', name: 'option-m-dark'},
+    {value: 'option-n-dark', name: 'option-n-dark'},
+    {value: 'option-o-dark', name: 'option-o-dark'},
+    {value: 'option-p-dark', name: 'option-p-dark', disabled: true},
+  ];
+
+  const [value, setValue] = useState<string>('');
+
+  return (
+    <Radio options={optionsD} value={value} valueChanged={setValue} disabled={true} dark={true}/>
   );
 }
 
