@@ -1,5 +1,7 @@
 import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
 import generateKey from 'utils/generateKey';
+import styles from './checkbox.module.scss';
+import global from '../global.module.scss';
 
 interface ICheckBase extends ComponentPropsWithoutRef<'input'> {
   checked    : boolean;
@@ -53,7 +55,7 @@ export function Checkbox(props: ICheckbox) {
   }
 
   return (
-    <div className={'uil-check-wrapper'}>
+    <div className={styles.uilCheckWrapper}>
       <div className={`uil-checkbox uil-check ${dark? 'uil-dark' : ''}`} onClick={handleCheck}>
         <input type={'checkbox'} checked={checked} onChange={handleCheck} id={ID} {...checkProps}/>
         <div className={`uil-checkmark ${dark ? 'uil-dark' : ''}`} style={{backgroundColor: color}}/>

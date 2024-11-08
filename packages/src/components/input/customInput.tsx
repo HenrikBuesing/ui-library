@@ -43,7 +43,7 @@ export function CustomInput(props: ICustomInput) {
           {tooltipVisible &&
             <div className={'uil-tooltip'}>
               {tooltipClose &&
-                <button className={'uil-tooltip-button uil-fit'} onClick={closeTooltip}>
+                <button className={'uil-tooltip-button fit'} onClick={closeTooltip}>
                   {tooltipClose}
                 </button>
               }
@@ -52,7 +52,7 @@ export function CustomInput(props: ICustomInput) {
             </div>
           }
 
-          <div className={'uil-tooltip-icon uil-fit'} onClick={() => {setTooltipVisible(!tooltipVisible)}}>
+          <div className={'uil-tooltip-icon fit'} onClick={() => {setTooltipVisible(!tooltipVisible)}}>
             <Icon src={tooltipIcon} size={'small'} type={'svg'}/>
           </div>
 

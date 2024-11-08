@@ -13,7 +13,8 @@
     "strictNullChecks": true,
     "exactOptionalPropertyTypes": true,
     "declaration": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": [
     "./src/**/*"

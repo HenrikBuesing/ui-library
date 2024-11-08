@@ -1,6 +1,5 @@
 import * as esbuild from "esbuild";
-import {sassPlugin} from "esbuild-sass-plugin";
-import postcss from "postcss";
+import {postcssModules, sassPlugin} from "esbuild-sass-plugin";
 import cssnanoPlugin from "cssnano";
 
 try {
@@ -14,15 +13,14 @@ try {
     format: 'esm',
     target: ['esnext'],
     plugins: [sassPlugin({
-      type: "css-text",
-      async transform(source) {
-        const {css} = await postcss([
-          cssnanoPlugin({
-            preset: 'cssnano-preset-advanced',
-          })
-        ]).process(source, {from: 'undefined'})
-        return css
-      }
+      type: "style",
+      transform: postcssModules({
+        generateScopedName: '[name]_[hash:base64:5]',
+      }, [
+        cssnanoPlugin({
+          preset: 'cssnano-preset-advanced',
+        })
+      ]),
     })],
     external: ['react'],
   });

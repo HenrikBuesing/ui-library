@@ -1,6 +1,6 @@
-@use '../variables' as *;
+@use '../mixin' as *;
 
-.uil-check-wrapper {
+.uilCheckWrapper {
   display: flex;
   align-items: center;
   gap: var(--uil-s);

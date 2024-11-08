@@ -1,7 +1,6 @@
 import * as esbuild from "esbuild";
 import {writeFileSync} from "node:fs";
-import {sassPlugin} from "esbuild-sass-plugin";
-import postcss from "postcss";
+import {postcssModules, sassPlugin} from "esbuild-sass-plugin";
 import cssnanoPlugin from "cssnano";
 
 try {
@@ -9,21 +8,20 @@ try {
     entryPoints: ['src/index.ts'],
     outdir: 'dist',
     bundle: true,
-    minify: true,
+    minify: false,
     sourcemap: false,
     metafile: true,
     format: 'esm',
     target: ['esnext'],
     plugins: [sassPlugin({
-      type: "css-text",
-      async transform(source) {
-        const {css} = await postcss([
-          cssnanoPlugin({
-            preset: 'cssnano-preset-advanced',
-          })
-        ]).process(source, {from: 'undefined'})
-        return css
-      }
+      type: "style",
+      transform: postcssModules({
+        generateScopedName: 'uil_[hash:base64:5]',
+      }, [
+        // cssnanoPlugin({
+        //   preset: 'cssnano-preset-advanced',
+        // })
+      ]),
     })],
     external: ['react'],
   });

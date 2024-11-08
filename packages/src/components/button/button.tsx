@@ -1,5 +1,7 @@
 import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
 import {useContrastColor} from 'hooks/contrastColor';
+import style from './button.module.scss';
+import global from '../global.module.scss';
 
 export type HEX = `#${string}`
 
@@ -64,30 +66,14 @@ export function Button(props: IButton) {
   }
 
   function setClassName() {
-    const customTheme = theme?.includes('#');
-    let className = `uil-button uil-fit uil-${size}`;
+    //TODO add size
+    let classes = [style.button, global.fit, style[buttonType]];
 
-    if (dark) className += ' uil-dark';
-    if (disabled) className += ' uil-disabled';
+    if (dark) classes.push(style.dark);
+    if (disabled) classes.push(style.disabled);
+    if (!theme?.includes('#') && (buttonType === 'primary' || buttonType === 'outline')) classes.push(style[theme]);
 
-    switch (buttonType) {
-      case 'primary':
-        className += ' uil-primary';
-        if (!customTheme) className += ` uil-${theme}`;
-        break;
-      case 'secondary':
-        className += ' uil-secondary';
-        break;
-      case 'outline':
-        className += ' uil-outline';
-        if (!customTheme) className += ` uil-${theme}`;
-        break;
-      case 'text':
-        className += ' uil-text';
-        break;
-    }
-
-    return className;
+    return classes.join(", ");
   }
 
   return (

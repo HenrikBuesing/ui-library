@@ -13,7 +13,7 @@
   "scripts": {
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
-    "build": "node ./esbuild.js",
+    "build": "node esbuild.js",
     "postbuild": "tsc --emitDeclarationOnly --project tsconfig.build.json"
   },
   "license": "MIT",
@@ -26,5 +26,8 @@
   },
   "peerDependencies": {
     "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "postcss-modules": "^6.0.0"
   }
 }
