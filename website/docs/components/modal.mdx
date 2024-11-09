@@ -1,11 +1,11 @@
 ---
-title: <NotifyModal />
+title: <Notification />
 description: Usage of the notification modal component
 sidebar_position: 6
 tags: [components, modal]
 ---
 
-# \<NotifyModal />
+# \<Notification />
 
 ## Component props
 <AssignableProps
@@ -28,7 +28,7 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<NotifyModal
+<Notification
   title={'Success'}
   message={'This is a success message'}
   close={() => setModalVis(false)}
@@ -43,7 +43,7 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<NotifyModal
+<Notification
   title={'Warning'}
   message={'This is a warning message'}
   close={() => setModalVis(false)}
@@ -58,7 +58,7 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<NotifyModal
+<Notification
   title={'Error'}
   message={'This is an error'}
   close={() => setModalVis(false)}
@@ -75,7 +75,7 @@ If you would like to separate the message into different paragraphs, use an arra
 &NewLine;
 
 ```tsx
-<NotifyModal
+<Notification
   title={'Multiple messages'}
   message={['first string', 'this is a second text', 'Each string is wrapped in a paragraph']}
   close={() => setModalVis(false)}
@@ -94,7 +94,7 @@ Note that `callback` functions will be ignored if you don't set a `timeout`.
 &NewLine;
 
 ```tsx
-<NotifyModal
+<Notification
   title={'Modal with timeout'}
   message={'Display an alert after 3 second timeout'}
   close={() => setModalVis(false)}
@@ -105,12 +105,6 @@ Note that `callback` functions will be ignored if you don't set a `timeout`.
 />
 ```
 
-:::info[Omitting the callback function]
-If you set a `timeout` you should also set the `callback` function. But there is a case where it is recommended to omit it,
-since omitting the `callback` function will result in the `close` function being used as a fallback. \
-This is useful for when both functions are identical, as you won't have to provide the same function twice.
-:::
-
 ## Playground
 ```tsx live
 function Playground() {
@@ -118,15 +112,16 @@ function Playground() {
 
   return (
     <>
-      <PrimaryButton label={'show Modal'} color={'success'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} label={'show Modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
-        <NotifyModal
+        <Modal
+          type={'notification'}
           title={'Modal title'}
           message={'Modal message'}
-          close={() => setModalVis(false)}
-          closeLabel={'close label'}
-          modalType={'success'}
+          action={() => setModalVis(false)}
+          buttonLabel={'close label'}
+          theme={'success'}
         />
       }
     </>

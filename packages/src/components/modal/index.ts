@@ -1,2 +1,1 @@
-export * from './notifyModal';
-export * from './questionModal';
+export * from './modal';
