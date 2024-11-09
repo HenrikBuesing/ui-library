@@ -1,8 +1,6 @@
 @use '../mixin' as *;
 
 .button {
-  cursor: pointer;
-  letter-spacing: 1px;
   border: 1px solid var(--uil-black-light);
   border-radius: 5px;
   box-shadow: 0 0 2px 0 var(--uil-black-alt);
@@ -79,7 +77,6 @@
 
   &.disabled {
     color: var(--uil-grey-darker);
-    cursor: not-allowed;
 
     &.primary, &.secondary {
       background-color: var(--uil-grey);
@@ -132,32 +129,32 @@
         border-color: var(--uil-success);
       }
 
-      &warning {
+      &.warning {
         color: var(--uil-warning-light);
         background-color: var(--uil-warning-dark);
         border-color: var(--uil-warning);
       }
 
-      &error {
+      &.error {
         color: var(--uil-error-light);
         background-color: var(--uil-error-dark);
         border-color: var(--uil-error);
       }
     }
 
-    &secondary {
+    &.secondary {
       background-color: var(--uil-black-lighter);
       border-color: var(--uil-grey-dark);
     }
 
-    &outline {
+    &.outline {
 
       &:hover {
         box-shadow: none;
         -webkit-box-shadow: none;
       }
 
-      &success {
+      &.success {
         color: var(--uil-success);
         border-color: var(--uil-success);
 
@@ -166,7 +163,7 @@
         }
       }
 
-      &warning {
+      &.warning {
         color: var(--uil-warning);
         border-color: var(--uil-warning);
 
@@ -175,7 +172,7 @@
         }
       }
 
-      &error {
+      &.error {
         color: var(--uil-error);
         border-color: var(--uil-error);
 
@@ -185,7 +182,7 @@
       }
     }
 
-    &text {
+    &.text {
       &:hover {
         box-shadow: none;
         -webkit-box-shadow: none;
@@ -193,7 +190,7 @@
       }
     }
 
-    &disabled {
+    &.disabled {
       color: var(--uil-grey-dark);
       background-color: var(--uil-black-lighter);
       border-color: var(--uil-grey-dark);
@@ -205,11 +202,11 @@
         -webkit-box-shadow: none;
       }
 
-      &secondary {
+      &.secondary {
         background-color: var(--uil-black-light);
       }
 
-      &outline {
+      &.outline {
         color: var(--uil-grey-dark);
         background-color: transparent;
         border-color: var(--uil-grey-dark);
@@ -224,48 +221,25 @@
         }
       }
 
-      &text {
+      &.text {
         background-color: transparent;
         border-color: transparent;
       }
     }
   }
 
-  &small {
-    font-size: var(--uil-s);
-    line-height: var(--uil-s);
+  &.small {
+    letter-spacing: 1px;
     padding: var(--uil-xxs);
-
-    @include uil-tablet {
-      font-size: var(--uil-font-small);
-      line-height: var(--uil-font-small);
-      padding: var(--uil-xs);
-    }
   }
 
-  &medium {
-    font-size: var(--uil-m);
-    line-height: var(--uil-m);
+  &.medium {
     letter-spacing: 2px;
     padding: var(--uil-xs);
-
-    @include uil-tablet {
-      font-size: var(--uil-font-medium);
-      line-height: var(--uil-font-medium);
-      padding: var(--uil-s);
-    }
   }
 
-  &large {
-    font-size: var(--uil-xl);
-    line-height: var(--uil-xl);
-    letter-spacing: 3px;
+  &.large {
+    letter-spacing: 2px;
     padding: var(--uil-s);
-
-    @include uil-tablet {
-      font-size: var(--uil-font-large);
-      line-height: var(--uil-font-large);
-      padding: var(--uil-m);
-    }
   }
 }

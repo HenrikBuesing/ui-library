@@ -3,26 +3,21 @@ import {useContrastColor} from 'hooks/contrastColor';
 import style from './button.module.scss';
 import global from '../global.module.scss';
 
-export type HEX = `#${string}`
-
-interface IBaseButton extends ComponentPropsWithoutRef<'button'> {
+interface Button extends ComponentPropsWithoutRef<'button'> {
   label      : string;
   dark?      : boolean;
-  disabled?  : boolean;
   size?      : 'small' | 'medium' | 'large';
 }
 
-interface ITheme {
+interface Theme {
   buttonType : 'primary' | 'outline';
-  theme: HEX | 'success' | 'warning' | 'error';
+  theme: `#${string}` | 'success' | 'warning' | 'error';
 }
 
-interface INoTheme {
+interface NoTheme {
   buttonType : 'secondary' | 'text';
   theme?: never;
 }
-
-type IButton = IBaseButton & (ITheme | INoTheme);
 
 /**
  * @example
@@ -40,7 +35,7 @@ type IButton = IBaseButton & (ITheme | INoTheme);
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/button)
  */
-export function Button(props: IButton) {
+export function Button(props: Button & (Theme | NoTheme)) {
   const {
     buttonType,
     theme,
@@ -48,7 +43,8 @@ export function Button(props: IButton) {
     dark,
     disabled,
     size = 'medium',
-    ...buttonProps
+    type,
+    ...other
   } = props;
 
   function setStyle(): CSSProperties | undefined {
@@ -66,23 +62,33 @@ export function Button(props: IButton) {
   }
 
   function setClassName() {
-    //TODO add size
-    let classes = [style.button, global.fit, style[buttonType]];
+    const themeClass = (!theme?.includes('#') && (buttonType === 'primary' || buttonType === 'outline')) ? ` ${style[theme]}` : '';
+    let sizeClass = style[size];
 
-    if (dark) classes.push(style.dark);
-    if (disabled) classes.push(style.disabled);
-    if (!theme?.includes('#') && (buttonType === 'primary' || buttonType === 'outline')) classes.push(style[theme]);
+    switch (size) {
+      case 'small':
+        sizeClass += ` ${global.fontSmall}`;
+        break;
+      case 'medium':
+        sizeClass += ` ${global.fontMedium}`;
+        break;
+      case 'large':
+        sizeClass += ` ${global.fontLarge}`;
+        break;
+      default:
+        throw new Error('[Button] Unsupported size');
+    }
 
-    return classes.join(", ");
+    return `${global.fit} ${disabled ? global.notAllowed : global.pointer} ${style.button} ${style[buttonType]} ${sizeClass}${dark ? ` ${style.dark}` : ''}${disabled ? ` ${style.disabled}` : ''}${themeClass}`;
   }
 
   return (
     <button
       style={setStyle()}
       className={setClassName()}
-      type={buttonProps.type?? 'button'}
+      type={type ?? 'button'}
       disabled={disabled}
-      {...buttonProps}
+      {...other}
     >
       {label}
     </button>
