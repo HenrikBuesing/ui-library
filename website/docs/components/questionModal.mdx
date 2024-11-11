@@ -1,11 +1,11 @@
 ---
-title: <QuestionModal />
+title: <Question />
 description: Usage of the question modal component
 sidebar_position: 7
 tags: [components, modal]
 ---
 
-# \<QuestionModal />
+# \<Question />
 
 ## Component props
 <AssignableProps
@@ -25,7 +25,7 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<QuestionModal
+<Question
   title={'Question title'}
   message={['Confirm to display an alert', 'cancel to close this modal']}
   cancel={() => setModalVis(false)}
@@ -48,10 +48,10 @@ function Playground() {
 
   return (
     <>
-      <CustomButton label={'show Modal'} onClick={() => setModalVis(true)} />
+      <Button buttonType={'secondary'} label={'show Modal'} onClick={() => setModalVis(true)} />
 
       {modalVis &&
-        <QuestionModal
+        <Modal
           title={'Modal title'}
           message={'Modal message'}
           cancel={() => setModalVis(false)}

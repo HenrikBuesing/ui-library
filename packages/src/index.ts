@@ -1,7 +1,7 @@
 import styles from './styles.scss';
 
 export {CustomInput, PasswordInput, PasswordRule} from './components/input/index';
-export {NotifyModal, QuestionModal} from './components/modal/index';
+export {Modal} from './components/modal/index';
 export {Radio, RadioOption} from './components/radio/index';
 export {Checkbox} from './components/checkbox/index';
 export {Button} from './components/button/index';
