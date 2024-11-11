@@ -2,50 +2,53 @@ import React, {ReactNode, useEffect} from 'react';
 import generateKey from 'utils/generateKey';
 import {Button} from "../button";
 
-interface Modal {
-  action  : () => void;
-  title   : string;
-  timeout?: number;
-  theme?  : 'success' | 'warning' | 'error';
+interface BaseProps {
+  title : string;
+  dark? : boolean;
+  theme?: 'success' | 'warning' | 'error';
 }
 
-interface BaseNotification {
-  buttonLabel  : string;
+interface ModalNoHTML extends BaseProps {
+  action   : () => void;
+  children?: never;
+  message  : string | string[];
+}
+
+interface ModalHTML extends BaseProps {
+  action?  : never;
+  children : ReactNode;
+  message? : never;
+}
+
+type Modal = ModalNoHTML | ModalHTML;
+
+interface Notification {
   type         : 'notification';
+  buttonLabel? : string;
   cancelAction?: never;
   cancelLabel ?: never;
   confirmLabel?: never;
+  timeout?     : number;
 }
 
-interface BaseQuestion {
-  cancelAction: () => void;
-  cancelLabel : string;
-  confirmLabel: string;
-  type        : 'question';
-  buttonLabel?: never;
+interface Question {
+  type         : 'question';
+  buttonLabel? : never;
+  cancelAction?: () => void;
+  cancelLabel? : string;
+  confirmLabel?: string;
+  timeout?     : never;
 }
-
-interface HTMLBody {
-  message?: never;
-  children: ReactNode;
-}
-
-interface StringBody {
-  message : string | string[];
-  children?: never;
-}
-
-type Notification = BaseNotification & (HTMLBody | StringBody)
-type Question = BaseQuestion & (HTMLBody | StringBody)
 
 export function Modal(props: Modal & (Notification | Question)) {
   const {
     action,
-    buttonLabel,
+    buttonLabel = '',
     cancelAction,
     cancelLabel = '',
     children,
     confirmLabel = '',
+    dark = false,
     message,
     timeout,
     title,
@@ -56,7 +59,7 @@ export function Modal(props: Modal & (Notification | Question)) {
   let timer: NodeJS.Timeout | undefined = undefined;
 
   useEffect(() => {
-    if (!timeout) return;
+    if (!timeout || !action) return;
 
     timer = setTimeout(() => {
       return action();
@@ -81,6 +84,8 @@ export function Modal(props: Modal & (Notification | Question)) {
   }
 
   function handleClose() {
+    if (!action) return
+
     clearTimeout(timer);
 
     return action();
@@ -88,7 +93,7 @@ export function Modal(props: Modal & (Notification | Question)) {
 
   return (
     <div className={'uil-modal-wrapper'}>
-      <div className={'uil-modal'}>
+      <div className={`uil-modal ${dark ? 'dark' : ''}`}>
         <div className={setHeaderClass()}>{title}</div>
 
         {timeout &&
@@ -97,27 +102,28 @@ export function Modal(props: Modal & (Notification | Question)) {
           </div>
         }
 
-        <div className={'uil-content'}>
-          <div>
-            { message ?
-              Array.isArray(message) ?
-              message.map((m, idx) => <p key={generateKey(idx)} className={'uil-modal-text'}>{m}</p>)
-              : <p className={'uil-modal-text'}>{message}</p> : children
-            }
-          </div>
+        <div className={`uil-content ${dark ? 'dark' : ''}`}>
+          {children ? children :
+            <>
+              <div>
+                {Array.isArray(message) ?
+                  message.map((m, idx) => <p key={generateKey(idx)} className={'uil-modal-text'}>{m}</p>)
+                  : <p className={'uil-modal-text'}>{message}</p>
+                }
+              </div>
 
-          <div className={`uil-button-wrapper ${type === 'notification' ? 'uil-single' : ''}`}>
-            {type === 'notification' &&
-              <Button label={buttonLabel} onClick={handleClose} type={'button'} buttonType={'secondary'}/>
-            }
+              <div className={`uil-button-wrapper ${type === 'notification' ? 'uil-single' : ''}`}>
+                {type === 'notification' ?
+                  <Button label={buttonLabel} onClick={handleClose} type={'button'} buttonType={'secondary'} dark={dark}/> :
 
-            {type == 'question' &&
-              <>
-                <Button buttonType={'primary'} label={confirmLabel} theme={'#00416A'} onClick={action} type={'button'}/>
-                <Button buttonType={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'}/>
-              </>
-            }
-          </div>
+                  <>
+                    <Button buttonType={'primary'} label={confirmLabel} theme={theme ?? '#00416A'} onClick={action} type={'button'} dark={dark}/>
+                    <Button buttonType={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
+                  </>
+                }
+              </div>
+            </>
+          }
         </div>
       </div>
     </div>

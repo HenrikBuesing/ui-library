@@ -32,25 +32,9 @@
       width: 35%;
     }
 
-    .uil-progress-wrapper {
-      background-color: var(--uil-grey-alt);
-
-      & .uil-progress-bar {
-        border: 2px solid var(--uil-grey-dark);
-        animation-duration: 2s;
-        animation-iteration-count: initial;
-        animation-name: uil-progress;
-      }
-    }
-
-    @keyframes uil-progress {
-      0% {
-        width: 100%;
-      }
-
-      100% {
-        width: 0;
-      }
+    &.dark {
+      -webkit-box-shadow: none;
+      box-shadow: none;
     }
 
     .uil-header {
@@ -87,6 +71,7 @@
     }
 
     .uil-content {
+      color: var(--uil-black);
       background-color: var(--uil-white);
       padding: var(--uil-m);
       border-bottom-left-radius: 3px;
@@ -100,10 +85,14 @@
         gap: var(--uil-xxxl);
       }
 
+      &.dark {
+        color: var(--uil-white);
+        background-color: var(--uil-black-alt);
+      }
+
       .uil-modal-text {
         font-size: var(--uil-font-medium);
         line-height: var(--uil-font-medium);
-        color: var(--uil-black);
         margin: 0;
       }
 
@@ -114,6 +103,27 @@
         &.uil-single {
           justify-content: end;
         }
+      }
+    }
+
+    .uil-progress-wrapper {
+      background-color: var(--uil-grey-alt);
+
+      & .uil-progress-bar {
+        border: 2px solid var(--uil-grey-dark);
+        animation-duration: 2s;
+        animation-iteration-count: initial;
+        animation-name: uil-progress;
+      }
+    }
+
+    @keyframes uil-progress {
+      0% {
+        width: 100%;
+      }
+
+      100% {
+        width: 0;
       }
     }
   }

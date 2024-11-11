@@ -1,26 +1,61 @@
 ---
-title: <Notification />
-description: Usage of the notification modal component
+title: Modal
+description: Usage of the Modal modal component
 sidebar_position: 6
 tags: [components, modal]
 ---
 
-# \<Notification />
+# \<Modal />
 
-## Component props
+## Notification props
 <AssignableProps
   data={[
-    {name: 'close', value: '() => void', required: true, definition: 'Function that executes whenever a user closes the modal'},
-    {name: 'closeLabel', value: 'string', required: true, definition: 'Label for the close button'},
+    {name: 'action', value: '() => void', required: true, definition: 'Action for the close button'},
+    {name: 'buttonLabel', value: 'string', required: true, definition: 'Label for the close button'},
     {name: 'message', value: 'string | []string', required: true, definition: 'Modal message'},
-    {name: 'modalType', value: '"success" | "warning" | "error"', required: true, definition: 'Specify the modal type'},
     {name: 'title', value: 'string', required: true, definition: 'Modal title'},
-    {name: 'callback', value: '() => void', required: false, definition: 'Execute the function after the set timeout'},
+    {name: 'type', value: 'notification', required: true, definition: 'Set modal to notification'},
+    {name: 'dark', value: 'boolean', required: false, definition: 'Enables dark mode'},
+    {name: 'theme', value: '"success" | "warning" | "error"', required: false, definition: 'Set a theme for the modal'},
     {name: 'timeout', value: 'number', required: false, definition: 'set a timeout for the modal, if no callback is provided the close function will be used instead'},
   ]}
 />
 
-## Example usage
+## Question props
+<AssignableProps
+  data={[
+    {name: 'action', value: '() => void', required: true, definition: 'Action for the confirm button'},
+    {name: 'confirmLabel', value: 'string', required: true, definition: 'Label for the confirm button'},
+    {name: 'cancelAction', value: 'string', required: true, definition: 'Action for the close/cancel button'},
+    {name: 'cancelLabel', value: 'string', required: true, definition: 'Label for the close/cancel button'},
+    {name: 'message', value: 'string | []string', required: true, definition: 'Modal message'},
+    {name: 'title', value: 'string', required: true, definition: 'Modal title'},
+    {name: 'type', value: 'question', required: true, definition: 'Set modal to question'},
+    {name: 'dark', value: 'boolean', required: false, definition: 'Enables dark mode'},
+    {name: 'theme', value: '"success" | "warning" | "error"', required: false, definition: 'Set a theme for the modal'},
+  ]}
+/>
+
+:::info
+  The modal body can also be overridden by your own HTML.
+:::
+
+## Notification
+
+### No theme
+<NoTheme/>
+
+&NewLine;
+
+````tsx
+<Modal
+  type={'notification'}
+  title={'No theme'}
+  message={'This is a notification without a theme'}
+  action={() => setModalVis(false)}
+  buttonLabel={'close'}
+/>
+````
 
 ### Success
 <SuccessModal/>
@@ -28,12 +63,13 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<Notification
+<Modal
+  type={'notification'}
   title={'Success'}
   message={'This is a success message'}
-  close={() => setModalVis(false)}
-  closeLabel={'close'}
-  modalType={'success'}
+  action={() => setModalVis(false)}
+  buttonLabel={'close'}
+  theme={'success'}
 />
 ```
 
@@ -43,12 +79,13 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<Notification
+<Modal
+  type={'notification'}
   title={'Warning'}
   message={'This is a warning message'}
-  close={() => setModalVis(false)}
-  closeLabel={'close'}
-  modalType={'warning'}
+  action={() => setModalVis(false)}
+  buttonLabel={'close'}
+  theme={'warning'}
 />
 ```
 
@@ -58,12 +95,13 @@ tags: [components, modal]
 &NewLine;
 
 ```tsx
-<Notification
+<Modal
+  type={'notification'}
   title={'Error'}
   message={'This is an error'}
-  close={() => setModalVis(false)}
-  closeLabel={'close'}
-  modalType={'error'}
+  action={() => setModalVis(false)}
+  buttonLabel={'close'}
+  theme={'error'}
 />
 ```
 
@@ -75,37 +113,74 @@ If you would like to separate the message into different paragraphs, use an arra
 &NewLine;
 
 ```tsx
-<Notification
+<Modal
+  type={'notification'}
   title={'Multiple messages'}
   message={['first string', 'this is a second text', 'Each string is wrapped in a paragraph']}
-  close={() => setModalVis(false)}
-  closeLabel={'close'}
-  modalType={'success'}
+  action={() => setModalVis(false)}
+  buttonLabel={'close'}
+  theme={'success'}
 />
 ```
 
 ### Timeout
-Execute a `callback` function after the set `timeout`. The `callback` function will also be executed if a
-user closes the modal before the timer runs out. \
-Note that `callback` functions will be ignored if you don't set a `timeout`.
+The `action` function runs automatically after the set `timeout`.
 
 <CallbackModal/>
 
 &NewLine;
 
 ```tsx
-<Notification
+<Modal
+  type={'notification'}
   title={'Modal with timeout'}
-  message={'Display an alert after 3 second timeout'}
-  close={() => setModalVis(false)}
-  closeLabel={'close'}
-  modalType={'success'}
+  message={'close after after 3 second timeout'}
+  action={alertTimeout}
+  buttonLabel={'close'}
+  theme={'success'}
   timeout={3000}
-  callback={alertTimeout}
 />
 ```
 
-## Playground
+### Custom modal content
+You can provide custom HTMl for both `Notification` & `Question` instead of providing certain props.
+
+<CustomBody/>
+
+&NewLine;
+
+```tsx
+<Modal type={'notification'} title={'custom modal content'} theme={'success'}>
+  <div>
+    <p>paragraph text</p>
+    <div>you can also insert <a href={'/'}>links</a></div>
+  </div>
+
+  <div>
+    <Button label={'close modal'} buttonType={'text'} onClick={() => setModalVis(false)}/>
+  </div>
+</Modal>
+```
+
+### Dark version
+
+<DarkMode/>
+
+&NewLine;
+
+```tsx
+<Modal
+  type={'notification'}
+  title={'Dark modal'}
+  message={'This is the dark version of the modal.'}
+  action={() => setModalVis(false)}
+  buttonLabel={'close'}
+  theme={'success'}
+  dark={true}
+/>
+```
+
+### Playground
 ```tsx live
 function Playground() {
   const [modalVis, setModalVis] = useState(false);
@@ -122,6 +197,110 @@ function Playground() {
           action={() => setModalVis(false)}
           buttonLabel={'close label'}
           theme={'success'}
+        />
+      }
+    </>
+  );
+}
+```
+
+## Question
+
+### No theme
+
+<QuestionExample/>
+
+&NewLine;
+
+```tsx
+<Modal
+  type={'question'}
+  title={'Question title'}
+  message={['Confirm to display an alert', 'cancel to close this modal']}
+  cancelAction={() => setModalVis(false)}
+  cancelLabel={'cancel'}
+  action={() => alert('Hello!')}
+  confirmLabel={'confirm'}
+/>
+```
+
+### With theme
+
+<QuestionTheme/>
+
+&NewLine;
+
+```tsx
+<Modal
+  type={'question'}
+  title={'Question title'}
+  theme={'success'}
+  message={['Confirm to display an alert', 'cancel to close this modal']}
+  cancelAction={() => setModalVis(false)}
+  cancelLabel={'cancel'}
+  action={() => alert('Hello!')}
+  confirmLabel={'confirm'}
+/>
+```
+
+### Custom content
+
+<QuestionCustom/>
+
+&NewLine;
+
+```tsx
+<Modal type={'question'} title={'Question title'}>
+  <div>
+    <p>paragraph text</p>
+    <div>you can also insert <a href={'/'}>links</a></div>
+  </div>
+
+  <div>
+    <Button label={'close modal'} buttonType={'text'} onClick={() => setModalVis(false)}/>
+    <Button label={'alert'} buttonType={'secondary'} onClick={() => alert('modal alert')}/>
+  </div>
+</Modal>
+```
+
+### Dark mode
+
+<QuestionDark/>
+
+&NewLine;
+
+```tsx
+<Modal
+  dark={true}
+  type={'question'}
+  title={'Question title'}
+  message={['Confirm to display an alert', 'cancel to close this modal']}
+  cancelAction={() => setModalVis(false)}
+  cancelLabel={'cancel'}
+  action={() => alert('Hello!')}
+  confirmLabel={'confirm'}
+/>
+```
+
+### Playground
+```tsx live
+function Playground() {
+  const [modalVis, setModalVis] = useState(false);
+
+  return (
+    <>
+      <Button buttonType={'secondary'} label={'show Modal'} onClick={() => setModalVis(true)} />
+
+      {modalVis &&
+        <Modal
+          type={'question'}
+          title={'Question title'}
+          theme={'success'}
+          message={['Confirm to display an alert', 'cancel to close this modal']}
+          cancelAction={() => setModalVis(false)}
+          cancelLabel={'cancel'}
+          action={() => alert('Hello!')}
+          confirmLabel={'confirm'}
         />
       }
     </>
