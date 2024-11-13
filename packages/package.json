@@ -13,8 +13,11 @@
   "scripts": {
     "lint": "eslint src",
     "lint:nw": "eslint src --max-warnings 0",
-    "build": "node esbuild.js",
-    "postbuild": "tsc --emitDeclarationOnly --project tsconfig.build.json"
+    "predev": "npx rimraf dist",
+    "dev": "NODE_ENV=dev node esbuild.js",
+    "build": "NODE_ENV=production node esbuild.js",
+    "postbuild": "npm run build-types",
+    "build-types": "tsc --emitDeclarationOnly --project tsconfig.build.json"
   },
   "license": "MIT",
   "homepage": "https://www.ui-library.hbsng.com",

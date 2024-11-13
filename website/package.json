@@ -5,8 +5,8 @@
   "scripts": {
     "start": "docusaurus start",
     "build:uil": "node esbuild.mjs",
-    "build:uil-watch": "node esbuildWatch.mjs",
     "postbuild:uil": "tsc --emitDeclarationOnly --project tsconfig.build.json",
+    "build:uil-watch": "node esbuild.watch.mjs",
     "build": "npm run build:uil && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
