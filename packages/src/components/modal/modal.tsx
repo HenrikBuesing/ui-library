@@ -1,6 +1,7 @@
 import React, {ReactNode, useEffect} from 'react';
 import generateKey from 'utils/generateKey';
 import {Button} from "../button";
+import style from './modal.module.scss';
 
 interface BaseProps {
   title : string;
@@ -8,19 +9,19 @@ interface BaseProps {
   theme?: 'success' | 'warning' | 'error';
 }
 
-interface ModalNoHTML extends BaseProps {
+interface BaseModal extends BaseProps {
   action   : () => void;
   children?: never;
   message  : string | string[];
 }
 
-interface ModalHTML extends BaseProps {
+interface CustomModal extends BaseProps {
   action?  : never;
   children : ReactNode;
   message? : never;
 }
 
-type Modal = ModalNoHTML | ModalHTML;
+type Modal = BaseModal | CustomModal;
 
 interface Notification {
   type         : 'notification';
@@ -68,21 +69,6 @@ export function Modal(props: Modal & (Notification | Question)) {
     return () => {clearTimeout(timer)};
   },[]);
 
-  function setHeaderClass() {
-    const base = 'uil-header';
-
-    switch (theme) {
-      case 'error':
-        return `${base} uil-error`;
-      case 'success':
-        return `${base} uil-success`;
-      case 'warning':
-        return `${base} uil-warning`;
-      default:
-        return base;
-    }
-  }
-
   function handleClose() {
     if (!action) return
 
@@ -92,27 +78,27 @@ export function Modal(props: Modal & (Notification | Question)) {
   }
 
   return (
-    <div className={'uil-modal-wrapper'}>
-      <div className={`uil-modal ${dark ? 'dark' : ''}`}>
-        <div className={setHeaderClass()}>{title}</div>
+    <div className={style.modalWrapper}>
+      <div className={`${style.modal} ${dark ? style.dark : ''}`}>
+        <div className={`${theme ? `${style.header} ${style[theme]}` : style.header}`}>{title}</div>
 
         {timeout &&
-          <div className={'uil-progress-wrapper'}>
-            <div className={'uil-progress-bar'} style={{animationDuration: `${(timeout / 1000) + .5}s`}}/>
+          <div className={style.progressWrapper}>
+            <div className={style.progressBar} style={{animationDuration: `${(timeout / 1000) + .5}s`}}/>
           </div>
         }
 
-        <div className={`uil-content ${dark ? 'dark' : ''}`}>
+        <div className={`${style.content} ${dark ? style.dark : ''}`}>
           {children ? children :
             <>
               <div>
                 {Array.isArray(message) ?
-                  message.map((m, idx) => <p key={generateKey(idx)} className={'uil-modal-text'}>{m}</p>)
-                  : <p className={'uil-modal-text'}>{message}</p>
+                  message.map((m, idx) => <p key={generateKey(idx)} className={style.modalText}>{m}</p>)
+                  : <p className={style.modalText}>{message}</p>
                 }
               </div>
 
-              <div className={`uil-button-wrapper ${type === 'notification' ? 'uil-single' : ''}`}>
+              <div className={`${style.buttonWrapper} ${type === 'notification' ? style.single : ''}`}>
                 {type === 'notification' ?
                   <Button label={buttonLabel} onClick={handleClose} type={'button'} buttonType={'secondary'} dark={dark}/> :
 

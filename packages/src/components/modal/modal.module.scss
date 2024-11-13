@@ -1,6 +1,6 @@
-@use '../variables' as *;
+@use '../mixin' as *;
 
-.uil-modal-wrapper {
+.modalWrapper {
   position: fixed;
   left: 0;
   top: 0;
@@ -9,13 +9,12 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
 
-  .uil-modal {
+  .modal {
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
-    -webkit-box-shadow: 0 0 6px 0 var(--uil-black);
     box-shadow: 0 0 6px 0 var(--uil-black);
     border-radius: 5px;
     z-index: 999;
@@ -33,11 +32,10 @@
     }
 
     &.dark {
-      -webkit-box-shadow: none;
       box-shadow: none;
     }
 
-    .uil-header {
+    .header {
       color: var(--uil-white);
       background-color: var(--uil-question);
       display: flex;
@@ -56,21 +54,21 @@
         padding: var(--uil-m);
       }
 
-      &.uil-success {
+      &.success {
         background-color: var(--uil-success);
       }
 
-      &.uil-error {
+      &.error {
         background-color: var(--uil-error);
       }
 
-      &.uil-warning {
+      &.warning {
         color: var(--uil-black);
         background-color: var(--uil-warning);
       }
     }
 
-    .uil-content {
+    .content {
       color: var(--uil-black);
       background-color: var(--uil-white);
       padding: var(--uil-m);
@@ -90,34 +88,34 @@
         background-color: var(--uil-black-alt);
       }
 
-      .uil-modal-text {
+      .modalText {
         font-size: var(--uil-l);
         line-height: var(--uil-l);
         margin: 0;
       }
 
-      .uil-button-wrapper {
+      .buttonWrapper {
         display: flex;
         justify-content: space-between;
 
-        &.uil-single {
+        &.single {
           justify-content: end;
         }
       }
     }
 
-    .uil-progress-wrapper {
+    .progressWrapper {
       background-color: var(--uil-grey-alt);
 
-      & .uil-progress-bar {
+      & .progressBar {
         border: 2px solid var(--uil-grey-dark);
         animation-duration: 2s;
         animation-iteration-count: initial;
-        animation-name: uil-progress;
+        animation-name: progress;
       }
     }
 
-    @keyframes uil-progress {
+    @keyframes progress {
       0% {
         width: 100%;
       }
