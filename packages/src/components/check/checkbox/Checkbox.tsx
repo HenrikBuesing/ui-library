@@ -50,12 +50,12 @@ export function Checkbox(props: Checkbox & (CheckLabel | CheckHTML)) {
   const cursorClass = disabled ? global.notAllowed : global.pointer;
 
   function handleCheck() {
-    !disabled && toggleCheck(!checked);
+    if (!disabled) toggleCheck(!checked);
   }
 
   return (
     <div className={`${check.checkWrapper} ${global.fontMedium}`}>
-      <div className={`${style.checkbox} ${cursorClass} ${check.check} ${dark? check.dark : ''}`} onClick={handleCheck}>
+      <div className={`${style.checkbox} ${cursorClass} ${check.check} ${dark ? check.dark : ''}`} onClick={handleCheck}>
         <input type={'checkbox'} checked={checked} disabled={disabled} onChange={handleCheck} id={ID} {...other}/>
         <div className={`${check.checkmark} ${dark ? check.dark : ''}`} style={{backgroundColor: color}}/>
       </div>
