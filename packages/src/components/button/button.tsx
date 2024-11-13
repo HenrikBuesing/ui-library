@@ -62,7 +62,7 @@ export function Button(props: Button & (Theme | NoTheme)) {
   }
 
   function setClassName() {
-    const themeClass = (!theme?.includes('#') && (buttonType === 'primary' || buttonType === 'outline')) ? ` ${style[theme]}` : '';
+    const themeClass = (theme && !theme.includes('#')) ? ` ${style[theme as 'success' | 'warning' | 'error']}` : '';
     let sizeClass = style[size];
 
     switch (size) {
