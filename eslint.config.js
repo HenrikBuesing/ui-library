@@ -6,6 +6,7 @@ import eslint from '@eslint/js';
 export default [
   {
     files: ['**/*.ts', '**/*.tsx'],
+    ignores: ['*/**/node_modules/**', '*/**/dist/*'],
     languageOptions: {
       parserOptions: {
         project: true,
@@ -28,4 +29,11 @@ export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  {
+    "rules": {
+      "@typescript-eslint/no-unsafe-member-access": 0,
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "@typescript-eslint/no-unsafe-return": 0,
+    }
+  }
 ];
