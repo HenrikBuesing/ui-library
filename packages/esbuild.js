@@ -2,15 +2,12 @@ import * as esbuild from 'esbuild';
 import {writeFileSync} from 'node:fs';
 import {getBuildConfig, getDevConfig} from '../esbuild.config.js';
 
-let config;
+const env = process.env.NODE_ENV;
+const input = 'src/index.ts';
+const output = 'dist';
 
-if (process.env.NODE_ENV === "production") {
-  console.log('using production config...');
-  config = getBuildConfig('src/index.ts', 'dist', true);
-} else {
-  console.log(`using ${process.env.NODE_ENV} config...`);
-  config = getDevConfig('src/index.ts', 'dist');
-}
+const config = env === 'production' ? getBuildConfig(input, output, true) : getDevConfig(input, output);
+console.log(`using [${env ?? 'dev'}] config...`);
 
 try {
   const result = await esbuild.build(config);
