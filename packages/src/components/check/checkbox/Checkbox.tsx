@@ -46,7 +46,7 @@ export function Checkbox(props: Checkbox & (CheckLabel | CheckHTML)) {
     ...other
   } = props;
 
-  const ID = id ?? generateKey('checkbox');
+  const ID = id ?? generateKey();
   const cursorClass = disabled ? global.notAllowed : global.pointer;
 
   function handleCheck() {

@@ -133,8 +133,8 @@ export function PasswordInput(props: IPasswordInput) {
       <div className={'uil-password-rules'}>
         {capsLock && <div className={'uil-password-rule'}>{capsLockWarning}</div>}
 
-        {rules.map((rule, idx) =>
-          <div key={generateKey(idx)} className={'uil-password-rule'}>
+        {rules.map(rule =>
+          <div key={generateKey()} className={'uil-password-rule'}>
             <Icon type={'svg'} src={checkRule(rule) ? ruleChecked : ruleUnchecked} height={12} width={12}/>
 
             <span>{rule.label}</span>

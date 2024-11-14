@@ -43,7 +43,7 @@ export function Radio(props: Radio) {
     ...other
   } = props;
 
-  const ID = id ?? generateKey('radio');
+  const ID = id ?? generateKey();
 
   function handleChange(option: RadioOption) {
     if (value !== option.value && !option.disabled && !disabled) valueChanged(option.value);
@@ -56,10 +56,10 @@ export function Radio(props: Radio) {
   return (
     <div className={style.radioWrapper}>
       {options.map((option, idx) =>
-        <div key={generateKey(idx)} className={check.checkWrapper}>
+        <div key={generateKey()} className={check.checkWrapper}>
           <div className={`${style.radio} ${setCursor(option)} ${check.check} ${dark ? check.dark : ''}`} onClick={() => {handleChange(option)}}>
             <input
-              id={`${idx}-${ID}`}
+              id={`${ID}-${idx}`}
               name={option.name}
               type={'radio'}
               value={option.value}
@@ -72,7 +72,7 @@ export function Radio(props: Radio) {
             <div className={`${check.checkmark} ${style.radioCheck} ${dark ? check.dark : ''}`} style={{backgroundColor: color}}/>
           </div>
 
-          <label htmlFor={`${idx}-${ID}`} className={`${global.fontMedium} ${setCursor(option)} ${style.text} ${dark ? style.dark : ''}`}>
+          <label htmlFor={`${ID}-${idx}`} className={`${global.fontMedium} ${setCursor(option)} ${style.text} ${dark ? style.dark : ''}`}>
             {option.name}
           </label>
         </div>

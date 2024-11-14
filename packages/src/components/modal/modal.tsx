@@ -93,7 +93,7 @@ export function Modal(props: Modal & (Notification | Question)) {
             <>
               <div>
                 {Array.isArray(message) ?
-                  message.map((m, idx) => <p key={generateKey(idx)} className={style.modalText}>{m}</p>)
+                  message.map(m => <p key={generateKey()} className={style.modalText}>{m}</p>)
                   : <p className={style.modalText}>{message}</p>
                 }
               </div>
