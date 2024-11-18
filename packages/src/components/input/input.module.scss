@@ -1,10 +1,10 @@
 @use '../variables' as *;
 
-.uil-input-wrapper {
+.inputWrapper {
   position: relative;
   display: block;
 
-  & .uil-label {
+  & .label {
     position: absolute;
     top: 25%;
     left: var(--uil-xxs);
@@ -17,7 +17,7 @@
     transition: top .25s ease-in-out;
   }
 
-  & .uil-input {
+  & .input {
     box-sizing: border-box;
     width: 100%;
     color: var(--uil-black);
@@ -43,24 +43,24 @@
       background-color: var(--uil-grey);
       color: var(--uil-grey-dark);
 
-      & ~ .uil-label {
+      & ~ .label {
         cursor: not-allowed;
         background: transparent;
         color: var(--uil-grey-dark);
       }
 
-      & ~ .uil-icon {
+      & ~ .icon {
         cursor: not-allowed;
         fill: var(--uil-grey-dark);
       }
 
-      &:not(:placeholder-shown) ~ .uil-label {
+      &:not(:placeholder-shown) ~ .label {
         background: linear-gradient(0deg, var(--uil-grey) 8px, rgba(0,0,0,0) 0%);
       }
     }
   }
 
-  & .uil-icon {
+  & .icon {
     position: absolute;
     top: 50%;
     right: var(--uil-xs);
@@ -72,32 +72,32 @@
     opacity: .5;
   }
 
-  & .uil-input:focus ~ .uil-label, .uil-input:not(:placeholder-shown) ~ .uil-label {
+  & .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label {
     top: -30%;
     opacity: 1;
   }
 
-  & .uil-input:focus ~ .uil-icon, .uil-input:not(:placeholder-shown) ~ .uil-icon {
+  & .input:focus ~ .icon, .input:not(:placeholder-shown) ~ .icon {
     opacity: 1;
   }
 }
 
-.uil-tooltip-wrapper {
+.tooltipWrapper {
   position: relative;
 
-  .uil-tooltip-icon {
+  .tooltipIcon {
     cursor: pointer;
     fill: var(--uil-black-alt);
     margin-bottom: var(--uil-xxs);
   }
 
-  & .uil-tooltip-icon:has(~ .uil-input-wrapper > .uil-input:not(:placeholder-shown), ~ .uil-input-wrapper:focus-within) {
+  & .tooltipIcon:has(~ .inputWrapper > .input:not(:placeholder-shown), ~ .inputWrapper:focus-within) {
     opacity: 0;
     visibility: hidden;
     transition: opacity .3s, visibility .3s;
   }
 
-  .uil-tooltip {
+  .tooltip {
     position: absolute;
     top: 0;
     left: 0;
@@ -111,7 +111,7 @@
     font-size: var(--uil-font-small);
     line-height: var(--uil-font-small);
 
-    .uil-tooltip-button {
+    .tooltipButton {
       display: block;
       margin-left: auto;
       margin-bottom: var(--uil-m);
@@ -125,14 +125,14 @@
   }
 }
 
-.uil-password-rules {
+.passwordRules {
   margin-top: var(--uil-m);
   display: flex;
   flex-direction: column;
   gap: var(--uil-xs);
   margin-left: var(--uil-xs);
 
-  .uil-password-rule {
+  .rule {
     display: flex;
     align-items: center;
     gap: var(--uil-xxs);

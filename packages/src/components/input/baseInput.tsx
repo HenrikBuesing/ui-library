@@ -1,5 +1,7 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {Icon} from 'components/icon/icon';
+import style from './input.module.scss';
+import global from '../global.module.scss';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   label       : string;
@@ -24,9 +26,9 @@ export function BaseInput(props: IBaseInput) {
 
 
   return (
-    <label className={'uil-input-wrapper'} htmlFor={inputProps.id}>
+    <label className={style.inputWrapper} htmlFor={inputProps.id}>
       <input
-        className={'uil-input fontMedium'}
+        className={`${style.input} ${global.fontMedium}`}
         onChange={(e) => {valueChanged(e.target.value)}}
         placeholder={label}
         style={{color: inputColor}}
@@ -34,12 +36,12 @@ export function BaseInput(props: IBaseInput) {
       />
 
       {iconSrc &&
-        <div className={'uil-icon'} onClick={toggle}>
+        <div className={style.icon} onClick={toggle}>
           <Icon type={'svg'} src={iconSrc} width={24} height={24} color={iconColor}/>
         </div>
       }
 
-      <span className={'uil-label fontMedium'} style={{color: inputColor}}>{label}</span>
+      <span className={`${style.label} ${global.fontMedium}`} style={{color: inputColor}}>{label}</span>
     </label>
   );
 }
