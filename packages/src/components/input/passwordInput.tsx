@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CustomInput, ICustomInput} from './customInput';
 import {Icon} from 'components/icon/icon';
 import generateKey from 'utils/generateKey';
+import style from './input.module.scss';
 
 interface IPasswordInput extends ICustomInput {
   ruleChecked     : string;
@@ -130,11 +131,11 @@ export function PasswordInput(props: IPasswordInput) {
     <div>
       <CustomInput {...inputProps}/>
 
-      <div className={'uil-password-rules'}>
-        {capsLock && <div className={'uil-password-rule'}>{capsLockWarning}</div>}
+      <div className={style.passwordRules}>
+        {capsLock && <div className={style.rule}>{capsLockWarning}</div>}
 
-        {rules.map((rule, idx) =>
-          <div key={generateKey(idx)} className={'uil-password-rule'}>
+        {rules.map(rule =>
+          <div key={generateKey()} className={style.rule}>
             <Icon type={'svg'} src={checkRule(rule) ? ruleChecked : ruleUnchecked} height={12} width={12}/>
 
             <span>{rule.label}</span>

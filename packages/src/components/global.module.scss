@@ -1,0 +1,30 @@
+.fit {
+  min-height: fit-content;
+  min-width: fit-content;
+
+  height: fit-content;
+  width: fit-content;
+}
+
+.fontSmall {
+  font-size: var(--uil-m);
+  line-height: var(--uil-m);
+}
+
+.fontMedium {
+  font-size: var(--uil-l);
+  line-height: var(--uil-l);
+}
+
+.fontLarge {
+  font-size: var(--uil-xxl);
+  line-height: var(--uil-xxl);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.notAllowed {
+  cursor: not-allowed;
+}

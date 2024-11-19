@@ -1,0 +1,13 @@
+@use '../../mixin' as *;
+
+.checkbox {
+  border-radius: 2px;
+}
+
+.checkLabel {
+  color: var(--uil-black-alt);
+
+  &.dark {
+    color: var(--uil-white);
+  }
+}

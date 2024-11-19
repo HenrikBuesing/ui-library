@@ -11,12 +11,19 @@
     "jsxFragmentFactory": "",
     "esModuleInterop": true,
     "declaration": true,
-    "baseUrl": "../packages/src"
+    "baseUrl": "../packages/src",
+    "plugins": [{
+      "name": "typescript-plugin-css-modules",
+      "options": {
+        "goToDefinition": true
+      }
+    }]
   },
   "include": [
     "../packages/src/components/**/index.ts",
     "../packages/src/hooks/**/index.ts",
-    "../packages/src/index.ts"
+    "../packages/src/index.ts",
+    "../packages/src/globals.d.ts"
   ],
   "exclude": [
     "node_modules"

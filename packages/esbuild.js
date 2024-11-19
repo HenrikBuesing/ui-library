@@ -1,36 +1,17 @@
-import * as esbuild from "esbuild";
-import {writeFileSync} from "node:fs";
-import {sassPlugin} from "esbuild-sass-plugin";
-import postcss from "postcss";
-import cssnanoPlugin from "cssnano";
+import * as esbuild from 'esbuild';
+import {writeFileSync} from 'node:fs';
+import {getBuildConfig, buildPlugin} from '../esbuild.config.js';
+
+const input = ['src/index.ts'];
+const output = 'dist';
 
 try {
-  const result = await esbuild.build({
-    entryPoints: ['src/index.ts'],
-    outdir: 'dist',
-    bundle: true,
-    minify: true,
-    sourcemap: false,
-    metafile: true,
-    format: 'esm',
-    target: ['esnext'],
-    plugins: [sassPlugin({
-      type: "css-text",
-      async transform(source) {
-        const {css} = await postcss([
-          cssnanoPlugin({
-            preset: 'cssnano-preset-advanced',
-          })
-        ]).process(source, {from: 'undefined'})
-        return css
-      }
-    })],
-    external: ['react'],
-  });
+  const result = await esbuild.build(getBuildConfig(input, output, [buildPlugin]));
 
-  writeFileSync('meta.json', JSON.stringify(result.metafile));
-  console.log(await esbuild.analyzeMetafile(result.metafile, {verbose: true}))
+  if (process.env.NODE_ENV !== 'production') {
+    writeFileSync('meta.json', JSON.stringify(result.metafile));
+  }
 } catch (e) {
   console.error(e);
-  process.exit(1)
+  process.exit(1);
 }

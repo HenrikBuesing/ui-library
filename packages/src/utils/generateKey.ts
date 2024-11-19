@@ -1,5 +1,5 @@
-export default function generateKey(prefix: string | number) {
-  const id = String(Date.now().toString(32) + Math.random().toString(16)).replace(/\./g, '');
+export default function generateKey() {
+  const m = Math.floor((Math.random() * 100) + 1);
 
-  return `${prefix}-${id}`;
+  return `uil-${(Date.now() * m).toString(32)}-${(Math.random() * m).toString(16).replace(/\./g, '')}`;
 }

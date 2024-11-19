@@ -1,34 +1,22 @@
-import * as esbuild from "esbuild";
-import {sassPlugin} from "esbuild-sass-plugin";
-import postcss from "postcss";
-import cssnanoPlugin from "cssnano";
+import * as esbuild from 'esbuild';
+import {getBuildConfig, buildPlugin, watchPlugin} from '../esbuild.config.js';
 
-try {
-  await esbuild.build({
-    entryPoints: ['../packages/src/index.ts'],
-    outdir: 'src/uil-bundle',
-    bundle: true,
-    minify: true,
-    sourcemap: false,
-    metafile: false,
-    format: 'esm',
-    target: ['esnext'],
-    plugins: [sassPlugin({
-      type: "css-text",
-      async transform(source) {
-        const {css} = await postcss([
-          cssnanoPlugin({
-            preset: 'cssnano-preset-advanced',
-          })
-        ]).process(source, {from: 'undefined'})
-        return css
-      }
-    })],
-    external: ['react'],
-  });
+const input = ['../packages/src/index.ts'];
+const output = 'src/uil-bundle';
 
-  console.log('build complete')
-} catch (e) {
-  console.error(e);
-  process.exit(1)
+if (process.env.NODE_ENV === 'production') {
+  try {
+    await esbuild.build(getBuildConfig(input, output, [buildPlugin]));
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+} else {
+  watch();
+}
+
+async function watch() {
+  let ctx = await esbuild.context(getBuildConfig(input, output, [watchPlugin]));
+  await ctx.watch();
+  console.log('Watching...');
 }

@@ -1,101 +1,93 @@
-@use '../variables' as *;
+@use '../mixin' as *;
 
-.uil-button {
-  cursor: pointer;
-  letter-spacing: 1px;
+.button {
   border: 1px solid var(--uil-black-light);
   border-radius: 5px;
   box-shadow: 0 0 2px 0 var(--uil-black-alt);
-  -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
   box-sizing: border-box;
 
   &:hover {
     box-shadow: inset 0 0 0 10rem rgba(0, 0, 0, .15);
-    -webkit-box-shadow: inset 0 0 0 10rem rgba(0, 0, 0, .15);
   }
 
-  &.uil-primary {
+  &.primary {
     color: var(--uil-white);
     border-color: var(--uil-grey-darker);
 
-    &.uil-success {
+    &.success {
       background-color: var(--uil-success);
     }
 
-    &.uil-warning {
+    &.warning {
       color: var(--uil-black);
       background-color: var(--uil-warning);
     }
 
-    &.uil-error {
+    &.error {
       background-color: var(--uil-error);
       border-color: var(--uil-black-light);
     }
   }
 
-  &.uil-secondary {
+  &.secondary {
     color: var(--uil-black-light);
     background-color: var(--uil-white);
   }
 
-  &.uil-outline {
+  &.outline {
     background-color: transparent;
     box-shadow: none;
-    -webkit-box-shadow: none;
 
     &:hover {
       border-width: 2px;
       margin: -1px;
     }
 
-    &.uil-success {
+    &.success {
       color: var(--uil-success-dark);
       border-color: var(--uil-success);
     }
 
-    &.uil-warning {
+    &.warning {
       color: var(--uil-warning-dark);
       border-color: var(--uil-warning);
     }
 
-    &.uil-error {
+    &.error {
       color: var(--uil-error);
       border-color: var(--uil-error);
     }
   }
 
-  &.uil-text {
+  &.text {
     color: var(--uil-black-alt);
     text-decoration: underline;
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
-    -webkit-box-shadow: none;
 
     &:hover {
       background-color: rgba(0, 0, 0, .05);
     }
   }
 
-  &.uil-disabled {
+  &.disabled {
     color: var(--uil-grey-darker);
-    cursor: not-allowed;
 
-    &.uil-primary, &.uil-secondary {
+    &.primary, &.secondary {
       background-color: var(--uil-grey);
       border-color: var(--uil-grey-darker);
 
       &:hover {
         box-shadow: 0 0 2px 0 var(--uil-black-alt);
-        -webkit-box-shadow: 0 0 2px 0 var(--uil-black-alt);
       }
     }
 
-    &.uil-secondary {
+    &.secondary {
       background-color: transparent;
     }
 
-    &.uil-outline {
+    &.outline {
       color: var(--uil-grey-darker);
       border-color: var(--uil-grey-darker);
 
@@ -103,11 +95,10 @@
         border-width: 1px;
         margin: 0;
         box-shadow: none;
-        -webkit-box-shadow: none;
       }
     }
 
-    &.uil-text {
+    &.text {
 
       &:hover {
         background-color: transparent;
@@ -115,49 +106,46 @@
     }
   }
 
-  &.uil-dark {
+  &.dark {
     color: var(--uil-white);
     box-shadow: none;
-    -webkit-box-shadow: none;
 
     &:hover {
       box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
-      -webkit-box-shadow: inset 0 0 0 10rem rgba(255, 255, 255, .15);
     }
 
-    &.uil-primary {
-      &.uil-success {
+    &.primary {
+      &.success {
         color: var(--uil-success-light);
         background-color: var(--uil-success-dark);
         border-color: var(--uil-success);
       }
 
-      &.uil-warning {
+      &.warning {
         color: var(--uil-warning-light);
         background-color: var(--uil-warning-dark);
         border-color: var(--uil-warning);
       }
 
-      &.uil-error {
+      &.error {
         color: var(--uil-error-light);
         background-color: var(--uil-error-dark);
         border-color: var(--uil-error);
       }
     }
 
-    &.uil-secondary {
+    &.secondary {
       background-color: var(--uil-black-lighter);
       border-color: var(--uil-grey-dark);
     }
 
-    &.uil-outline {
+    &.outline {
 
       &:hover {
         box-shadow: none;
-        -webkit-box-shadow: none;
       }
 
-      &.uil-success {
+      &.success {
         color: var(--uil-success);
         border-color: var(--uil-success);
 
@@ -166,7 +154,7 @@
         }
       }
 
-      &.uil-warning {
+      &.warning {
         color: var(--uil-warning);
         border-color: var(--uil-warning);
 
@@ -175,7 +163,7 @@
         }
       }
 
-      &.uil-error {
+      &.error {
         color: var(--uil-error);
         border-color: var(--uil-error);
 
@@ -185,31 +173,28 @@
       }
     }
 
-    &.uil-text {
+    &.text {
       &:hover {
         box-shadow: none;
-        -webkit-box-shadow: none;
         background-color: rgba(255, 255, 255, .1);
       }
     }
 
-    &.uil-disabled {
+    &.disabled {
       color: var(--uil-grey-dark);
       background-color: var(--uil-black-lighter);
       border-color: var(--uil-grey-dark);
       box-shadow: none;
-      -webkit-box-shadow: none;
 
       &:hover {
         box-shadow: none;
-        -webkit-box-shadow: none;
       }
 
-      &.uil-secondary {
+      &.secondary {
         background-color: var(--uil-black-light);
       }
 
-      &.uil-outline {
+      &.outline {
         color: var(--uil-grey-dark);
         background-color: transparent;
         border-color: var(--uil-grey-dark);
@@ -220,52 +205,28 @@
           border-width: 1px;
           margin: 0;
           box-shadow: none;
-          -webkit-box-shadow: none;
         }
       }
 
-      &.uil-text {
+      &.text {
         background-color: transparent;
         border-color: transparent;
       }
     }
   }
 
-  &.uil-small {
-    font-size: var(--uil-s);
-    line-height: var(--uil-s);
+  &.small {
+    letter-spacing: 1px;
     padding: var(--uil-xxs);
-
-    @include uil-tablet {
-      font-size: var(--uil-font-small);
-      line-height: var(--uil-font-small);
-      padding: var(--uil-xs);
-    }
   }
 
-  &.uil-medium {
-    font-size: var(--uil-m);
-    line-height: var(--uil-m);
+  &.medium {
     letter-spacing: 2px;
     padding: var(--uil-xs);
-
-    @include uil-tablet {
-      font-size: var(--uil-font-medium);
-      line-height: var(--uil-font-medium);
-      padding: var(--uil-s);
-    }
   }
 
-  &.uil-large {
-    font-size: var(--uil-xl);
-    line-height: var(--uil-xl);
-    letter-spacing: 3px;
+  &.large {
+    letter-spacing: 2px;
     padding: var(--uil-s);
-
-    @include uil-tablet {
-      font-size: var(--uil-font-large);
-      line-height: var(--uil-font-large);
-      padding: var(--uil-m);
-    }
   }
 }
