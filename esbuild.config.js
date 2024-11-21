@@ -1,6 +1,4 @@
-import {postcssModules, sassPlugin} from 'esbuild-sass-plugin';
-import cssnanoPlugin from 'cssnano';
-import {randomBytes} from 'crypto';
+import {sassPlugin} from 'esbuild-sass-plugin';
 import * as esbuild from "esbuild";
 
 export const buildPlugin = {
@@ -31,11 +29,8 @@ export const watchPlugin = {
 export function getBuildConfig(entry, out, plugins = []) {
   plugins.push(
     sassPlugin({
-      type: 'style',
-      nonce: randomBytes(16).toString('hex'),
-      transform: process.env.NODE_ENV !== 'production' ? postcssModules({}, []) :
-        postcssModules({generateScopedName: '[hash:base64:5]', hashPrefix: 'uiLibrary'}, [cssnanoPlugin()]),
-    })
+      type: 'local-css'
+    }),
   );
 
   return {

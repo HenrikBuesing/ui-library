@@ -9,7 +9,7 @@
     "build:uil-watch": "NODE_ENV=dev node esbuild.mjs",
     "build": "npm run build:uil && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "clear": "docusaurus clear",
+    "clear": "docusaurus clear && npx rimraf src/uil-bundle",
     "serve": "docusaurus serve"
   },
   "dependencies": {
