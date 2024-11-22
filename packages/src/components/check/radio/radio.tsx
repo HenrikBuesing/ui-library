@@ -2,7 +2,7 @@ import React, {type ComponentPropsWithoutRef} from 'react';
 import generateKey from 'utils/generateKey';
 import style from './radio.module.scss';
 import check from '../check.module.scss';
-import global from '../../global.module.scss';
+import global from '../../common/global.module.scss';
 
 interface Radio extends ComponentPropsWithoutRef<'input'>{
   options     : RadioOption[];

@@ -1,7 +1,7 @@
 import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
 import {useContrastColor} from 'hooks/contrastColor';
 import style from './button.module.scss';
-import global from '../global.module.scss';
+import global from '../common/global.module.scss';
 
 interface Button extends ComponentPropsWithoutRef<'button'> {
   label: string;
