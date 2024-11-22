@@ -2,7 +2,7 @@ import React, {type ComponentPropsWithoutRef, type ReactNode} from 'react';
 import generateKey from 'utils/generateKey';
 import style from './checkbox.module.scss';
 import check from '../check.module.scss';
-import global from '../../global.module.scss';
+import global from '../../common/global.module.scss';
 
 interface Checkbox extends ComponentPropsWithoutRef<'input'> {
   checked    : boolean;

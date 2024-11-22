@@ -1,4 +1,4 @@
-import './components/variables.scss';
+import './components/common/variables.scss';
 
 export {CustomInput, PasswordInput, type PasswordRule} from './components/input/index';
 export {Modal} from './components/modal/index';
