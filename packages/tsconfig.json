@@ -1,20 +1,8 @@
 {
+  "extends": "../tsconfig-base.json",
   "compilerOptions": {
-    "outDir": "./dist/",
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "react",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "strictNullChecks": true,
-    "exactOptionalPropertyTypes": true,
-    "declaration": true,
     "baseUrl": "./src",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "outDir": "./dist/"
   },
   "include": [
     "./src/**/*"

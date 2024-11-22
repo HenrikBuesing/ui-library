@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import React, {type ComponentPropsWithoutRef} from 'react';
 import generateKey from 'utils/generateKey';
 import style from './radio.module.scss';
 import check from '../check.module.scss';

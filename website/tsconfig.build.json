@@ -1,23 +1,8 @@
 {
+  "extends": "../tsconfig-base.json",
   "compilerOptions": {
-    "outDir": "./src/uil-bundle",
-    "sourceMap": true,
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "Node",
-    "skipLibCheck": true,
-    "jsx": "react",
-    "jsxFactory": "",
-    "jsxFragmentFactory": "",
-    "esModuleInterop": true,
-    "declaration": true,
     "baseUrl": "../packages/src",
-    "plugins": [{
-      "name": "typescript-plugin-css-modules",
-      "options": {
-        "goToDefinition": true
-      }
-    }]
+    "outDir": "./src/uil-bundle"
   },
   "include": [
     "../packages/src/components/**/index.ts",
