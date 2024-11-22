@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect} from 'react';
+import React, {type ReactNode, useEffect} from 'react';
 import generateKey from 'utils/generateKey';
 import {Button} from "../button";
 import style from './modal.module.scss';

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BaseInput, IBaseInput} from './baseInput';
+import {BaseInput, type IBaseInput} from './baseInput';
 import {Icon} from 'components/icon/icon';
 import {useClickOutsideRef} from 'hooks/clickOutside';
 import style from './input.module.scss';

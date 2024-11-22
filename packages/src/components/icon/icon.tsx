@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
+import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
 
 interface Icon {
   src: string;

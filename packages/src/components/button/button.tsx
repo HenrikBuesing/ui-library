@@ -1,22 +1,22 @@
-import React, {ComponentPropsWithoutRef, CSSProperties} from 'react';
+import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
 import {useContrastColor} from 'hooks/contrastColor';
 import style from './button.module.scss';
 import global from '../global.module.scss';
 
 interface Button extends ComponentPropsWithoutRef<'button'> {
-  label      : string;
-  dark?      : boolean;
-  size?      : 'small' | 'medium' | 'large';
+  label: string;
+  dark?: boolean;
+  size?: 'small' | 'medium' | 'large';
 }
 
 interface Theme {
-  buttonType : 'primary' | 'outline';
-  theme: `#${string}` | 'success' | 'warning' | 'error';
+  buttonType: 'primary' | 'outline';
+  theme     : `#${string}` | 'success' | 'warning' | 'error';
 }
 
 interface NoTheme {
-  buttonType : 'secondary' | 'text';
-  theme?: never;
+  buttonType: 'secondary' | 'text';
+  theme?    : never;
 }
 
 /**

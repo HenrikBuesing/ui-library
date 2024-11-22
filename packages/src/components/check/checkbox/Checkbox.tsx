@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
+import React, {type ComponentPropsWithoutRef, type ReactNode} from 'react';
 import generateKey from 'utils/generateKey';
 import style from './checkbox.module.scss';
 import check from '../check.module.scss';
