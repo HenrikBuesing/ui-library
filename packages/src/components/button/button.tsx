@@ -1,23 +1,25 @@
-import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
+import React, {type ComponentPropsWithoutRef, type CSSProperties, type ReactNode} from 'react';
 import {useContrastColor} from 'hooks/contrastColor';
 import style from './button.module.scss';
 import global from '../common/global.module.scss';
+import type {HTMLText, StringText} from "../common/types";
 
-interface Button extends ComponentPropsWithoutRef<'button'> {
-  label: string;
-  dark?: boolean;
-  size?: 'small' | 'medium' | 'large';
-}
-
-interface Theme {
-  buttonType: 'primary' | 'outline';
-  theme     : `#${string}` | 'success' | 'warning' | 'error';
-}
-
-interface NoTheme {
-  buttonType: 'secondary' | 'text';
-  theme?    : never;
-}
+type ButtonProps = ComponentPropsWithoutRef<'button'> &
+  {
+    dark?: boolean;
+    size?: 'small' | 'medium' | 'large';
+  } &
+  (StringText | HTMLText) &
+  (
+    {
+      buttonType: 'primary' | 'outline';
+      theme     : `#${string}` | 'success' | 'warning' | 'error';
+    } |
+    {
+      buttonType: 'secondary' | 'text';
+      theme?    : never;
+    }
+  );
 
 /**
  * @example
@@ -35,14 +37,15 @@ interface NoTheme {
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/button)
  */
-export function Button(props: Button & (Theme | NoTheme)) {
+export function Button(props: ButtonProps) {
   const {
     buttonType,
-    theme,
-    label,
+    children,
     dark,
     disabled,
+    label,
     size = 'medium',
+    theme,
     type,
     ...other
   } = props;
@@ -90,7 +93,7 @@ export function Button(props: Button & (Theme | NoTheme)) {
       disabled={disabled}
       {...other}
     >
-      {label}
+      {children || label}
     </button>
   );
 }
