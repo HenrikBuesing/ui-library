@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 20
       - name: install
-        run: npm install
+        run: npm ci
       - uses: int128/comment-action@v1
         with:
           run: npm run lint-nw:library
