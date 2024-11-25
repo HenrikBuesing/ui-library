@@ -100,11 +100,11 @@ export function Modal(props: Modal & (Notification | Question)) {
 
               <div className={`${style.buttonWrapper} ${type === 'notification' ? style.single : ''}`}>
                 {type === 'notification' ?
-                  <Button label={buttonLabel} onClick={handleClose} type={'button'} buttonType={'secondary'} dark={dark}/> :
+                  <Button label={buttonLabel} onClick={handleClose} type={'button'} variant={'secondary'} dark={dark}/> :
 
                   <>
-                    <Button buttonType={'primary'} label={confirmLabel} theme={theme ?? '#00416A'} onClick={action} type={'button'} dark={dark}/>
-                    <Button buttonType={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
+                    <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} onClick={action} type={'button'} dark={dark}/>
+                    <Button variant={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
                   </>
                 }
               </div>
