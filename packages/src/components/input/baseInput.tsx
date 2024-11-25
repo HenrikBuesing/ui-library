@@ -1,7 +1,7 @@
 import React, {type ComponentPropsWithoutRef} from 'react';
 import {Icon} from 'components/icon/icon';
 import style from './input.module.scss';
-import global from '../common/global.module.scss';
+import global from '@common/global.module.scss';
 
 export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
   label       : string;

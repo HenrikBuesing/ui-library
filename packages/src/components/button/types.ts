@@ -1,4 +1,4 @@
-import type {BaseProps, Label, Size, Status} from "../common/types";
+import type {BaseProps, Label, Size, Status} from '@common/types';
 
 export type ButtonProps = BaseProps<'button'> & AdditionalButtonProps;
 
