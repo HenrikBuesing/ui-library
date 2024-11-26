@@ -2,7 +2,7 @@ import React from 'react';
 import generateKey from 'utils/generateKey';
 import style from './radio.module.scss';
 import check from '../check.module.scss';
-import global from '@common/global.module.scss';
+import global from '@common/styles/global.module.scss';
 import type {RadioOption, RadioProps} from "./types";
 
 /**
