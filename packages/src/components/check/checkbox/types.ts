@@ -6,4 +6,4 @@ type AdditionalCheckboxProps = Label & {
   checked: boolean;
   toggleCheck: (value: boolean) => void;
   color?: string;
-}
+};

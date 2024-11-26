@@ -13,4 +13,4 @@ export type RadioOption = {
   name: string;
   value: string;
   disabled?: boolean;
-}
+};
