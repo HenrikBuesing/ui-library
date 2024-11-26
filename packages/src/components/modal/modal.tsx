@@ -1,53 +1,15 @@
-import React, {type ReactNode, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import generateKey from 'utils/generateKey';
-import {Button} from "../button";
+import type {ModalProps} from './types';
+import {Button} from '../button';
 import style from './modal.module.scss';
 
-interface BaseProps {
-  title : string;
-  dark? : boolean;
-  theme?: 'success' | 'warning' | 'error';
-}
-
-interface BaseModal extends BaseProps {
-  action   : () => void;
-  children?: never;
-  message  : string | string[];
-}
-
-interface CustomModal extends BaseProps {
-  action?  : never;
-  children : ReactNode;
-  message? : never;
-}
-
-type Modal = BaseModal | CustomModal;
-
-interface Notification {
-  type         : 'notification';
-  buttonLabel? : string;
-  cancelAction?: never;
-  cancelLabel ?: never;
-  confirmLabel?: never;
-  timeout?     : number;
-}
-
-interface Question {
-  type         : 'question';
-  buttonLabel? : never;
-  cancelAction?: () => void;
-  cancelLabel? : string;
-  confirmLabel?: string;
-  timeout?     : never;
-}
-
-export function Modal(props: Modal & (Notification | Question)) {
+export function Modal(props: ModalProps) {
   const {
-    action,
-    buttonLabel = '',
     cancelAction,
     cancelLabel = '',
     children,
+    confirmAction,
     confirmLabel = '',
     dark = false,
     message,
@@ -57,30 +19,32 @@ export function Modal(props: Modal & (Notification | Question)) {
     type
   } = props;
 
+  const messages = Array.isArray(message) ? message : [message];
+  const isNotification = type === 'notification';
   let timer: NodeJS.Timeout | undefined = undefined;
 
   useEffect(() => {
-    if (!timeout || !action) return;
+    if (!timeout || !confirmAction) return;
 
     timer = setTimeout(() => {
-      return action();
+      return confirmAction();
     }, timeout);
 
     return () => {clearTimeout(timer)};
   },[]);
 
-  function handleClose() {
-    if (!action) return
+  function handleConfirm() {
+    if (!confirmAction) return;
 
     clearTimeout(timer);
 
-    return action();
+    return confirmAction();
   }
 
   return (
     <div className={style.modalWrapper}>
-      <div className={`${style.modal} ${dark ? style.dark : ''}`}>
-        <div className={`${theme ? `${style.header} ${style[theme]}` : style.header}`}>{title}</div>
+      <div className={`${style.modal}${dark ? ` ${style.dark}` : ''}`}>
+        <div className={`${style.header}${theme ? ` ${style[theme]}` : ''}`}>{title}</div>
 
         {timeout &&
           <div className={style.progressWrapper}>
@@ -88,24 +52,20 @@ export function Modal(props: Modal & (Notification | Question)) {
           </div>
         }
 
-        <div className={`${style.content} ${dark ? style.dark : ''}`}>
+        <div className={`${style.content}${dark ? ` ${style.dark}` : ''}`}>
           {children ? children :
             <>
               <div>
-                {Array.isArray(message) ?
-                  message.map(m => <p key={generateKey()} className={style.modalText}>{m}</p>)
-                  : <p className={style.modalText}>{message}</p>
-                }
+                {messages.map(m =>
+                  <p key={generateKey()} className={style.modalText}>{m}</p>
+                )}
               </div>
 
-              <div className={`${style.buttonWrapper} ${type === 'notification' ? style.single : ''}`}>
-                {type === 'notification' ?
-                  <Button label={buttonLabel} onClick={handleClose} type={'button'} variant={'secondary'} dark={dark}/> :
+              <div className={`${style.buttonWrapper}${isNotification ? ` ${style.single}` : ''}`}>
+                <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} onClick={handleConfirm} type={'button'} dark={dark}/>
 
-                  <>
-                    <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} onClick={action} type={'button'} dark={dark}/>
-                    <Button variant={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
-                  </>
+                {!isNotification &&
+                  <Button variant={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
                 }
               </div>
             </>

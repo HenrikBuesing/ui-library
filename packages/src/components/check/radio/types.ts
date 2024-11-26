@@ -1,6 +1,6 @@
-import type {BaseProps} from "@common/types";
+import type {BaseComponentProps} from "@common/types";
 
-export type RadioProps = BaseProps<'input'> & AdditionalRadioProps;
+export type RadioProps = BaseComponentProps<'input'> & AdditionalRadioProps;
 
 type AdditionalRadioProps = {
   options: RadioOption[];

@@ -1,6 +1,6 @@
-import type {BaseProps, Label, Size, Status} from '@common/types';
+import type {BaseComponentProps, Label, Size, Status} from '@common/types';
 
-export type ButtonProps = BaseProps<'button'> & AdditionalButtonProps;
+export type ButtonProps = BaseComponentProps<'button'> & AdditionalButtonProps;
 
 type AdditionalButtonProps = Label & {
   size?: Size;

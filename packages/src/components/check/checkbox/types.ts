@@ -1,6 +1,6 @@
-import type {BaseProps, Label} from '@common/types';
+import type {BaseComponentProps, Label} from '@common/types';
 
-export type CheckboxProps = BaseProps<'input'> & AdditionalCheckboxProps;
+export type CheckboxProps = BaseComponentProps<'input'> & AdditionalCheckboxProps;
 
 type AdditionalCheckboxProps = Label & {
   checked: boolean;
