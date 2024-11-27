@@ -19,7 +19,7 @@ export function Modal(props: ModalProps) {
     type
   } = props;
 
-  const messages = Array.isArray(message) ? message : [message];
+  const messages = Array.isArray(message) ? message : [message ?? ''];
   const isNotification = type === 'notification';
   let timer: NodeJS.Timeout | undefined = undefined;
 
