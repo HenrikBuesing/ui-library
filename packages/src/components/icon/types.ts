@@ -8,8 +8,8 @@ type AdditionalIconProps = {
   size?: Size;
 } & ({
   type: 'img';
-  title?: never;
+  altText?: never;
 } & ComponentPropsWithoutRef<'img'> | {
   type: 'svg';
-  title?: string;
+  altText?: string;
 } & ComponentPropsWithoutRef<'svg'>);

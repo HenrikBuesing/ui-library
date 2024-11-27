@@ -15,7 +15,7 @@ export function Icon(props: IconProps) {
     height,
     size = 'medium',
     src,
-    title,
+    altText,
     type,
     width,
     ...other
@@ -23,7 +23,7 @@ export function Icon(props: IconProps) {
 
   const imgProps = other as ComponentPropsWithoutRef<'img'>;
   const isSvg = type === 'svg';
-  const ID = title ? other.id ?? generateKey() : undefined;
+  const ID = altText ? other.id ?? generateKey() : undefined;
   const s = getSize();
 
   const style: CSSProperties = {
@@ -48,7 +48,7 @@ export function Icon(props: IconProps) {
     <>
       {isSvg ?
         <svg style={style} {...other as ComponentPropsWithoutRef<'svg'>} aria-labelledby={ID} role={other.role ?? 'img'}>
-          {title && <title id={ID}>{title}</title>}
+          {altText && <title id={ID}>{altText}</title>}
           <use href={src}/>
         </svg> :
         <img src={src} alt={imgProps.alt} style={style} {...imgProps}/>
