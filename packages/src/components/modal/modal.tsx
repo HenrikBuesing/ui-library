@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import generateKey from 'utils/generateKey';
+import generateKey from '@utils/generateKey';
 import type {ModalProps} from './types';
 import {Button} from '../button';
 import style from './modal.module.scss';

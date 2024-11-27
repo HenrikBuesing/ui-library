@@ -1,5 +1,5 @@
 import React, {type CSSProperties} from 'react';
-import {useContrastColor} from 'hooks/contrastColor';
+import {useContrastColor} from '@hooks/contrastColor';
 import type {ButtonProps} from "./types";
 import global from '@common/styles/global.module.scss';
 import styles from './button.module.scss';

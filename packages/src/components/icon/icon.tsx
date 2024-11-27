@@ -1,6 +1,6 @@
 import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
 import type {IconProps} from "./types";
-import generateKey from "../../utils/generateKey";
+import generateKey from "@utils/generateKey";
 
 /**
  * @example
