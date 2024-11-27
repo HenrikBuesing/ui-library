@@ -29,4 +29,12 @@ export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  {
+    rules: {
+      "@typescript-eslint/consistent-type-definitions": [
+        'error',
+        'type'
+      ],
+    }
+  }
 ];

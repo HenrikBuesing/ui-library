@@ -1,0 +1,43 @@
+import type {ReactNode} from "react";
+import type {BaseProps, Status} from "@common/types";
+
+export type ModalProps = BaseProps & AdditionalModalProps;
+
+type AdditionalModalProps = {
+  title: string;
+  theme?: Status;
+} & ({
+  confirmAction: () => void;
+  confirmLabel: string;
+  message: string | string[];
+  children?: never;
+} & (Notification | Question) | CustomContent & ({
+  confirmAction: () => void;
+  timeout: number;
+} | {
+  confirmAction?: never;
+  timeout?: never;
+}));
+
+type Notification = {
+  type: 'notification';
+  cancelAction?: never;
+  cancelLabel?: never;
+  timeout?: number;
+};
+
+type Question = {
+  type: 'question';
+  cancelAction: () => void;
+  cancelLabel: string;
+  timeout?: never;
+};
+
+type CustomContent = {
+  children: ReactNode;
+  cancelAction?: never;
+  cancelLabel?: never;
+  confirmLabel?: never;
+  message?: never;
+  type?: never;
+};

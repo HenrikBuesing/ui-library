@@ -1,18 +1,6 @@
 import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
-
-interface Icon {
-  src: string;
-  color?: string | undefined;
-  size?: 'small' | 'medium' | 'large';
-}
-
-interface IMG extends ComponentPropsWithoutRef<'img'> {
-  type: 'img';
-}
-
-interface SVG extends ComponentPropsWithoutRef<'svg'> {
-  type: 'svg';
-}
+import type {IconProps} from "./types";
+import generateKey from "../../utils/generateKey";
 
 /**
  * @example
@@ -22,24 +10,25 @@ interface SVG extends ComponentPropsWithoutRef<'svg'> {
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/icon).
  */
-export function Icon(props: Icon & (SVG | IMG)) {
+export function Icon(props: IconProps) {
   const {
     height,
-    type,
-    color,
     size = 'medium',
     src,
+    altText,
+    type,
     width,
     ...other
   } = props;
 
-  const imgProps = other as IMG;
+  const imgProps = other as ComponentPropsWithoutRef<'img'>;
   const isSvg = type === 'svg';
+  const ID = altText ? other.id ?? generateKey() : undefined;
+  const s = getSize();
 
   const style: CSSProperties = {
-    fill: isSvg ? color : undefined,
-    height: height ?? getSize(),
-    width: width ?? getSize(),
+    height: height ?? s,
+    width: width ?? s,
   }
 
   function getSize() {
@@ -51,14 +40,15 @@ export function Icon(props: Icon & (SVG | IMG)) {
       case 'large':
         return '3rem';
       default:
-        throw new Error('[Icon] Unsupported size');
+        throw new Error('[Icon] unsupported size');
     }
   }
 
   return (
     <>
       {isSvg ?
-        <svg style={style} {...other as SVG}>
+        <svg style={style} {...other as ComponentPropsWithoutRef<'svg'>} aria-labelledby={ID} role={other.role ?? 'img'}>
+          {altText && <title id={ID}>{altText}</title>}
           <use href={src}/>
         </svg> :
         <img src={src} alt={imgProps.alt} style={style} {...imgProps}/>

@@ -4,7 +4,7 @@ import {Icon} from 'components/icon/icon';
 import generateKey from 'utils/generateKey';
 import style from './input.module.scss';
 
-interface IPasswordInput extends ICustomInput {
+type IPasswordInput = ICustomInput & {
   ruleChecked     : string;
   rules           : PasswordRule[];
   ruleUnchecked   : string;
@@ -25,7 +25,7 @@ interface IPasswordInput extends ICustomInput {
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/passwordInput).
  */
-export interface PasswordRule {
+export type PasswordRule = {
   label   : string;
   count?  : number;
   type?   : 'minLength' | 'maxLength' | 'letters' | 'numbers' | 'special' | 'upper';

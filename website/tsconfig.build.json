@@ -2,7 +2,10 @@
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
     "baseUrl": "../packages/src",
-    "outDir": "./src/uil-bundle"
+    "outDir": "./src/uil-bundle",
+    "paths": {
+      "@common/*": ["./components/common/*"]
+    }
   },
   "include": [
     "../packages/src/components/**/index.ts",

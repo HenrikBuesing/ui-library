@@ -1,69 +1,54 @@
-import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
+import React, {type CSSProperties} from 'react';
 import {useContrastColor} from 'hooks/contrastColor';
-import style from './button.module.scss';
-import global from '../common/global.module.scss';
-
-interface Button extends ComponentPropsWithoutRef<'button'> {
-  label: string;
-  dark?: boolean;
-  size?: 'small' | 'medium' | 'large';
-}
-
-interface Theme {
-  buttonType: 'primary' | 'outline';
-  theme     : `#${string}` | 'success' | 'warning' | 'error';
-}
-
-interface NoTheme {
-  buttonType: 'secondary' | 'text';
-  theme?    : never;
-}
+import type {ButtonProps} from "./types";
+import global from '@common/styles/global.module.scss';
+import styles from './button.module.scss';
 
 /**
  * @example
  * ```jsx
  * <Button
- *  buttonType={'primary'}
+ *  variant={'primary'}
  *  label={'Click Me!'}
  *  dark={true}
- *  disabled={false}
  *  size={'large'}
- *  theme={'success'}
+ *  color={'success'}
  *  onClick={() => {alert('click)}}
  * />
  * ```
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/button)
  */
-export function Button(props: Button & (Theme | NoTheme)) {
+export function Button(props: ButtonProps) {
   const {
-    buttonType,
-    theme,
-    label,
+    children,
+    color,
     dark,
     disabled,
+    label,
     size = 'medium',
     type,
+    variant,
     ...other
   } = props;
 
   function setStyle(): CSSProperties | undefined {
-    if (buttonType !== 'primary' && buttonType !== 'outline' || disabled || !theme?.includes('#')) return undefined;
+    if (variant !== 'primary' && variant !== 'outline' || disabled || !color?.includes('#')) return undefined;
 
-    return buttonType === 'primary' ? {
-      color: useContrastColor(theme),
-      backgroundColor: theme,
+    return variant === 'primary' ? {
+      color: useContrastColor(color),
+      backgroundColor: color,
       borderColor: dark ? 'var(--uil-black-light)' : 'var(--uil-grey-darker)'
     } : {
-      color: theme,
+      color: color,
       backgroundColor: dark ? 'var(--uil-black-light)' : 'var(--uil-white)',
-      borderColor: theme
+      borderColor: color
     };
   }
 
   function setClassName() {
-    const themeClass = (theme && !theme.includes('#')) ? ` ${style[theme as 'success' | 'warning' | 'error']}` : '';
-    let sizeClass = style[size];
+    const colorClass = (color && !color.includes('#')) ? ` ${styles[color as 'success' | 'warning' | 'error']}` : '';
+    let sizeClass = styles[size];
 
     switch (size) {
       case 'small':
@@ -76,10 +61,10 @@ export function Button(props: Button & (Theme | NoTheme)) {
         sizeClass += ` ${global.fontLarge}`;
         break;
       default:
-        throw new Error('[Button] Unsupported size');
+        throw new Error('[Button] unsupported size');
     }
 
-    return `${global.fit} ${disabled ? global.notAllowed : global.pointer} ${style.button} ${style[buttonType]} ${sizeClass}${dark ? ` ${style.dark}` : ''}${disabled ? ` ${style.disabled}` : ''}${themeClass}`;
+    return `${global.fit} ${disabled ? global.notAllowed : global.pointer} ${styles.button} ${styles[variant]} ${sizeClass}${dark ? ` ${styles.dark}` : ''}${disabled ? ` ${styles.disabled}` : ''}${colorClass}`;
   }
 
   return (
@@ -90,7 +75,7 @@ export function Button(props: Button & (Theme | NoTheme)) {
       disabled={disabled}
       {...other}
     >
-      {label}
+      {children ?? label}
     </button>
   );
 }

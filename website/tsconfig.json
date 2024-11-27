@@ -3,7 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "types": ["docusaurus-plugin-sass"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@site/*": ["./*"],
+      "@common/*": ["../packages/src/components/common/*"]
+    }
   },
   "exclude": ["src/uil-bundle"]
 }

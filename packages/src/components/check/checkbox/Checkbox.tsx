@@ -1,25 +1,9 @@
-import React, {type ComponentPropsWithoutRef, type ReactNode} from 'react';
+import React from 'react';
 import generateKey from 'utils/generateKey';
-import style from './checkbox.module.scss';
+import type {CheckboxProps} from "./types";
+import global from '@common/styles/global.module.scss';
+import styles from './checkbox.module.scss';
 import check from '../check.module.scss';
-import global from '../../common/global.module.scss';
-
-interface Checkbox extends ComponentPropsWithoutRef<'input'> {
-  checked    : boolean;
-  toggleCheck: (value: boolean) => void;
-  color?     : string;
-  dark?      : boolean;
-}
-
-interface CheckLabel {
-  label    : string;
-  children?: never;
-}
-
-interface CheckHTML {
-  label?  : never;
-  children: ReactNode;
-}
 
 /**
  * @example
@@ -33,7 +17,7 @@ interface CheckHTML {
  *
  * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/checkbox).
  */
-export function Checkbox(props: Checkbox & (CheckLabel | CheckHTML)) {
+export function Checkbox(props: CheckboxProps) {
   const {
     checked,
     children,
@@ -55,13 +39,13 @@ export function Checkbox(props: Checkbox & (CheckLabel | CheckHTML)) {
 
   return (
     <div className={`${check.checkWrapper} ${global.fontMedium}`}>
-      <div className={`${style.checkbox} ${cursorClass} ${check.check} ${dark ? check.dark : ''}`} onClick={handleCheck}>
+      <div className={`${styles.checkbox} ${cursorClass} ${check.check}${dark ? ` ${check.dark}` : ''}`} onClick={handleCheck}>
         <input type={'checkbox'} checked={checked} disabled={disabled} onChange={handleCheck} id={ID} {...other}/>
-        <div className={`${check.checkmark} ${dark ? check.dark : ''}`} style={{backgroundColor: color}}/>
+        <div className={`${check.checkmark}${dark ? ` ${check.dark}` : ''}`} style={{backgroundColor: color}}/>
       </div>
 
-      <label htmlFor={ID} className={`${cursorClass} ${style.checkLabel} ${dark ? style.dark : ''}`}>
-        {children ? children : label}
+      <label htmlFor={ID} className={`${cursorClass} ${styles.checkLabel} ${dark ? styles.dark : ''}`}>
+        {children ?? label}
       </label>
     </div>
   );
