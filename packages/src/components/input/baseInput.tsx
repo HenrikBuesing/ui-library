@@ -3,7 +3,7 @@ import {Icon} from 'components/icon/icon';
 import style from './input.module.scss';
 import global from '@common/styles/global.module.scss';
 
-export interface IBaseInput extends ComponentPropsWithoutRef<'input'> {
+export type IBaseInput = ComponentPropsWithoutRef<'input'> & {
   label       : string;
   value       : string | number;
   valueChanged: (value: string) => void;

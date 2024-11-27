@@ -5,7 +5,7 @@ import {useClickOutsideRef} from 'hooks/clickOutside';
 import style from './input.module.scss';
 import global from '@common/styles/global.module.scss';
 
-export interface ICustomInput extends IBaseInput {
+export type ICustomInput = IBaseInput & {
   tooltipClose?: string;
   tooltipIcon? : string;
   tooltipText? : string;
