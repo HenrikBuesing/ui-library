@@ -19,7 +19,7 @@ describe('general', () => {
     const child = screen.getByTestId('child');
 
     expect(child).toBeDefined();
-    expect(child.textContent).toBe('Hello World');
+    expect(child.textContent).toEqual('Hello World');
   });
 
   test('should render small button', () => {
@@ -75,7 +75,7 @@ describe('general', () => {
 
     fireEvent.click(button);
 
-    expect(count.textContent).toBe('1');
+    expect(count.textContent).toEqual('1');
   });
 
   test('should throw error when using unknown size', () => {
