@@ -28,6 +28,7 @@ export default defineConfig(
           ...exclude,
           ...coverageConfigDefaults.exclude
         ],
+        reporter: ['text']
       },
       css: {
         include: [/.+/],
