@@ -30,9 +30,13 @@ export default defineConfig(
         ],
       },
       css: {
-        include: [/.+/]
+        include: [/.+/],
+        modules: {
+          classNameStrategy: 'non-scoped'
+        }
       },
-      bail: 1
+      bail: 1,
+      silent: true
     }
   }
 );
