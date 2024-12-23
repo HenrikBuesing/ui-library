@@ -14,7 +14,7 @@ export const buildPlugin = {
 
     build.onEnd(async result => {
       console.log(await esbuild.analyzeMetafile(result.metafile));
-    })
+    });
   },
 }
 
@@ -23,6 +23,10 @@ export const watchPlugin = {
   setup(build) {
     const options = build.initialOptions;
     options.minify = false;
+    
+    build.onEnd(result => {
+      console.log('build complete:', result);
+    });
   },
 }
 
