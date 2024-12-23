@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
 import generateKey from '@utils/generateKey';
 import type {ModalProps} from './types';
-import {Button} from '../button';
 import style from './modal.module.scss';
+import React, {useEffect} from 'react';
+import {Button} from '../button';
 
 export function Modal(props: ModalProps) {
   const {
@@ -16,11 +16,9 @@ export function Modal(props: ModalProps) {
     timeout,
     title,
     theme,
-    type
+    variant
   } = props;
 
-  const messages = Array.isArray(message) ? message : [message ?? ''];
-  const isNotification = type === 'notification';
   let timer: NodeJS.Timeout | undefined = undefined;
 
   useEffect(() => {
@@ -56,15 +54,15 @@ export function Modal(props: ModalProps) {
           {children ? children :
             <>
               <div>
-                {messages.map(m =>
+                {message && message.map(m =>
                   <p key={generateKey()} className={style.modalText}>{m}</p>
                 )}
               </div>
 
-              <div className={`${style.buttonWrapper}${isNotification ? ` ${style.single}` : ''}`}>
-                <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} onClick={handleConfirm} type={'button'} dark={dark}/>
+              <div className={`${style.buttonWrapper}${variant === 'notification' ? ` ${style.single}` : ''}`}>
+                <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} dark={dark} onClick={handleConfirm} type={'button'}/>
 
-                {!isNotification &&
+                {variant === 'question' &&
                   <Button variant={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
                 }
               </div>

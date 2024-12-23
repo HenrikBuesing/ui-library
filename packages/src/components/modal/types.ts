@@ -9,7 +9,7 @@ type AdditionalModalProps = {
 } & ({
   confirmAction: () => void;
   confirmLabel: string;
-  message: string | string[];
+  message: string[];
   children?: never;
 } & (Notification | Question) | CustomContent & ({
   confirmAction: () => void;
@@ -20,14 +20,14 @@ type AdditionalModalProps = {
 }));
 
 type Notification = {
-  type: 'notification';
+  variant: 'notification';
   cancelAction?: never;
   cancelLabel?: never;
   timeout?: number;
 };
 
 type Question = {
-  type: 'question';
+  variant: 'question';
   cancelAction: () => void;
   cancelLabel: string;
   timeout?: never;
@@ -39,5 +39,5 @@ type CustomContent = {
   cancelLabel?: never;
   confirmLabel?: never;
   message?: never;
-  type?: never;
+  variant?: never;
 };
