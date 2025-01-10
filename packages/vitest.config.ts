@@ -10,6 +10,13 @@ const exclude = [
 
 export default defineConfig(
   {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler'
+        }
+      }
+    },
     test: {
       globals: true,
       environment: 'jsdom',
