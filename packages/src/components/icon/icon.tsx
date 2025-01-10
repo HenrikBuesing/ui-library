@@ -1,6 +1,6 @@
 import React, {type ComponentPropsWithoutRef, type CSSProperties} from 'react';
-import type {IconProps} from "./types";
-import generateKey from "@utils/generateKey";
+import generateKey from '@utils/generateKey';
+import type {IconProps} from './types';
 
 /**
  * @example
@@ -22,7 +22,6 @@ export function Icon(props: IconProps) {
   } = props;
 
   const imgProps = other as ComponentPropsWithoutRef<'img'>;
-  const isSvg = type === 'svg';
   const ID = altText ? other.id ?? generateKey() : undefined;
   const s = getSize();
 
@@ -46,12 +45,12 @@ export function Icon(props: IconProps) {
 
   return (
     <>
-      {isSvg ?
+      {type === 'svg' ?
         <svg style={style} {...other as ComponentPropsWithoutRef<'svg'>} aria-labelledby={ID} role={other.role ?? 'img'}>
           {altText && <title id={ID}>{altText}</title>}
           <use href={src}/>
         </svg> :
-        <img src={src} alt={imgProps.alt} style={style} {...imgProps}/>
+        <img src={src} alt={imgProps.alt ?? ''} style={style} {...imgProps}/>
       }
     </>
   );
