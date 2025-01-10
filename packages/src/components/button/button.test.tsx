@@ -150,30 +150,33 @@ describe('color options', () => {
 
   test('should render blue (custom color)', () => {
     render(<Button variant={'primary'} label={'custom'} color={'#3143c1'}/>);
+    const button = screen.getByText('custom');
 
     // result returns rgb so the provided hex has to be converted to compare
     const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
 
-    const button = screen.getByText('custom');
-
     expect(button.style.backgroundColor).toBeDefined();
     expect(button.style.backgroundColor).toEqual(rgb);
+
+    expect(button.style.color).toBeDefined();
+    expect(button.style.color).toEqual('rgb(255, 255, 255)');
   });
 
   test('should render blue outline (custom color)', () => {
     render(<Button variant={'outline'} label={'custom'} color={'#3143c1'}/>);
+    const button = screen.getByText('custom');
 
     // result returns rgb so the provided hex has to be converted to compare
     const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
 
-    const button = screen.getByText('custom');
-
     expect(button.style.color).toBeDefined();
     expect(button.style.color).toEqual(rgb);
+    
+    expect(button.style.border).toBeDefined();
+    expect(button.style.border).toEqual('#3143c1');
   });
 
-  describe('no color', () => {
-    test('should render secondary without color', () => {
+  test('should render secondary without color', () => {
       render(<Button variant={'secondary'} label={'secondary'}/>);
 
       const button = screen.getByText('secondary');
@@ -184,7 +187,7 @@ describe('color options', () => {
       expect(button.className).not.toMatch(/\berror\b/);
     });
 
-    test('should render text without color', () => {
+  test('should render text without color', () => {
       render(<Button variant={'text'} label={'text'}/>);
 
       const button = screen.getByText('text');
@@ -194,7 +197,6 @@ describe('color options', () => {
       expect(button.className).not.toMatch(/\bwarning\b/);
       expect(button.className).not.toMatch(/\berror\b/);
     });
-  });
 });
 
 function ButtonClickEvent() {

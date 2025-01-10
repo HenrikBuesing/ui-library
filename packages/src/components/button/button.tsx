@@ -1,8 +1,8 @@
-import React, {type CSSProperties} from 'react';
-import {useContrastColor} from '@hooks/contrastColor';
-import type {ButtonProps} from "./types";
 import global from '@common/styles/global.module.scss';
+import {useContrastColor} from '@hooks/contrastColor';
+import React, {type CSSProperties} from 'react';
 import styles from './button.module.scss';
+import type {ButtonProps} from './types';
 
 /**
  * @example
@@ -38,10 +38,8 @@ export function Button(props: ButtonProps) {
     return variant === 'primary' ? {
       color: useContrastColor(color),
       backgroundColor: color,
-      borderColor: dark ? 'var(--uil-black-light)' : 'var(--uil-grey-darker)'
     } : {
       color: color,
-      backgroundColor: dark ? 'var(--uil-black-light)' : 'var(--uil-white)',
       borderColor: color
     };
   }
