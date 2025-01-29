@@ -23,19 +23,18 @@ describe('general', () => {
   test('should render checkbox using custom color', () => {
     const {container} = render(<ColorCheckbox/>);
 
-    const checkmark = container.querySelector('.checkmark') as HTMLDivElement;
+    const checkmark = container.getElementsByClassName('checkmark').item(0);
 
-    expect(checkmark.style.backgroundColor).toBeDefined();
-    expect(checkmark.style.backgroundColor).toEqual('red');
+    expect(checkmark?.getAttribute('style')).toEqual('background-color: red;')
   });
 
   test('should render checkbox using dark mode', () => {
     const {container} = render(<BasicCheckbox dark={true}/>);
 
-    const checkbox = container.querySelector('.checkbox') as HTMLDivElement;
-    const label = screen.getByText('checkbox') as HTMLLabelElement;
+    const checkbox = container.getElementsByClassName('checkbox').item(0);
+    const label = screen.getByText('checkbox');
 
-    expect(checkbox.className).toMatch(/\bdark\b/);
+    expect(checkbox?.className).toMatch(/\bdark\b/);
     expect(label.className).toMatch(/\bdark\b/);
   });
 
@@ -43,7 +42,7 @@ describe('general', () => {
     const {container} = render(<BasicCheckbox disabled={true}/>);
 
     const input = screen.getByRole('checkbox') as HTMLInputElement;
-    const checkbox = container.querySelector('.checkbox') as HTMLDivElement;
+    const checkbox = container.getElementsByClassName('checkbox').item(0) as Element;
 
     fireEvent.click(checkbox);
 
@@ -55,7 +54,7 @@ describe('general', () => {
     const {container} = render(<BasicCheckbox />);
 
     const input = screen.getByRole('checkbox') as HTMLInputElement;
-    const checkbox = container.querySelector('.checkbox') as HTMLDivElement;
+    const checkbox = container.getElementsByClassName('checkbox').item(0) as Element;
 
     // check with wrapper div
     fireEvent.click(checkbox);
