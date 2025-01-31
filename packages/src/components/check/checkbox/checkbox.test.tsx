@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
 import {describe, expect, test} from 'vitest';
-import {Checkbox} from "./Checkbox";
+import {Checkbox} from "./checkbox";
 
 describe('general', () => {
   test('should render checkbox using label prop', () => {
