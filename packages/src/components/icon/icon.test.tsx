@@ -83,6 +83,6 @@ describe('general', () => {
     expect(() => {
       // @ts-ignore -> test using unsupported size
       render(<Icon src={testPNG} type={'img'} alt={'test img'} size={'test'}/>)
-    }).toThrow(new Error('[Icon] unsupported size'));
+    }).toThrowError('[Icon] unsupported size');
   });
 });
