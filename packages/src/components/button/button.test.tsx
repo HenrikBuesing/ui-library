@@ -171,32 +171,32 @@ describe('color options', () => {
 
     expect(button.style.color).toBeDefined();
     expect(button.style.color).toEqual(rgb);
-    
+
     expect(button.style.border).toBeDefined();
     expect(button.style.border).toEqual('#3143c1');
   });
 
-  test('should render secondary without color', () => {
-      render(<Button variant={'secondary'} label={'secondary'}/>);
+  test('should render secondary', () => {
+    render(<Button variant={'secondary'} label={'secondary'}/>);
 
-      const button = screen.getByText('secondary');
+    const button = screen.getByText('secondary');
 
-      expect(button.style.backgroundColor).toEqual('');
-      expect(button.className).not.toMatch(/\bsuccess\b/);
-      expect(button.className).not.toMatch(/\bwarning\b/);
-      expect(button.className).not.toMatch(/\berror\b/);
-    });
+    expect(button.style.backgroundColor).toEqual('');
+    expect(button.className).not.toMatch(/\bsuccess\b/);
+    expect(button.className).not.toMatch(/\bwarning\b/);
+    expect(button.className).not.toMatch(/\berror\b/);
+  });
 
-  test('should render text without color', () => {
-      render(<Button variant={'text'} label={'text'}/>);
+  test('should render text', () => {
+    render(<Button variant={'text'} label={'text'}/>);
 
-      const button = screen.getByText('text');
+    const button = screen.getByText('text');
 
-      expect(button.style.backgroundColor).toEqual('');
-      expect(button.className).not.toMatch(/\bsuccess\b/);
-      expect(button.className).not.toMatch(/\bwarning\b/);
-      expect(button.className).not.toMatch(/\berror\b/);
-    });
+    expect(button.style.backgroundColor).toEqual('');
+    expect(button.className).not.toMatch(/\bsuccess\b/);
+    expect(button.className).not.toMatch(/\bwarning\b/);
+    expect(button.className).not.toMatch(/\berror\b/);
+  });
 });
 
 function ButtonClickEvent() {
