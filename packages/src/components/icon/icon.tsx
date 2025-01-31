@@ -1,7 +1,7 @@
 import React, {type ComponentPropsWithoutRef} from 'react';
 import generateKey from '@utils/generateKey';
-import type {IconProps} from './types';
 import styles from './icon.module.scss';
+import type {IconProps} from './types';
 
 /**
  * @example

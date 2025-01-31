@@ -1,4 +1,4 @@
-import type {ComponentPropsWithoutRef, ElementType, ReactNode} from "react";
+import type {ComponentPropsWithoutRef, ElementType, ReactNode} from 'react';
 
 export type Size = 'small' | 'medium' | 'large';
 

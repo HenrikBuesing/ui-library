@@ -1,5 +1,5 @@
-import type {ReactNode} from "react";
-import type {BaseProps, Status} from "@common/types";
+import type {BaseProps, Status} from '@common/types';
+import type {ReactNode} from 'react';
 
 export type ModalProps = BaseProps & AdditionalModalProps;
 

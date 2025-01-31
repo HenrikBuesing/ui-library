@@ -1,5 +1,5 @@
-import type {ComponentPropsWithoutRef} from "react";
-import type {Size} from "@common/types";
+import type {ComponentPropsWithoutRef} from 'react';
+import type {Size} from '@common/types';
 
 export type IconProps = AdditionalIconProps;
 
