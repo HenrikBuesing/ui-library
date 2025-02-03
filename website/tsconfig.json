@@ -1,12 +1,13 @@
 {
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
     "types": ["docusaurus-plugin-sass"],
     "strictNullChecks": true,
     "paths": {
       "@site/*": ["./*"],
-      "@common/*": ["../packages/src/components/common/*"]
+      "@common/*": ["../packages/src/components/common/*"],
+      "@hooks/*": ["../packages/src/hooks/*"],
+      "@utils/*": ["../packages/src/utils/*"]
     }
   },
   "exclude": ["src/uil-bundle"]

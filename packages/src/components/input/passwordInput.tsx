@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {CustomInput, type ICustomInput} from './customInput';
-import {Icon} from 'components/icon/icon';
-import generateKey from 'utils/generateKey';
+import {Icon} from '../icon';
+import generateKey from '@utils/generateKey';
 import style from './input.module.scss';
 
 type IPasswordInput = ICustomInput & {

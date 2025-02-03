@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {BaseInput, type IBaseInput} from './baseInput';
-import {Icon} from 'components/icon/icon';
-import {useClickOutsideRef} from 'hooks/clickOutside';
+import {Icon} from '../icon';
+import {useClickOutsideRef} from '@hooks/clickOutside';
 import style from './input.module.scss';
 import global from '@common/styles/global.module.scss';
 

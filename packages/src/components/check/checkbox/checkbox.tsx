@@ -1,9 +1,9 @@
-import React from 'react';
-import generateKey from 'utils/generateKey';
-import type {CheckboxProps} from "./types";
 import global from '@common/styles/global.module.scss';
+import generateKey from '@utils/generateKey';
 import styles from './checkbox.module.scss';
+import type {CheckboxProps} from './types';
 import check from '../check.module.scss';
+import React from 'react';
 
 /**
  * @example

@@ -108,6 +108,7 @@
 
   &.dark {
     color: var(--uil-white);
+    border-color: var(--uil-grey-darker);
     box-shadow: none;
 
     &:hover {

@@ -1,4 +1,4 @@
-import type {BaseComponentProps} from "@common/types";
+import type {BaseComponentProps} from '@common/types';
 
 export type RadioProps = BaseComponentProps<'input'> & AdditionalRadioProps;
 

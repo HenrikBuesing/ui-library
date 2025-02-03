@@ -1,5 +1,5 @@
 import React, {type ComponentPropsWithoutRef} from 'react';
-import {Icon} from 'components/icon/icon';
+import {Icon} from '../icon';
 import style from './input.module.scss';
 import global from '@common/styles/global.module.scss';
 

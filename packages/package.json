@@ -17,7 +17,10 @@
     "dev": "NODE_ENV=dev node esbuild.js",
     "build": "NODE_ENV=production node esbuild.js",
     "postbuild": "npm run build-types",
-    "build-types": "tsc --emitDeclarationOnly --project tsconfig.build.json"
+    "build-types": "tsc --emitDeclarationOnly --project tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest -w",
+    "test:coverage": "vitest run --coverage"
   },
   "license": "MIT",
   "homepage": "https://www.ui-library.hbsng.com",
@@ -29,5 +32,10 @@
   },
   "peerDependencies": {
     "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@vitest/coverage-v8": "^2.1.6",
+    "vitest": "^2.1.6"
   }
 }
