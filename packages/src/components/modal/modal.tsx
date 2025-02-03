@@ -51,7 +51,7 @@ export function Modal(props: ModalProps) {
         }
 
         <div className={`${style.content}${dark ? ` ${style.dark}` : ''}`}>
-          {children ? children :
+          {children ??
             <>
               <div>
                 {message?.map(m =>
