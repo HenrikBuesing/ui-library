@@ -1,9 +1,9 @@
-import {beforeEach, expect, test, vi, type Mock} from "vitest";
-import {fireEvent, render, renderHook, screen} from "@testing-library/react";
-import {useClickOutsideRef} from "@hooks/clickOutside";
-import React from "react";
+import {fireEvent, render, renderHook, screen} from '@testing-library/react';
+import {beforeEach, expect, test, vi, type Mock} from 'vitest';
+import {useClickOutsideRef} from '@hooks/clickOutside';
+import React from 'react';
 
-let fn: Mock<(...args: any[]) => any>;
+let fn: Mock<(...args: string[]) => string>;
 
 beforeEach(() => {
   fn = vi.fn();

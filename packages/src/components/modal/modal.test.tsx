@@ -3,8 +3,8 @@ import {fireEvent, render} from '@testing-library/react';
 import {Modal} from './modal';
 import React from 'react';
 
-let fn: Mock<(...args: any[]) => any>;
-let fnC: Mock<(...args: any[]) => any>;
+let fn: Mock<(...args: string[]) => string>;
+let fnC: Mock<(...args: string[]) => string>;
 
 beforeEach(() => {
   fn = vi.fn();
@@ -34,7 +34,7 @@ describe('general', () => {
   });
   
   test('should render notification with multiple messages', () => {
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message', 'testing', 'foo']} confirmAction={() => {}} confirmLabel={'confirm label'}/>);
+    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message', 'testing', 'foo']} confirmAction={fn} confirmLabel={'confirm label'}/>);
 
     const content = container.getElementsByClassName('content');
     expect(content).toBeDefined();
@@ -64,19 +64,17 @@ describe('general', () => {
   test('should execute confirm action', () => {
     const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
 
-    const buttonWrapper = container.getElementsByClassName('buttonWrapper').item(0) as Element;
-    const button = buttonWrapper.getElementsByTagName('button').item(0) as Element;
+    const button = container.getElementsByTagName('button')[0];
 
     fireEvent.click(button);
     expect(fn).toHaveBeenCalled();
   });
 
   test('should not execute confirm action (undefined func)', () => {
-    // @ts-ignore -> test undefined function
+    // @ts-expect-error -> test undefined function
     const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={undefined} confirmLabel={'confirm label'}/>);
 
-    const buttonWrapper = container.getElementsByClassName('buttonWrapper').item(0) as Element;
-    const button = buttonWrapper.getElementsByTagName('button').item(0) as Element;
+    const button = container.getElementsByTagName('button')[0];
 
     fireEvent.click(button);
     expect(fn).not.toHaveBeenCalled();

@@ -7,7 +7,7 @@ describe('general', () => {
   test('should render button using label property', () => {
     render(<Button variant={'text'} label={'Test Label'}/>);
 
-    const button = screen.getByText('Test Label') as HTMLButtonElement;
+    const button = screen.getByText('Test Label');
 
     expect(button.textContent).toBeDefined();
     expect(button.children).toHaveLength(0);
@@ -25,7 +25,7 @@ describe('general', () => {
   test('should render small button', () => {
     render(<Button variant={'text'} label={'small'} size={'small'}/>);
 
-    const button = screen.getByText('small') as HTMLButtonElement;
+    const button = screen.getByText('small');
 
     expect(button.className).toMatch(/\bsmall\b/);
     expect(button.className).toMatch(/\bfontSmall\b/);
@@ -34,7 +34,7 @@ describe('general', () => {
   test('should render medium button', () => {
     render(<Button variant={'text'} label={'medium'} size={'medium'}/>);
 
-    const button = screen.getByText('medium') as HTMLButtonElement;
+    const button = screen.getByText('medium');
 
     expect(button.className).toMatch(/\bmedium\b/);
     expect(button.className).toMatch(/\bfontMedium\b/);
@@ -43,7 +43,7 @@ describe('general', () => {
   test('should render large button', () => {
     render(<Button variant={'text'} label={'large'} size={'large'}/>);
 
-    const button = screen.getByText('large') as HTMLButtonElement;
+    const button = screen.getByText('large');
 
     expect(button.className).toMatch(/\blarge\b/);
     expect(button.className).toMatch(/\bfontLarge\b/);
@@ -52,7 +52,7 @@ describe('general', () => {
   test('should render dark button', () => {
     render(<Button variant={'text'} label={'dark'} dark={true}/>);
 
-    const button = screen.getByText('dark') as HTMLButtonElement;
+    const button = screen.getByText('dark');
 
     expect(button.className).toMatch(/\bdark\b/);
   });
@@ -60,11 +60,11 @@ describe('general', () => {
   test('should render disabled button', () => {
     render(<Button variant={'text'} label={'disabled'} disabled={true}/>);
 
-    const button = screen.getByText('disabled') as HTMLButtonElement;
+    const button = screen.getByText('disabled');
 
     expect(button.className).toMatch(/\bnotAllowed\b/);
     expect(button.className).not.toMatch(/\bpointer\b/)
-    expect(button.disabled).toBeTruthy();
+    expect((button as HTMLButtonElement).disabled).toBeTruthy();
   });
 
   test('should set count to 1 (onClick)', () => {
@@ -80,7 +80,7 @@ describe('general', () => {
 
   test('should throw error when using unknown size', () => {
     expect(() => {
-      // @ts-ignore -> test using unsupported size
+      // @ts-expect-error -> test using unsupported size
       render(<Button variant={'text'} label={'text'} size={'unknown size'}/>)
     }).toThrowError('[Button] unsupported size');
   });

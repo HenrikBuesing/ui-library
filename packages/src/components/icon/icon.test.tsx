@@ -72,7 +72,7 @@ describe('general', () => {
 
   test('should render icon with custom size', () => {
     render(<Icon src={testPNG} type={'img'} alt={'test img'} size={'large'} width={50} height={50}/>);
-    const img = screen.getByAltText('test img') as HTMLImageElement;
+    const img = screen.getByAltText('test img') satisfies HTMLImageElement;
 
     expect(img.className).toEqual('');
     expect(img.height).toEqual(50);
@@ -81,7 +81,7 @@ describe('general', () => {
 
   test('should throw error when using unknown size', () => {
     expect(() => {
-      // @ts-ignore -> test using unsupported size
+      // @ts-expect-error -> test using unsupported size
       render(<Icon src={testPNG} type={'img'} alt={'test img'} size={'test'}/>)
     }).toThrowError('[Icon] unsupported size');
   });

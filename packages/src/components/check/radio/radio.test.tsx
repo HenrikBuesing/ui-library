@@ -1,8 +1,14 @@
+import {beforeEach, describe, expect, type Mock, test, vi} from 'vitest';
 import {fireEvent, render} from '@testing-library/react';
-import {describe, expect, test} from 'vitest';
 import type {RadioOption} from './types';
 import React, {useState} from 'react';
 import {Radio} from './radio';
+
+let fn: Mock<(...args: string[]) => string>;
+
+beforeEach(() => {
+  fn = vi.fn();
+});
 
 const optionsA: RadioOption[] = [
   {name: 'Foo', value: 'foo'},
@@ -18,7 +24,7 @@ const optionsB: RadioOption[] = [
 
 describe('general', () => {
   test('should render radio (all options enabled)', () => {
-    const {container} = render(<Radio options={optionsA} selected={''} selectionChanged={() => {}}/>);
+    const {container} = render(<Radio options={optionsA} selected={''} selectionChanged={fn}/>);
     
     const options = container.getElementsByClassName('checkWrapper');
     expect(options.length).toEqual(3);
@@ -35,7 +41,7 @@ describe('general', () => {
   });
 
   test('should render radio (first option disabled)', () => {
-    const {container} = render(<Radio options={optionsB} selected={''} selectionChanged={() => {}}/>);
+    const {container} = render(<Radio options={optionsB} selected={''} selectionChanged={fn}/>);
 
     const options = container.getElementsByTagName('input');
     expect(options[0].disabled).toBeTruthy();
@@ -47,7 +53,7 @@ describe('general', () => {
   });
 
   test('should render disabled radio', () => {
-    const {container} = render(<Radio options={optionsB} selected={''} selectionChanged={() => {}} disabled={true}/>);
+    const {container} = render(<Radio options={optionsB} selected={''} selectionChanged={fn} disabled={true}/>);
 
     const options = container.getElementsByTagName('input');
     expect(options[0].disabled).toBeTruthy();
@@ -77,7 +83,7 @@ describe('general', () => {
   });
   
   test('should render radio with custom check color', () => {
-    const {container} = render(<Radio options={optionsA} selected={'foo'} selectionChanged={() => {}} color={'red'}/>);
+    const {container} = render(<Radio options={optionsA} selected={'foo'} selectionChanged={fn} color={'red'}/>);
     const checkmarks = container.getElementsByClassName('checkmark');
     const style = getComputedStyle(checkmarks[0]);
     
@@ -85,7 +91,7 @@ describe('general', () => {
   });
 
   test('should render radio in dark mode', () => {
-    const {container} = render(<Radio options={optionsA} selected={'foo'} selectionChanged={() => {}} dark={true}/>);
+    const {container} = render(<Radio options={optionsA} selected={'foo'} selectionChanged={fn} dark={true}/>);
     const wrapper = container.getElementsByClassName('radio');
     
     expect(wrapper[0].className).to.include('dark');

@@ -54,7 +54,7 @@ export function Modal(props: ModalProps) {
           {children ? children :
             <>
               <div>
-                {message && message.map(m =>
+                {message?.map(m =>
                   <p key={generateKey()} className={style.modalText}>{m}</p>
                 )}
               </div>

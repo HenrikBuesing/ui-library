@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
 import {describe, expect, test} from 'vitest';
-import {Checkbox} from "./checkbox";
+import React, {useState} from 'react';
+import {Checkbox} from './checkbox';
 
 describe('general', () => {
   test('should render checkbox using label prop', () => {
@@ -41,8 +41,8 @@ describe('general', () => {
   test('should render disabled checkbox', () => {
     const {container} = render(<BasicCheckbox disabled={true}/>);
 
-    const input = screen.getByRole('checkbox') as HTMLInputElement;
-    const checkbox = container.getElementsByClassName('checkbox').item(0) as Element;
+    const input = container.getElementsByTagName('input')[0];
+    const checkbox = container.getElementsByClassName('checkbox')[0];
 
     fireEvent.click(checkbox);
 
@@ -53,8 +53,8 @@ describe('general', () => {
   test('should check checkbox', () => {
     const {container} = render(<BasicCheckbox />);
 
-    const input = screen.getByRole('checkbox') as HTMLInputElement;
-    const checkbox = container.getElementsByClassName('checkbox').item(0) as Element;
+    const input = container.getElementsByTagName('input')[0];
+    const checkbox = container.getElementsByClassName('checkbox')[0];
 
     // check with wrapper div
     fireEvent.click(checkbox);
