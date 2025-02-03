@@ -51,7 +51,7 @@ export function Radio(props: RadioProps) {
               value={option.value}
               checked={selected === option.value}
               onChange={() => {handleChange(option)}}
-              disabled={disabled ? disabled : option.disabled}
+              disabled={disabled ?? option.disabled}
               {...other}
             />
 
