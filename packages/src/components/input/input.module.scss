@@ -1,142 +1,157 @@
 @use '../common/styles/mixin' as *;
 
-.inputWrapper {
-  position: relative;
-  display: block;
-
-  & .label {
-    position: absolute;
-    top: 25%;
-    left: var(--uil-xxs);
-    cursor: text;
-    font-weight: bold;
-    color: var(--uil-black);
-    background: linear-gradient(0deg, var(--uil-white) 9px, rgba(0,0,0,0) 0%);
-    opacity: .6;
-    padding: 0 var(--uil-xxxs);
-    transition: top .25s ease-in-out;
-  }
-
-  & .input {
-    box-sizing: border-box;
-    width: 100%;
-    color: var(--uil-black);
-    background-color: var(--uil-white);
-    border: 1px solid var(--uil-black);
-    border-radius: 0;
-    padding: var(--uil-xs);
-
-    //hide placeholder as it is only needed for stylesheet rules
-    &::placeholder {
-      color: transparent;
-      width: 0;
-      height: 0;
-    }
-
-    &:focus {
-      outline: 1px solid var(--uil-outline-focus);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      border: 2px solid var(--uil-outline-disabled);
-      background-color: var(--uil-grey);
-      color: var(--uil-grey-dark);
-
-      & ~ .label {
-        cursor: not-allowed;
-        background: transparent;
-        color: var(--uil-grey-dark);
+.inputField {
+  .inputWrapper {
+    position: relative;
+    display: block;
+    
+    &.basic {
+      .input {
+        border-bottom: 1px solid var(--uil-grey-alt);
+        padding-left: 0;
+      }
+      
+      .label {
+        left: 0;
       }
 
-      & ~ .icon {
-        cursor: not-allowed;
-        fill: var(--uil-grey-dark);
-      }
-
-      &:not(:placeholder-shown) ~ .label {
-        background: linear-gradient(0deg, var(--uil-grey) 8px, rgba(0,0,0,0) 0%);
+      .fieldset {
+        border-bottom: 1px solid var(--uil-black);
       }
     }
-  }
-
-  & .icon {
-    position: absolute;
-    top: 50%;
-    right: var(--uil-xs);
-    transform: translate(0%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    fill: var(--uil-black);
-    opacity: .5;
-  }
-
-  & .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label {
-    top: -30%;
-    opacity: 1;
-  }
-
-  & .input:focus ~ .icon, .input:not(:placeholder-shown) ~ .icon {
-    opacity: 1;
-  }
-}
-
-.tooltipWrapper {
-  position: relative;
-
-  .tooltipIcon {
-    cursor: pointer;
-    fill: var(--uil-black-alt);
-    margin-bottom: var(--uil-xxs);
-  }
-
-  & .tooltipIcon:has(~ .inputWrapper > .input:not(:placeholder-shown), ~ .inputWrapper:focus-within) {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .3s, visibility .3s;
-  }
-
-  .tooltip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 1;
-    color: var(--uil-white);
-    background-color: rgba(34, 34, 34, .9);
-    padding: var(--uil-s);
-    border-radius: 3px;
-    font-size: var(--uil-font-small);
-    line-height: var(--uil-font-small);
-
-    .tooltipButton {
-      display: block;
-      margin-left: auto;
-      margin-bottom: var(--uil-m);
-      color: var(--uil-white);
-      background-color: transparent;
+    
+    &.outlined {
+      .input {
+        border: 1px solid var(--uil-grey-alt);
+        border-radius: 5px;
+      }
+      
+      .fieldset {
+        border: 1px solid var(--uil-black);
+        border-radius: 5px;
+      }
+    }
+    
+    .fieldset {
+      border-radius: 0;
+      padding: var(--uil-s);
+      margin: 0;
+      position: absolute;
+      top: -.8125rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      visibility: hidden;
       border: none;
-      padding: 0;
-      border-bottom: 1px solid var(--uil-white);
-      cursor: pointer;
+
+      .legend {
+        visibility: hidden;
+        padding: 0 2px;
+      }
+    }
+
+    .label {
+      position: absolute;
+      top: 20%;
+      left: var(--uil-m);
+      cursor: text;
+      color: var(--uil-black);
+      opacity: .6;
+      transition: top .25s ease-in-out;
+    }
+
+    .labelText {
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      transition: font-size 0.3s ease, line-height 0.3s ease;
+    }
+
+    .input {
+      box-sizing: border-box;
+      width: 100%;
+      color: var(--uil-black);
+      background-color: transparent;
+      border-radius: 0;
+      padding: var(--uil-xs);
+      padding-left: .875rem;
+      border: none;
+      
+      &:hover {
+        border-color: var(--uil-black);
+      }
+
+      &:focus, &:not(:placeholder-shown) {
+        outline: none;
+        border-color: transparent;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        border: 2px solid var(--uil-outline-disabled);
+        background-color: var(--uil-grey);
+        color: var(--uil-grey-dark);
+
+        & ~ .label {
+          cursor: not-allowed;
+          color: var(--uil-grey-dark);
+        }
+
+        & ~ .icon {
+          cursor: not-allowed;
+          fill: var(--uil-grey-dark);
+        }
+      }
+      
+      &.iconInput {
+        padding-right: 2.25rem;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: var(--uil-xs);
+      transform: translate(0%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: .5;
+      border: none;
+      width: var(--uil-xl);
+      height: var(--uil-xl);
+      z-index: 5;
+    }
+
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label {
+      top: -40%;
+      opacity: 1;
+      color: var(--uil-outline-focus);
+
+      .labelText {
+        font-size: .75rem;
+        line-height: .75rem;
+      }
+    }
+
+    .input:focus ~ .icon, .input:not(:placeholder-shown) ~ .icon {
+      opacity: 1;
+    }
+
+    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
+      visibility: visible;
+      border-color: var(--uil-outline-focus);
+      border-width: 2px;
+
+      .labelText {
+        font-size: .75rem;
+        line-height: .75rem;
+      }
     }
   }
-}
 
-.passwordRules {
-  margin-top: var(--uil-m);
-  display: flex;
-  flex-direction: column;
-  gap: var(--uil-xs);
-  margin-left: var(--uil-xs);
-
-  .rule {
-    display: flex;
-    align-items: center;
-    gap: var(--uil-xxs);
-    font-size: var(--uil-font-small);
-    line-height: var(--uil-font-small);
+  .helper {
+    font-size: var(--uil-m);
+    line-height: var(--uil-m);
   }
 }

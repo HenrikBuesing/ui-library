@@ -1,6 +1,6 @@
 import '@common/styles/variables.scss';
 
-export {Input, type InputRule} from './components/input/index';
+export {Input} from './components/input/index';
 export {Modal} from './components/modal/index';
 export {Radio, type RadioOption} from './components/check/radio/index';
 export {Checkbox} from './components/check/checkbox/index';
