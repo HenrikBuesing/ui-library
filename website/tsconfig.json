@@ -3,6 +3,7 @@
   "compilerOptions": {
     "types": ["docusaurus-plugin-sass"],
     "strictNullChecks": true,
+    "baseUrl": ".",
     "paths": {
       "@site/*": ["./*"],
       "@common/*": ["../packages/src/components/common/*"],
