@@ -5,7 +5,7 @@ import style from './input.module.scss';
 // import {useTheme} from '../provider';
 import React from 'react';
 
-export function Input(props: InputProps) {
+export function Input(props: Omit<InputProps, 'placeholder'>) {
   const {
     children,
     helpText,
@@ -22,9 +22,9 @@ export function Input(props: InputProps) {
     <div className={`${style.inputField}`}>
       <div className={`${style.inputWrapper}${variant == 'basic' ? ` ${style.basic}` : ` ${style.outlined}`}`}>
         <input 
-          id={ID} 
-          className={`${style.input} ${global.fontMedium}${children ? ` ${style.iconInput}` : ''}`} 
-          placeholder={''} 
+          id={ID}
+          className={`${style.input} ${global.fontMedium}`}
+          placeholder={''}
           {...inputProps}
         />
         
@@ -38,7 +38,7 @@ export function Input(props: InputProps) {
           <span className={style.labelText}>{label}</span>
         </label>
 
-        {children && <div className={style.icon}>{children}</div>}
+        {children && children}
       </div>
 
       {helpText && <div className={style.helper}>{helpText}</div>}

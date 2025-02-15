@@ -3,11 +3,13 @@
 .inputField {
   .inputWrapper {
     position: relative;
-    display: block;
-    
+    display: flex;
+    align-items: center;
+
     &.basic {
+      border-bottom: 1px solid var(--uil-grey-alt);
+
       .input {
-        border-bottom: 1px solid var(--uil-grey-alt);
         padding-left: 0;
       }
       
@@ -18,17 +20,41 @@
       .fieldset {
         border-bottom: 1px solid var(--uil-black);
       }
+
+      .decorator.left {
+        margin-right: .875rem;
+      }
     }
     
     &.outlined {
-      .input {
-        border: 1px solid var(--uil-grey-alt);
-        border-radius: 5px;
-      }
+      border: 1px solid var(--uil-grey-alt);
+      border-radius: 5px;
       
       .fieldset {
         border: 1px solid var(--uil-black);
         border-radius: 5px;
+      }
+
+      .decorator.left {
+        margin-left: .875rem;
+      }
+
+      .decorator.right {
+        margin-right: .875rem;
+      }
+    }
+
+    &.basic, &.outlined {
+      &:hover {
+        border-color: var(--uil-black);
+      }
+
+      &:focus-within, &:has(.input:not(:placeholder-shown)) {
+        border-color: transparent;
+      }
+
+      &:has(.decorator.left) {
+        flex-direction: row-reverse;
       }
     }
     
@@ -76,10 +102,6 @@
       padding: var(--uil-xs);
       padding-left: .875rem;
       border: none;
-      
-      &:hover {
-        border-color: var(--uil-black);
-      }
 
       &:focus, &:not(:placeholder-shown) {
         outline: none;
@@ -97,33 +119,18 @@
           color: var(--uil-grey-dark);
         }
 
-        & ~ .icon {
+        & ~ .decorator {
           cursor: not-allowed;
           fill: var(--uil-grey-dark);
         }
       }
-      
-      &.iconInput {
-        padding-right: 2.25rem;
-      }
     }
 
-    .icon {
-      position: absolute;
-      top: 50%;
-      right: var(--uil-xs);
-      transform: translate(0%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .decorator {
       opacity: .5;
-      border: none;
-      width: var(--uil-xl);
-      height: var(--uil-xl);
-      z-index: 5;
     }
 
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label {
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .decorator.left ~ .label {
       top: -40%;
       opacity: 1;
       color: var(--uil-outline-focus);
@@ -134,11 +141,7 @@
       }
     }
 
-    .input:focus ~ .icon, .input:not(:placeholder-shown) ~ .icon {
-      opacity: 1;
-    }
-
-    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
+    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .decorator.left ~ .fieldset {
       visibility: visible;
       border-color: var(--uil-outline-focus);
       border-width: 2px;
