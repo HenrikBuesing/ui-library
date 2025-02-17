@@ -30,7 +30,7 @@
       border: 1px solid var(--uil-grey-alt);
       border-radius: 5px;
 
-      &:has(.decorator) {
+      &:has(.decorator.visible) {
         border: transparent;
       }
       
@@ -136,9 +136,13 @@
 
     .decorator {
       opacity: .5;
+      
+      &.focus {
+        visibility: hidden;
+      }
     }
 
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .decorator ~ .label {
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label, .decorator.visible ~ .label {
       top: -40%;
 
       .labelText {
@@ -152,7 +156,7 @@
       color: var(--uil-outline-focus);
     }
 
-    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .decorator ~ .fieldset {
+    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .input:focus ~ .decorator.focus ~ .fieldset, .decorator.visible ~ .fieldset {
       visibility: visible;
 
       .labelText {
@@ -164,6 +168,10 @@
     .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
       border-color: var(--uil-outline-focus);
       border-width: 2px;
+    }
+    
+    .input:focus ~ .decorator.focus {
+      visibility: visible;
     }
   }
 

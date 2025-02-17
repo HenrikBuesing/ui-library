@@ -1,8 +1,8 @@
 import type {BaseComponentProps} from '@common/types';
 import type {InputDecorator} from './inputDecorator';
+import type {IconProps} from '../icon/types';
 import type {ReactElement} from 'react';
 import {Icon} from '../icon';
-import type {IconProps} from "../icon/types";
 
 export type InputProps = BaseComponentProps<'input'> & AdditionalInputProps;
 
@@ -17,5 +17,5 @@ type AdditionalInputProps = {
 export type InputDecoratorProps = {
   children: ReactElement<IconProps, typeof Icon> | string;
   position?: 'left' | 'right';
-  visibility?: 'always' | 'focused';
+  onFocus?: boolean;
 }

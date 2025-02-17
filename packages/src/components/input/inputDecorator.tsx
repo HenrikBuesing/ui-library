@@ -6,12 +6,12 @@ import React from 'react';
 export function InputDecorator(props: InputDecoratorProps) {
   const {
     children,
-    visibility,
+    onFocus,
     position
   } = props;
 
   return (
-    <div className={`${style.decorator} ${global.fontSmall}${position === 'left' ? ` ${style.left}` : ` ${style.right}`} ${visibility === 'always' ? 'visible' : 'hover'}`}>
+    <div className={`${style.decorator} ${global.fontSmall}${position === 'left' ? ` ${style.left}` : ` ${style.right}`} ${onFocus ? style.focus : style.visible}`}>
       {children}
     </div>
   );
