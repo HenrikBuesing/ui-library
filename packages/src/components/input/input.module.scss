@@ -18,7 +18,7 @@
       }
 
       .fieldset {
-        border-bottom: 1px solid var(--uil-black);
+        border-bottom: 1px solid var(--uil-grey-alt);
       }
 
       .decorator.left {
@@ -29,9 +29,13 @@
     &.outlined {
       border: 1px solid var(--uil-grey-alt);
       border-radius: 5px;
+
+      &:has(.decorator) {
+        border: transparent;
+      }
       
       .fieldset {
-        border: 1px solid var(--uil-black);
+        border: 1px solid var(--uil-grey-alt);
         border-radius: 5px;
       }
 
@@ -47,6 +51,10 @@
     &.basic, &.outlined {
       &:hover {
         border-color: var(--uil-black);
+        
+        .fieldset {
+          border-color: var(--uil-black);
+        }
       }
 
       &:focus-within, &:has(.input:not(:placeholder-shown)) {
@@ -130,10 +138,8 @@
       opacity: .5;
     }
 
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .decorator.left ~ .label {
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .decorator ~ .label {
       top: -40%;
-      opacity: 1;
-      color: var(--uil-outline-focus);
 
       .labelText {
         font-size: .75rem;
@@ -141,15 +147,23 @@
       }
     }
 
-    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .decorator.left ~ .fieldset {
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label {
+      opacity: 1;
+      color: var(--uil-outline-focus);
+    }
+
+    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .decorator ~ .fieldset {
       visibility: visible;
-      border-color: var(--uil-outline-focus);
-      border-width: 2px;
 
       .labelText {
         font-size: .75rem;
         line-height: .75rem;
       }
+    }
+
+    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
+      border-color: var(--uil-outline-focus);
+      border-width: 2px;
     }
   }
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {Input, Icon} from "@site/src/uil-bundle";
+import {Input, Icon, InputDecorator} from "@site/src/uil-bundle";
 
 export default function DefaultInput() {
   const [value, setValue] = useState('');
@@ -8,11 +8,17 @@ export default function DefaultInput() {
   return (
     <>
       <Input label={'Outlined'} variant={'outlined'} value={value} onChange={e => setValue(e.target.value)}>
-        {/*<Icon type={'svg'} src={useBaseUrl('/img/example.svg#question')}/>*/}
+        {/*<InputDecorator position="right">*/}
+        {/*/!*  Testing*!/*/}
+        {/*  <Icon type={'svg'} src={useBaseUrl('/img/example.svg#question')} size={'small'}/>*/}
+        {/*</InputDecorator>*/}
       </Input>
 
       <Input label={'Username'} variant={'basic'} value={value} onChange={e => setValue(e.target.value)}>
         {/*<Icon type={'svg'} src={useBaseUrl('/img/example.svg#question')}/>*/}
+        {/*<InputDecorator position="left">*/}
+        {/*  Testing*/}
+        {/*</InputDecorator>*/}
       </Input>
     </>
   );

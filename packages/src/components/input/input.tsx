@@ -27,6 +27,8 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
           placeholder={''}
           {...inputProps}
         />
+
+        {children && children}
         
         <fieldset className={style.fieldset} aria-hidden={true}>
           <legend className={style.legend}>
@@ -37,8 +39,6 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
         <label htmlFor={ID} className={style.label}>
           <span className={style.labelText}>{label}</span>
         </label>
-
-        {children && children}
       </div>
 
       {helpText && <div className={style.helper}>{helpText}</div>}
