@@ -49,7 +49,7 @@
     }
 
     &.basic, &.outlined {
-      &:hover {
+      &:not(.error):hover:not(:focus-within) {
         border-color: var(--uil-black);
         
         .fieldset {
@@ -63,6 +63,19 @@
 
       &:has(.decorator.left) {
         flex-direction: row-reverse;
+      }
+    }
+    
+    &.error {
+      border-color: var(--uil-error-alt);
+      
+      .fieldset, .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
+        border-color: var(--uil-error-alt);
+      }
+      
+      .label {
+        color: var(--uil-error-alt);
+        opacity: 1;
       }
     }
     
@@ -96,9 +109,13 @@
     }
 
     .labelText {
-      font-size: 1.25rem;
-      line-height: 1.25rem;
-      transition: font-size 0.3s ease, line-height 0.3s ease;
+      font-size: var(--uil-l);
+      line-height: var(--uil-l);
+      transition: font-size 0.25s ease, line-height 0.25s ease;
+      
+      &.asterisk {
+        margin-left: var(--uil-xxxs);
+      }
     }
 
     .input {
@@ -142,41 +159,49 @@
       }
     }
 
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label, .decorator.visible ~ .label {
-      top: -40%;
-
-      .labelText {
-        font-size: .75rem;
-        line-height: .75rem;
-      }
+    .input:focus ~ .decorator.focus {
+      visibility: visible;
     }
 
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label {
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label,
+    .decorator.visible ~ .label {
+      top: -40%;
+    }
+
+    &:not(.error) .input:focus ~ .label, &:not(.error) .input:not(:placeholder-shown) ~ .label {
       opacity: 1;
       color: var(--uil-outline-focus);
     }
 
-    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .input:focus ~ .decorator.focus ~ .fieldset, .decorator.visible ~ .fieldset {
+    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .input:focus ~ .decorator.focus ~ .fieldset,
+    .decorator.visible ~ .fieldset {
       visibility: visible;
-
-      .labelText {
-        font-size: .75rem;
-        line-height: .75rem;
-      }
     }
 
     .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
       border-color: var(--uil-outline-focus);
       border-width: 2px;
     }
-    
-    .input:focus ~ .decorator.focus {
-      visibility: visible;
+
+    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label,
+    .decorator.visible ~ .label, .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset,
+    .input:focus ~ .decorator.focus ~ .fieldset, .decorator.visible ~ .fieldset {
+      .labelText {
+        font-size: var(--uil-s);
+        line-height: var(--uil-s);
+      }
     }
   }
 
-  .helper {
+  .helpText {
+    color: var(--uil-grey-dark);
     font-size: var(--uil-m);
     line-height: var(--uil-m);
+    margin-left: var(--uil-s);
+    margin-top: var(--uil-xxs);
+    
+    &.error {
+      color: var(--uil-error-alt);
+    }
   }
 }
