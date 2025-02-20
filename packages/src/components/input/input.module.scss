@@ -49,7 +49,7 @@
     }
 
     &.basic, &.outlined {
-      &:not(.error):hover:not(:focus-within) {
+      &:not(:has(.input:disabled)):not(.error):hover:not(:focus-within) {
         border-color: var(--uil-black);
         
         .fieldset {
@@ -134,19 +134,20 @@
       }
 
       &:disabled {
-        cursor: not-allowed;
-        border: 2px solid var(--uil-outline-disabled);
-        background-color: var(--uil-grey);
         color: var(--uil-grey-dark);
 
-        & ~ .label {
-          cursor: not-allowed;
-          color: var(--uil-grey-dark);
+        & ~ .fieldset {
+          border-color: var(--uil-grey-alt);
         }
 
-        & ~ .decorator {
-          cursor: not-allowed;
-          fill: var(--uil-grey-dark);
+        &:not(:placeholder-shown) ~ .fieldset {
+          border-color: var(--uil-grey-alt);
+        }
+
+        & ~ .label {
+          color: var(--uil-grey-dark);
+          opacity: 1;
+          cursor: default;
         }
       }
     }
@@ -168,7 +169,7 @@
       top: -40%;
     }
 
-    &:not(.error) .input:focus ~ .label, &:not(.error) .input:not(:placeholder-shown) ~ .label {
+    &:not(.error) .input:not(:disabled):focus ~ .label, &:not(.error) .input:not(:disabled):not(:placeholder-shown) ~ .label {
       opacity: 1;
       color: var(--uil-outline-focus);
     }
