@@ -9,13 +9,13 @@ export type InputProps = BaseComponentProps<'input'> & AdditionalInputProps;
 type AdditionalInputProps = {
   label: string;
   variant: 'outlined' | 'basic'
-  children?: ReactElement<typeof InputDecorator>;
+  children?: ReactElement<InputDecoratorProps, typeof InputDecorator>;
   error?: boolean;
   helpText?: string;
 }
 
 export type InputDecoratorProps = {
-  children: ReactElement<IconProps, typeof Icon> | string;
+  children: ReactElement<IconProps, typeof Icon> | ReactElement<'img'> | ReactElement<'svg'> | string;
   position?: 'left' | 'right';
   onFocus?: boolean;
 }

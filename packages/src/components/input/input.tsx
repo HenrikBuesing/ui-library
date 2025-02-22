@@ -1,9 +1,10 @@
 import global from '@common/styles/global.module.scss';
+import {InputDecorator} from './inputDecorator';
 import generateKey from '@utils/generateKey';
+import React, {isValidElement} from 'react';
 import type {InputProps} from './types';
 import style from './input.module.scss';
 // import {useTheme} from '../provider';
-import React from 'react';
 
 export function Input(props: Omit<InputProps, 'placeholder'>) {
   const {
@@ -15,6 +16,10 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
     variant,
     ...inputProps
   } = props;
+
+  if (children && (!isValidElement(children) || children.type !== InputDecorator)) {
+    throw new Error(`<Input> received an invalid child. Expected <InputDecorator />, but got: ${isValidElement(children) ? children.type : typeof children}.`);
+  }
 
   const ID = id ?? generateKey();
   const helpId = helpText ? generateKey() : undefined;
