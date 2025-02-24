@@ -1,11 +1,11 @@
 ---
-title: <CustomInput />
+title: <Input />
 description: Usage of the input component
 sidebar_position: 2
 tags: [components, input]
 ---
 
-# \<CustomInput />
+# \<Input />
 
 ## Assignable props
 <AssignableProps
@@ -48,7 +48,8 @@ If you need an input for password creation and verification, consider using the 
 ```
 
 ### Input with tooltip
-<TooltipInput/>
+
+[//]: # (<TooltipInput/>)
 
 &NewLine;
 
@@ -71,7 +72,8 @@ Tooltips are hidden if you don't provide an icon. Make sure to provide both if y
 :::
 
 ### Input with icon
-<IconInput/>
+
+[//]: # (<IconInput/>)
 
 &NewLine;
 
@@ -86,7 +88,8 @@ Tooltips are hidden if you don't provide an icon. Make sure to provide both if y
 ```
 
 ### Disabled input
-<DisabledInput/>
+
+[//]: # (<DisabledInput/>)
 
 &NewLine;
 
@@ -100,18 +103,31 @@ Tooltips are hidden if you don't provide an icon. Make sure to provide both if y
 />
 ```
 
-## Playground
-```tsx live
-function Playground() {
-  const [value, setValue] = useState('Hello!');
+[//]: # (## Playground)
 
-  return (
-    <CustomInput
-      label={'Hello world'}
-      value={value}
-      valueChanged={setValue}
-      name={'playground-input'}
-    />
-  );
-}
-```
+[//]: # (```tsx live)
+
+[//]: # (function Playground&#40;&#41; {)
+
+[//]: # (  const [value, setValue] = useState&#40;'Hello!'&#41;;)
+
+[//]: # ()
+[//]: # (  return &#40;)
+
+[//]: # (    <CustomInput)
+
+[//]: # (      label={'Hello world'})
+
+[//]: # (      value={value})
+
+[//]: # (      valueChanged={setValue})
+
+[//]: # (      name={'playground-input'})
+
+[//]: # (    />)
+
+[//]: # (  &#41;;)
+
+[//]: # (})
+
+[//]: # (```)

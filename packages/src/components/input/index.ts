@@ -1,2 +1,2 @@
-export * from './customInput';
-export * from './passwordInput';
+export * from './input';
+export * from './inputDecorator';

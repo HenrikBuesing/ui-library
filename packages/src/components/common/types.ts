@@ -1,4 +1,4 @@
-import type {ComponentPropsWithoutRef, ElementType, ReactNode} from 'react';
+import type {ComponentPropsWithRef, ElementType, ReactNode} from 'react';
 
 export type Size = 'small' | 'medium' | 'large';
 
@@ -12,7 +12,7 @@ export type Label = {
   children: ReactNode;
 };
 
-export type BaseComponentProps<T extends ElementType> = ComponentPropsWithoutRef<T> & BaseProps;
+export type BaseComponentProps<T extends ElementType> = ComponentPropsWithRef<T> & BaseProps;
 
 export type BaseProps = {
   dark?: boolean;
