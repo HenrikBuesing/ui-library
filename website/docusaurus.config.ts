@@ -31,6 +31,11 @@ const config: Config = {
   ],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: undefined, // Can also be 'dark' or 'auto'
+      disableSwitch: false, // Set to true if you want to disable the theme switcher
+      respectPrefersColorScheme: true, // Automatically respect system preferences
+    },
     // Replace with your project's social card
     // image: 'img/docusaurus-social-card.jpg',
     navbar: {
