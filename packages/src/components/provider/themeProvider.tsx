@@ -3,7 +3,7 @@ import React, {createContext, type ReactNode, useContext, useEffect, useState} f
 type Theme = 'dark' | 'light'
 type ThemeContextType = {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme?: () => void;
 }
 
 const storageKey = 'uil-theme';
@@ -11,7 +11,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function useTheme(): ThemeContextType {
   const context = useContext(ThemeContext);
-  return context || {theme: 'light', toggleTheme: () => {}};
+  return context ?? {theme: 'light'};
 }
 
 export function ThemeProvider(children: ReactNode)  {

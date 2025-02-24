@@ -12,7 +12,7 @@ export function InputDecorator(props: InputDecoratorProps) {
   } = props;
 
   if (typeof children !== 'string' && (!isValidElement(children) || children.type !== Icon && children.type !== 'img' && children.type !== 'svg')) {
-    throw new Error(`<InputDecorator> received an invalid child. Expected a string, <Icon />, <img>, or <svg>, but got: ${isValidElement(children) ? children.type : typeof children}.`);
+    throw new Error(`<InputDecorator> received an invalid child. Expected a string, <Icon />, <img>, or <svg>, but got: ${isValidElement(children) ? String(children.type) : typeof children}.`);
   }
 
   return (

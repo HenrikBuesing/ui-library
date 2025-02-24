@@ -13,12 +13,13 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
     helpText,
     id,
     label,
+    required,
     variant,
     ...inputProps
   } = props;
 
   if (children && (!isValidElement(children) || children.type !== InputDecorator)) {
-    throw new Error(`<Input> received an invalid child. Expected <InputDecorator />, but got: ${isValidElement(children) ? children.type : typeof children}.`);
+    throw new Error(`<Input> received an invalid child. Expected <InputDecorator />, but got: ${isValidElement(children) ? String(children.type) : typeof children}.`);
   }
 
   const ID = id ?? generateKey();
@@ -32,6 +33,7 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
           id={ID}
           className={`${style.input} ${global.fontMedium}`}
           placeholder={''}
+          required={required}
           {...inputProps}
           aria-describedby={helpId}
         />
@@ -41,13 +43,13 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
         <fieldset className={style.fieldset} aria-hidden>
           <legend className={style.legend}>
             <span className={style.labelText}>{label}</span>
-            <span className={`${style.labelText} ${style.asterisk}`} aria-hidden>*</span>
+            {required && <span className={`${style.labelText} ${style.asterisk}`} aria-hidden>*</span>}
           </legend>
         </fieldset>
 
         <label htmlFor={ID} className={style.label}>
           <span className={style.labelText}>{label}</span>
-          <span className={`${style.labelText} ${style.asterisk}`} aria-hidden>*</span>
+          {required && <span className={`${style.labelText} ${style.asterisk}`} aria-hidden>*</span>}
         </label>
       </div>
 
