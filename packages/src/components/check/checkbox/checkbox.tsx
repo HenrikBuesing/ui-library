@@ -2,6 +2,7 @@ import global from '@common/styles/global.module.scss';
 import generateKey from '@utils/generateKey';
 import styles from './checkbox.module.scss';
 import type {CheckboxProps} from './types';
+import cls from '@utils/conditionalClass';
 import check from '../check.module.scss';
 import React from 'react';
 
@@ -31,7 +32,6 @@ export function Checkbox(props: CheckboxProps) {
   } = props;
 
   const ID = id ?? generateKey();
-  const cursorClass = disabled ? global.notAllowed : global.pointer;
 
   function handleCheck() {
     if (!disabled) toggleCheck(!checked);
@@ -39,12 +39,11 @@ export function Checkbox(props: CheckboxProps) {
 
   return (
     <div className={`${check.checkWrapper} ${global.fontMedium}`}>
-      <div className={`${styles.checkbox} ${cursorClass} ${check.check}${dark ? ` ${check.dark}` : ''}`} onClick={handleCheck}>
+      <div className={cls([styles.checkbox, check.check, disabled ? global.notAllowed : global.pointer, dark && check.dark])} onClick={handleCheck}>
         <input type={'checkbox'} checked={checked} disabled={disabled} onChange={handleCheck} id={ID} {...other}/>
-        <div className={`${check.checkmark}${dark ? ` ${check.dark}` : ''}`} style={{backgroundColor: color}}/>
+        <div className={cls([check.checkmark, dark && check.dark])} style={{backgroundColor: color}}/>
       </div>
-
-      <label htmlFor={ID} className={`${cursorClass} ${styles.checkLabel} ${dark ? styles.dark : ''}`}>
+      <label htmlFor={ID} className={cls([styles.checkLabel, dark && styles.dark])}>
         {children ?? label}
       </label>
     </div>

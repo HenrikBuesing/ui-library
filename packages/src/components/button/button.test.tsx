@@ -82,7 +82,7 @@ describe('general', () => {
     expect(() => {
       // @ts-expect-error -> test using unsupported size
       render(<Button variant={'text'} label={'text'} size={'unknown size'}/>)
-    }).toThrowError('[Button] unsupported size');
+    }).toThrowError(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: unknown size`);
   });
 });
 

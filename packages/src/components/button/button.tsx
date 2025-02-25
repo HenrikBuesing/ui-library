@@ -2,6 +2,7 @@ import global from '@common/styles/global.module.scss';
 import {useContrastColor} from '@hooks/contrastColor';
 import React, {type CSSProperties} from 'react';
 import styles from './button.module.scss';
+import cls from '@utils/conditionalClass';
 import type {ButtonProps} from './types';
 
 /**
@@ -32,6 +33,21 @@ export function Button(props: ButtonProps) {
     ...other
   } = props;
 
+  let fontSize = '';
+  switch (size) {
+    case 'small':
+      fontSize = global.fontSmall;
+      break;
+    case 'medium':
+      fontSize = global.fontMedium;
+      break;
+    case 'large':
+      fontSize = global.fontLarge;
+      break;
+    default:
+      throw new Error(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
+  }
+
   function setStyle(): CSSProperties | undefined {
     if (variant !== 'primary' && variant !== 'outline' || disabled || !color?.includes('#')) return undefined;
 
@@ -44,31 +60,14 @@ export function Button(props: ButtonProps) {
     };
   }
 
-  function setClassName() {
-    const colorClass = (color && !color.includes('#')) ? ` ${styles[color as 'success' | 'warning' | 'error']}` : '';
-    let sizeClass = styles[size];
-
-    switch (size) {
-      case 'small':
-        sizeClass += ` ${global.fontSmall}`;
-        break;
-      case 'medium':
-        sizeClass += ` ${global.fontMedium}`;
-        break;
-      case 'large':
-        sizeClass += ` ${global.fontLarge}`;
-        break;
-      default:
-        throw new Error('[Button] unsupported size');
-    }
-
-    return `${global.fit} ${disabled ? global.notAllowed : global.pointer} ${styles.button} ${styles[variant]} ${sizeClass}${dark ? ` ${styles.dark}` : ''}${disabled ? ` ${styles.disabled}` : ''}${colorClass}`;
-  }
-
   return (
     <button
       style={setStyle()}
-      className={setClassName()}
+      className={cls([
+        styles.button, global.fit, styles[size], styles[variant], disabled ? global.notAllowed : global.pointer,
+        color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], dark && styles.dark,
+        disabled && styles.disabled, fontSize 
+      ])}
       type={type ?? 'button'}
       disabled={disabled}
       {...other}

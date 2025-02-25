@@ -1,4 +1,5 @@
 import generateKey from '@utils/generateKey';
+import cls from '@utils/conditionalClass';
 import type {ModalProps} from './types';
 import style from './modal.module.scss';
 import React, {useEffect} from 'react';
@@ -41,8 +42,8 @@ export function Modal(props: ModalProps) {
 
   return (
     <div className={style.modalWrapper}>
-      <div className={`${style.modal}${dark ? ` ${style.dark}` : ''}`}>
-        <div className={`${style.header}${theme ? ` ${style[theme]}` : ''}`}>{title}</div>
+      <div className={cls([style.modal, dark && style.dark])}>
+        <div className={cls([style.header, theme && style[theme]])}>{title}</div>
 
         {timeout &&
           <div className={style.progressWrapper}>
@@ -50,7 +51,7 @@ export function Modal(props: ModalProps) {
           </div>
         }
 
-        <div className={`${style.content}${dark ? ` ${style.dark}` : ''}`}>
+        <div className={cls([style.content, dark && style.dark])}>
           {children ??
             <>
               <div>
@@ -59,7 +60,7 @@ export function Modal(props: ModalProps) {
                 )}
               </div>
 
-              <div className={`${style.buttonWrapper}${variant === 'notification' ? ` ${style.single}` : ''}`}>
+              <div className={cls([style.buttonWrapper, variant === 'notification' && style.single])}>
                 <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} dark={dark} onClick={handleConfirm} type={'button'}/>
 
                 {variant === 'question' &&
