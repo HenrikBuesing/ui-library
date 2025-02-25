@@ -2,6 +2,7 @@ import global from '@common/styles/global.module.scss';
 import {InputDecorator} from './inputDecorator';
 import generateKey from '@utils/generateKey';
 import React, {isValidElement} from 'react';
+import cls from '@utils/conditionalClass';
 import type {InputProps} from './types';
 import style from './input.module.scss';
 // import {useTheme} from '../provider';
@@ -28,7 +29,7 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
 
   return (
     <div className={`${style.inputField}`}>
-      <div className={`${style.inputWrapper}${variant == 'basic' ? ` ${style.basic}` : ` ${style.outlined}`}${error ? ` ${style.error}` : ''}`}>
+      <div className={cls([style.inputWrapper, variant === 'basic' ? style.basic : style.outlined, error && style.error])}>
         <input
           id={ID}
           className={`${style.input} ${global.fontMedium}`}
@@ -53,7 +54,7 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
         </label>
       </div>
 
-      {helpText && <div className={`${style.helpText}${error ? ` ${style.error}` : ''}`} id={helpId}>{helpText}</div>}
+      {helpText && <div className={cls([style.helpText, error && style.error])} id={helpId}>{helpText}</div>}
     </div>
   );
 }

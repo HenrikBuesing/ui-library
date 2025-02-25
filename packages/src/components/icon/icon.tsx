@@ -25,7 +25,9 @@ export function Icon(props: IconProps) {
 
   function setClassName() {
     if (other.height || other.width) return undefined;
-    if (size !== 'small' && size !== 'medium' && size !== 'large') throw new Error('[Icon] unsupported size');
+    if (size !== 'small' && size !== 'medium' && size !== 'large') {
+      throw new Error(`<Icon> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
+    }
     
     return styles[size];
   }

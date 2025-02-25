@@ -1,6 +1,7 @@
 import global from '@common/styles/global.module.scss';
 import type {InputDecoratorProps} from './types';
 import React, {isValidElement} from 'react';
+import cls from '@utils/conditionalClass';
 import style from './input.module.scss';
 import {Icon} from '../icon';
 
@@ -16,7 +17,7 @@ export function InputDecorator(props: InputDecoratorProps) {
   }
 
   return (
-    <div className={`${style.decorator} ${global.fontSmall}${position === 'left' ? ` ${style.left}` : ` ${style.right}`} ${onFocus ? style.focus : style.visible}`}>
+    <div className={cls([style.decorator, global.fontSmall, position === 'left' ? style.left : style.right, onFocus ? style.focus : style.visible])}>
       {children}
     </div>
   );

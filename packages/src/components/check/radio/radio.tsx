@@ -1,6 +1,7 @@
 import global from '@common/styles/global.module.scss';
 import type {RadioOption, RadioProps} from './types';
 import generateKey from '@utils/generateKey';
+import cls from '@utils/conditionalClass';
 import check from '../check.module.scss';
 import style from './radio.module.scss';
 import React from 'react';
@@ -43,7 +44,7 @@ export function Radio(props: RadioProps) {
     <div className={style.radioWrapper}>
       {options.map((option, idx) =>
         <div key={generateKey()} className={check.checkWrapper}>
-          <div className={`${style.radio} ${setCursor(option)} ${check.check}${dark ? ` ${check.dark}` : ''}`} onClick={() => {handleChange(option)}}>
+          <div className={cls([style.radio, check.check, setCursor(option), dark && check.dark])} onClick={() => {handleChange(option)}}>
             <input
               id={`${ID}-${idx}`}
               name={option.name}
@@ -55,10 +56,10 @@ export function Radio(props: RadioProps) {
               {...other}
             />
 
-            <div className={`${check.checkmark} ${style.radioCheck} ${dark ? check.dark : ''}`} style={{backgroundColor: color}}/>
+            <div className={cls([check.checkmark, style.radioCheck, dark && check.dark])} style={{backgroundColor: color}}/>
           </div>
 
-          <label htmlFor={`${ID}-${idx}`} className={`${global.fontMedium} ${setCursor(option)} ${style.text} ${dark ? style.dark : ''}`}>
+          <label htmlFor={`${ID}-${idx}`} className={cls([global.fontMedium, style.text, setCursor(option), dark && style.dark])}>
             {option.name}
           </label>
         </div>
