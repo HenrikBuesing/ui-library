@@ -29,7 +29,9 @@
   cursor: not-allowed;
 }
 
-//this is in preparation for a dark mode refactor
 .dark {
-  //--uil-black: white;
+  --uil-black: #ffffff;
+  --uil-outline-focus: #7bb4ff;
+  --uil-grey-dark: #c4c4c4;
+  --uil-grey-alt: #c3c3c3;
 }
