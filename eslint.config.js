@@ -35,6 +35,7 @@ export default [
         'error',
         'type'
       ],
+      "@typescript-eslint/no-empty-function": 0
     }
   }
 ];
