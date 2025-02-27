@@ -61,10 +61,14 @@ export function Modal(props: ModalProps) {
               </div>
 
               <div className={cls([style.buttonWrapper, variant === 'notification' && style.single])}>
-                <Button variant={'primary'} label={confirmLabel} color={theme ?? '#00416A'} dark={dark} onClick={handleConfirm} type={'button'}/>
+                <Button variant={'filled'} color={theme ?? '#00416A'} onClick={handleConfirm} type={'button'}>
+                  {confirmLabel}
+                </Button>
 
                 {variant === 'question' &&
-                  <Button variant={'secondary'} label={cancelLabel} onClick={cancelAction} type={'button'} dark={dark}/>
+                  <Button variant={'outlined'} color={theme ?? '#00416A'} onClick={cancelAction} type={'button'}>
+                    {cancelLabel}
+                  </Button>
                 }
               </div>
             </>

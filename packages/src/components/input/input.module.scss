@@ -67,14 +67,14 @@
     }
     
     &.error {
-      border-color: var(--uil-error-alt);
+      border-color: var(--uil-error);
       
       .fieldset, .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
-        border-color: var(--uil-error-alt);
+        border-color: var(--uil-error);
       }
       
       .label {
-        color: var(--uil-error-alt);
+        color: var(--uil-error);
         opacity: 1;
       }
     }
@@ -202,7 +202,7 @@
     margin-top: var(--uil-xxs);
     
     &.error {
-      color: var(--uil-error-alt);
+      color: var(--uil-error);
     }
   }
 }

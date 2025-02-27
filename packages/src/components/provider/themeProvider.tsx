@@ -3,39 +3,37 @@ import React, {createContext, type ReactNode, useContext, useEffect, useState} f
 type Theme = 'dark' | 'light'
 type ThemeContextType = {
   theme: Theme;
-  toggleTheme?: () => void;
+  setTheme: (newTheme: Theme) => void;
 }
 
 const storageKey = 'uil-theme';
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType>({theme: 'light', setTheme: () => {}});
 
 export function useTheme(): ThemeContextType {
   const context = useContext(ThemeContext);
-  return context ?? {theme: 'light'};
+  return context ?? {theme: 'light', setTheme: () => {}};
 }
 
-export function ThemeProvider(children: ReactNode)  {
-  const [theme, setTheme] = useState<Theme>('light');
-  const [isMounted, setIsMounted] = useState(false);
+export function ThemeProvider(props: Props)  {
+  const [theme, setNewTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    setIsMounted(true);
-
     const savedTheme = localStorage.getItem(storageKey) as Theme;
-    if (savedTheme) setTheme(savedTheme);
+    if (savedTheme) setNewTheme(savedTheme);
   }, []);
 
-  if (!isMounted) return <>{children}</>;
-  
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+  function setTheme(newTheme: Theme) {
+    setNewTheme(newTheme);
     localStorage.setItem(storageKey, newTheme);
-  };
+  }
 
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
-      {children}
+    <ThemeContext.Provider value={{theme, setTheme}}>
+      {props.children}
     </ThemeContext.Provider>
   );
+}
+
+type Props = {
+  children: ReactNode;
 }

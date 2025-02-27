@@ -1,13 +1,18 @@
-import type {BaseComponentProps, Label, Size, Status} from '@common/types';
+import type {ComponentPropsWithRef, ReactNode} from 'react';
+import type {Size, Status} from '@common/types';
 
-export type ButtonProps = BaseComponentProps<'button'> & AdditionalButtonProps;
+export type ButtonProps = ComponentPropsWithRef<'button'> & AdditionalButtonProps;
 
-type AdditionalButtonProps = Label & {
+type AdditionalButtonProps = {
+  children: ReactNode;
+  variant: 'filled' | 'outlined' | 'text';
+  color?: `#${string}` | Status;
+  disabled?: boolean;
   size?: Size;
 } & ({
-  variant: 'primary' | 'outline';
-  color: `#${string}` | Status;
+  href: string;
+  target?: '_self' | '_blank' | '_parent' | '_top' | '_unfencedTop';
 } | {
-  variant: 'secondary' | 'text';
-  color?: never;
+  href?: never;
+  target?: never;
 });
