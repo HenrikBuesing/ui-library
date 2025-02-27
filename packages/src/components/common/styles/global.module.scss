@@ -29,7 +29,24 @@
   cursor: not-allowed;
 }
 
-//this is in preparation for a dark mode refactor
 .dark {
-  //--uil-black: white;
+  --uil-black: #ffffff;
+  --uil-outline-focus: #7bb4ff;
+  --uil-grey-dark: #c4c4c4;
+  --uil-grey-alt: #c3c3c3;
+
+  --uil-default-hover: 50, 121, 202;
+  --uil-black-alt: #c3c3c3;
+
+  --uil-success: #00cc96;
+  --uil-success-hover: 0, 163, 115;
+
+  --uil-warning: #FFFF3E;
+  --uil-warning-alt: #dcdc38;
+  --uil-warning-hover: 255, 255, 30;
+  
+  --uil-error: #fb0b41;
+  --uil-error-hover: 239, 34, 79;
+  
+  --uil-custom-hover: 255, 255, 255;
 }

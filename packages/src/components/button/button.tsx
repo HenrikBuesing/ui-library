@@ -4,75 +4,99 @@ import React, {type CSSProperties} from 'react';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';
 import type {ButtonProps} from './types';
+import {useTheme} from '../provider';
 
 /**
- * @example
- * ```jsx
- * <Button
- *  variant={'primary'}
- *  label={'Click Me!'}
- *  dark={true}
- *  size={'large'}
- *  color={'success'}
- *  onClick={() => {alert('click)}}
- * />
- * ```
- *
- * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/button)
+ * [Button documentation](https://www.ui-library.hbsng.com/docs/components/button)
  */
 export function Button(props: ButtonProps) {
   const {
     children,
     color,
-    dark,
     disabled,
-    label,
+    href,
     size = 'medium',
-    type,
+    target,
     variant,
-    ...other
+    ...buttonProps
   } = props;
 
-  let fontSize = '';
-  switch (size) {
-    case 'small':
-      fontSize = global.fontSmall;
-      break;
-    case 'medium':
-      fontSize = global.fontMedium;
-      break;
-    case 'large':
-      fontSize = global.fontLarge;
-      break;
-    default:
-      throw new Error(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
-  }
+  const style = setStyle();
+  const fontSize = setFontSize();
+  const {theme} = useTheme();
 
   function setStyle(): CSSProperties | undefined {
-    if (variant !== 'primary' && variant !== 'outline' || disabled || !color?.includes('#')) return undefined;
+    if (disabled || !color?.includes('#')) return undefined;
 
-    return variant === 'primary' ? {
-      color: useContrastColor(color),
-      backgroundColor: color,
-    } : {
-      color: color,
-      borderColor: color
-    };
+    switch (variant) {
+      case 'filled':
+        return {
+          color: useContrastColor(color),
+          backgroundColor: color
+        };
+      case 'outlined':
+        return {
+          color: color,
+          borderColor: color
+        };
+      case 'text':
+        return {
+          color: color
+        };
+      default:
+        throw new Error(`<Button> received an unexpected variant. Expected 'filled', 'outline' or 'text', but got: ${String(variant)}'`);
+    }
+  }
+  
+  function setFontSize() {
+    switch (size) {
+      case 'small':
+        return global.fontSmall;
+      case 'medium':
+        return global.fontMedium;
+      case 'large':
+        return global.fontLarge;
+      default:
+        throw new Error(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
+    }
+  }
+  
+  if (href || href === '') {
+    return (
+      <a
+        href={href}
+        target={target}
+        id={buttonProps.id}
+        title={buttonProps.title}
+        style={style}
+        className={cls([
+          styles.button, global.fit, fontSize, styles[size], styles[variant], theme === 'dark' && global.dark,
+          color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
+          disabled && styles.disabled
+        ])}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : (buttonProps.tabIndex ?? undefined)}
+      >
+        {children}
+      </a>
+    );
   }
 
   return (
     <button
-      style={setStyle()}
+      style={style}
       className={cls([
-        styles.button, global.fit, styles[size], styles[variant], disabled ? global.notAllowed : global.pointer,
-        color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], dark && styles.dark,
-        disabled && styles.disabled, fontSize 
+        styles.button, global.fit, fontSize, styles[size], styles[variant], theme === 'dark' && global.dark,
+        color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
+        disabled && styles.disabled 
       ])}
-      type={type ?? 'button'}
+      type={buttonProps.type ?? 'button'}
       disabled={disabled}
-      {...other}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : buttonProps.tabIndex}
+      {...buttonProps}
     >
-      {children ?? label}
+      {children}
     </button>
   );
 }

@@ -13,21 +13,19 @@
 
   
   --uil-outline-focus: #2779ca;
+  
+  
+  --uil-default-hover: 39, 121, 202;
+  --uil-success-hover: 0, 156, 115;
+  --uil-warning-hover: 255, 215, 0;
+  --uil-error-hover: 207, 9, 52;
+  --uil-custom-hover: 0, 0, 0;
 
-  --uil-success-light: #01dfa5;
   --uil-success: #009c73;
-  --uil-success-dark: #014334;
-
-  --uil-error-light: #FF073A;
-  --uil-error-alt: #CF0934;
-  --uil-error: #a30029;
-  --uil-error-dark: #4e0015;
-
+  --uil-error: #CF0934;
   --uil-question: #00416A;
-
-  --uil-warning-light: #FFFF8A;
   --uil-warning: #FFD700;
-  --uil-warning-dark: #7b6300;
+  --uil-warning-alt: #d1b21a;
 
   --uil-xxxs: .125rem;
   --uil-xxs: .25rem;
