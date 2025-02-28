@@ -1,0 +1,26 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "build:uil": "NODE_ENV=production node esbuild.mjs",
+    "postbuild:uil": "tsc --emitDeclarationOnly --project tsconfig.build.json",
+    "build:uil-watch": "NODE_ENV=dev node esbuild.mjs"
+  },
+  "dependencies": {
+    "next": "^15.2.0",
+    "nextra": "^4.2.13",
+    "nextra-theme-docs": "^4.2.13",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@hbuesing/ui-library": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.19",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}

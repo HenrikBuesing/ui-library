@@ -3,18 +3,18 @@
   "private": true,
   "workspaces": [
     "packages",
-    "website"
+    "docs"
   ],
   "type": "module",
   "scripts": {
     "test": "npm run test --workspace=packages",
     "lint:library": "npm run lint --workspace=packages",
     "lint-nw:library": "npm run lint:nw --workspace=packages",
-    "clean:docs": "npm run clear --workspace=website",
-    "dev:docs": "npm run start --workspace=website",
+    "clean:docs": "npm run clear --workspace=docs",
+    "dev:docs": "npm run start --workspace=docs",
     "build:library": "npm run build --workspace=packages",
-    "build:docs": "npm run build --workspace=website",
-    "serve:docs": "npm run serve --workspace=website"
+    "build:docs": "npm run build --workspace=docs",
+    "serve:docs": "npm run serve --workspace=docs"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.7",
