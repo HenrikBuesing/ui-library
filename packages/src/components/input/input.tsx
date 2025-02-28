@@ -5,11 +5,11 @@ import React, {isValidElement} from 'react';
 import cls from '@utils/conditionalClass';
 import type {InputProps} from './types';
 import style from './input.module.scss';
-import {useTheme} from '../provider';
 
 export function Input(props: Omit<InputProps, 'placeholder'>) {
   const {
     children,
+    dark,
     error,
     helpText,
     id,
@@ -25,10 +25,9 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
 
   const ID = id ?? generateKey();
   const helpId = helpText ? generateKey() : undefined;
-  const {theme} = useTheme();
 
   return (
-    <div className={cls([style.inputField, theme !== 'dark' && global.dark])}>
+    <div className={cls([style.inputField, dark && global.dark])}>
       <div className={cls([style.inputWrapper, variant === 'basic' ? style.basic : style.outlined, error && style.error])}>
         <input
           id={ID}

@@ -1,7 +1,7 @@
-import type {ComponentPropsWithRef, ReactNode} from 'react';
-import type {Size, Status} from '@common/types';
+import type {BaseComponentProps, Size, Status} from '@common/types';
+import type {ReactNode} from 'react';
 
-export type ButtonProps = ComponentPropsWithRef<'button'> & AdditionalButtonProps;
+export type ButtonProps = BaseComponentProps<'button'> & AdditionalButtonProps;
 
 type AdditionalButtonProps = {
   children: ReactNode;
