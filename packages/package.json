@@ -6,10 +6,16 @@
   "source": "src/index.ts",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "exports": [
-    "./dist/index.js",
-    "./dist/index.css"
-  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
+  },
   "files": [
     "dist/*"
   ],
