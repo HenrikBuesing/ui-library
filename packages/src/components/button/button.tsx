@@ -4,7 +4,6 @@ import React, {type CSSProperties} from 'react';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';
 import type {ButtonProps} from './types';
-import {useTheme} from '../provider';
 
 /**
  * [Button documentation](https://www.ui-library.hbsng.com/docs/components/button)
@@ -13,6 +12,7 @@ export function Button(props: ButtonProps) {
   const {
     children,
     color,
+    dark,
     disabled,
     href,
     size = 'medium',
@@ -23,7 +23,6 @@ export function Button(props: ButtonProps) {
 
   const style = setStyle();
   const fontSize = setFontSize();
-  const {theme} = useTheme();
 
   function setStyle(): CSSProperties | undefined {
     if (disabled || !color?.includes('#')) return undefined;
@@ -70,7 +69,7 @@ export function Button(props: ButtonProps) {
         title={buttonProps.title}
         style={style}
         className={cls([
-          styles.button, global.fit, fontSize, styles[size], styles[variant], theme === 'dark' && global.dark,
+          styles.button, global.fit, fontSize, styles[size], styles[variant], dark && global.dark,
           color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
           disabled && styles.disabled
         ])}
@@ -86,7 +85,7 @@ export function Button(props: ButtonProps) {
     <button
       style={style}
       className={cls([
-        styles.button, global.fit, fontSize, styles[size], styles[variant], theme === 'dark' && global.dark,
+        styles.button, global.fit, fontSize, styles[size], styles[variant], dark && global.dark,
         color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
         disabled && styles.disabled 
       ])}
