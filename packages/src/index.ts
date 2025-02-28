@@ -7,4 +7,4 @@ export {Checkbox} from './components/check/checkbox/index';
 export {Button} from './components/button/index';
 export {Icon} from './components/icon/index';
 
-export {useClickOutsideRef, useContrastColor} from './hooks/index';
+export {useContrastColor} from './hooks/index';
