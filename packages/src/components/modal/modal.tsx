@@ -2,7 +2,7 @@ import generateKey from '@utils/generateKey';
 import cls from '@utils/conditionalClass';
 import type {ModalProps} from './types';
 import style from './modal.module.scss';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Button} from '../button';
 
 export function Modal(props: ModalProps) {
@@ -22,15 +22,15 @@ export function Modal(props: ModalProps) {
 
   let timer: NodeJS.Timeout | undefined = undefined;
 
-  useEffect(() => {
-    if (!timeout || !confirmAction) return;
-
-    timer = setTimeout(() => {
-      return confirmAction();
-    }, timeout);
-
-    return () => {clearTimeout(timer)};
-  },[]);
+  // useEffect(() => {
+  //   if (!timeout || !confirmAction) return;
+  //
+  //   timer = setTimeout(() => {
+  //     return confirmAction();
+  //   }, timeout);
+  //
+  //   return () => {clearTimeout(timer)};
+  // },[]);
 
   function handleConfirm() {
     if (!confirmAction) return;
