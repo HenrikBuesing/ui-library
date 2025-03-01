@@ -1,6 +1,7 @@
 @use '../common/styles/mixin' as *;
 
 .button {
+  display: block;
   border: 1px solid transparent;
   border-radius: 5px;
   box-sizing: border-box;
