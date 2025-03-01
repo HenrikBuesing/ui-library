@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .footerLink {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .icon {
+      height: 1rem;
+    }
+  }
+
+  .copyright {
+    font-size: .75rem;
+    line-height: 1rem;
+  }
+}
+
+.showCaseWrapper {
+  display: flex;
+  justify-content: space-between;
+}

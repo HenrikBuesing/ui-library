@@ -1,0 +1,37 @@
+---
+title: Getting Started
+description: Installation guide
+sidebarTitle: Getting Started
+---
+
+import {Steps} from "nextra/components";
+
+# Getting Started
+
+<Steps>
+  ### Installation
+
+  ```sh
+  npm install @hbuesing/ui-library
+  ```
+
+  ### importing the stylesheet
+
+  The stylesheet should be imported at the root of your project.
+
+  ```tsx
+  import "@hbuesing/ui-library/index.css";
+  ```
+
+  ### Start using components
+
+  ```tsx
+  import {Button} from "@hbuesing/ui-library";
+
+  function Showcase() {
+    return (
+      <Button variant={'text'}>Text Button</Button>
+    );
+  }
+  ```
+</Steps>
