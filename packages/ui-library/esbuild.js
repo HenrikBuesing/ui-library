@@ -1,6 +1,6 @@
 import * as esbuild from 'esbuild';
 import {writeFileSync} from 'node:fs';
-import {getBuildConfig, buildPlugin} from '../esbuild.config.js';
+import {getBuildConfig, buildPlugin} from '../../esbuild.config.js';
 
 const input = ['src/index.ts'];
 const output = 'dist';

@@ -31,6 +31,12 @@ export function Modal(props: ModalProps) {
   //
   //   return () => {clearTimeout(timer)};
   // },[]);
+  
+  if (timeout) {
+    timer = setTimeout(() => {
+      return handleConfirm();
+    }, timeout);
+  }
 
   function handleConfirm() {
     if (!confirmAction) return;

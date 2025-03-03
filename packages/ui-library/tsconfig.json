@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig-base.json",
+  "extends": "../../tsconfig-base.json",
   "compilerOptions": {
     "outDir": "./dist/",
     "paths": {
@@ -9,10 +9,7 @@
     }
   },
   "include": [
-    "./src/components/**/index.ts",
-    "./src/hooks/**/index.ts",
-    "./src/index.ts",
-    "./src/globals.d.ts"
+    "./src/**/*"
   ],
   "exclude": [
     "node_modules",

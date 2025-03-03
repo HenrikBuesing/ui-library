@@ -1,5 +1,5 @@
 import {expect, test} from "vitest";
-import {useContrastColor} from "@hooks/contrastColor";
+import {useContrastColor} from "@hooks/useContrastColor";
 
 const white = '#ffffff'
 const black = '#000000'

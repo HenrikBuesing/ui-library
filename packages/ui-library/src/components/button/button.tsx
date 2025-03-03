@@ -1,5 +1,5 @@
+import {useContrastColor} from '@hooks/useContrastColor';
 import global from '@common/styles/global.module.scss';
-import {useContrastColor} from '@hooks/contrastColor';
 import React, {type CSSProperties} from 'react';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';

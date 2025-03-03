@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
     paths:
-      - website/**
+      - docs/**
       - .github/workflows/preview.yml
     types:
       - opened

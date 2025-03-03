@@ -9,6 +9,7 @@ const nextConfig = withNextra({
   eslint: {
     ignoreDuringBuilds: true
   },
+  transpilePackages: ['@hbuesing/ui-library']
 });
 
 export default nextConfig;
