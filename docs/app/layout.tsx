@@ -1,6 +1,6 @@
-import {Footer, Layout, Navbar} from 'nextra-theme-docs';
+import {Footer, LastUpdated, Layout, Navbar} from 'nextra-theme-docs';
 import styles from '@/styles/styles.module.scss';
-import {Roboto_Flex} from 'next/font/google';
+// import {Roboto_Flex} from 'next/font/google';
 import {getPageMap} from 'nextra/page-map';
 import '@hbuesing/ui-library/index.css';
 import {Head} from 'nextra/components';
@@ -10,13 +10,13 @@ import '@/styles/globals.scss';
 import {Metadata} from 'next';
 import Link from 'next/link';
 
-const roboto = Roboto_Flex({
-  weight: ['200', '300', '400', '500', '700'],
-  style: ['normal'],
-  subsets: ['latin'],
-  display: "swap",
-  preload: true,
-});
+// const roboto = Roboto_Flex({
+//   weight: ['200', '300', '400', '500', '700'],
+//   style: ['normal'],
+//   subsets: ['latin'],
+//   display: "swap",
+//   preload: true,
+// });
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function RootLayout(children: ReactNode) {
+export default async function RootLayout({children}: Readonly<{children: ReactNode}>) {
   const navbar = (<Navbar logo={<b>UI-Library</b>} projectLink={'https://github.com/HenrikBuesing/ui-library'}/>);
   const footer = (
     <Footer className={styles.footer}>
@@ -57,7 +57,7 @@ export default async function RootLayout(children: ReactNode) {
   );
 
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className={roboto.className}>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
     <Head/>
     <body>
     <Layout
@@ -69,6 +69,8 @@ export default async function RootLayout(children: ReactNode) {
       footer={footer}
       sidebar={{toggleButton: true, autoCollapse: true, defaultOpen: true}}
       darkMode={true}
+      lastUpdated={<LastUpdated/>}
+      themeSwitch={{dark: 'dark', light: 'light', system: ''}}
     >
       {children}
     </Layout>

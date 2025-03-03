@@ -1,3 +1,14 @@
 export default {
-  components: 'Components',
+  components: {
+    title: 'Components',
+    theme: {
+      collapsed: true,
+    }
+  },
+  hooks: {
+    title: 'Hooks',
+    theme: {
+      collapsed: true
+    }
+  },
 }

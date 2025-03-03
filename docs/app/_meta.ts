@@ -1,7 +1,14 @@
-export default {
+import {Meta} from "nextra";
+
+const meta: Meta = {
   index: {
     type: 'page',
-    display: 'hidden'
+    display: 'hidden',
+    theme: {
+      layout: 'full',
+      toc: false,
+      timestamp: false
+    }
   },
   docs: {
     type: 'page',
@@ -11,7 +18,12 @@ export default {
     type: 'page',
     title: 'About',
     theme: {
-      typesetting: 'article'
+      typesetting: 'article',
+      layout: 'full',
+      toc: false,
+      timestamp: false
     }
   }
 }
+
+export default meta;
