@@ -20,12 +20,12 @@
     "start": "turbo start"
   },
   "dependencies": {
-    "@eslint/eslintrc": "^3.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.21.0",
     "@next/eslint-plugin-next": "^15.2.0",
     "@types/node": "^20.17.19",
