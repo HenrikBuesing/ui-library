@@ -4,24 +4,36 @@ description: Installation guide
 sidebarTitle: Getting Started
 ---
 
-import {Steps} from "nextra/components";
+import {Callout} from 'nextra/components';
+import {Steps} from 'nextra/components';
 
 # Getting Started
 
 <Steps>
   ### Installation
 
-  ```sh
+  ```sh npm2yarn
   npm install @hbuesing/ui-library
+  ```
+  
+  **PeerDependencies**
+  
+  Note that [react](https://www.npmjs.com/package/react) and [react-dom](https://www.npmjs.com/package/react-dom)
+  are peer dependencies. Make sure they are installed as well.
+  
+  ```sh npm2yarn
+  npm install react react-dom
   ```
 
   ### importing the stylesheet
 
-  The stylesheet should be imported at the root of your project.
-
   ```tsx
   import "@hbuesing/ui-library/index.css";
   ```
+
+  <Callout type="info">
+    The stylesheet should be imported at the root of your project.
+  </Callout>
 
   ### Start using components
 
@@ -35,3 +47,5 @@ import {Steps} from "nextra/components";
   }
   ```
 </Steps>
+
+Next, get an overview of all available components.
