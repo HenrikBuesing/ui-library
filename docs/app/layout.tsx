@@ -4,8 +4,8 @@ import styles from '@/styles/styles.module.scss';
 import {getPageMap} from 'nextra/page-map';
 import '@hbuesing/ui-library/index.css';
 import {Head} from 'nextra/components';
-import 'nextra-theme-docs/style.css';
 import React, {ReactNode} from 'react';
+import 'nextra-theme-docs/style.css';
 import '@/styles/globals.scss';
 import {Metadata} from 'next';
 import Link from 'next/link';
@@ -31,10 +31,9 @@ export const metadata: Metadata = {
       default: 'UI-Library'
     },
     description: 'Documentation of the ui-library package',
-    // url: 'https://dinner-planning.vercel.app',
-    // siteName: 'Dinner Planner',
-    // locale: 'en_US',
-    // alternateLocale: 'de_DE'
+    url: 'https://www.ui-library.hbsng.com',
+    siteName: 'UI-Library',
+    locale: 'en_US',
   },
 }
 
@@ -61,15 +60,16 @@ export default async function RootLayout({children}: Readonly<{children: ReactNo
     <Head/>
     <body>
     <Layout
-      navbar={navbar}
-      pageMap={await getPageMap()}
-      docsRepositoryBase="https://github.com/HenrikBuesing/ui-library/tree/main/docs"
-      editLink={'Edit this page'}
-      navigation={true}
-      footer={footer}
-      sidebar={{toggleButton: true, autoCollapse: true, defaultOpen: true}}
       darkMode={true}
+      docsRepositoryBase="https://github.com/HenrikBuesing/ui-library/tree/main/docs"
+      feedback={{content: null}}
+      footer={footer}
       lastUpdated={<LastUpdated/>}
+      navbar={navbar}
+      navigation={true}
+      nextThemes={{defaultTheme:'light'}}
+      pageMap={await getPageMap()}
+      sidebar={{toggleButton: true, autoCollapse: true, defaultOpen: true}}
       themeSwitch={{dark: 'dark', light: 'light', system: ''}}
     >
       {children}
