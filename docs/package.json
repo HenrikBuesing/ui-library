@@ -6,7 +6,8 @@
     "lint": "next lint",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "clear": "npx rimraf .next"
   },
   "dependencies": {
     "@hbuesing/ui-library": "*",

@@ -7,7 +7,7 @@
       "cache": false
     },
     "dev": {
-      "dependsOn": ["@hbuesing/ui-library#build"],
+      "dependsOn": ["@hbuesing/ui-library#build:dev", "@hbuesing/ui-library#build:types"],
       "persistent": true,
       "cache": false
     },
@@ -17,6 +17,10 @@
     },
     "lint": {
       "dependsOn": ["^lint"]
+    },
+    "clear": {
+      "cache": false,
+      "dependsOn": ["^clear"]
     }
   }
 }

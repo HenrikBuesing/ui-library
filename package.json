@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "turbo lint",
     "lint:library": "turbo lint --filter=@hbuesing/ui-library",
+    "clear": "turbo clear",
     "dev": "turbo dev",
     "build": "turbo build",
     "build:dev": "turbo build:dev",

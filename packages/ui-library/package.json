@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "lint": "eslint src --max-warnings 0",
-    "prebuild:dev": "npx rimraf dist",
+    "clear": "npx rimraf dist",
     "build:dev": "NODE_ENV=dev node esbuild.js",
     "build": "NODE_ENV=production node esbuild.js",
     "postbuild": "npm run build:types",

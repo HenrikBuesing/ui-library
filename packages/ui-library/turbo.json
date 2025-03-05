@@ -29,6 +29,9 @@
       "persistent": true,
       "interactive": true
     },
-    "test:coverage": {}
+    "test:coverage": {},
+    "clear": {
+      "cache": false
+    }
   }
 }
