@@ -26,11 +26,6 @@ export const metadata: Metadata = {
   description: 'Documentation of the ui-library package',
   openGraph: {
     type: 'website',
-    title: {
-      template: '%s | UI-Library',
-      default: 'UI-Library'
-    },
-    description: 'Documentation of the ui-library package',
     url: 'https://www.ui-library.hbsng.com',
     siteName: 'UI-Library',
     locale: 'en_US',
