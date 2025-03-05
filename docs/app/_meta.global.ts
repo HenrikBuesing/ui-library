@@ -52,8 +52,6 @@ const globalMeta: Meta = {
     title: 'About',
     theme: {
       typesetting: 'article',
-      layout: 'full',
-      toc: false,
       timestamp: false
     }
   }
