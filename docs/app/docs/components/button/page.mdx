@@ -1,11 +1,217 @@
 ---
 title: Button
-description: showcase and usage of the button component
-sidebarTitle: Button
+description: Showcase and usage guide of the button component
 ---
 
-import DefaultButtons from "./_buttons";
+import DefaultButtons, {Buttons, ButtonSizes, ColorButtons} from './_buttons';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
 
 # Button
 
+The Button component is a versatile UI element designed to trigger actions through a click or tap.
+
+## Variants
+The button component offers three distinct variants: `filled`, `outlined` and `text`.
+
 <DefaultButtons/>
+
+<details>
+  <summary>expand code</summary>
+
+  ```jsx
+  <Button variant={'filled'}>Filled</Button>
+  <Button variant={'outlined'}>Outlined</Button>
+  <Button variant={'text'}>Text</Button>
+  ```
+</details>
+
+<Callout type={'info'}>
+  Each variant can be converted into a link-button by providing the `href` prop. This allows the button to function as a
+  clickable link while maintaining its button style and behavior.
+</Callout>
+
+## Filled
+Filled buttons are high-emphasis elements, typically used for primary actions within your application.
+
+<Buttons variant={'filled'}/>
+
+<details>
+  <summary>expand code</summary>
+
+  ```jsx
+  <Button variant={'filled'}>Filled</Button>
+  <Button variant={'filled'} disabled>Disabled</Button>
+  <Button variant={'filled'} href={'#filled'}>Link</Button>
+  ```
+</details>
+
+## Outlined
+Outlined buttons are medium-emphasis elements, commonly used for secondary actions within your application.
+
+<Buttons variant={'outlined'}/>
+
+<details>
+  <summary>expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'}>Outlined</Button>
+  <Button variant={'outlined'} disabled>Disabled</Button>
+  <Button variant={'outlined'} href={'#outlined'}>Link</Button>
+  ```
+</details>
+
+## Text
+Text buttons are low-emphasis elements, generally used for less critical actions or links within your application.
+
+<Buttons variant={'text'}/>
+
+<details>
+  <summary>expand code</summary>
+
+  ```jsx
+  <Button variant={'text'}>Text</Button>
+  <Button variant={'text'} disabled>Disabled</Button>
+  <Button variant={'text'} href={'#text'}>Link</Button>
+  ```
+</details>
+
+## Size
+The button component comes in three different sizes: `small`, `medium` and `large`.
+
+<ButtonSizes/>
+
+<details>
+  <summary>expand code</summary>
+
+  ```jsx
+  <Button variant={'filled'} size={'small'}>Small</Button>
+  <Button variant={'filled'} size={'medium'}>Medium</Button>
+  <Button variant={'filled'} size={'large'}>Large</Button>
+
+  <Button variant={'outlined'} size={'small'}>Small</Button>
+  <Button variant={'outlined'} size={'medium'}>Medium</Button>
+  <Button variant={'outlined'} size={'large'}>Large</Button>
+
+  <Button variant={'text'} size={'small'}>Small</Button>
+  <Button variant={'text'} size={'medium'}>Medium</Button>
+  <Button variant={'text'} size={'large'}>Large</Button>
+  ```
+</details>
+
+
+## Color Options
+Each button variant offers predefined color options, along with the ability to set a custom color. Below are the available options:
+
+<ColorButtons/>
+
+<details>
+  <summary>expand code</summary>
+
+  ```jsx
+  <Button variant={'filled'}>Filled</Button>
+  <Button variant={'filled'} color={'success'}>Success</Button>
+  <Button variant={'filled'} color={'warning'}>Warning</Button>
+  <Button variant={'filled'} color={'error'}>Error</Button>
+  <Button variant={'filled'} color={'#37edde'}>Custom</Button>
+  <Button variant={'filled'} color={'#9437ed'}>Custom</Button>
+      
+  <Button variant={'outlined'}>Outlined</Button>
+  <Button variant={'outlined'} color={'success'}>Success</Button>
+  <Button variant={'outlined'} color={'warning'}>Warning</Button>
+  <Button variant={'outlined'} color={'error'}>Error</Button>
+  <Button variant={'outlined'} color={'#37edde'}>Custom</Button>
+  <Button variant={'outlined'} color={'#9437ed'}>Custom</Button>
+
+  <Button variant={'text'}>Text</Button>
+  <Button variant={'text'} color={'success'}>Success</Button>
+  <Button variant={'text'} color={'warning'}>Warning</Button>
+  <Button variant={'text'} color={'error'}>Error</Button>
+  <Button variant={'text'} color={'#37edde'}>Custom</Button>
+  <Button variant={'text'} color={'#9437ed'}>Custom</Button>
+  ```
+</details>
+
+The font color of filled buttons with a custom color is determined based on the contrast ratio, ensuring optimal
+readability by dynamically selecting either black or white. This functionality is implemented using the custom hook
+[useContrastColor](/docs/hooks/contrast-color).
+
+<Callout type={'warning'}>
+  The custom color must be a valid HEX value, either three or six characters long (e.g., #FFF or #FFFFFF).
+</Callout>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`success` | `warning` | `error` | `string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Color of the button</p>
+      <p>⚠️ If you use a custom color make sure it is a valid HEX value.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disabled</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Disables the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>href</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Set the link target</p>
+      <p>Transforms the button to a link-button.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>size</Table.Td>
+    <Table.Td>`small` | `medium` | `large`</Table.Td>
+    <Table.Td><b>medium</b></Table.Td>
+    <Table.Td>Set the size of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>target</Table.Td>
+    <Table.Td>`_self` | `_blank` | `_parent` | `_top` | `_unfencedTop`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Set the link target</p>
+      <p>⚠️ This is only available if the `href` prop is set.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>variant</Table.Td>
+    <Table.Td>`filled` | `outlined` | `text`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>The variant to use</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `button` props (e.g. `onClick`).
+</Callout>

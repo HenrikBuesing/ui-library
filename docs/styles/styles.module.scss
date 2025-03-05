@@ -28,7 +28,16 @@
   }
 }
 
-.showCaseWrapper {
+.showcaseWrapper {
+  margin: 2rem 0;
+  width: fit-content;
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+
+  .showcaseCol {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
