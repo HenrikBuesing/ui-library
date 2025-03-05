@@ -1,6 +1,8 @@
 @use '../common/styles/mixin' as *;
 
 .inputField {
+  width: 100%;
+  
   .inputWrapper {
     position: relative;
     display: flex;
@@ -49,7 +51,7 @@
     }
 
     &.basic, &.outlined {
-      &:not(:has(.input:disabled)):not(.error):hover:not(:focus-within) {
+      &:not(:has(.input:disabled)):not(.error):not(:focus-within):has(.input:placeholder-shown):hover {
         border-color: var(--uil-black);
         
         .fieldset {
@@ -166,7 +168,7 @@
 
     .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label,
     .decorator.visible ~ .label {
-      top: -40%;
+      top: -35%;
     }
 
     &:not(.error) .input:not(:disabled):focus ~ .label, &:not(.error) .input:not(:disabled):not(:placeholder-shown) ~ .label {
@@ -200,9 +202,14 @@
     line-height: var(--uil-m);
     margin-left: var(--uil-s);
     margin-top: var(--uil-xxs);
+    min-height: var(--uil-m);
     
     &.error {
       color: var(--uil-error);
     }
+  }
+  
+  .inputWrapper.basic ~ .helpText {
+    margin-left: 0;
   }
 }

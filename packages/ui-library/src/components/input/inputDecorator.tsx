@@ -5,6 +5,8 @@ import cls from '@utils/conditionalClass';
 import style from './input.module.scss';
 import {Icon} from '../icon';
 
+// TODO add click handler
+// TODO hover effect when input has value
 export function InputDecorator(props: InputDecoratorProps) {
   const {
     children,
