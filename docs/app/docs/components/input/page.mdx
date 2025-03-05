@@ -1,0 +1,60 @@
+---
+title: Input
+description: Showcase and usage guide of the input component
+---
+
+import InputVariants, {InputAttributes, InputDeco, InputError, InputHelp, InputHelpEmpty} from './_input.tsx';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# Input
+
+The input component allows users to enter and edit text.
+
+## Variants
+
+The input component offers two distinct variants: `outlined` and `basic`.
+
+<InputVariants/>
+
+## Input Types
+
+Standard input attributes, like `disabled` or `type` can be used to modify the input style.
+
+<InputAttributes variant={'outlined'}/>
+<InputAttributes variant={'basic'}/>
+
+## HelpText
+
+You can use the `helpText` prop to give additional information about the input.
+
+<InputHelp/>
+
+<Callout>
+  Please be aware that the `helpText` prop affects the height of the component. When placing two inputs next to each other,
+  the components may appear with different heights if one of the inputs is missing this prop. To ensure consistent height,
+  you can assign a space character as the value for the `helpText` prop.
+  
+  <InputHelpEmpty/>
+  
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'} helpText={'Input with help text'} />
+  <Input label={'Basic'} variant={'basic'} helpText={' '} />
+  ```
+</Callout>
+
+## Validation 
+
+The `error` prop allows you to toggle the error state of the component. Additionally, you use the `helpText` prop to give
+additional information about the error.
+
+<InputError variant={'outlined'}/>
+<InputError variant={'basic'}/>
+
+## InputDecorator
+
+The `InputDecorator` component is a utility component that allows you to display additional text or icons inside the input field. \
+For more information go to the [inputDecorator](/docs/components/input-decorator) page.
+
+<InputDeco variant={'outlined'}/>
+<InputDeco variant={'basic'}/>

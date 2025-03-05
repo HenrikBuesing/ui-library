@@ -1,8 +1,8 @@
 'use client';
-import {useTheme} from 'nextra-theme-docs';
-import {Button} from '@hbuesing/ui-library';
-import React from 'react';
 import styles from '@/styles/styles.module.scss';
+import {Button} from '@hbuesing/ui-library';
+import {useTheme} from 'nextra-theme-docs';
+import React from 'react';
 
 export default function DefaultButtons(){
   const {theme} = useTheme();

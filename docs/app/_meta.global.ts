@@ -26,6 +26,7 @@ const globalMeta: Meta = {
           },
           button: 'Button',
           input: 'Input',
+          'input-decorator': 'InputDecorator',
           checkbox: 'Checkbox',
           radio: 'Radio',
           '--': {
