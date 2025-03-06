@@ -18,4 +18,9 @@ export default [
   ...compat.config({
     extends: ['eslint:recommended', 'next'],
   }),
+  {
+    rules: {
+      "@next/next/no-img-element": 0
+    }
+  }
 ]

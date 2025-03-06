@@ -1,6 +1,6 @@
 'use client';
 import styles from '@/styles/styles.module.scss';
-import {Checkbox, Radio} from '@hbuesing/ui-library';
+import {Radio} from '@hbuesing/ui-library';
 import {useTheme} from 'nextra-theme-docs';
 import React from 'react';
 
@@ -10,7 +10,7 @@ export default function DefaultRadio(){
 
     return (
       <div className={styles.showcaseWrapper}>
-          <Radio options={[{name: 'Foo', value: 'foo'}, {name: 'Bar', value: 'bar'}]} selected={'bar'} selectionChanged={() => {}}/>
+          <Radio options={[{name: 'Foo', value: 'foo'}, {name: 'Bar', value: 'bar'}]} selected={'bar'} selectionChanged={() => {}} dark={dark}/>
       </div>
     );
 }
