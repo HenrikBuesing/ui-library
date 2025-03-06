@@ -1,6 +1,6 @@
 import {Footer, LastUpdated, Layout, Navbar} from 'nextra-theme-docs';
 import styles from '@/styles/styles.module.scss';
-// import {Roboto_Flex} from 'next/font/google';
+import {Roboto_Flex} from 'next/font/google';
 import {getPageMap} from 'nextra/page-map';
 import '@hbuesing/ui-library/index.css';
 import {Head} from 'nextra/components';
@@ -10,13 +10,13 @@ import '@/styles/globals.scss';
 import {Metadata} from 'next';
 import Link from 'next/link';
 
-// const roboto = Roboto_Flex({
-//   weight: ['200', '300', '400', '500', '700'],
-//   style: ['normal'],
-//   subsets: ['latin'],
-//   display: "swap",
-//   preload: true,
-// });
+const roboto = Roboto_Flex({
+  weight: ['200', '300', '400', '500', '700'],
+  style: ['normal'],
+  subsets: ['latin'],
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -51,7 +51,7 @@ export default async function RootLayout({children}: Readonly<{children: ReactNo
   );
 
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={roboto.className}>
     <Head/>
     <body>
     <Layout
