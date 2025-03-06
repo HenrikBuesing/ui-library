@@ -1,0 +1,18 @@
+'use client';
+import styles from '@/styles/styles.module.scss';
+import {Checkbox} from '@hbuesing/ui-library';
+import {useTheme} from 'nextra-theme-docs';
+import React from 'react';
+
+export default function DefaultCheck(){
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <div className={styles.showcaseWrapper}>
+      <Checkbox checked dark={dark}/>
+      <Checkbox disabled dark={dark}/>
+      <Checkbox checked disabled dark={dark}/>
+    </div>
+  );
+}

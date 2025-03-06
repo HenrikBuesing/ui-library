@@ -59,7 +59,7 @@ This component is a utility component designed for the [`Input`](/docs/component
 
 ## Content
 
-The `decorator` component allows the standard `svg` & `img` elements as well as the [`Icon`](/docs/components/icon) or a string as it's content.
+The `decorator` component allows the standard `svg` & `img` elements as well as a string as it's content.
 
 <DecoContent variant={'outlined'}/>
 <DecoContent variant={'basic'}/>
@@ -87,12 +87,6 @@ The `decorator` component allows the standard `svg` & `img` elements as well as 
       </svg>
     </InputDecorator>
   </Input>
-  
-  <Input label={'Icon Element'} variant={'outlined'}>
-    <InputDecorator>
-      <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
-    </InputDecorator>
-  </Input>
 
   <Input label={'String'} variant={'basic'}>
     <InputDecorator>
@@ -111,12 +105,6 @@ The `decorator` component allows the standard `svg` & `img` elements as well as 
       <svg width={20} height={20}>
         <use href={'/icons/eye-solid.svg#eye'}/>
       </svg>
-    </InputDecorator>
-  </Input>
-
-  <Input label={'Icon Element'} variant={'basic'}>
-    <InputDecorator>
-      <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
     </InputDecorator>
   </Input>
   ```
@@ -171,13 +159,17 @@ The decorator can be hidden when the `input` is neither focused nor contains a v
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator onFocus>
-      <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
+      <svg width={20} height={20}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
     </InputDecorator>
   </Input>
   
   <Input label={'Basic'} variant={'basic'}>
     <InputDecorator onFocus>
-      <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
+      <svg width={20} height={20}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
     </InputDecorator>
   </Input>
   ```

@@ -1,5 +1,5 @@
 'use client';
-import {Icon, Input, InputDecorator} from '@hbuesing/ui-library';
+import {Input, InputDecorator} from '@hbuesing/ui-library';
 import styles from '@/styles/styles.module.scss';
 import {useTheme} from 'nextra-theme-docs';
 import React from 'react';
@@ -39,12 +39,6 @@ export function DecoContent({variant}: {variant: 'outlined' | 'basic'}) {
           </svg>
         </InputDecorator>
       </Input>
-
-      <Input label={'Icon Element'} variant={variant} dark={dark}>
-        <InputDecorator>
-          <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
-        </InputDecorator>
-      </Input>
     </div>
   );
 }
@@ -78,13 +72,17 @@ export function DecoHidden() {
     <div className={styles.showcaseWrapper}>
       <Input label={'Outlined'} variant={'outlined'} dark={dark}>
         <InputDecorator onFocus>
-          <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
+          <svg width={20} height={20}>
+            <use href={'/icons/eye-solid.svg#eye'}/>
+          </svg>
         </InputDecorator>
       </Input>
 
       <Input label={'Basic'} variant={'basic'} dark={dark}>
         <InputDecorator onFocus>
-          <Icon type={'svg'} src={'/icons/eye-solid.svg#eye'} width={20} height={20}/>
+          <svg width={20} height={20}>
+            <use href={'/icons/eye-solid.svg#eye'}/>
+          </svg>
         </InputDecorator>
       </Input>
     </div>

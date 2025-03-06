@@ -33,7 +33,6 @@ const globalMeta: Meta = {
             type: 'separator',
             title: 'Data Display'
           },
-          icon: 'Icon',
           modal: 'Modal',
         }
       },
