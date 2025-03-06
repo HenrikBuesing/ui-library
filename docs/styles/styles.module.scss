@@ -34,6 +34,12 @@
   display: flex;
   gap: 2rem;
   align-items: center;
+  
+  img {
+    width: 20px;
+    height: 18px;
+    max-width: 20px;
+  }
 
   .showcaseCol {
     display: flex;
