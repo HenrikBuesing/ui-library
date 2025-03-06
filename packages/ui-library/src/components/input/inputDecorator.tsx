@@ -3,10 +3,10 @@ import type {InputDecoratorProps} from './types';
 import React, {isValidElement} from 'react';
 import cls from '@utils/conditionalClass';
 import style from './input.module.scss';
-import {Icon} from '../icon';
 
 // TODO add click handler
 // TODO hover effect when input has value
+// TODO allow other child types like third-party icon components
 export function InputDecorator(props: InputDecoratorProps) {
   const {
     children,
@@ -14,7 +14,7 @@ export function InputDecorator(props: InputDecoratorProps) {
     position
   } = props;
 
-  if (typeof children !== 'string' && (!isValidElement(children) || children.type !== Icon && children.type !== 'img' && children.type !== 'svg')) {
+  if (typeof children !== 'string' && (!isValidElement(children) || children.type !== 'img' && children.type !== 'svg')) {
     throw new Error(`<InputDecorator> received an invalid child. Expected a string, <Icon />, <img>, or <svg>, but got: ${isValidElement(children) ? String(children.type) : typeof children}.`);
   }
 
