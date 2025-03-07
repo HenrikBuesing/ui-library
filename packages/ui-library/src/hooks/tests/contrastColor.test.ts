@@ -39,17 +39,17 @@ test('should accept long hex', () => {
 test('should throw invalid hex error', () => {
   expect(() => {
     useContrastColor('#12');
-  }).toThrow(new Error(`[useContrastColor] invalid hex color: #12`));
+  }).toThrow(new Error(`useContrastColor received an invalid hex color format. Expected '#000' or '#000000', but got: #12`));
 
   expect(() => {
     useContrastColor('#zzz');
-  }).toThrow(new Error(`[useContrastColor] invalid hex color: #zzz`));
+  }).toThrow(new Error(`useContrastColor received an invalid hex color format. Expected '#000' or '#000000', but got: #zzz`));
 
   expect(() => {
     useContrastColor('abc');
-  }).toThrow(new Error(`[useContrastColor] invalid hex color: abc`));
+  }).toThrow(new Error(`useContrastColor received an invalid hex color format. Expected '#000' or '#000000', but got: abc`));
 
   expect(() => {
     useContrastColor('#abcdef7');
-  }).toThrow(new Error(`[useContrastColor] invalid hex color: #abcdef7`));
+  }).toThrow(new Error(`useContrastColor received an invalid hex color format. Expected '#000' or '#000000', but got: #abcdef7`));
 });

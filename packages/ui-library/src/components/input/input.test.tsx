@@ -2,7 +2,6 @@ import {render, screen} from '@testing-library/react';
 import {InputDecorator} from './inputDecorator';
 import {describe, expect, test} from 'vitest';
 import {Input} from './input';
-import {Icon} from '../icon';
 import React from 'react';
 
 describe('input', () => {
@@ -116,7 +115,7 @@ describe('InputDecorator', () => {
   test('should render decorator with icon', () => {
     render(
       <InputDecorator>
-        <Icon type={'img'} alt={'test'} src={'test.png'}/>
+        <img alt={'test'} src={'test.png'}/>
       </InputDecorator>
     );
 

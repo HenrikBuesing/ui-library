@@ -4,7 +4,7 @@
 const HEX_COLOR = new RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
 
 export function useContrastColor(hex: string) {
-  if (!HEX_COLOR.test(hex)) throw new Error(`[useContrastColor] invalid hex color: ${hex}`);
+  if (!HEX_COLOR.test(hex)) throw new Error(`useContrastColor received an invalid hex color format. Expected '#000' or '#000000', but got: ${hex}`);
 
   hex = hex.replace('#', '');
   let srgb: number[];
