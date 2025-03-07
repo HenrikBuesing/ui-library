@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": [
+    "//"
+  ],
+  "tasks": {
+    "lint": {},
+    "build": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "build:dev": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "build:types": {
+      "cache": false,
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false,
+      "persistent": true,
+      "interactive": true
+    },
+    "test:coverage": {},
+    "clear": {
+      "cache": false
+    }
+  }
+}

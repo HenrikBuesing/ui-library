@@ -2,32 +2,45 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages",
-    "website"
+    "packages/*",
+    "docs"
   ],
   "type": "module",
   "scripts": {
-    "test": "npm run test --workspace=packages",
-    "lint:library": "npm run lint --workspace=packages",
-    "lint-nw:library": "npm run lint:nw --workspace=packages",
-    "clean:docs": "npm run clear --workspace=website",
-    "dev:docs": "npm run start --workspace=website",
-    "build:library": "npm run build --workspace=packages",
-    "build:docs": "npm run build --workspace=website",
-    "serve:docs": "npm run serve --workspace=website"
+    "lint": "turbo lint",
+    "lint:library": "turbo lint --filter=@hbuesing/ui-library",
+    "clear": "turbo clear",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:dev": "turbo build:dev",
+    "build:types": "turbo build:types",
+    "build:library": "turbo build --filter=@hbuesing/ui-library",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch --ui=tui",
+    "test:coverage": "turbo test:coverage",
+    "start": "turbo start"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.21.0",
+    "@next/eslint-plugin-next": "^15.2.0",
+    "@types/node": "^20.17.19",
     "@types/react": "^19.0.10",
-    "esbuild": "0.25.0",
-    "esbuild-sass-plugin": "^3.3.1",
+    "@types/react-dom": "^19.0.4",
     "eslint": "^9.21.0",
+    "eslint-config-next": "^15.2.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
     "sass": "^1.85.0",
+    "turbo": "^2.4.4",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.24.1",
     "typescript-plugin-css-modules": "^5.1.0"
-  }
+  },
+  "packageManager": "npm@11.1.0"
 }

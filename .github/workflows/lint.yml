@@ -23,7 +23,7 @@ jobs:
         run: npm ci
       - uses: int128/comment-action@v1
         with:
-          run: npm run lint-nw:library
+          run: npm run lint
           update-if-exists: append
           post-on-failure: |
             ## :x: ESLint check failed:

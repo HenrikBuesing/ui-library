@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: lint src directory
-        run: npm run lint-nw:library
+        run: npm run lint:library
 
   Test:
     name: Run component tests
@@ -50,5 +50,5 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
-          package: packages
+          package: packages/ui-library
           dry-run: false

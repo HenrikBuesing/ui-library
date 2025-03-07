@@ -1,0 +1,156 @@
+@use '../common/styles/mixin' as *;
+
+.button {
+  display: block;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:not(:disabled).filled {
+    color: var(--uil-white);
+    background-color: var(--uil-outline-focus);
+    box-shadow: 0 0 2px 0 var(--uil-black-alt);
+
+    &:hover {
+      background-color: rgba(var(--uil-default-hover), .9);
+    }
+  }
+
+  &:not(:disabled).outlined {
+    color: var(--uil-outline-focus);
+    border-color: var(--uil-outline-focus);
+
+    &:not(:disabled):hover {
+      background-color: rgba(var(--uil-default-hover), .12);
+    }
+  }
+
+  &:not(:disabled).text {
+    color: var(--uil-outline-focus);
+
+    &:not(:disabled):hover {
+      background-color: rgba(var(--uil-default-hover), .08);
+    }
+  }
+
+  &:not(:disabled).success {
+    &.filled {
+      color: var(--uil-white);
+      background-color: var(--uil-success);
+
+      &:hover {
+        background-color: rgba(var(--uil-success-hover), .9);
+      }
+    }
+
+    &.outlined {
+      color: var(--uil-success);
+      border-color: var(--uil-success);
+
+      &:hover {
+        background-color: rgba(var(--uil-success-hover), .15);
+      }
+    }
+
+    &.text {
+      color: var(--uil-success);
+
+      &:hover {
+        background-color: rgba(var(--uil-success-hover), .07);
+      }
+    }
+  }
+
+  &:not(:disabled).warning {
+    &.filled {
+      color: var(--uil-black-light);
+      background-color: var(--uil-warning);
+
+      &:hover {
+        background-color: rgba(var(--uil-warning-hover), .7);
+      }
+    }
+
+    &.outlined {
+      color: var(--uil-warning-alt);
+      border-color: var(--uil-warning);
+
+      &:hover {
+        background-color: rgba(var(--uil-warning-hover), .1);
+      }
+    }
+
+    &.text {
+      color: var(--uil-warning-alt);
+
+      &:hover {
+        background-color: rgba(var(--uil-warning-hover), .1);
+      }
+    }
+  }
+
+  &:not(:disabled).error {
+    &.filled {
+      color: var(--uil-white);
+      background-color: var(--uil-error);
+
+      &:hover {
+        background-color: rgba(var(--uil-error-hover), .9);
+      }
+    }
+
+    &.outlined {
+      color: var(--uil-error);
+      border-color: var(--uil-error);
+
+      &:hover {
+        background-color: rgba(var(--uil-error-hover), .12);
+      }
+    }
+
+    &.text {
+      color: var(--uil-error);
+
+      &:hover {
+        background-color: rgba(var(--uil-error-hover), .08);
+      }
+    }
+  }
+
+  &:not(:disabled).custom {
+     &.filled:hover, &.outlined:hover, &.text:hover {
+       opacity: .9;
+       background-color: rgba(var(--uil-custom-hover), .05);
+     }
+  }
+
+  &.disabled {
+    cursor: default;
+    color: var(--uil-grey-dark);
+
+    &.filled {
+      background-color: var(--uil-grey);
+    }
+
+    &.outlined {
+      border-color: var(--uil-grey-dark);
+    }
+  }
+
+  &.small {
+    letter-spacing: 1px;
+    padding: var(--uil-xxs);
+  }
+
+  &.medium {
+    letter-spacing: 2px;
+    padding: var(--uil-xs);
+  }
+
+  &.large {
+    letter-spacing: 2px;
+    padding: var(--uil-s);
+  }
+}

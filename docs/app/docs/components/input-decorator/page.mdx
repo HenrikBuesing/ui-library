@@ -1,0 +1,209 @@
+---
+title: InputDecorator
+description: Showcase and usage guide of the input-decorator component
+---
+
+import Deco, {DecoContent, DecoHidden, DecoPosition} from './_decorator';
+import {InputDeco} from '../input/_input';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# InputDecorator
+
+This component is a utility component designed for the [`Input`](/docs/components/input) component.
+
+<InputDeco variant={'outlined'}/>
+<InputDeco variant={'basic'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'}>
+    <InputDecorator>
+      kg/lbs
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Outlined'} variant={'outlined'} defaultValue={'hello-world'}>
+    <InputDecorator>
+      .com
+    </InputDecorator>
+  </Input>
+
+  <Input label={'Basic'} variant={'basic'}>
+    <InputDecorator>
+      kg/lbs
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Basic'} variant={'basic'} defaultValue={'hello-world'}>
+    <InputDecorator>
+      .com
+    </InputDecorator>
+  </Input>
+  ```
+</details>
+
+<Callout type={'warning'}>
+  Since `InputDecorator` is a utility component, using it outside the `input` component will just render the content of the decorator:
+
+  <Deco/>
+
+  ```tsx
+  <InputDecorator>
+    Decorator without the input component
+  </InputDecorator>
+  ```
+</Callout>
+
+## Content
+
+The `decorator` component allows the standard `svg` & `img` elements as well as a string as it's content.
+
+<DecoContent variant={'outlined'}/>
+<DecoContent variant={'basic'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'String'} variant={'outlined'}>
+    <InputDecorator>
+      Text
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Image Element'} variant={'outlined'}>
+    <InputDecorator>
+      <img src={'/icons/eye-solid.png'} alt={'input icon'} width={20} height={18}/>
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'SVG Element'} variant={'outlined'}>
+    <InputDecorator>
+      <svg width={20} height={20}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
+    </InputDecorator>
+  </Input>
+
+  <Input label={'String'} variant={'basic'}>
+    <InputDecorator>
+      Text
+    </InputDecorator>
+  </Input>
+
+  <Input label={'Image Element'} variant={'basic'}>
+    <InputDecorator>
+      <img src={'/icons/eye-solid.png'} alt={'input icon'} width={20} height={18}/>
+    </InputDecorator>
+  </Input>
+
+  <Input label={'SVG Element'} variant={'basic'}>
+    <InputDecorator>
+      <svg width={20} height={20}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
+    </InputDecorator>
+  </Input>
+  ```
+</details>
+
+## Position
+
+The `position` prop allows you to define whether the decorator should be a prefix or suffix (default).
+
+<DecoPosition variant={'outlined'}/>
+<DecoPosition variant={'basic'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'}>
+    <InputDecorator position={'left'}>
+      left
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Outlined'} variant={'outlined'}>
+    <InputDecorator position={'right'}>
+      right
+    </InputDecorator>
+  </Input>
+
+  <Input label={'Basic'} variant={'basic'}>
+    <InputDecorator position={'left'}>
+      left
+    </InputDecorator>
+  </Input>
+
+  <Input label={'Basic'} variant={'basic'}>
+    <InputDecorator position={'right'}>
+      right
+    </InputDecorator>
+  </Input>
+  ```
+</details>
+
+## Hidden Decorator
+
+The decorator can be hidden when the `input` is neither focused nor contains a value.
+
+<DecoHidden/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'}>
+    <InputDecorator onFocus>
+      <svg width={20} height={20}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Basic'} variant={'basic'}>
+    <InputDecorator onFocus>
+      <svg width={20} height={20}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
+    </InputDecorator>
+  </Input>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`img` | `svg` | `Icon` | `string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onFocus</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Only shows the component when focusing on the parent `input`</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>position</Table.Td>
+    <Table.Td>`left` | `right`</Table.Td>
+    <Table.Td><b>right</b></Table.Td>
+    <Table.Td>Position of the component</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>

@@ -1,0 +1,197 @@
+---
+title: Input
+description: Showcase and usage guide of the input component
+---
+
+import InputVariants, {InputAttributes, InputDeco, InputError, InputHelp, InputHelpEmpty} from './_input.tsx';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# Input
+
+The input component allows users to enter and edit text.
+
+## Variants
+
+The input component offers two distinct variants: `outlined` and `basic`.
+
+<InputVariants/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'}/>
+  <Input label={'Basic'} variant={'basic'}/>
+  ```
+</details>
+
+## Input Types
+
+Standard input attributes, like `disabled` or `type` can be used to modify the input style.
+
+<InputAttributes variant={'outlined'}/>
+<InputAttributes variant={'basic'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Required'} variant={'outlined'} required/>
+  <Input label={'Disabled'} variant={'outlined'} disabled/>
+  <Input label={'Number'} variant={'outlined'} type={'number'}/>
+  <Input label={'Password'} variant={'outlined'} type={'password'}/>
+
+  <Input label={'Required'} variant={'basic'} required/>
+  <Input label={'Disabled'} variant={'basic'} disabled/>
+  <Input label={'Number'} variant={'basic'} type={'number'}/>
+  <Input label={'Password'} variant={'basic'} type={'password'}/>
+  ```
+</details>
+
+## HelpText
+
+You can use the `helpText` prop to give additional information about the input.
+
+<InputHelp/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'} helpText={'Input with help text'}/>
+  <Input label={'Basic'} variant={'basic'} helpText={'Input with help text'}/>
+  ```
+</details>
+
+<Callout>
+  Please be aware that the `helpText` prop affects the height of the component. When placing two inputs next to each other,
+  the components may appear with different heights if one of the inputs is missing this prop. To ensure consistent height,
+  you can assign a space character as the value for the `helpText` prop.
+  
+  <InputHelpEmpty/>
+  
+  ```tsx
+  <Input label={'With helpText'} variant={'outlined'} helpText={'Input with help text'}/>
+  <Input label={'Empty helpText'} variant={'outlined'} helpText={' '}/>
+  ```
+</Callout>
+
+## Validation 
+
+The `error` prop allows you to toggle the error state of the component. Additionally, you use the `helpText` prop to give
+additional information about the error.
+
+<InputError variant={'outlined'}/>
+<InputError variant={'basic'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Error'} variant={'outlined'} error helpText={' '} defaultValue={'Lorem ipsum'}/>
+  <Input label={'Error'} variant={'outlined'} error helpText={'Error message'} defaultValue={'Lorem ipsum'}/>
+
+  <Input label={'Error'} variant={'basic'} error helpText={' '} defaultValue={'Lorem ipsum'}/>
+  <Input label={'Error'} variant={'basic'} error helpText={'Error message'} defaultValue={'Lorem ipsum'}/>
+  ```
+</details>
+
+## InputDecorator
+
+The `InputDecorator` component is a utility component that allows you to display additional text or icons inside the input field. \
+For more information go to the [inputDecorator](/docs/components/input-decorator) page.
+
+<InputDeco variant={'outlined'}/>
+<InputDeco variant={'basic'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Input label={'Outlined'} variant={'outlined'}>
+    <InputDecorator>
+      kg/lbs
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Outlined'} variant={'outlined'} defaultValue={'hello-world'}>
+    <InputDecorator>
+      .com
+    </InputDecorator>
+  </Input>
+
+  <Input label={'Basic'} variant={'basic'}>
+    <InputDecorator>
+      kg/lbs
+    </InputDecorator>
+  </Input>
+  
+  <Input label={'Basic'} variant={'basic'} defaultValue={'hello-world'}>
+    <InputDecorator>
+      .com
+    </InputDecorator>
+  </Input>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`InputDecorator`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Decorator for the input</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disabled</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Disables the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>error</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Toggle the error state</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>helpText</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the help text</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>label</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the label text</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>variant</Table.Td>
+    <Table.Td>`outlined` | `basic`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>The variant to use</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `input` props (e.g. `type` & `value`).
+</Callout>
