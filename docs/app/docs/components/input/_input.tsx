@@ -74,7 +74,9 @@ export function InputDeco({variant}: {variant: 'basic' | 'outlined'}) {
     <div className={styles.showcaseWrapper}>
       <Input label={variant.charAt(0).toUpperCase() + variant.slice(1)} variant={variant} dark={dark}>
         <InputDecorator>
-          kg/lbs
+          <svg width={20} height={20} fill={'#222222'}>
+            <use href={'/icons/eye-solid.svg#eye'}/>
+          </svg>
         </InputDecorator>
       </Input>
       <Input label={variant.charAt(0).toUpperCase() + variant.slice(1)} variant={variant} dark={dark} defaultValue={'hello-world'}>

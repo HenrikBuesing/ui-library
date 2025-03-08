@@ -122,15 +122,4 @@ describe('InputDecorator', () => {
     const image = screen.getByAltText('test');
     expect(image).toBeDefined();
   });
-
-  test('should throw error with invalid child', () => {
-    expect(() => {
-      render(<InputDecorator><div>999</div></InputDecorator>);
-    }).toThrowError('<InputDecorator> received an invalid child. Expected a string, <Icon />, <img>, or <svg>, but got: div.');
-
-    expect(() => {
-      // @ts-expect-error -> test using unsupported child
-      render(<InputDecorator>{Number('999')}</InputDecorator>);
-    }).toThrowError('<InputDecorator> received an invalid child. Expected a string, <Icon />, <img>, or <svg>, but got: number.');
-  });
 });

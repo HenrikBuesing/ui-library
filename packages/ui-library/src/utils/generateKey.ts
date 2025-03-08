@@ -1,5 +1,6 @@
 export default function generateKey() {
-  const m = (Math.random() * 100) + 1;
+  const r = new Uint32Array(2);
+  crypto.getRandomValues(r);
 
-  return `uil${(performance.now() * m).toString(32)}${(Math.random() * m).toString(16)}`.replace(/\./g, '');
+  return `uil${r[0].toString(32)}${r[1].toString(16)}`;
 }
