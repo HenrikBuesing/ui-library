@@ -1,6 +1,6 @@
+import type {MouseEventHandler, ReactElement, ReactNode} from 'react';
 import type {BaseComponentProps} from '@common/types';
 import type {InputDecorator} from './inputDecorator';
-import type {ReactElement} from 'react';
 
 export type InputProps = BaseComponentProps<'input'> & AdditionalInputProps;
 
@@ -13,7 +13,8 @@ type AdditionalInputProps = {
 }
 
 export type InputDecoratorProps = {
-  children: ReactElement<'img'> | ReactElement<'svg'> | string;
+  children: ReactNode;
   position?: 'left' | 'right';
+  onClick?: MouseEventHandler<HTMLDivElement>;
   onFocus?: boolean;
 }
