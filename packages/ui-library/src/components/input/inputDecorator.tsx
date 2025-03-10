@@ -8,7 +8,6 @@ export function InputDecorator(props: InputDecoratorProps) {
   const {
     children,
     onFocus,
-    onClick,
     position
   } = props;
 
@@ -17,10 +16,9 @@ export function InputDecorator(props: InputDecoratorProps) {
       className={cls([
         style.decorator,
         global.fontSmall,
-        position === 'left' ? style.left : style.right,
+        position === 'start' ? style.start : style.end,
         onFocus ? style.focus : style.visible
       ])}
-      onClick={onClick}
     >
       {children}
     </div>

@@ -1,6 +1,6 @@
-import type {MouseEventHandler, ReactElement, ReactNode} from 'react';
 import type {BaseComponentProps} from '@common/types';
 import type {InputDecorator} from './inputDecorator';
+import type {ReactElement, ReactNode} from 'react';
 
 export type InputProps = BaseComponentProps<'input'> & AdditionalInputProps;
 
@@ -14,7 +14,6 @@ type AdditionalInputProps = {
 
 export type InputDecoratorProps = {
   children: ReactNode;
-  position?: 'left' | 'right';
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  position?: 'start' | 'end';
   onFocus?: boolean;
 }
