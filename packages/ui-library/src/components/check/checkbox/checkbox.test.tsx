@@ -1,18 +1,26 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import {describe, expect, test} from 'vitest';
+import {beforeEach, describe, expect, type Mock, test, vi} from 'vitest';
 import React, {useState} from 'react';
 import {Checkbox} from './checkbox';
 
-describe('general', () => {
-  test('should render checkbox using label prop', () => {
-    render(<BasicCheckbox/>);
+let fn: Mock<(...args: boolean[]) => void>;
 
-    const label = screen.getByText('checkbox');
-    expect(label).toBeDefined();
-    expect(label.children).toHaveLength(0);
+beforeEach(() => {
+  fn = vi.fn();
+});
+
+describe('general', () => {
+  test('should render checkbox', () => {
+    const {container} = render(<Checkbox checked onChange={fn}/>);
+
+    const wrapper = container.getElementsByClassName('checkWrapper');
+    const checkbox = container.getElementsByClassName('check box');
+    
+    expect(wrapper[0].children.length).toEqual(1);
+    expect(checkbox).toBeDefined();
   });
 
-  test('should render checkbox using children', () => {
+  test('should render checkbox with children', () => {
     render(<CheckboxChildren/>);
 
     const child = screen.getByTestId('child');
@@ -72,7 +80,7 @@ function BasicCheckbox({dark, disabled} :{dark?: boolean, disabled?: boolean}) {
   return (
     <>
       <div>{checked}</div>
-      <Checkbox checked={checked} toggleCheck={setChecked} label={'checkbox'} dark={dark ?? false} disabled={disabled ?? false} />
+      <Checkbox checked={checked} onChange={setChecked} dark={dark ?? false} disabled={disabled ?? false} />
     </>
   );
 }
@@ -81,7 +89,7 @@ function ColorCheckbox() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Checkbox checked={checked} toggleCheck={setChecked} label={'checkbox'} color={'red'}/>
+    <Checkbox checked={checked} onChange={setChecked} color={'red'}/>
   );
 }
 
@@ -89,7 +97,7 @@ function CheckboxChildren() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Checkbox checked={checked} toggleCheck={setChecked}>
+    <Checkbox checked={checked} onChange={setChecked}>
       <div data-testid='child'>Hello world</div>
     </Checkbox>
   );

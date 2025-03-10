@@ -1,10 +1,11 @@
 import global from '@common/styles/global.module.scss';
 import generateKey from '@utils/generateKey';
-import styles from './checkbox.module.scss';
 import type {CheckboxProps} from './types';
 import cls from '@utils/conditionalClass';
 import check from '../check.module.scss';
 import React from 'react';
+
+// TODO update test cases
 
 /**
  * @example
@@ -25,27 +26,28 @@ export function Checkbox(props: CheckboxProps) {
     color,
     dark,
     disabled,
-    id,
-    label,
-    toggleCheck,
+    onChange,
     ...other
   } = props;
 
-  const ID = id ?? generateKey();
+  const ID = other.id ?? (children ? generateKey() : undefined);
 
-  function handleCheck() {
-    if (!disabled) toggleCheck(!checked);
+  function handleClick() {
+    if (!disabled) onChange(!checked);
   }
 
   return (
-    <div className={`${check.checkWrapper} ${global.fontMedium}`}>
-      <div className={cls([styles.checkbox, check.check, disabled ? global.notAllowed : global.pointer, dark && check.dark])} onClick={handleCheck}>
-        <input type={'checkbox'} checked={checked} disabled={disabled} onChange={handleCheck} id={ID} {...other}/>
-        <div className={cls([check.checkmark, dark && check.dark])} style={{backgroundColor: color}}/>
+    <div className={cls([check.checkWrapper, dark && global.dark])}>
+      <div className={cls([check.check, check.box])} onClick={handleClick}>
+        <input type={'checkbox'} checked={checked} onChange={handleClick} id={ID} disabled={disabled} {...other}/>
+        <div className={cls([check.checkmark])} style={{backgroundColor: color}}/>
       </div>
-      <label htmlFor={ID} className={cls([styles.checkLabel, dark && styles.dark])}>
-        {children ?? label}
-      </label>
+
+      {children &&
+        <label htmlFor={ID} className={global.fontMedium}>
+          {children}
+        </label>
+      }
     </div>
   );
 }
