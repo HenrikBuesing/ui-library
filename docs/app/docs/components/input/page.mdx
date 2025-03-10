@@ -111,7 +111,9 @@ For more information go to the [inputDecorator](/docs/components/input-decorator
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator>
-      kg/lbs
+      <svg width={20} height={20} fill={'#222222'}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
     </InputDecorator>
   </Input>
   
@@ -123,7 +125,9 @@ For more information go to the [inputDecorator](/docs/components/input-decorator
 
   <Input label={'Basic'} variant={'basic'}>
     <InputDecorator>
-      kg/lbs
+      <svg width={20} height={20} fill={'#222222'}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
     </InputDecorator>
   </Input>
   
