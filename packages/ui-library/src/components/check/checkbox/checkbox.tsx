@@ -31,11 +31,11 @@ export function Checkbox(props: CheckboxProps) {
     <div className={cls([check.checkWrapper, dark && global.dark])}>
       <div className={cls([check.check, check.box])} onClick={handleClick}>
         <input type={'checkbox'} checked={checked} onChange={handleChange} id={ID} disabled={disabled} {...other}/>
-        <div className={cls([check.checkmark])} style={{backgroundColor: color}}/>
+        <div className={cls([check.checkmark])} style={disabled ? undefined : {backgroundColor: color}}/>
       </div>
 
       {children &&
-        <label htmlFor={ID} className={global.fontMedium}>
+        <label htmlFor={ID} className={`${global.fontMedium} ${check.label}`}>
           {children}
         </label>
       }

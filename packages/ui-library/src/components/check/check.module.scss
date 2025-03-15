@@ -5,6 +5,16 @@
   align-items: center;
   gap: var(--uil-s);
 
+  &:has(input:disabled) {
+    .label {
+      color: var(--uil-grey-dark);
+    }
+  }
+
+  .label {
+    color: var(--uil-black);
+  }
+
   .check {
     position: relative;
     display: block;
@@ -14,12 +24,8 @@
     box-sizing: border-box;
     cursor: pointer;
 
-    &:hover, &:focus-within, &:has(input:checked) {
+    &:hover, &:has(input:checked) {
       border-color: var(--uil-black);
-    }
-
-    &:focus-within {
-      outline: 2px solid var(--uil-outline-focus)
     }
     
     &.box {
@@ -27,7 +33,7 @@
     }
 
     &:has(input:disabled) {
-      border-color: var(--uil-grey-dark);
+      border-color: var(--uil-grey-alt);
       cursor: default;
     }
 
@@ -46,7 +52,7 @@
 
       &:disabled {
         ~ .checkmark {
-          background-color: var(--uil-grey-alt);
+          background-color: var(--uil-grey-dark);
         }
       }
     }
