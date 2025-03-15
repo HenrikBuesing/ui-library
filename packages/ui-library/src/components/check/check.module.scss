@@ -10,9 +10,17 @@
     display: block;
     min-height: var(--uil-l);
     min-width: var(--uil-l);
-    border: 2px solid var(--uil-black-alt);
+    border: 2px solid var(--uil-grey-dark);
     box-sizing: border-box;
     cursor: pointer;
+
+    &:hover, &:focus-within, &:has(input:checked) {
+      border-color: var(--uil-black);
+    }
+
+    &:focus-within {
+      outline: 2px solid var(--uil-outline-focus)
+    }
     
     &.box {
       border-radius: 2px;

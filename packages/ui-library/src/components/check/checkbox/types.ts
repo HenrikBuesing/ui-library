@@ -1,11 +1,10 @@
 import type {BaseComponentProps} from '@common/types';
-import type {ReactNode} from 'react';
+import type {CSSProperties, ReactNode} from 'react';
 
-export type CheckboxProps = Omit<BaseComponentProps<'input'>, 'onChange'> & AdditionalCheckboxProps;
+export type CheckboxProps = BaseComponentProps<'input'> & AdditionalCheckboxProps;
 
 type AdditionalCheckboxProps = {
-  checked: boolean;
-  onChange: (value: boolean) => void;
-  color?: string;
+  checked?: boolean;
   children?: ReactNode;
+  color?: CSSProperties['backgroundColor'];
 };
