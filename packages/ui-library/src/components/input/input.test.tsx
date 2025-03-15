@@ -51,6 +51,13 @@ describe('input', () => {
     expect(decorator).toBeDefined();
   });
 
+  test('should render dark input', () => {
+    const {container} = render(<Input label={'outlined'} variant={'outlined'} dark/>);
+
+    const wrapper = container.getElementsByClassName('dark')[0];
+    expect(wrapper.className).toMatch(/\bdark\b/);
+  });
+
   test('should render required input', () => {
     const {container} = render(<Input label={'basic'} variant={'basic'} required/>);
 
