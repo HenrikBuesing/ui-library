@@ -1,9 +1,9 @@
 import global from '@common/styles/global.module.scss';
+import React, {type ChangeEvent} from 'react';
 import generateKey from '@utils/generateKey';
 import type {CheckboxProps} from './types';
 import cls from '@utils/conditionalClass';
-import check from '../check.module.scss';
-import React, {type ChangeEvent} from 'react';
+import styles from '../check.module.scss';
 
 export function Checkbox(props: CheckboxProps) {
   const {
@@ -28,14 +28,14 @@ export function Checkbox(props: CheckboxProps) {
   }
 
   return (
-    <div className={cls([check.checkWrapper, dark && global.dark])}>
-      <div className={cls([check.check, check.box])} onClick={handleClick}>
+    <div className={cls([styles.checkWrapper, dark && global.dark])}>
+      <div className={cls([styles.check, styles.box])} onClick={handleClick}>
         <input type={'checkbox'} checked={checked} onChange={handleChange} id={ID} disabled={disabled} {...other}/>
-        <div className={cls([check.checkmark])} style={disabled ? undefined : {backgroundColor: color}}/>
+        <div className={cls([styles.checkmark])} style={disabled ? undefined : {backgroundColor: color}}/>
       </div>
 
       {children &&
-        <label htmlFor={ID} className={`${global.fontMedium} ${check.label}`}>
+        <label htmlFor={ID} className={`${global.fontMedium} ${styles.label}`}>
           {children}
         </label>
       }
