@@ -1,4 +1,4 @@
-name: dry-run
+name: build-docs
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -10,11 +10,12 @@ on:
       - reopened
       - synchronize
       - ready_for_review
+      - labeled
 
 jobs:
-  test_publish:
-    if: github.event.pull_request.draft == false
-    name: NPM publish dry-run
+  test_build_docs:
+    if: github.event.pull_request.draft == false && contains(github.event.pull_request.labels.*.name, 'dependencies')
+    name: Build docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,11 +24,5 @@ jobs:
           node-version: "20"
       - name: Install dependencies
         run: npm ci
-      - name: Publish package
-        run: npm run build:library
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/ui-library
-          dry-run: true
+      - name: Build
+        run: npm run build
