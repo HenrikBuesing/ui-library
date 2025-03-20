@@ -22,7 +22,6 @@ export function Button(props: ButtonProps) {
   } = props;
 
   const style = setStyle();
-  const fontSize = setFontSize();
 
   function setStyle(): CSSProperties | undefined {
     if (disabled || !color?.includes('#')) return undefined;
@@ -47,17 +46,28 @@ export function Button(props: ButtonProps) {
     }
   }
   
-  function setFontSize() {
+  function setClasses() {
+    let fontSize;
+
     switch (size) {
       case 'small':
-        return global.fontSmall;
+        fontSize = global.fontSmall;
+        break;
       case 'medium':
-        return global.fontMedium;
+        fontSize = global.fontMedium;
+        break;
       case 'large':
-        return global.fontLarge;
+        fontSize = global.fontLarge;
+        break;
       default:
         throw new Error(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
     }
+
+    return cls([
+      styles.button, global.fit, fontSize, styles[size], styles[variant], dark && global.dark,
+      color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
+      disabled && styles.disabled
+    ]);
   }
   
   if (href || href === '') {
@@ -68,11 +78,7 @@ export function Button(props: ButtonProps) {
         id={buttonProps.id}
         title={buttonProps.title}
         style={style}
-        className={cls([
-          styles.button, global.fit, fontSize, styles[size], styles[variant], dark && global.dark,
-          color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
-          disabled && styles.disabled
-        ])}
+        className={setClasses()}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : (buttonProps.tabIndex ?? undefined)}
       >
@@ -84,11 +90,7 @@ export function Button(props: ButtonProps) {
   return (
     <button
       style={style}
-      className={cls([
-        styles.button, global.fit, fontSize, styles[size], styles[variant], dark && global.dark,
-        color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
-        disabled && styles.disabled 
-      ])}
+      className={setClasses()}
       type={buttonProps.type ?? 'button'}
       disabled={disabled}
       aria-disabled={disabled}

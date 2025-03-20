@@ -50,14 +50,14 @@ export function DecoPosition({variant}: {variant: 'outlined' | 'basic'}) {
   return (
     <div className={styles.showcaseWrapper}>
       <Input label={variant.charAt(0).toUpperCase() + variant.slice(1)} variant={variant} dark={dark}>
-        <InputDecorator position={'left'}>
-          left
+        <InputDecorator position={'start'}>
+          start
         </InputDecorator>
       </Input>
 
       <Input label={variant.charAt(0).toUpperCase() + variant.slice(1)} variant={variant} dark={dark}>
-        <InputDecorator position={'right'}>
-          right
+        <InputDecorator position={'end'}>
+          end
         </InputDecorator>
       </Input>
     </div>

@@ -1,18 +1,26 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import {describe, expect, test} from 'vitest';
+import {beforeEach, describe, expect, type Mock, test, vi} from 'vitest';
 import React, {useState} from 'react';
 import {Checkbox} from './checkbox';
 
-describe('general', () => {
-  test('should render checkbox using label prop', () => {
-    render(<BasicCheckbox/>);
+let fn: Mock<(...args: boolean[]) => void>;
 
-    const label = screen.getByText('checkbox');
-    expect(label).toBeDefined();
-    expect(label.children).toHaveLength(0);
+beforeEach(() => {
+  fn = vi.fn();
+});
+
+describe('general', () => {
+  test('should render checkbox', () => {
+    const {container} = render(<Checkbox checked onChange={() => fn}/>);
+
+    const wrapper = container.getElementsByClassName('checkWrapper');
+    const checkbox = container.getElementsByClassName('check box');
+    
+    expect(wrapper[0].children.length).toEqual(1);
+    expect(checkbox).toBeDefined();
   });
 
-  test('should render checkbox using children', () => {
+  test('should render checkbox with children', () => {
     render(<CheckboxChildren/>);
 
     const child = screen.getByTestId('child');
@@ -31,37 +39,32 @@ describe('general', () => {
   test('should render checkbox using dark mode', () => {
     const {container} = render(<BasicCheckbox dark={true}/>);
 
-    const checkbox = container.getElementsByClassName('checkbox').item(0);
-    const label = screen.getByText('checkbox');
-
+    const checkbox = container.getElementsByClassName('checkWrapper').item(0);
     expect(checkbox?.className).toMatch(/\bdark\b/);
-    expect(label.className).toMatch(/\bdark\b/);
   });
 
   test('should render disabled checkbox', () => {
     const {container} = render(<BasicCheckbox disabled={true}/>);
 
-    const input = container.getElementsByTagName('input')[0];
-    const checkbox = container.getElementsByClassName('checkbox')[0];
+    const input = container.getElementsByTagName('input').item(0);
+    const checkbox = container.getElementsByClassName('check box')[0];
 
     fireEvent.click(checkbox);
 
-    expect(input.disabled).toBeTruthy();
-    expect(input.checked).toBeFalsy();
+    expect(input?.disabled).toBeTruthy();
+    expect(input?.checked).toBeFalsy();
   });
 
   test('should check checkbox', () => {
     const {container} = render(<BasicCheckbox />);
 
     const input = container.getElementsByTagName('input')[0];
-    const checkbox = container.getElementsByClassName('checkbox')[0];
+    const checkbox = container.getElementsByClassName('check box')[0];
 
-    // check with wrapper div
     fireEvent.click(checkbox);
     expect(input.checked).toBeTruthy();
     
-    // uncheck with input (is visually hidden but should technically still work)
-    fireEvent.click(input);
+    fireEvent.click(checkbox);
     expect(input.checked).toBeFalsy();
   });
 });
@@ -72,7 +75,7 @@ function BasicCheckbox({dark, disabled} :{dark?: boolean, disabled?: boolean}) {
   return (
     <>
       <div>{checked}</div>
-      <Checkbox checked={checked} toggleCheck={setChecked} label={'checkbox'} dark={dark ?? false} disabled={disabled ?? false} />
+      <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} dark={dark ?? false} disabled={disabled ?? false} />
     </>
   );
 }
@@ -81,7 +84,7 @@ function ColorCheckbox() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Checkbox checked={checked} toggleCheck={setChecked} label={'checkbox'} color={'red'}/>
+    <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} color={'red'}/>
   );
 }
 
@@ -89,7 +92,7 @@ function CheckboxChildren() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Checkbox checked={checked} toggleCheck={setChecked}>
+    <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)}>
       <div data-testid='child'>Hello world</div>
     </Checkbox>
   );

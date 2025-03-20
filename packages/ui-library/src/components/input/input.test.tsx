@@ -51,6 +51,13 @@ describe('input', () => {
     expect(decorator).toBeDefined();
   });
 
+  test('should render dark input', () => {
+    const {container} = render(<Input label={'outlined'} variant={'outlined'} dark/>);
+
+    const wrapper = container.getElementsByClassName('dark')[0];
+    expect(wrapper.className).toMatch(/\bdark\b/);
+  });
+
   test('should render required input', () => {
     const {container} = render(<Input label={'basic'} variant={'basic'} required/>);
 
@@ -91,24 +98,24 @@ describe('InputDecorator', () => {
   test('should render decorator with string', () => {
     const {container} = render(<InputDecorator>testing</InputDecorator>);
 
-    const decorator = container.getElementsByClassName('decorator right visible');
+    const decorator = container.getElementsByClassName('decorator end visible');
     expect(decorator[0]).toBeDefined();
 
     expect(decorator[0].children.length).toEqual(0);
     expect(decorator[0].textContent).toEqual('testing');
   });
 
-  test('should render left-aligned decorator', () => {
-    const {container} = render(<InputDecorator position={'left'}>testing</InputDecorator>);
+  test('should render start-aligned decorator', () => {
+    const {container} = render(<InputDecorator position={'start'}>testing</InputDecorator>);
 
-    const decorator = container.getElementsByClassName('decorator left');
+    const decorator = container.getElementsByClassName('decorator start');
     expect(decorator[0]).toBeDefined();
   });
 
   test('should render decorator onFocus', () => {
     const {container} = render(<InputDecorator onFocus>testing</InputDecorator>);
 
-    const decorator = container.getElementsByClassName('decorator right focus');
+    const decorator = container.getElementsByClassName('decorator end focus');
     expect(decorator[0]).toBeDefined();
   });
 

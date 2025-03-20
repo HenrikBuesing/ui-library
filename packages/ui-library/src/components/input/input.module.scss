@@ -23,7 +23,7 @@
         border-bottom: 1px solid var(--uil-grey-dark);
       }
 
-      .decorator.left {
+      .decorator.start {
         margin-right: .875rem;
       }
     }
@@ -37,11 +37,11 @@
         border-radius: 5px;
       }
 
-      .decorator.left {
+      .decorator.start {
         margin-left: .875rem;
       }
 
-      .decorator.right {
+      .decorator.end {
         margin-right: .875rem;
       }
     }
@@ -65,7 +65,7 @@
         border-color: transparent;
       }
 
-      &:has(.decorator.left) {
+      &:has(.decorator.start) {
         flex-direction: row-reverse;
       }
 

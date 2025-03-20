@@ -3,10 +3,108 @@ title: Checkbox
 description: Showcase and usage guide of the checkbox component
 ---
 
-import DefaultCheck from './_checkbox';
+import DefaultCheck, {ChecksColored, ChecksContent} from './_checkbox';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
 
-# Checkbox [WIP]
+# Checkbox
 
 The checkbox component is a UI element that allows users to select or deselect an option.
 
 <DefaultCheck/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Checkbox checked={checked} onChange={(e) => {setChecked(e.target.checked)}}/>
+  <Checkbox defaultChecked/>
+  <Checkbox disabled/>
+  <Checkbox defaultChecked disabled/>
+  ```
+</details>
+
+## Content
+The `children` prop allows you to add extra content to the checkbox component. \
+This content is rendered within a `label` element that is associated with the checkbox input.
+
+<ChecksContent/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Checkbox checked={checked} onChange={(e) => {setChecked(e.target.checked)}}>
+    Checkbox content
+  </Checkbox>
+
+  <Checkbox disabled>
+    Disabled checkbox content
+  </Checkbox>
+  ```
+</details>
+
+## Color
+
+You can customize the checkmark color using any value supported by the `background-color` property in CSS, such as `red`, `#11aa33`, or `rgb(0,0,0)`.
+
+<ChecksColored/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Checkbox color={'red'} defaultChecked/>
+  <Checkbox color={'#11aa33'} defaultChecked/>
+  <Checkbox color={'#1694d8'} defaultChecked/>
+  <Checkbox color={'rgb(181,46,213)'} defaultChecked/>
+  <Checkbox color={'rgb(0,0,0)'} defaultChecked disabled/>
+  ```
+</details>
+
+<Callout>
+  The color of a disabled checkbox cannot be overwritten.
+</Callout>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>checked</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Checked state of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Color of the button</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `input` props (e.g. `onChange`).
+</Callout>

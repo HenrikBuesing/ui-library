@@ -1,9 +1,10 @@
-import type {BaseComponentProps, Label} from '@common/types';
+import type {BaseComponentProps} from '@common/types';
+import type {CSSProperties, ReactNode} from 'react';
 
 export type CheckboxProps = BaseComponentProps<'input'> & AdditionalCheckboxProps;
 
-type AdditionalCheckboxProps = Label & {
-  checked: boolean;
-  toggleCheck: (value: boolean) => void;
-  color?: string;
+type AdditionalCheckboxProps = {
+  checked?: boolean;
+  children?: ReactNode;
+  color?: CSSProperties['backgroundColor'];
 };
