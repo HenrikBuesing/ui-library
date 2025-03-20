@@ -23,7 +23,7 @@ export function Checkbox(props: CheckboxProps) {
   }
 
   function handleClick() {
-    const input = document.querySelector(`#${ID}`) as HTMLInputElement;
+    const input: HTMLInputElement = document.querySelector(`#${ID}`)!;
     input.click();
   }
 
