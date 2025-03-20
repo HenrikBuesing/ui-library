@@ -21,7 +21,9 @@ This component is a utility component designed for the [`Input`](/docs/component
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator>
-      kg/lbs
+      <svg width={20} height={20} fill={'#222222'}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
     </InputDecorator>
   </Input>
   
@@ -33,7 +35,9 @@ This component is a utility component designed for the [`Input`](/docs/component
 
   <Input label={'Basic'} variant={'basic'}>
     <InputDecorator>
-      kg/lbs
+      <svg width={20} height={20} fill={'#222222'}>
+        <use href={'/icons/eye-solid.svg#eye'}/>
+      </svg>
     </InputDecorator>
   </Input>
   
@@ -59,7 +63,8 @@ This component is a utility component designed for the [`Input`](/docs/component
 
 ## Content
 
-The `decorator` component allows the standard `svg` & `img` elements as well as a string as it's content.
+The `decorator` component is intended to be used with the standard `svg` & `img` elements or a string as it's content.
+Alternatively, you can use third-party icon components such as [fontawesome icons](https://fontawesome.com).
 
 <DecoContent variant={'outlined'}/>
 <DecoContent variant={'basic'}/>
@@ -110,6 +115,11 @@ The `decorator` component allows the standard `svg` & `img` elements as well as 
   ```
 </details>
 
+<Callout type={'warning'}>
+  Note that as the content length increases, the input field size will decrease. \
+  Consider using the [`helpText`](/docs/components/input#helptext) prop of the `input` component for longer texts.
+</Callout>
+
 ## Position
 
 The `position` prop allows you to define whether the decorator should be a prefix or suffix (default).
@@ -122,26 +132,26 @@ The `position` prop allows you to define whether the decorator should be a prefi
 
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
-    <InputDecorator position={'left'}>
-      left
+    <InputDecorator position={'start'}>
+      start
     </InputDecorator>
   </Input>
   
   <Input label={'Outlined'} variant={'outlined'}>
-    <InputDecorator position={'right'}>
-      right
+    <InputDecorator position={'end'}>
+      end
     </InputDecorator>
   </Input>
 
   <Input label={'Basic'} variant={'basic'}>
-    <InputDecorator position={'left'}>
-      left
+    <InputDecorator position={'start'}>
+      start
     </InputDecorator>
   </Input>
 
   <Input label={'Basic'} variant={'basic'}>
-    <InputDecorator position={'right'}>
-      right
+    <InputDecorator position={'end'}>
+      end
     </InputDecorator>
   </Input>
   ```
@@ -189,7 +199,7 @@ The decorator can be hidden when the `input` is neither focused nor contains a v
   <tbody>
   <Table.Tr>
     <Table.Td>children</Table.Td>
-    <Table.Td>`img` | `svg` | `Icon` | `string`</Table.Td>
+    <Table.Td>`node`</Table.Td>
     <Table.Td>-</Table.Td>
     <Table.Td>Content of the component</Table.Td>
   </Table.Tr>
@@ -201,8 +211,8 @@ The decorator can be hidden when the `input` is neither focused nor contains a v
   </Table.Tr>
   <Table.Tr>
     <Table.Td>position</Table.Td>
-    <Table.Td>`left` | `right`</Table.Td>
-    <Table.Td><b>right</b></Table.Td>
+    <Table.Td>`start` | `end`</Table.Td>
+    <Table.Td><b>end</b></Table.Td>
     <Table.Td>Position of the component</Table.Td>
   </Table.Tr>
   </tbody>

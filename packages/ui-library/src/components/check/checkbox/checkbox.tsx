@@ -1,23 +1,10 @@
 import global from '@common/styles/global.module.scss';
+import React, {type ChangeEvent} from 'react';
 import generateKey from '@utils/generateKey';
-import styles from './checkbox.module.scss';
 import type {CheckboxProps} from './types';
 import cls from '@utils/conditionalClass';
-import check from '../check.module.scss';
-import React from 'react';
+import styles from '../check.module.scss';
 
-/**
- * @example
- * ```jsx
- * <Checkbox
- *  checked={...}
- *  toggleCheck={...}
- *  label={"Toggle checkbox"}
- * />
- * ```
- *
- * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/checkbox).
- */
 export function Checkbox(props: CheckboxProps) {
   const {
     checked,
@@ -25,27 +12,33 @@ export function Checkbox(props: CheckboxProps) {
     color,
     dark,
     disabled,
-    id,
-    label,
-    toggleCheck,
+    onChange,
     ...other
   } = props;
 
-  const ID = id ?? generateKey();
+  const ID = other.id ?? generateKey();
 
-  function handleCheck() {
-    if (!disabled) toggleCheck(!checked);
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    if (!disabled && onChange) onChange(e);
+  }
+
+  function handleClick() {
+    const input: HTMLInputElement = document.querySelector(`#${ID}`)!;
+    input.click();
   }
 
   return (
-    <div className={`${check.checkWrapper} ${global.fontMedium}`}>
-      <div className={cls([styles.checkbox, check.check, disabled ? global.notAllowed : global.pointer, dark && check.dark])} onClick={handleCheck}>
-        <input type={'checkbox'} checked={checked} disabled={disabled} onChange={handleCheck} id={ID} {...other}/>
-        <div className={cls([check.checkmark, dark && check.dark])} style={{backgroundColor: color}}/>
+    <div className={cls([styles.checkWrapper, dark && global.dark])}>
+      <div className={cls([styles.check, styles.box])} onClick={handleClick}>
+        <input type={'checkbox'} checked={checked} onChange={handleChange} id={ID} disabled={disabled} {...other}/>
+        <div className={cls([styles.checkmark])} style={disabled ? undefined : {backgroundColor: color}}/>
       </div>
-      <label htmlFor={ID} className={cls([styles.checkLabel, dark && styles.dark])}>
-        {children ?? label}
-      </label>
+
+      {children &&
+        <label htmlFor={ID} className={`${global.fontMedium} ${styles.label}`}>
+          {children}
+        </label>
+      }
     </div>
   );
 }

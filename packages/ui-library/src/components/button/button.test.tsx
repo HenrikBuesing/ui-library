@@ -5,12 +5,11 @@ import {Button} from './button';
 
 describe('general', () => {
   test('should render button', () => {
-    render(<Button variant={'text'}><span data-testid='child'>Hello World</span></Button>);
+    render(<Button variant={'text'}>Hello World</Button>);
 
-    const child = screen.getByTestId('child');
-
-    expect(child).toBeDefined();
-    expect(child.textContent).toEqual('Hello World');
+    const button = screen.getByText('Hello World');
+    expect(button).toBeDefined();
+    expect(button.textContent).toEqual('Hello World');
   });
 
   test('should render link button', () => {
@@ -47,6 +46,13 @@ describe('general', () => {
 
     expect(button.className).toMatch(/\blarge\b/);
     expect(button.className).toMatch(/\bfontLarge\b/);
+  });
+
+  test('should render dark button', () => {
+    render(<Button variant={'text'} dark>dark button</Button>);
+
+    const button = screen.getByText('dark button');
+    expect(button.className).toMatch(/\bdark\b/);
   });
 
   test('should render disabled button', () => {
