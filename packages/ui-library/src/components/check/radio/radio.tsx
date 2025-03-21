@@ -41,10 +41,11 @@ export function Radio(props: RadioProps) {
           checked={checked}
           onChange={(e) => {handleChange(e)}}
           disabled={disabled}
+          tabIndex={disabled ? -1 : (other.tabIndex ?? undefined)}
           {...other}
         />
 
-        <div className={cls([styles.checkmark, styles.radioCheck])} style={disabled ? undefined : {backgroundColor: color}}/>
+        <div className={`${styles.checkmark} ${styles.radioCheck}`} style={disabled ? undefined : {backgroundColor: color}}/>
       </div>
 
       {children && <label htmlFor={ID} className={`${global.fontMedium} ${styles.label}`}>{children}</label>}
