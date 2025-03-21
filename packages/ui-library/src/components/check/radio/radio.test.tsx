@@ -2,7 +2,7 @@ import {beforeEach, describe, expect, type Mock, test, vi} from 'vitest';
 import {fireEvent, render} from '@testing-library/react';
 import type {RadioOption} from './types';
 import React, {useState} from 'react';
-import {Radio} from './radio';
+import {RadioGroup} from './radio';
 
 let fn: Mock<(...args: string[]) => string>;
 
@@ -24,7 +24,7 @@ const optionsB: RadioOption[] = [
 
 describe('general', () => {
   test('should render radio (all options enabled)', () => {
-    const {container} = render(<Radio options={optionsA} selected={''} selectionChanged={fn}/>);
+    const {container} = render(<RadioGroup options={optionsA} selected={''} onChange={() => fn}/>);
     
     const options = container.getElementsByClassName('checkWrapper');
     expect(options.length).toEqual(3);
@@ -41,7 +41,7 @@ describe('general', () => {
   });
 
   test('should render radio (first option disabled)', () => {
-    const {container} = render(<Radio options={optionsB} selected={''} selectionChanged={fn}/>);
+    const {container} = render(<RadioGroup options={optionsB} selected={''} onChange={() => fn}/>);
 
     const options = container.getElementsByTagName('input');
     expect(options[0].disabled).toBeTruthy();
@@ -53,7 +53,7 @@ describe('general', () => {
   });
 
   test('should render disabled radio', () => {
-    const {container} = render(<Radio options={optionsB} selected={''} selectionChanged={fn} disabled={true}/>);
+    const {container} = render(<RadioGroup options={optionsB} selected={''} onChange={() => fn} disabled={true}/>);
 
     const options = container.getElementsByTagName('input');
     expect(options[0].disabled).toBeTruthy();
@@ -83,7 +83,7 @@ describe('general', () => {
   });
   
   test('should render radio with custom check color', () => {
-    const {container} = render(<Radio options={optionsA} selected={'foo'} selectionChanged={fn} color={'red'}/>);
+    const {container} = render(<RadioGroup options={optionsA} selected={'foo'} onChange={() => fn} color={'red'}/>);
     const checkmarks = container.getElementsByClassName('checkmark');
     const style = getComputedStyle(checkmarks[0]);
     
@@ -102,6 +102,6 @@ function RadioSelect() {
   const [value, setValue] = useState('foo');
   
   return (
-    <Radio options={optionsB} selected={value} selectionChanged={setValue}/>
+    <RadioGroup options={optionsB} selected={value} onChange={(e) => {setValue(e.target.value)}}/>
   );
 }

@@ -1,9 +1,10 @@
 import '@common/styles/variables.scss';
 
-export {Input, InputDecorator} from './components/input';
 export {Modal} from './components/modal';
-export {Radio, type RadioOption} from './components/check/radio';
-export {Checkbox} from './components/check/checkbox';
 export {Button} from './components/button';
+export {Radio} from './components/check/radio';
+export {Checkbox} from './components/check/checkbox';
+export {Input, InputDecorator} from './components/input';
+export {RadioGroup, type RadioOption} from './components/check/radioGroup';
 
 export {useContrastColor} from '@hooks/index';
