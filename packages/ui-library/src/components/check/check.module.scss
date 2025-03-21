@@ -32,6 +32,14 @@
       border-radius: 2px;
     }
 
+    &.radio {
+      border-radius: 50%;
+
+      .radioCheck {
+        border-radius: 50%;
+      }
+    }
+
     &:has(input:disabled) {
       border-color: var(--uil-grey-alt);
       cursor: default;
@@ -67,5 +75,18 @@
       transform: scale(0);
       transition: .1s ease;
     }
+  }
+}
+
+.radioWrapper {
+  display: flex;
+  gap: var(--uil-m);
+  
+  &.row {
+    flex-direction: row;
+  }
+  
+  &.column {
+    flex-direction: column;
   }
 }

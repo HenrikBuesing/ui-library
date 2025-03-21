@@ -29,6 +29,7 @@ const globalMeta: Meta = {
           'input-decorator': 'InputDecorator',
           checkbox: 'Checkbox',
           radio: 'Radio',
+          'radio-group': 'Radio Group',
           '--': {
             type: 'separator',
             title: 'Data Display'

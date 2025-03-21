@@ -1,69 +1,54 @@
 import global from '@common/styles/global.module.scss';
-import type {RadioOption, RadioProps} from './types';
+import React, {type ChangeEvent} from 'react';
 import generateKey from '@utils/generateKey';
 import cls from '@utils/conditionalClass';
-import check from '../check.module.scss';
-import style from './radio.module.scss';
-import React from 'react';
+import styles from '../check.module.scss';
+import type {RadioProps} from './types';
 
-/**
- * @example
- * ```jsx
- * <Radio
- *  selected={...}
- *  selectionChanged={...}
- *  options={[...]}
- * />
- * ```
- *
- * For more information go to the [docs](https://www.ui-library.hbsng.com/docs/components/radio).
- */
 export function Radio(props: RadioProps) {
   const {
+    checked,
+    children,
     color,
-    dark = false,
+    dark,
     disabled,
     id,
-    options,
-    selected,
-    selectionChanged,
+    name,
+    onChange,
+    value,
     ...other
   } = props;
 
   const ID = id ?? generateKey();
 
-  function handleChange(option: RadioOption) {
-    if (selected !== option.value && !option.disabled && !disabled) selectionChanged(option.value);
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    if (!disabled && onChange) onChange(e);
   }
 
-  function setCursor(option: RadioOption) {
-    return (disabled || option.disabled) ? global.notAllowed : global.pointer
+  function handleClick() {
+    const input: HTMLInputElement = document.querySelector(`#${ID}`)!;
+    input.click();
   }
 
   return (
-    <div className={style.radioWrapper}>
-      {options.map((option, idx) =>
-        <div key={generateKey()} className={check.checkWrapper}>
-          <div className={cls([style.radio, check.check, setCursor(option), dark && check.dark])} onClick={() => {handleChange(option)}}>
-            <input
-              id={`${ID}-${idx}`}
-              name={option.name}
-              type={'radio'}
-              value={option.value}
-              checked={selected === option.value}
-              onChange={() => {handleChange(option)}}
-              disabled={disabled ?? option.disabled}
-              {...other}
-            />
+    <div className={cls([styles.checkWrapper, dark && global.dark])}>
+      <div className={`${styles.check} ${styles.radio}`} onClick={() => {handleClick()}}>
+        <input
+          id={ID}
+          name={name}
+          type={'radio'}
+          value={value}
+          checked={checked}
+          onChange={(e) => {handleChange(e)}}
+          disabled={disabled}
+          tabIndex={disabled ? -1 : (other.tabIndex ?? undefined)}
+          {...other}
+        />
 
-            <div className={cls([check.checkmark, style.radioCheck, dark && check.dark])} style={{backgroundColor: color}}/>
-          </div>
+        <div className={`${styles.checkmark} ${styles.radioCheck}`} style={disabled ? undefined : {backgroundColor: color}}/>
+      </div>
 
-          <label htmlFor={`${ID}-${idx}`} className={cls([global.fontMedium, style.text, setCursor(option), dark && style.dark])}>
-            {option.name}
-          </label>
-        </div>
-      )}
+      {children && <label htmlFor={ID} className={`${global.fontMedium} ${styles.label}`}>{children}</label>}
     </div>
   );
 }

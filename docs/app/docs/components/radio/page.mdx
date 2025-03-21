@@ -3,10 +3,96 @@ title: Radio
 description: Showcase and usage guide of the radio component
 ---
 
-import DefaultRadio from './_radio';
+import DefaultRadio, {RadioColor, RadioContent} from './_radio';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
 
-# Radio [WIP]
+# Radio
 
 A radio component is a UI element that allows users to select one option from a set of mutually exclusive choices.
 
 <DefaultRadio/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Radio name={'showcase-1'} value={'foo'} defaultChecked/>
+  <Radio name={'showcase-1'} value={'bar'}/>
+  <Radio name={'showcase-1'} value={'baz'} disabled/>
+  ```
+</details>
+
+## Content
+The `children` prop allows you to add extra content to the radio component. \
+This content is rendered within a `label` element that is associated with the radio input.
+
+<RadioContent/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Radio name={'showcase-2'} value={'foo'} defaultChecked>First option</Radio>
+  <Radio name={'showcase-2'} value={'bar'}>Second option</Radio>
+  <Radio name={'showcase-2'} value={'baz'} disabled>Disabled option</Radio>
+  ```
+</details>
+
+## Color
+
+You can customize the checkmark color using any value supported by the `background-color` property in CSS, such as `red`, `#11aa33`, or `rgb(0,0,0)`.
+
+<RadioColor/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Radio name={'foo'} value={'foo'} defaultChecked color={'red'}/>
+  <Radio name={'abc'} value={'abc'} defaultChecked color={'#11aa33'}/>
+  <Radio name={'bar'} value={'bar'} defaultChecked color={'rgb(181,46,213)'}/>
+  <Radio name={'baz'} value={'baz'} defaultChecked color={'rgb(0,0,0)'} disabled/>
+  ```
+</details>
+
+<Callout>
+  The color of a disabled radio cannot be overwritten.
+</Callout>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Color of the checkmark</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `input` props (e.g. `checked`).
+</Callout>

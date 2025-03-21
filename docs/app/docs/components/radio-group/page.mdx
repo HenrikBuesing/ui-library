@@ -1,0 +1,242 @@
+---
+title: Radio Group
+description: Showcase and usage guide of the radio group component
+---
+
+import DefaultRadio, {GroupColor, GroupDirection, GroupInactive} from './_radioGroup';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# Radio Group
+
+The radioGroup component allows users to select an option from a set of [radio](/docs/components/radio) components.
+
+<DefaultRadio/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  const options = [
+    {label: 'Foo', value: 'foo'},
+    {label: 'Bar', value: 'bar'},
+    {label: 'Baz', value: 'baz'}
+  ];
+  
+  <RadioGroup 
+    options={options}
+    selected={selectedValue}
+    onChange={(e) => {setSelectedValue(e.target.value)}}
+  />
+  ```
+</details>
+
+## Direction
+
+The radio options can be presented in either a horizontal or vertical layout (default).
+
+<GroupDirection/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  const options = [
+    {label: 'Foo', value: 'foo'},
+    {label: 'Bar', value: 'bar'},
+    {label: 'Baz', value: 'baz'}
+  ];
+
+  <RadioGroup
+    name={'row'}
+    direction={'row'}
+    options={options}
+    selected={rowValue}
+    onChange={(e) => {setRowValue(e.target.value)}}
+  />
+
+  <RadioGroup
+    name={'column'}
+    direction={'column'}
+    options={options}
+    selected={colValue}
+    onChange={(e) => {setColValue(e.target.value)}}
+  />
+  ```
+</details>
+
+## Disabled state
+
+Individual options can be deactivated or all at once.
+
+<GroupInactive/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  const options = [
+  {label: 'Foo', value: 'foo'},
+  {label: 'Bar', value: 'bar'},
+  {label: 'Baz', value: 'baz', disabled: true}
+  ];
+
+  <RadioGroup
+    options={options}
+    selected={selectedValue}
+    onChange={(e) => {setSelectedValue(e.target.value)}}
+  />
+
+  <RadioGroup options={options} disabled/>
+  ```
+</details>
+
+<Callout type={'info'}>
+  The disabled state of the grouped radio component will take precedence over the individual disabled states.
+</Callout>
+
+## Color
+
+You can customize the checkmark color using any value supported by the `background-color` property in CSS, such as `red`, `#11aa33`, or `rgb(0,0,0)`.
+
+<GroupColor/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  const options = [
+  {label: 'Foo', value: 'foo'},
+  {label: 'Bar', value: 'bar'},
+  {label: 'Baz', value: 'baz'}
+  ];
+
+  <RadioGroup
+    color={'#11aa33'}
+    options={options}
+    selected={selectedValue}
+    onChange={(e) => {setSelectedValue(e.target.value)}}
+  />
+
+  <RadioGroup
+    color={'#11aa33'}
+    options={options}
+    selected={'foo'}
+    disabled
+  />
+  ```
+</details>
+
+<Callout>
+  The color of a disabled radio cannot be overwritten.
+</Callout>
+
+## Props
+
+### RadioGroup
+
+<Table style={{marginTop: '1rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Color of the checkmark</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>direction</Table.Td>
+    <Table.Td>`row` | `column`</Table.Td>
+    <Table.Td><b>column</b></Table.Td>
+    <Table.Td>Direction of the options</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disabled</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Disables the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>name</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Sets the name attribute for every radio option</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onChange</Table.Td>
+    <Table.Td>`ChangeEventHandler<HTMLInputElement>`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>On change handler</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>options</Table.Td>
+    <Table.Td>`RadioOption[]`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Radio options</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>selected</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Selected radio option</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+### RadioOption
+
+<Table style={{marginTop: '1rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>disabled</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Disables the option</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>id</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Id for the radio input</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>label</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Label of the option</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>title</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Title attribute of the radio input</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>value</Table.Td>
+    <Table.Td>`string` | `number`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Value of the radio input</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
