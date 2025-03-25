@@ -16,7 +16,7 @@ try {
       minify: process.env.NODE_ENV === 'production',
       sourcemap: process.env.NODE_ENV !== 'production',
       metafile: true,
-      external: ['react'],
+      external: ['react', 'react-dom'],
       format: 'esm',
       target: ['esnext'],
       plugins: [sassPlugin({
