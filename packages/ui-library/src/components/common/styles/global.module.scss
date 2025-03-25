@@ -21,19 +21,12 @@
   line-height: var(--uil-xxl);
 }
 
-.pointer {
-  cursor: pointer;
-}
-
-.notAllowed {
-  cursor: not-allowed;
-}
-
 .dark {
   --uil-black: #ffffff;
   --uil-outline-focus: #7bb4ff;
   --uil-grey-dark: #a3a3a3;
   --uil-grey-alt: #5c5c5c;
+  --uil-white-alt: #3a3a3a;
 
   --uil-default-hover: 50, 121, 202;
   --uil-black-alt: #c3c3c3;

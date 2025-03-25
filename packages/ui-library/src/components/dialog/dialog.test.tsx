@@ -1,6 +1,6 @@
 import {beforeEach, describe, expect, type Mock, test, vi} from 'vitest';
 import {fireEvent, render} from '@testing-library/react';
-import {Modal} from './modal';
+import {Dialog} from './dialog';
 import React from 'react';
 
 let fn: Mock<(...args: string[]) => string>;
@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('general', () => {
   test('should render notification', () => {
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
     
     const header = container.getElementsByClassName('header');
     expect(header[0].textContent).toEqual('Notify');
@@ -34,7 +34,7 @@ describe('general', () => {
   });
   
   test('should render notification with multiple messages', () => {
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message', 'testing', 'foo']} confirmAction={fn} confirmLabel={'confirm label'}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message', 'testing', 'foo']} confirmAction={fn} confirmLabel={'confirm label'}/>);
 
     const content = container.getElementsByClassName('content');
     expect(content).toBeDefined();
@@ -48,21 +48,21 @@ describe('general', () => {
   });
 
   test('should render theme', () => {
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} theme={'error'} dark={true}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} theme={'error'} dark={true}/>);
     
     const header = container.getElementsByClassName('header');
     expect(header[0].className).to.include('error');
   });
   
   test('should render dark mode', () => {
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} theme={'error'} dark={true}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} theme={'error'} dark={true}/>);
 
-    const modal = container.getElementsByClassName('modal');
+    const modal = container.getElementsByClassName('dialog');
     expect(modal[0].className).to.include('dark');
   });
 
   test('should execute confirm action', () => {
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
 
     const button = container.getElementsByTagName('button')[0];
 
@@ -72,7 +72,7 @@ describe('general', () => {
 
   test('should not execute confirm action (undefined func)', () => {
     // @ts-expect-error -> test undefined function
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={undefined} confirmLabel={'confirm label'}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={undefined} confirmLabel={'confirm label'}/>);
 
     const button = container.getElementsByTagName('button')[0];
 
@@ -82,7 +82,7 @@ describe('general', () => {
   
   test('should render notification with timeout', () => {
     vi.useFakeTimers();
-    const {container} = render(<Modal variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'} timeout={500}/>);
+    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'} timeout={500}/>);
     
     const progressWrapper = container.getElementsByClassName('progressWrapper');
     expect(progressWrapper).toBeDefined();
@@ -95,7 +95,7 @@ describe('general', () => {
   });
   
   test('should render question', () => {
-    const {container} = render(<Modal variant={'question'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} cancelLabel={'cancel'} cancelAction={fnC}/>);
+    const {container} = render(<Dialog variant={'question'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} cancelLabel={'cancel'} cancelAction={fnC}/>);
 
     const buttonWrapper = container.getElementsByClassName('buttonWrapper');
     expect(buttonWrapper[0].children.length).toEqual(2);
@@ -108,7 +108,7 @@ describe('general', () => {
   });
   
   test('should execute cancel action', () => {
-    const {container} = render(<Modal variant={'question'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} cancelLabel={'cancel'} cancelAction={fnC}/>);
+    const {container} = render(<Dialog variant={'question'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} cancelLabel={'cancel'} cancelAction={fnC}/>);
     const buttonWrapper = container.getElementsByClassName('buttonWrapper');
     const cancel = buttonWrapper[0].children[1];
     
@@ -117,7 +117,7 @@ describe('general', () => {
   });
 
   test('should render custom content', () => {
-    const {container} = render(<Modal title={'custom content'}><div>Hello world</div></Modal>);
+    const {container} = render(<Dialog title={'custom content'}><div>Hello world</div></Dialog>);
     const content = container.getElementsByClassName('content');
     
     expect(content[0]).toBeDefined();
