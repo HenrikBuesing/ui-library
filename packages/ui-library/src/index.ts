@@ -1,5 +1,3 @@
-import '@common/styles/variables.scss';
-
 export {Dialog, DialogTitle, DialogContent, DialogControls} from './components/dialog';
 export {Button} from './components/button';
 export {Radio} from './components/check/radio';
