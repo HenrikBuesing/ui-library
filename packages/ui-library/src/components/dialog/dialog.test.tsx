@@ -1,129 +1,142 @@
-import {beforeEach, describe, expect, type Mock, test, vi} from 'vitest';
-import {fireEvent, render} from '@testing-library/react';
+import {afterEach, describe, expect, test} from 'vitest';
+import {render} from '@testing-library/react';
 import {Dialog} from './dialog';
 import React from 'react';
+import {DialogTitle} from "./dialogTitle";
+import { DialogContent } from './dialogContent';
+import {DialogControls} from "./dialogControls";
 
-let fn: Mock<(...args: string[]) => string>;
-let fnC: Mock<(...args: string[]) => string>;
+describe('dialog', () => {
+  afterEach(() => {
+    document.body.style = '';
+  });
+  
+  test('should render dialog', () => {
+    render(<Dialog open={true}><div>test content</div></Dialog>);
 
-beforeEach(() => {
-  fn = vi.fn();
-  fnC = vi.fn();
+    const backdrop = document.body.getElementsByClassName('backdrop')[0];
+    expect(backdrop).toBeDefined();
+
+    const dialog = document.body.getElementsByClassName('dialog')[0];
+    expect(dialog).toBeDefined();
+
+    expect(document.body.style.paddingRight).toEqual('15px');
+    expect(document.body.style.overflow).toEqual('hidden');
+  });
+
+  test('should not render dialog', () => {
+    render(<Dialog open={false}><div>test content</div></Dialog>);
+
+    const backdrop = document.body.getElementsByClassName('backdrop')[0];
+    expect(backdrop).not.toBeDefined();
+
+    const dialog = document.body.getElementsByClassName('dialog')[0];
+    expect(dialog).not.toBeDefined();
+  });
+
+  test('should render dialog with aria attributes', () => {
+    render(<Dialog open={true} labelledby={'label'} describedby={'content'} ariaModal={true}><div>test content</div></Dialog>);
+
+    const dialog = document.body.getElementsByClassName('dialog')[0] as HTMLDialogElement;
+    
+    expect(dialog.ariaModal).toBeTruthy();
+    expect(dialog.getAttribute('aria-labelledby')).toEqual('label');
+    expect(dialog.getAttribute('aria-describedby')).toEqual('content');
+  });
+
+  test('should render dialog with z-index', () => {
+    render(<Dialog open={true} zIndex={5}><div>test content</div></Dialog>);
+
+    const backdrop = document.body.getElementsByClassName('backdrop')[0] as HTMLDivElement;
+    expect(backdrop.style.zIndex).toEqual('5');
+
+    const dialog = document.body.getElementsByClassName('dialog')[0] as HTMLDialogElement;
+    expect(dialog.style.zIndex).toEqual('6');
+  });
+
+  test('should render dialog in dark mode', () => {
+    render(<Dialog open={true} dark={true}><div>test content</div></Dialog>);
+
+    const dialog = document.body.getElementsByClassName('dialog')[0];
+    expect(dialog.className).toMatch(/\bdark\b/);
+  });
+
+  test('should render small dialog', () => {
+    render(<Dialog open={true} size={'small'}><div>test content</div></Dialog>);
+
+    const dialog = document.body.getElementsByClassName('dialog')[0];
+    expect(dialog.className).toMatch(/\bsmall\b/);
+  });
+
+  test('should render medium dialog', () => {
+    render(<Dialog open={true} size={'medium'}><div>test content</div></Dialog>);
+
+    const dialog = document.body.getElementsByClassName('dialog')[0];
+    expect(dialog.className).toMatch(/\bmedium\b/);
+  });
+
+  test('should render large dialog', () => {
+    render(<Dialog open={true} size={'large'}><div>test content</div></Dialog>);
+
+    const dialog = document.body.getElementsByClassName('dialog')[0];
+    expect(dialog.className).toMatch(/\blarge\b/);
+  });
 });
 
-describe('general', () => {
-  test('should render notification', () => {
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
+describe('dialog components', () => {
+  test('should render dialog title', () => {
+    const {container} = render(<DialogTitle>Title</DialogTitle>);
     
-    const header = container.getElementsByClassName('header');
-    expect(header[0].textContent).toEqual('Notify');
-    
-    const content = container.getElementsByClassName('content');
-    expect(content[0]).toBeDefined();
-    
-    const text = content[0].getElementsByClassName('modalText');
+    const title = container.getElementsByClassName('title')[0];
+    expect(title.textContent).toEqual('Title');
+  });
 
-    expect(text.length).toEqual(1);
-    expect(text[0].textContent).toEqual('test message');
-    
-    const buttonWrapper = content[0].getElementsByClassName('buttonWrapper');
-    expect(buttonWrapper[0].children.length).toEqual(1);
-    
-    const button = buttonWrapper[0].firstChild;
-    expect(button?.textContent).toEqual('confirm label');
+  test('should render dialog title with id', () => {
+    const {container} = render(<DialogTitle id={'test-id'}>Title</DialogTitle>);
+
+    const title = container.getElementsByClassName('title')[0];
+    expect(title.id).toEqual('test-id');
+  });
+
+  test('should render dialog title with color', () => {
+    const {container} = render(<DialogTitle color={'default'}>Title</DialogTitle>);
+
+    const title = container.getElementsByClassName('title')[0];
+    expect(title.className).match(/\bdefault\b/);
   });
   
-  test('should render notification with multiple messages', () => {
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message', 'testing', 'foo']} confirmAction={fn} confirmLabel={'confirm label'}/>);
+  test('should render dialog content', () => {
+    const {container} = render(<DialogContent>Content</DialogContent>);
 
-    const content = container.getElementsByClassName('content');
-    expect(content).toBeDefined();
-    
-    const text = content[0].getElementsByTagName('p');
-
-    expect(text.length).toEqual(3);
-    expect(text[0].textContent).toEqual('test message');
-    expect(text[1].textContent).toEqual('testing');
-    expect(text[2].textContent).toEqual('foo');
+    const content = container.getElementsByClassName('content')[0];
+    expect(content.textContent).toEqual('Content');
   });
 
-  test('should render theme', () => {
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} theme={'error'} dark={true}/>);
-    
-    const header = container.getElementsByClassName('header');
-    expect(header[0].className).to.include('error');
-  });
-  
-  test('should render dark mode', () => {
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} theme={'error'} dark={true}/>);
+  test('should render dialog content with id', () => {
+    const {container} = render(<DialogContent id={'test-id'}>Content</DialogContent>);
 
-    const modal = container.getElementsByClassName('dialog');
-    expect(modal[0].className).to.include('dark');
+    const content = container.getElementsByClassName('content')[0];
+    expect(content.id).toEqual('test-id');
   });
 
-  test('should execute confirm action', () => {
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'}/>);
+  test('should render dialog content with divider', () => {
+    const {container} = render(<DialogContent divider>Content</DialogContent>);
 
-    const button = container.getElementsByTagName('button')[0];
-
-    fireEvent.click(button);
-    expect(fn).toHaveBeenCalled();
+    const content = container.getElementsByClassName('content')[0];
+    expect(content.className).match(/\bdivider\b/);
   });
 
-  test('should not execute confirm action (undefined func)', () => {
-    // @ts-expect-error -> test undefined function
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={undefined} confirmLabel={'confirm label'}/>);
+  test('should render dialog controls', () => {
+    const {container} = render(<DialogControls>Controls</DialogControls>);
 
-    const button = container.getElementsByTagName('button')[0];
-
-    fireEvent.click(button);
-    expect(fn).not.toHaveBeenCalled();
-  });
-  
-  test('should render notification with timeout', () => {
-    vi.useFakeTimers();
-    const {container} = render(<Dialog variant={'notification'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm label'} timeout={500}/>);
-    
-    const progressWrapper = container.getElementsByClassName('progressWrapper');
-    expect(progressWrapper).toBeDefined();
-    
-    vi.advanceTimersByTime(100);
-    expect(fn).not.toHaveBeenCalled();
-
-    vi.advanceTimersByTime(400);
-    expect(fn).toHaveBeenCalled()
-  });
-  
-  test('should render question', () => {
-    const {container} = render(<Dialog variant={'question'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} cancelLabel={'cancel'} cancelAction={fnC}/>);
-
-    const buttonWrapper = container.getElementsByClassName('buttonWrapper');
-    expect(buttonWrapper[0].children.length).toEqual(2);
-
-    const confirm = buttonWrapper[0].firstChild;
-    expect(confirm?.textContent).toEqual('confirm');
-
-    const cancel = buttonWrapper[0].children[1];
-    expect(cancel?.textContent).toEqual('cancel');
-  });
-  
-  test('should execute cancel action', () => {
-    const {container} = render(<Dialog variant={'question'} title={'Notify'} message={['test message']} confirmAction={fn} confirmLabel={'confirm'} cancelLabel={'cancel'} cancelAction={fnC}/>);
-    const buttonWrapper = container.getElementsByClassName('buttonWrapper');
-    const cancel = buttonWrapper[0].children[1];
-    
-    fireEvent.click(cancel);
-    expect(fnC).toHaveBeenCalled();
+    const controls = container.getElementsByClassName('controls')[0];
+    expect(controls.textContent).toEqual('Controls');
   });
 
-  test('should render custom content', () => {
-    const {container} = render(<Dialog title={'custom content'}><div>Hello world</div></Dialog>);
-    const content = container.getElementsByClassName('content');
-    
-    expect(content[0]).toBeDefined();
-    expect(content[0].firstChild?.textContent).toEqual('Hello world');
+  test('should render dialog controls with position', () => {
+    const {container} = render(<DialogControls position={'space-between'}>Controls</DialogControls>);
 
-    const buttonWrapper = content[0].getElementsByClassName('buttonWrapper');
-    expect(buttonWrapper[0]).not.toBeDefined();
+    const controls = container.getElementsByClassName('controls')[0];
+    expect(controls.className).match(/\bspace-between\b/);
   });
 });
