@@ -16,7 +16,7 @@ export function Dialog(props: DialogProps) {
     onClickBackdrop,
     open,
     scroll = false,
-    width,
+    size,
     zIndex
   } = props;
 
@@ -41,8 +41,7 @@ export function Dialog(props: DialogProps) {
         aria-describedby={describedby}
         aria-labelledby={labelledby}
         aria-modal={ariaModal}
-        autoFocus
-        className={cls([styles.dialog, dark && global.dark, width && styles[width]])}
+        className={cls([styles.dialog, dark && global.dark, size && styles[size]])}
         open
         style={{zIndex: zIndex && zIndex + 1}}
       >

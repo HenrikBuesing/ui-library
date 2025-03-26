@@ -28,6 +28,6 @@ type AdditionalDialogProps = {
   labelledby?: AriaAttributes['aria-labelledby'];
   onClickBackdrop?: MouseEventHandler<HTMLDivElement>;
   scroll?: boolean;
-  width?: 's' | 'm' | 'l';
+  size?: 'small' | 'medium' | 'large';
   zIndex?: number;
 }
