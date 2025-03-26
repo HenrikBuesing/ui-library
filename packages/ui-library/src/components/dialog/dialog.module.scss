@@ -1,18 +1,12 @@
 @use '../common/styles/mixin' as *;
 
 .dialog {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: auto;
+  margin: auto;
   border-radius: 5px;
   background-color: var(--uil-white-alt);
   
   &::backdrop {
-    display: none;
+    background-color: rgba(0, 0, 0, .5);
   }
 
   &.small {

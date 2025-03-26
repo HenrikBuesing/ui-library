@@ -1,4 +1,4 @@
-import type {AriaAttributes, MouseEventHandler, ReactNode} from 'react';
+import type {AriaAttributes, ReactEventHandler, ReactNode} from 'react';
 import type {BaseProps, Status} from '@common/types';
 
 export type DialogProps = BaseProps & AdditionalDialogProps;
@@ -26,8 +26,7 @@ type AdditionalDialogProps = {
   ariaModal?: AriaAttributes['aria-modal'];
   describedby?: AriaAttributes['aria-describedby'];
   labelledby?: AriaAttributes['aria-labelledby'];
-  onClickBackdrop?: MouseEventHandler<HTMLDivElement>;
-  scroll?: boolean;
+  onCancel?: ReactEventHandler<HTMLDialogElement>;
+  scrollable?: boolean;
   size?: 'small' | 'medium' | 'large';
-  zIndex?: number;
 }

@@ -1,10 +1,8 @@
 import global from '@common/styles/global.module.scss';
+import React, {useEffect, useRef} from 'react';
 import cls from '@utils/conditionalClass';
 import styles from './dialog.module.scss';
 import type {DialogProps} from './types';
-import {createPortal} from 'react-dom';
-import {Backdrop} from '../backdrop';
-import React from 'react';
 
 export function Dialog(props: DialogProps) {
   const {
@@ -13,41 +11,42 @@ export function Dialog(props: DialogProps) {
     dark = false,
     describedby,
     labelledby,
-    onClickBackdrop,
+    onCancel,
     open,
-    scroll = false,
+    scrollable = false,
     size,
-    zIndex
   } = props;
+  
+  const dialog = useRef<HTMLDialogElement | null>(null);
+  
+  useEffect(() => {
+    if (open) {
+      if (!scrollable) {
+        document.body.style.paddingRight = '15px';
+        document.body.style.overflow = 'hidden';
+      }
 
-  if (!open) {
-    if (typeof document !== 'undefined') {
-      document.body.style.paddingRight = 'initial';
-      document.body.style.overflow = 'initial';
-    }
-    return null;
-  }
-
-  if (!scroll) {
-    document.body.style.paddingRight = '15px';
-    document.body.style.overflow = 'hidden';
-  }
-
-  return createPortal(
-    <>
-      <Backdrop open={open} onClick={onClickBackdrop} zIndex={zIndex}/>
+      dialog.current?.showModal();
+    } else {
+      if (!scrollable) {
+        document.body.style.paddingRight = '';
+        document.body.style.overflow = '';
+      }
       
-      <dialog
-        aria-describedby={describedby}
-        aria-labelledby={labelledby}
-        aria-modal={ariaModal}
-        className={cls([styles.dialog, dark && global.dark, size && styles[size]])}
-        open
-        style={{zIndex: zIndex && zIndex + 1}}
-      >
-        {children}
-      </dialog>
-    </>,
-    document.body
+      dialog.current?.close();
+    }
+  }, [open]);
+  
+  return (
+    <dialog
+      ref={dialog}
+      aria-describedby={describedby}
+      aria-labelledby={labelledby}
+      aria-modal={ariaModal}
+      className={cls([styles.dialog, dark && global.dark, size && styles[size]])}
+      onCancel={onCancel}
+    >
+      {children}
+    </dialog>
   );
 }
