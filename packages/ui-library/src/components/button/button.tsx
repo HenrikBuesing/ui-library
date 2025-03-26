@@ -79,8 +79,6 @@ export function Button(props: ButtonProps) {
         title={buttonProps.title}
         style={style}
         className={setClasses()}
-        aria-disabled={disabled}
-        tabIndex={disabled ? -1 : (buttonProps.tabIndex ?? undefined)}
       >
         {children}
       </a>
