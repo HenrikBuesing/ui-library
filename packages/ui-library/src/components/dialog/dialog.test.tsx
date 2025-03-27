@@ -1,10 +1,19 @@
-import {afterEach, describe, expect, test} from 'vitest';
+import {afterEach, beforeAll, describe, expect, test, vi} from 'vitest';
+import { DialogContent } from './dialogContent';
+import {DialogControls} from './dialogControls';
 import {render} from '@testing-library/react';
+import {DialogTitle} from './dialogTitle';
 import {Dialog} from './dialog';
 import React from 'react';
-import {DialogTitle} from "./dialogTitle";
-import { DialogContent } from './dialogContent';
-import {DialogControls} from "./dialogControls";
+
+// currently native html dialog elements are not supported in jsdom.
+// this is a workaround to test the dialog component
+// open issue: https://github.com/jsdom/jsdom/issues/3294
+beforeAll(() => {
+  HTMLDialogElement.prototype.show = vi.fn();
+  HTMLDialogElement.prototype.showModal = vi.fn();
+  HTMLDialogElement.prototype.close = vi.fn();
+});
 
 describe('dialog', () => {
   afterEach(() => {
@@ -13,9 +22,6 @@ describe('dialog', () => {
   
   test('should render dialog', () => {
     render(<Dialog open={true}><div>test content</div></Dialog>);
-
-    const backdrop = document.body.getElementsByClassName('backdrop')[0];
-    expect(backdrop).toBeDefined();
 
     const dialog = document.body.getElementsByClassName('dialog')[0];
     expect(dialog).toBeDefined();
@@ -27,11 +33,8 @@ describe('dialog', () => {
   test('should not render dialog', () => {
     render(<Dialog open={false}><div>test content</div></Dialog>);
 
-    const backdrop = document.body.getElementsByClassName('backdrop')[0];
-    expect(backdrop).not.toBeDefined();
-
-    const dialog = document.body.getElementsByClassName('dialog')[0];
-    expect(dialog).not.toBeDefined();
+    const dialog = document.body.getElementsByClassName('dialog')[0] as HTMLDialogElement;
+    expect(dialog.open).toEqual(false);
   });
 
   test('should render dialog with aria attributes', () => {
@@ -42,16 +45,6 @@ describe('dialog', () => {
     expect(dialog.ariaModal).toBeTruthy();
     expect(dialog.getAttribute('aria-labelledby')).toEqual('label');
     expect(dialog.getAttribute('aria-describedby')).toEqual('content');
-  });
-
-  test('should render dialog with z-index', () => {
-    render(<Dialog open={true} zIndex={5}><div>test content</div></Dialog>);
-
-    const backdrop = document.body.getElementsByClassName('backdrop')[0] as HTMLDivElement;
-    expect(backdrop.style.zIndex).toEqual('5');
-
-    const dialog = document.body.getElementsByClassName('dialog')[0] as HTMLDialogElement;
-    expect(dialog.style.zIndex).toEqual('6');
   });
 
   test('should render dialog in dark mode', () => {
