@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild';
 import {writeFileSync} from 'node:fs';
 import {sassPlugin} from "esbuild-sass-plugin";
 
-const input = ['src/index.ts'];
+const input = ['src/index.ts', 'src/components/*/**/index.ts', 'src/hooks/index.ts'];
 const output = 'dist';
 
 try {
@@ -13,6 +13,7 @@ try {
       entryPoints: input,
       outdir: output,
       bundle: true,
+      splitting: true,
       minify: process.env.NODE_ENV === 'production',
       sourcemap: process.env.NODE_ENV !== 'production',
       metafile: true,
