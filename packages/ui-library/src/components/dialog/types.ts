@@ -1,5 +1,5 @@
 import type {AriaAttributes, ReactEventHandler, ReactNode} from 'react';
-import type {BaseProps, Status} from '@common/types';
+import type {BaseProps, Status} from '../common/types';
 
 export type DialogProps = BaseProps & AdditionalDialogProps;
 

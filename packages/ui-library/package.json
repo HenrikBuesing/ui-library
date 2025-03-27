@@ -1,35 +1,24 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "5.0.0-beta.12",
+  "version": "5.0.0-beta.20",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
     "./index.css": {
       "import": "./dist/index.css",
       "require": "./dist/index.css"
-    },
-    "./button": {
-      "import": "./dist/components/button/index.js",
-      "require": "./dist/components/button/index.js"
-    },
-    "./button/index.css": {
-      "import": "./dist/components/button/index.css",
-      "require": "./dist/components/button/index.css"
-    },
-    "./radio": {
-      "import": "./dist/components/check/radio/index.js",
-      "require": "./dist/components/check/radio/index.js"
-    },
-    "./radio/index.css": {
-      "import": "./dist/components/check/radio/index.css",
-      "require": "./dist/components/check/radio/index.css"
     }
   },
   "files": [
