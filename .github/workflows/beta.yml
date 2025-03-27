@@ -49,6 +49,6 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
-          package: packages
+          package: packages/ui-library
           dry-run: false
           tag: beta
