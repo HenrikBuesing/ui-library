@@ -1,0 +1,55 @@
+---
+title: Dialog
+description: Showcase and usage guide of the dialog component
+---
+
+import DefaultDialog, {DialogAlert, DialogESC, DialogScroll, DialogSize} from './_dialog';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# Dialog
+
+A dialog component appears on top of the main content. It typically requires user
+interaction before allowing them to return to the main content, often used for displaying important information,
+asking for user input, or confirming actions.
+
+<DefaultDialog/>
+
+## Content
+
+The content of the dialog can be any valid HTML. The dialog-utility-components offer basic styling 
+
+## Sizes
+
+You can render the dialog in three different sizes: `small`, `medium` and `large`. \
+By default, the dialog size will be determined by its content.
+
+<DialogSize size={'small'}/>
+
+## Scrolling
+
+The `scrollable` prop overrides the default behaviour that would normally disable scrolling while the dialog is open.
+
+<DialogScroll/>
+
+
+## OnCancel Callback
+
+The `onCancel` event will run whenever users close the dialog with the Escape key.
+
+<Callout type={'warning'}>
+  The `onCancel` & `disableEscapeKey` props are mutually exclusive.
+</Callout>
+
+## DisableEscapeKey
+
+You can prevent users from closing the dialog with the escape key.
+
+<DialogESC/>
+
+## Accessibility 
+
+The `ariaModal`, `describedby` and `labelledby` props can be used to provide additional accessibility information for users. \
+If the `ariaModal` prop is provided, the role of the dialog will change from `dialog` to `alertdialog`.
+
+<DialogAlert/>
