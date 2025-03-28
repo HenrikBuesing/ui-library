@@ -1,7 +1,22 @@
 import type {AriaAttributes, ReactEventHandler, ReactNode} from 'react';
 import type {BaseProps, Status} from '../common/types';
 
-export type DialogProps = BaseProps & AdditionalDialogProps;
+export type DialogProps = BaseProps & {
+  open: boolean;
+  children: ReactNode;
+  ariaModal?: AriaAttributes['aria-modal'];
+  describedby?: AriaAttributes['aria-describedby'];
+  labelledby?: AriaAttributes['aria-labelledby'];
+  scrollable?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  onClickBackdrop?: () => void;
+} & ({
+  onCancel: ReactEventHandler<HTMLDialogElement>;
+  disableEscapeKey?: never;
+} | {
+  disableEscapeKey: boolean;
+  onCancel?: never;
+});
 
 export type DialogTitleProps = {
   children: ReactNode;
@@ -18,15 +33,4 @@ export type DialogContentProps = {
 export type DialogControlsProps = {
   children: ReactNode;
   position?: 'start' | 'end' | 'space-between';
-}
-
-type AdditionalDialogProps = {
-  open: boolean;
-  children: ReactNode;
-  ariaModal?: AriaAttributes['aria-modal'];
-  describedby?: AriaAttributes['aria-describedby'];
-  labelledby?: AriaAttributes['aria-labelledby'];
-  onCancel?: ReactEventHandler<HTMLDialogElement>;
-  scrollable?: boolean;
-  size?: 'small' | 'medium' | 'large';
 }
