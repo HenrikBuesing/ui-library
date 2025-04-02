@@ -92,10 +92,10 @@ describe('dialog components', () => {
   });
 
   test('should render dialog title with color', () => {
-    const {container} = render(<DialogTitle color={'default'}>Title</DialogTitle>);
+    const {container} = render(<DialogTitle color={'info'}>Title</DialogTitle>);
 
     const title = container.getElementsByClassName('title')[0];
-    expect(title.className).match(/\bdefault\b/);
+    expect(title.className).match(/\binfo\b/);
   });
   
   test('should render dialog content', () => {
