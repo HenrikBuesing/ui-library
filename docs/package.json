@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@hbuesing/ui-library": "*",
-    "next": "^15.2.0",
+    "next": "^15.2.3",
     "nextra": "^4.2.13",
     "nextra-theme-docs": "^4.2.13"
   }
