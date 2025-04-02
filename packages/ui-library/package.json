@@ -1,15 +1,20 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "5.0.0-beta.11",
+  "version": "5.0.0-beta.20",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
     "./index.css": {
       "import": "./dist/index.css",

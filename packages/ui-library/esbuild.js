@@ -1,22 +1,19 @@
-import * as esbuild from 'esbuild';
+import {sassPlugin} from 'esbuild-sass-plugin';
 import {writeFileSync} from 'node:fs';
-import {sassPlugin} from "esbuild-sass-plugin";
-
-const input = ['src/index.ts'];
-const output = 'dist';
+import * as esbuild from 'esbuild';
 
 try {
   console.log(`using [${process.env.NODE_ENV ?? 'dev'}] config...`);
   
   const result = await esbuild.build(
     {
-      entryPoints: input,
-      outdir: output,
+      entryPoints: ['src/index.ts'],
+      outdir: 'dist',
       bundle: true,
       minify: process.env.NODE_ENV === 'production',
       sourcemap: process.env.NODE_ENV !== 'production',
       metafile: true,
-      external: ['react'],
+      external: ['react', 'react-dom'],
       format: 'esm',
       target: ['esnext'],
       plugins: [sassPlugin({

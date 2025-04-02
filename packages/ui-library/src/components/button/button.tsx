@@ -1,13 +1,10 @@
 import {useContrastColor} from '@hooks/useContrastColor';
-import global from '@common/styles/global.module.scss';
+import global from '../common/styles/global.module.scss';
 import React, {type CSSProperties} from 'react';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';
 import type {ButtonProps} from './types';
 
-/**
- * [Button documentation](https://www.ui-library.hbsng.com/docs/components/button)
- */
 export function Button(props: ButtonProps) {
   const {
     children,
@@ -79,8 +76,6 @@ export function Button(props: ButtonProps) {
         title={buttonProps.title}
         style={style}
         className={setClasses()}
-        aria-disabled={disabled}
-        tabIndex={disabled ? -1 : (buttonProps.tabIndex ?? undefined)}
       >
         {children}
       </a>

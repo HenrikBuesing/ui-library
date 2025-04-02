@@ -29,12 +29,15 @@ const globalMeta: Meta = {
           'input-decorator': 'InputDecorator',
           checkbox: 'Checkbox',
           radio: 'Radio',
-          'radio-group': 'Radio Group',
+          'radio-group': 'RadioGroup',
           '--': {
             type: 'separator',
-            title: 'Data Display'
+            title: 'Feedback'
           },
-          modal: 'Modal',
+          dialog: 'Dialog',
+          'dialog-title': 'DialogTitle',
+          'dialog-content': 'DialogContent',
+          'dialog-controls': 'DialogControls',
         }
       },
       hooks: {

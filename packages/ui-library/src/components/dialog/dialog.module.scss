@@ -1,0 +1,82 @@
+@use '../common/styles/mixin' as *;
+
+.dialog {
+  margin: auto;
+  border-radius: 5px;
+  background-color: var(--uil-white-alt);
+  
+  &::backdrop {
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  &.small {
+    width: 25%;
+  }
+
+  &.medium {
+    width: 50%;
+  }
+
+  &.large {
+    width: 75%;
+  }
+
+  .title {
+    font-weight: bold;
+    padding: .5rem;
+
+    &.info {
+      background-color: var(--uil-outline-focus);
+      color: var(--uil-white);
+    }
+
+    &.success {
+      background-color: var(--uil-success);
+      color: var(--uil-white);
+    }
+
+    &.warning {
+      background-color: var(--uil-warning);
+      color: var(--uil-black-light);
+    }
+
+    &.error {
+      background-color: var(--uil-error);
+      color: var(--uil-white);
+    }
+
+    &.default, &.success, &.warning, &.error {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+
+    &.divider {
+      border-top: 1px solid var(--uil-grey-alt);
+      border-bottom: 1px solid var(--uil-grey-alt);
+    }
+  }
+
+  .controls {
+    display: flex;
+    gap: 2rem;
+    padding: .5rem;
+    
+    &.start {
+      justify-content: start;
+    }
+    
+    &.end {
+      justify-content: end;
+    }
+    
+    &.space-between {
+      justify-content: space-between;
+    }
+  }
+}

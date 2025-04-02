@@ -1,0 +1,131 @@
+---
+title: DialogContent
+description: Showcase and usage guide of the dialog-content component
+---
+
+import Content, {DialogContentBasic, DialogDivider, DialogAC} from './_dialogContent';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# DialogContent
+
+This component is a utility component designed for the [`Dialog`](/docs/components/dialog) component.
+
+<DialogContentBasic/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setIsVisible(true)}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} onCancel={() => setIsVisible(false)}>
+    <DialogTitle>Title</DialogTitle>
+
+    <DialogContent>
+      Dialog content
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Close</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+<Callout type={'warning'}>
+  Since `dialogContent` is a utility component, using it outside the `dialog` component will just render the content of the component:
+
+  <Content/>
+
+  ```tsx
+  <DialogContent>Dialog title</DialogContent>
+  ```
+</Callout>
+
+## Customization
+
+You can separate the content of the dialog from other elements by using the `divider` prop.
+
+<DialogDivider/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setIsVisible(true)}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} onCancel={() => setIsVisible(false)}>
+    <DialogTitle>Title</DialogTitle>
+
+    <DialogContent divider>
+      <span>The dialog content is separated from the title and the controls</span>
+      <p>Additional dialog context</p>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Close</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+## Accessibility
+
+Use the `id` prop in combination with the dialog's `describedby` prop to add additional context for Accessibility-Tools.
+
+<DialogAC/>
+
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setIsVisible(true)}>Show Dialog</Button>
+
+  <Dialog size={'small'} describedby={'dialog-content'} open={isVisible} onCancel={() => setIsVisible(false)}>
+    <DialogTitle>Title</DialogTitle>
+
+    <DialogContent id={'dialog-content'}>
+      Dialog content
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Close</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>divider</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Enables divider styles</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>id</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the `id` attribute</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
