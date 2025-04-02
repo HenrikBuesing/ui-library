@@ -1,4 +1,129 @@
 ---
-title: Dialog Title
-description: Showcase and usage guide of the dialog title component
+title: DialogTitle
+description: Showcase and usage guide of the dialog-title component
 ---
+
+import Title, {DialogAC, DialogTitleBasic, DialogTitleColor} from './_dialogTitle';
+import styles from '@/styles/styles.module.scss';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# DialogTitle
+
+This component is a utility component designed for the [`Dialog`](/docs/components/dialog) component.
+
+<DialogTitleBasic/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} onCancel={() => setIsVisible(false)}>
+    <DialogTitle>Dialog title</DialogTitle>
+
+    <DialogContent>Content</DialogContent>
+
+    <DialogControls>
+      <Button variant={'outlined'} onClick={() => {setIsVisible(false)}}>Close</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+<Callout type={'warning'}>
+  Since `dialogTitle` is a utility component, using it outside the `dialog` component will just render the content of the component:
+  
+  <Title/>
+
+  ```tsx
+  <DialogTitle>Dialog title</DialogTitle>
+  ```
+</Callout>
+
+## Customization
+
+The background-color of the dialog-title can be changed based on the dialog's context.
+
+<div className={styles.showcaseWrapper}>
+  <DialogTitleColor color={'info'}/>
+  <DialogTitleColor color={'success'}/>
+  <DialogTitleColor color={'warning'}/>
+  <DialogTitleColor color={'error'}/>
+</div>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} onCancel={() => setIsVisible(false)}>
+    <DialogTitle color={'success'}>Dialog title</DialogTitle> // one of 'info' | 'success' | 'warning' | 'error'
+
+    <DialogContent>Content</DialogContent>
+
+    <DialogControls>
+      <Button variant={'outlined'} onClick={() => {setIsVisible(false)}}>Close</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+## Accessibility 
+
+Use the `id` prop in combination with the dialog's `labelledby` prop to add additional context for Accessibility-Tools.
+
+<DialogAC/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} labelledby={'dialog-title'} onCancel={() => setIsVisible(false)}>
+    <DialogTitle id={'dialog-title'}>Dialog title</DialogTitle>
+
+    <DialogContent>Content</DialogContent>
+
+    <DialogControls>
+      <Button variant={'outlined'} onClick={() => {setIsVisible(false)}}>Close</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`info` | `success` | `warning` | `error`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the color of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>id</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the `id` attribute</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>

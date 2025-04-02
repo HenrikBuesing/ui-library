@@ -32,10 +32,12 @@ const globalMeta: Meta = {
           'radio-group': 'RadioGroup',
           '--': {
             type: 'separator',
-            title: 'Data Display'
+            title: 'Feedback'
           },
           dialog: 'Dialog',
           'dialog-title': 'DialogTitle',
+          'dialog-content': 'DialogContent',
+          'dialog-controls': 'DialogControls',
         }
       },
       hooks: {

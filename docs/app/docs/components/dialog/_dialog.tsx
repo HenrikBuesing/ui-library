@@ -7,14 +7,14 @@ import React, {useState} from 'react';
 export default function DefaultDialog() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
-  const [show, setShow] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div className={styles.showcaseWrapper}>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShow(true)}}>Show Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
-      <Dialog dark={dark} open={show} onCancel={() => {setShow(false)}}>
-        <DialogTitle >Simple dialog</DialogTitle>
+      <Dialog dark={dark} open={isVisible} onCancel={() => {setIsVisible(false)}}>
+        <DialogTitle>Simple dialog</DialogTitle>
 
         <DialogContent>
           <span>Dialog message</span>
@@ -22,9 +22,9 @@ export default function DefaultDialog() {
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShow(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setIsVisible(false)}}>Confirm</Button>
           
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShow(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setIsVisible(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
     </div>
@@ -34,18 +34,18 @@ export default function DefaultDialog() {
 export function DialogSize() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
-  const [show, setShow] = useState(false);
-  const [showB, setShowB] = useState(false);
-  const [showC, setShowC] = useState(false);
+  const [showSmall, setShowSmall] = useState(false);
+  const [showMedium, setShowMedium] = useState(false);
+  const [showLarge, setShowLarge] = useState(false);
 
   return (
     <div className={styles.showcaseWrapper}>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShow(true)}}>Small Dialog</Button>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShowB(true)}}>Medium Dialog</Button>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShowC(true)}}>large Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setShowSmall(true)}}>Small Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setShowMedium(true)}}>Medium Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setShowLarge(true)}}>large Dialog</Button>
 
-      <Dialog dark={dark} open={show} size={'small'} onCancel={() => {setShow(false)}}>
-        <DialogTitle >Simple dialog</DialogTitle>
+      <Dialog dark={dark} open={showSmall} size={'small'} onCancel={() => {setShowSmall(false)}}>
+        <DialogTitle>Simple dialog</DialogTitle>
 
         <DialogContent>
           <span>Dialog message</span>
@@ -53,14 +53,14 @@ export function DialogSize() {
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShow(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setShowSmall(false)}}>Confirm</Button>
 
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShow(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShowSmall(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
 
-      <Dialog dark={dark} open={showB} size={'medium'} onCancel={() => {setShowB(false)}}>
-        <DialogTitle >Simple dialog</DialogTitle>
+      <Dialog dark={dark} open={showMedium} size={'medium'} onCancel={() => {setShowMedium(false)}}>
+        <DialogTitle>Simple dialog</DialogTitle>
 
         <DialogContent>
           <span>Dialog message</span>
@@ -68,14 +68,14 @@ export function DialogSize() {
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShowB(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setShowMedium(false)}}>Confirm</Button>
 
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShowB(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShowMedium(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
 
-      <Dialog dark={dark} open={showC} size={'large'} onCancel={() => {setShowC(false)}}>
-        <DialogTitle >Simple dialog</DialogTitle>
+      <Dialog dark={dark} open={showLarge} size={'large'} onCancel={() => {setShowLarge(false)}}>
+        <DialogTitle>Simple dialog</DialogTitle>
 
         <DialogContent>
           <span>Dialog message</span>
@@ -83,9 +83,9 @@ export function DialogSize() {
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShowC(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setShowLarge(false)}}>Confirm</Button>
 
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShowC(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShowLarge(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
     </div>
@@ -95,14 +95,14 @@ export function DialogSize() {
 export function DialogESC() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
-  const [show, setShow] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div className={styles.showcaseWrapper}>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShow(true)}}>Show Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
-      <Dialog dark={dark} open={show} disableEscapeKey>
-        <DialogTitle >Simple dialog</DialogTitle>
+      <Dialog dark={dark} open={isVisible} disableEscapeKey>
+        <DialogTitle>Simple dialog</DialogTitle>
 
         <DialogContent>
           <span>Dialog message</span>
@@ -110,9 +110,9 @@ export function DialogESC() {
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShow(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setIsVisible(false)}}>Confirm</Button>
 
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShow(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setIsVisible(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
     </div>
@@ -122,14 +122,14 @@ export function DialogESC() {
 export function DialogScroll() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
-  const [show, setShow] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div className={styles.showcaseWrapper}>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShow(true)}}>Show Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
-      <Dialog dark={dark} open={show} scrollable onCancel={() => {setShow(false)}}>
-        <DialogTitle >Simple dialog</DialogTitle>
+      <Dialog dark={dark} open={isVisible} scrollable onCancel={() => {setIsVisible(false)}}>
+        <DialogTitle>Simple dialog</DialogTitle>
 
         <DialogContent>
           <span>Dialog message</span>
@@ -137,9 +137,9 @@ export function DialogScroll() {
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShow(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setIsVisible(false)}}>Confirm</Button>
 
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShow(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setIsVisible(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
     </div>
@@ -149,24 +149,24 @@ export function DialogScroll() {
 export function DialogAlert() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
-  const [show, setShow] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div className={styles.showcaseWrapper}>
-      <Button variant={'outlined'} dark={dark} onClick={() => {setShow(true)}}>Show Dialog</Button>
+      <Button variant={'outlined'} dark={dark} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
-      <Dialog dark={dark} open={show} ariaModal labelledby={'dialog-title'} describedby={'dialog-content'}  onCancel={() => {setShow(false)}}>
+      <Dialog dark={dark} open={isVisible} ariaModal labelledby={'dialog-title'} describedby={'dialog-content'}  onCancel={() => {setIsVisible(false)}}>
         <DialogTitle id={'dialog-title'}>Simple dialog</DialogTitle>
 
         <DialogContent>
-          <span id={'dialog-content'}>This text will be used for the 'aria-describedby' property</span>
+          <span id={'dialog-content'}>This text will be used for the <q>aria-describedby</q> property</span>
           <span>Additional context</span>
         </DialogContent>
 
         <DialogControls>
-          <Button variant={'text'} dark={dark} onClick={() => {setShow(false)}}>Confirm</Button>
+          <Button variant={'text'} dark={dark} onClick={() => {setIsVisible(false)}}>Confirm</Button>
 
-          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setShow(false)}}>Cancel</Button>
+          <Button variant={'text'} color={'error'} dark={dark} onClick={() => {setIsVisible(false)}}>Cancel</Button>
         </DialogControls>
       </Dialog>
     </div>

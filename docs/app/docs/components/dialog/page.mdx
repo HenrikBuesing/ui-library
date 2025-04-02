@@ -15,6 +15,29 @@ asking for user input, or confirming actions.
 
 <DefaultDialog/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog open={isVisible} onCancel={() => {setIsVisible(false)}}>
+    <DialogTitle>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span>Dialog message</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setIsVisible(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
 <Callout type={'info'}>
   The content of the dialog can be constructed using dialog-specific components
   (e.g [DialogTitle](/docs/components/dialog-title)), custom HTML, or a combination of both.
@@ -25,13 +48,91 @@ asking for user input, or confirming actions.
 You can render the dialog in three different sizes: `small`, `medium` and `large`. \
 By default, the dialog size will be determined by its content.
 
-<DialogSize size={'small'}/>
+<DialogSize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setShowSmall(true)}}>Small Dialog</Button>
+  <Button variant={'outlined'} onClick={() => {setShowMedium(true)}}>Medium Dialog</Button>
+  <Button variant={'outlined'} onClick={() => {setShowLarge(true)}}>large Dialog</Button>
+
+  <Dialog open={showSmall} size={'small'} onCancel={() => {setShowSmall(false)}}>
+    <DialogTitle>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span>Dialog message</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setShowSmall(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setShowSmall(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+
+  <Dialog open={showMedium} size={'medium'} onCancel={() => {setShowMedium(false)}}>
+    <DialogTitle>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span>Dialog message</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setShowMedium(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setShowMedium(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+
+  <Dialog open={showLarge} size={'large'} onCancel={() => {setShowLarge(false)}}>
+    <DialogTitle>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span>Dialog message</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setShowLarge(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setShowLarge(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
 
 ## Scrolling
 
 The `scrollable` prop overrides the default behaviour that would normally disable scrolling while the dialog is open.
 
 <DialogScroll/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog open={isVisible} scrollable onCancel={() => {setIsVisible(false)}}>
+    <DialogTitle>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span>Dialog message</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setIsVisible(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
 
 
 ## OnCancel Callback
@@ -48,9 +149,133 @@ You can prevent users from closing the dialog with the escape key.
 
 <DialogESC/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx 
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog open={isVisible} disableEscapeKey>
+    <DialogTitle>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span>Dialog message</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setIsVisible(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
 ## Accessibility 
 
 The `ariaModal`, `describedby` and `labelledby` props can be used to provide additional accessibility information for users. \
 If the `ariaModal` prop is provided, the role of the dialog will change from `dialog` to `alertdialog`.
 
 <DialogAlert/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
+
+  <Dialog open={isVisible} ariaModal labelledby={'dialog-title'} describedby={'dialog-content'}  onCancel={() => {setIsVisible(false)}}>
+    <DialogTitle id={'dialog-title'}>Simple dialog</DialogTitle>
+
+    <DialogContent>
+      <span id={'dialog-content'}>This text will be used for the <q>aria-describedby</q> property</span>
+      <span>Additional context</span>
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Confirm</Button>
+
+      <Button variant={'text'} color={'error'} onClick={() => {setIsVisible(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>ariaModal</Table.Td>
+    <Table.Td>`Booleanish`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the `aria-modal` attribute</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>describedby</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the `aria-describedby` attribute</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disableEscapeKey</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>
+      <p>Prevent users from closing the dialog with the Escape key</p>
+      <p>⚠️ Mutually exclusive with `onCancel`</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>labelledby</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the `aria-labelledby` attribute</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onCancel</Table.Td>
+    <Table.Td>`func`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Callback function whenever users press the Escape key</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onClickBackdrop</Table.Td>
+    <Table.Td>`func`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Callback function whenever users click the backdrop</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>open</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Controls whether the dialog is visible or not</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>scrollable</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Toggles the ability to scroll the background</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>

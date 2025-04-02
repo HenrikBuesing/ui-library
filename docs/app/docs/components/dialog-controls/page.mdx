@@ -1,0 +1,106 @@
+---
+title: DialogControls
+description: Showcase and usage guide of the dialog-controls component
+---
+
+import Controls, {DialogControlsBasic, DialogPos} from './_dialogControls';
+import styles from '@/styles/styles.module.scss';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# DialogControls
+
+This component is a utility component designed for the [`Dialog`](/docs/components/dialog) component.
+
+<DialogControlsBasic/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} dark={dark} onClick={() => setIsVisible(true)}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} onCancel={() => setIsVisible(false)} dark={dark}>
+    <DialogTitle>Title</DialogTitle>
+
+    <DialogContent>
+      Dialog content
+    </DialogContent>
+
+    <DialogControls>
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Confirm</Button>
+      <Button variant={'text'} color={'error'} onClick={() => {setIsVisible(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+<Callout type={'warning'}>
+  Since `dialogContent` is a utility component, using it outside the `dialog` component will just render the content of the component:
+
+  <Controls/>
+
+  ```tsx
+  <DialogControls>
+    <Button variant={'filled'}>Button</Button>
+  </DialogControls>
+  ```
+</Callout>
+
+## Position
+
+The position of the children can be either `start`, `end` or `space-between`.
+
+<div className={styles.showcaseWrapper}>
+  <DialogPos position={'start'} content={'Children of the dialog-controls will be left-aligned'}/>
+  <DialogPos position={'end'} content={'Children of the dialog-controls will be right-aligned'}/>
+  <DialogPos position={'space-between'} content={'Children of the dialog-controls will be positioned with space between them'}/>
+</div>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} dark={dark} onClick={() => setIsVisible(true)}>Show Dialog</Button>
+
+  <Dialog size={'small'} open={isVisible} onCancel={() => setIsVisible(false)} dark={dark}>
+    <DialogTitle>Title</DialogTitle>
+
+    <DialogContent>
+      Dialog content
+    </DialogContent>
+
+    <DialogControls position={'start'}> // one of 'start' | 'end' | 'space-between'
+      <Button variant={'text'} onClick={() => {setIsVisible(false)}}>Confirm</Button>
+      <Button variant={'text'} color={'error'} onClick={() => {setIsVisible(false)}}>Cancel</Button>
+    </DialogControls>
+  </Dialog>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>position</Table.Td>
+    <Table.Td>`start` | `end` | `space-between`</Table.Td>
+    <Table.Td><b>end</b></Table.Td>
+    <Table.Td>Position of the children</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
