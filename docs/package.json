@@ -13,6 +13,6 @@
     "@hbuesing/ui-library": "*",
     "next": "^15.2.4",
     "nextra": "^4.2.13",
-    "nextra-theme-docs": "^4.2.13"
+    "nextra-theme-docs": "^4.2.17"
   }
 }
