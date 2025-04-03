@@ -171,7 +171,7 @@ describe('color options', () => {
     expect(button.style.color).toEqual(rgb);
 
     expect(button.style.border).toBeDefined();
-    expect(button.style.border).toEqual('#3143c1');
+    expect(button.style.border).toEqual(rgb);
   });
 
   test('should render blue text (custom color)', () => {
