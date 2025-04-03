@@ -21,25 +21,25 @@
     "start": "turbo start"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.7",
-    "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^9.21.0",
+    "@eslint/compat": "^1.2.8",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.23.0",
     "@next/eslint-plugin-next": "^15.2.0",
-    "@types/node": "^22.13.17",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
-    "eslint": "^9.22.0",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.3",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
-    "sass": "^1.85.1",
+    "sass": "^1.86.2",
     "turbo": "^2.4.4",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.27.0",
+    "typescript-eslint": "^8.29.0",
     "typescript-plugin-css-modules": "^5.1.0"
   },
   "packageManager": "npm@11.1.0"
