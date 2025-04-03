@@ -18,13 +18,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "lts/*"
       - name: Install dependencies
         run: npm ci
       - uses: int128/comment-action@v1
         with:
           run: npm run lint
-          update-if-exists: append
+          update-if-exists: replace
           post-on-failure: |
             ## :x: ESLint check failed:
             ```
