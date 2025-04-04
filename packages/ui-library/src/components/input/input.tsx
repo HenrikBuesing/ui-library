@@ -4,7 +4,7 @@ import generateKey from '@utils/generateKey';
 import React, {isValidElement} from 'react';
 import cls from '@utils/conditionalClass';
 import type {InputProps} from './types';
-import style from './input.module.scss';
+import styles from './input.module.scss';
 
 export function Input(props: Omit<InputProps, 'placeholder'>) {
   const {
@@ -27,11 +27,11 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
   const helpId = helpText ? generateKey() : undefined;
 
   return (
-    <div className={cls([style.inputField, dark && global.dark])}>
-      <div className={cls([style.inputWrapper, variant === 'basic' ? style.basic : style.outlined, error && style.error])}>
+    <div className={cls([styles.inputField, dark && global.dark])}>
+      <div className={cls([styles.inputWrapper, variant === 'basic' ? styles.basic : styles.outlined, error && styles.error])}>
         <input
           id={ID}
-          className={`${style.input} ${global.fontMedium}`}
+          className={`${styles.input} ${global.fontMedium}`}
           placeholder={''}
           required={required}
           {...inputProps}
@@ -40,20 +40,20 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
 
         {children && children}
 
-        <fieldset className={style.fieldset} aria-hidden>
-          <legend className={style.legend}>
-            <span className={style.labelText}>{label}</span>
-            {required && <span className={`${style.labelText} ${style.asterisk}`} aria-hidden>*</span>}
+        <fieldset className={styles.fieldset} aria-hidden>
+          <legend className={styles.legend}>
+            <span className={styles.labelText}>{label}</span>
+            {required && <span className={`${styles.labelText} ${styles.asterisk}`} aria-hidden>*</span>}
           </legend>
         </fieldset>
 
-        <label htmlFor={ID} className={style.label}>
-          <span className={style.labelText}>{label}</span>
-          {required && <span className={`${style.labelText} ${style.asterisk}`} aria-hidden>*</span>}
+        <label htmlFor={ID} className={styles.label}>
+          <span className={styles.labelText}>{label}</span>
+          {required && <span className={`${styles.labelText} ${styles.asterisk}`} aria-hidden>*</span>}
         </label>
       </div>
 
-      {helpText && <div className={cls([style.helpText, error && style.error])} id={helpId}>{helpText}</div>}
+      {helpText && <div className={cls([styles.helpText, error && styles.error])} id={helpId}>{helpText}</div>}
     </div>
   );
 }
