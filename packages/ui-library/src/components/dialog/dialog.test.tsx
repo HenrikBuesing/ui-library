@@ -21,7 +21,7 @@ describe('dialog', () => {
   });
   
   test('should render dialog', () => {
-    render(<Dialog open={true}><div>test content</div></Dialog>);
+    render(<Dialog open={true} disableEscapeKey><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0];
     expect(dialog).toBeDefined();
@@ -31,14 +31,14 @@ describe('dialog', () => {
   });
 
   test('should not render dialog', () => {
-    render(<Dialog open={false}><div>test content</div></Dialog>);
+    render(<Dialog open={false} disableEscapeKey><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0] as HTMLDialogElement;
     expect(dialog.open).toEqual(false);
   });
 
   test('should render dialog with aria attributes', () => {
-    render(<Dialog open={true} labelledby={'label'} describedby={'content'} ariaModal={true}><div>test content</div></Dialog>);
+    render(<Dialog open={true} disableEscapeKey labelledby={'label'} describedby={'content'} ariaModal={true}><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0] as HTMLDialogElement;
     
@@ -48,28 +48,28 @@ describe('dialog', () => {
   });
 
   test('should render dialog in dark mode', () => {
-    render(<Dialog open={true} dark={true}><div>test content</div></Dialog>);
+    render(<Dialog disableEscapeKey open={true} dark={true}><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0];
     expect(dialog.className).toMatch(/\bdark\b/);
   });
 
   test('should render small dialog', () => {
-    render(<Dialog open={true} size={'small'}><div>test content</div></Dialog>);
+    render(<Dialog disableEscapeKey open={true} size={'small'}><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0];
     expect(dialog.className).toMatch(/\bsmall\b/);
   });
 
   test('should render medium dialog', () => {
-    render(<Dialog open={true} size={'medium'}><div>test content</div></Dialog>);
+    render(<Dialog disableEscapeKey open={true} size={'medium'}><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0];
     expect(dialog.className).toMatch(/\bmedium\b/);
   });
 
   test('should render large dialog', () => {
-    render(<Dialog open={true} size={'large'}><div>test content</div></Dialog>);
+    render(<Dialog disableEscapeKey open={true} size={'large'}><div>test content</div></Dialog>);
 
     const dialog = document.body.getElementsByClassName('dialog')[0];
     expect(dialog.className).toMatch(/\blarge\b/);
