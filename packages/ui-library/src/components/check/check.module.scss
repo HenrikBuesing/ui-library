@@ -12,7 +12,7 @@
   }
 
   .label {
-    color: var(--uil-black);
+    color: var(--uil-black-w);
   }
 
   .check {
@@ -25,7 +25,7 @@
     cursor: pointer;
 
     &:hover, &:has(input:checked) {
-      border-color: var(--uil-black);
+      border-color: var(--uil-black-w);
     }
     
     &.box {
