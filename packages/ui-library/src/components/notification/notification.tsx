@@ -13,7 +13,7 @@ export function Notification(props: NotificationProps) {
     type,
     variant
   } = props;
-  
+
   return (
     <div className={cls([styles.notification, styles[variant], type && styles[type], dark && global.dark])}>
       {icon &&
@@ -21,7 +21,7 @@ export function Notification(props: NotificationProps) {
           {icon}
         </div>
       }
-      
+
       <div className={global.fontMedium}>
         {children}
       </div>
@@ -31,6 +31,11 @@ export function Notification(props: NotificationProps) {
           {action}
         </div>
       }
+
+      <svg className={styles.closeIcon}>
+        <line x1='6' y1='6' x2='18' y2='18'/>
+        <line x1='18' y1='6' x2='6' y2='18'/>
+      </svg>
     </div>
   );
 }

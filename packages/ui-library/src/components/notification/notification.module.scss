@@ -56,3 +56,16 @@
     margin-left: auto;
   }
 }
+
+.closeIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  stroke: var(--uil-white);
+  stroke-width: 2px;
+  margin-left: auto;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .1);
+  }
+}
