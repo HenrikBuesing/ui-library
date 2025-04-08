@@ -9,7 +9,6 @@ export function Notification(props: NotificationProps) {
     action,
     children,
     dark,
-    icon,
     onCancel,
     type,
     variant
@@ -17,8 +16,6 @@ export function Notification(props: NotificationProps) {
 
   return (
     <div className={cls([styles.notification, styles[variant], styles[type], dark && global.dark])}>
-      {icon && <div className={styles.icon} aria-hidden>{icon}</div>}
-
       <div className={global.fontMedium}>{children}</div>
 
       {action && <div className={styles.action}>{action}</div>}
