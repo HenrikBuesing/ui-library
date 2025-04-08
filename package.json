@@ -39,7 +39,7 @@
     "sass": "^1.86.2",
     "turbo": "^2.5.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.29.0",
+    "typescript-eslint": "^8.29.1",
     "typescript-plugin-css-modules": "^5.1.0"
   },
   "packageManager": "npm@11.1.0"
