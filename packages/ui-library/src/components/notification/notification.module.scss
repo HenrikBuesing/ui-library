@@ -3,7 +3,7 @@
 .notification {
   display: flex;
   align-items: center;
-  padding: .5rem;
+  padding: var(--uil-xs);
   border-radius: 5px;
   
   &.filled {
@@ -49,23 +49,38 @@
   }
   
   .icon {
-    margin-right: .5rem;
+    margin-right: var(--uil-xs);
   }
   
   .action {
     margin-left: auto;
   }
-}
 
-.closeIcon {
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 50%;
-  stroke: var(--uil-white);
-  stroke-width: 2px;
-  margin-left: auto;
+  .cancelButton {
+    height: var(--uil-m);
+    width: var(--uil-m);
+    box-sizing: content-box;
+    margin-left: auto;
+    padding: var(--uil-xs);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, .1);
+    &.filled {
+      fill: var(--uil-white);
+
+      &:hover {
+        background-color: var(--uil-hover-black);
+      }
+    }
+
+    &.outlined {
+      fill: var(--uil-black-w);
+
+      &:hover {
+        background-color: var(--uil-hover-black-w);
+      }
+    }
   }
 }
