@@ -24,7 +24,7 @@
 }
 
 .dark {
-  --uil-black: #ffffff;
+  --uil-black-w: #ffffff;
   --uil-outline-focus: #7bb4ff;
   --uil-grey-dark: #a3a3a3;
   --uil-grey-alt: #5c5c5c;
@@ -44,4 +44,6 @@
   --uil-error-hover: 239, 34, 79;
   
   --uil-custom-hover: 255, 255, 255;
+
+  --uil-hover-black-w: rgba(255, 255, 255, 0.1);
 }

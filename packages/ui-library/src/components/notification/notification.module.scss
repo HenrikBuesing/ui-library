@@ -1,0 +1,86 @@
+@use '../common/styles/mixin' as *;
+
+.notification {
+  display: flex;
+  align-items: center;
+  padding: var(--uil-xs);
+  border-radius: 5px;
+  
+  &.filled {
+    color: var(--uil-white);
+    
+    &.info {
+      background-color: var(--uil-outline-focus);
+    }
+
+    &.success {
+      background-color: var(--uil-success);
+    }
+
+    &.warning {
+      color: var(--uil-black);
+      background-color: var(--uil-warning);
+    }
+
+    &.error {
+      background-color: var(--uil-error);
+    }
+  }
+  
+  &.outlined {
+    border-width: 1px;
+    color: var(--uil-black-w);
+    
+    &.info {
+      border-color: var(--uil-outline-focus);
+    }
+    
+    &.success {
+      border-color: var(--uil-success);
+    }
+    
+    &.warning {
+      border-color: var(--uil-warning);
+    }
+    
+    &.error {
+      border-color: var(--uil-error);
+    }
+  }
+  
+  .icon {
+    margin-right: var(--uil-xs);
+  }
+  
+  .action {
+    margin-left: auto;
+  }
+
+  .cancelButton {
+    height: var(--uil-m);
+    width: var(--uil-m);
+    box-sizing: content-box;
+    margin-left: auto;
+    padding: var(--uil-xs);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    &.filled {
+      fill: var(--uil-white);
+
+      &:hover {
+        background-color: var(--uil-hover-black);
+      }
+    }
+
+    &.outlined {
+      fill: var(--uil-black-w);
+
+      &:hover {
+        background-color: var(--uil-hover-black-w);
+      }
+    }
+  }
+}

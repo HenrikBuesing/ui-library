@@ -1,0 +1,223 @@
+---
+title: Notification
+description: Showcase and usage guide of the notification component
+---
+
+import DefaultNotification, {NotificationAction, NotificationCancel, NotificationTypes, NotificationVariant} from './_notification';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
+
+# Notification
+
+A notification component is designed to deliver information or alerts to users in a clear and unobtrusive manner, such as system messages, reminders, or updates.
+
+<DefaultNotification/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'info'}>
+    Notification message
+  </Notification>
+  ```
+</details>
+
+## Variants
+
+The notification component offers two distinct variants: `filled` and `outlined`.
+
+<NotificationVariant/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'info'}>
+    Notification with variant <q>filled</q>
+  </Notification>
+
+  <Notification variant={'outlined'} type={'info'}>
+    Notification with variant <q>outlined</q>
+  </Notification>
+  ```
+</details>
+
+## Type options
+
+The `type` property specifies the color scheme of the notification. Available options include `info`, `success`, `warning`, and `error`.
+
+### Info
+
+<NotificationTypes type={'info'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'info'}>
+    Notification message
+  </Notification>
+
+  <Notification variant={'outlined'} type={'info'}>
+    Notification message
+  </Notification>
+  ```
+</details>
+
+### Success
+
+<NotificationTypes type={'success'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'success'}>
+    Notification message
+  </Notification>
+
+  <Notification variant={'outlined'} type={'success'}>
+    Notification message
+  </Notification>
+  ```
+</details>
+
+### Warning
+
+<NotificationTypes type={'warning'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'warning'}>
+    Notification message
+  </Notification>
+
+  <Notification variant={'outlined'} type={'warning'}>
+    Notification message
+  </Notification>
+  ```
+</details>
+
+### Error
+
+<NotificationTypes type={'error'}/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'error'}>
+    Notification message
+  </Notification>
+
+  <Notification variant={'outlined'} type={'error'}>
+    Notification message
+  </Notification>
+  ```
+</details>
+
+
+## User Interactivity
+
+To add user interactivity use either the `onCancel` or `action` prop. 
+
+<Callout type={'warning'}>
+  Note that these props are mutually exclusive. \
+  If you just need a close button consider using the `onCancel` prop, otherwise use the `action` prop instead.
+</Callout>
+
+### OnCancel
+
+If the `onCancel` prop is set, a predefined close button will be added to the notification. 
+
+<NotificationCancel/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification variant={'filled'} type={'info'} onCancel={() => {alert('close button clicked')}}>
+    Notification with the predefined close button
+  </Notification>
+
+  <Notification variant={'outlined'} type={'info'} onCancel={() => {alert('close button clicked')}}>
+    Notification with the predefined close button
+  </Notification>
+  ```
+</details>
+
+### Action
+
+The `action` prop allows you to add your own action to the notification
+
+<NotificationAction/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Notification
+    variant={'filled'}
+    type={'info'}
+    action={<Button variant={'text'} size={'small'} color={'#FFF'} onClick={() => {alert('action clicked')}}>Close</Button>}
+  >
+    Notification with a custom close button
+  </Notification>
+
+  <Notification
+    variant={'outlined'}
+    type={'info'}
+    action={<Button variant={'text'} size={'small'} color={color} onClick={() => {alert('action clicked')}}>Close</Button>}
+  >
+    Notification with a custom close button
+  </Notification>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>action</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>add custom actions to the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onCancel</Table.Td>
+    <Table.Td>`func`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Enable the close button and set the onClick function</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>type</Table.Td>
+    <Table.Td>`info` | `success` | `warning` | `error`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the color of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>variant</Table.Td>
+    <Table.Td>`filled` | `outlined`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>The variant to use</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
