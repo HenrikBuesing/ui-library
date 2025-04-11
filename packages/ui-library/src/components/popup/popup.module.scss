@@ -1,0 +1,47 @@
+.popup {
+  position: fixed;
+  background-color: var(--uil-black-lighter);
+  border-radius: 5px;
+
+  &.top {
+    top: 2rem;
+  }
+
+  &.bottom {
+    bottom: 2rem;
+  }
+
+  &.left {
+    left: 2rem;
+  }
+
+  &.center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.right {
+    right: 2rem;
+  }
+
+  &.info {
+    background-color: var(--uil-outline-focus);
+  }
+
+  &.success {
+    background-color: var(--uil-success);
+  }
+
+  &.warning {
+    background-color: var(--uil-warning);
+  }
+
+  &.error {
+    background-color: var(--uil-error);
+  }
+
+  .content {
+    padding: .5rem;
+    color: var(--uil-white-alt);
+  }
+}
