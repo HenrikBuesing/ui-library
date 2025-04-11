@@ -1,8 +1,8 @@
-import {fileURLToPath} from "url";
-import {dirname} from "path";
-import {FlatCompat} from "@eslint/eslintrc";
-import eslint from "@eslint/js";
-import baseConfig from "../eslint.config.js";
+import baseConfig from '../eslint.config.js';
+import {FlatCompat} from '@eslint/eslintrc';
+import {fileURLToPath} from 'url';
+import eslint from '@eslint/js';
+import {dirname} from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

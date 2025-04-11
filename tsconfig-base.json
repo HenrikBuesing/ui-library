@@ -17,13 +17,5 @@
     "useUnknownInCatchVariables": true,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules",
-        "options": {
-          "goToDefinition": true
-        }
-      }
-    ]
   }
 }
