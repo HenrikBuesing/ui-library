@@ -5,7 +5,15 @@
     "paths": {
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "goToDefinition": true
+        }
+      }
+    ]
   },
   "include": [
     "./src/**/*"
