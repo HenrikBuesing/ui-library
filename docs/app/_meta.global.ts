@@ -39,6 +39,7 @@ const globalMeta: Meta = {
           'dialog-content': 'DialogContent',
           'dialog-controls': 'DialogControls',
           notification: 'Notification',
+          toast: 'Toast',
         }
       },
       hooks: {
