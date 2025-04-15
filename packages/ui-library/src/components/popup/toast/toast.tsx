@@ -1,36 +1,50 @@
 import global from '../../common/styles/global.module.scss';
-import styles from '../popup.module.scss';
+import React, {isValidElement, useRef} from 'react';
+import {Notification} from '../../notification';
 import cls from '@utils/conditionalClass';
+import styles from '../popup.module.scss';
 import type {ToastProps} from './types';
-import React, {useEffect, useRef} from 'react';
 
 export function Toast(props: ToastProps) {
   const {
+    alignment,
     children,
     dark = false,
-    horizontalAlign,
     onClose,
     open,
     timeout,
-    type,
-    verticalAlign
   } = props;
-  
+
   if (!open) return null;
-  
+
+  const isNotification = isValidElement(children) && children.type === Notification;
   const ref = useRef<HTMLDivElement | null>(null);
 
   setTimeout(() => {
     return onClose();
   }, timeout);
-  
-  useEffect(() => {
-    ref.current?.style.setProperty('--top', `${horizontalAlign}px`);
-  },[]);
+
+  function setAlignment() {
+    const h = alignment.horizontal, v = alignment.vertical;
+    
+    return h === 'center' && v === 'center' ? [styles.centerXY] : [
+      h === 'center' ? styles.centerX : styles[h],
+      v === 'center' ? styles.centerY : styles[v]
+    ];
+  }
   
   return (
-    <div className={cls([styles.popup, styles[verticalAlign], styles[horizontalAlign], styles[type], dark && global.dark])} ref={ref}>
-      <div className={styles.content}>{children}</div>
+    <div 
+      className={cls([
+        styles.popup,
+        global.fontMedium,
+        dark && global.dark,
+        !isNotification && styles.content,
+        ...setAlignment(),
+      ])}
+      ref={ref}
+    >
+      <div role={'status'}>{children}</div>
     </div>
   );
 }
