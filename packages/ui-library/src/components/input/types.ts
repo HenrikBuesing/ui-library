@@ -1,4 +1,4 @@
-import type {BaseComponentProps} from '../common/types';
+import type {BaseComponentProps} from '@common/types';
 import type {InputDecorator} from './inputDecorator';
 import type {ReactElement, ReactNode} from 'react';
 

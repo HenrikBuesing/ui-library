@@ -1,5 +1,5 @@
 import type {ChangeEventHandler, CSSProperties, ReactNode} from 'react';
-import type {BaseProps} from '../../common/types';
+import type {BaseProps} from '@common/types';
 
 export type RadioGroupProps = BaseProps & AdditionalRadioGroupProps;
 

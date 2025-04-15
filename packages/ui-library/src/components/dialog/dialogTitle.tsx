@@ -1,4 +1,4 @@
-import global from '../common/styles/global.module.scss';
+import global from '@common/styles/global.module.scss';
 import type {DialogTitleProps} from './types';
 import styles from './dialog.module.scss';
 import cls from '@utils/conditionalClass';
