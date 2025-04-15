@@ -25,6 +25,8 @@ export function Toast(props: ToastProps) {
   }, timeout);
 
   function setAlignment() {
+    if (!alignment) return [styles.left, styles.bottom];
+    
     const h = alignment.horizontal, v = alignment.vertical;
     
     return h === 'center' && v === 'center' ? [styles.centerXY] : [
