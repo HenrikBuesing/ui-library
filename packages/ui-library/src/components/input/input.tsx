@@ -1,4 +1,4 @@
-import global from '../common/styles/global.module.scss';
+import global from '@common/styles/global.module.scss';
 import {InputDecorator} from './inputDecorator';
 import generateKey from '@utils/generateKey';
 import React, {isValidElement} from 'react';

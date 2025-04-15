@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "paths": {
+      "@common/*": ["./src/components/common/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"]
     }
