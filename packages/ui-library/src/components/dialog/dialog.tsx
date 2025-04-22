@@ -1,4 +1,4 @@
-import global from '@common/styles/global.module.scss';
+import global from '../common/styles/global.module.scss';
 import React, {useEffect, useRef} from 'react';
 import cls from '@utils/conditionalClass';
 import styles from './dialog.module.scss';

@@ -1,4 +1,4 @@
-import global from '@common/styles/global.module.scss';
+import global from '../common/styles/global.module.scss';
 import styles from './notification.module.scss';
 import type {NotificationProps} from './types';
 import cls from '@utils/conditionalClass';

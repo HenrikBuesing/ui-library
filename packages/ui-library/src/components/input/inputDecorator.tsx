@@ -1,4 +1,4 @@
-import global from '@common/styles/global.module.scss';
+import global from '../common/styles/global.module.scss';
 import type {InputDecoratorProps} from './types';
 import cls from '@utils/conditionalClass';
 import style from './input.module.scss';

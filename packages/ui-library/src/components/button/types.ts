@@ -1,4 +1,4 @@
-import type {BaseComponentProps, Size, Status} from '@common/types';
+import type {BaseComponentProps, Size, Status} from '../common/types';
 import type {HTMLAttributeAnchorTarget, ReactNode} from 'react';
 
 export type ButtonProps = BaseComponentProps<'button'> & {
