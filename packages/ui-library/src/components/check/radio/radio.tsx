@@ -1,4 +1,4 @@
-import global from '@common/styles/global.module.scss';
+import global from '../../common/styles/global.module.scss';
 import React, {type ChangeEvent} from 'react';
 import generateKey from '@utils/generateKey';
 import cls from '@utils/conditionalClass';
