@@ -28,22 +28,26 @@
   }
   
   &.outlined {
-    border-width: 1px;
+    border-width: 2px;
     color: var(--uil-black-w);
     
     &.info {
+      color: var(--uil-outline-focus);
       border-color: var(--uil-outline-focus);
     }
     
     &.success {
+      color: var(--uil-success);
       border-color: var(--uil-success);
     }
     
     &.warning {
+      color: var(--uil-warning-alt);
       border-color: var(--uil-warning);
     }
     
     &.error {
+      color: var(--uil-error);
       border-color: var(--uil-error);
     }
   }

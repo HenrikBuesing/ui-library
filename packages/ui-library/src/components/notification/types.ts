@@ -1,5 +1,5 @@
-import type {BaseProps, Status} from '../common/types';
 import type {MouseEventHandler, ReactNode} from 'react';
+import type {BaseProps, Status} from '../common/types';
 
 export type NotificationProps = BaseProps & {
   children: ReactNode;
