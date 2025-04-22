@@ -30,7 +30,7 @@
     "build:dev": "NODE_ENV=dev node esbuild.js",
     "build": "NODE_ENV=production node esbuild.js",
     "postbuild": "npm run build:types",
-    "build:types": "tsc --emitDeclarationOnly --project tsconfig.build.json",
+    "build:types": "tsc --emitDeclarationOnly -p tsconfig.build.json",
     "test": "vitest run",
     "test:watch": "vitest -w",
     "test:coverage": "vitest run --coverage"
@@ -52,8 +52,8 @@
     "@vitest/coverage-v8": "^3.1.1",
     "esbuild": "0.25.2",
     "esbuild-sass-plugin": "^3.3.1",
-    "jsdom": "^26.0.0",
+    "jsdom": "^26.1.0",
     "typescript-plugin-css-modules": "^5.1.0",
-    "vitest": "^3.1.1"
+    "vitest": "^3.1.2"
   }
 }
