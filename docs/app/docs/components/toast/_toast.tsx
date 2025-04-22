@@ -1,5 +1,5 @@
 'use client';
-import {Button, Notification, Toast} from '@hbuesing/ui-library';
+import {Button, Input, Notification, Toast} from '@hbuesing/ui-library';
 import styles from '@/styles/styles.module.scss';
 import {useTheme} from 'nextra-theme-docs';
 import React, {useState} from 'react';
@@ -18,6 +18,24 @@ export default function ToastDefault() {
     <div className={styles.showcaseWrapper}>
       <Button variant={'outlined'} dark={dark} onClick={() => setOpen(true)}>Show toast</Button>
       
+      <Toast open={open} timeout={5000} onClose={() => {setOpen(false)}} dark={dark}>
+        Toast message
+      </Toast>
+    </div>
+  );
+}
+
+export function ToastTimeout() {
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('3000');
+
+  return (
+    <div className={styles.showcaseWrapper}>
+      <Button variant={'outlined'} dark={dark} onClick={() => setOpen(true)}>Show toast</Button>
+      <Input label={'Duration'} variant={'outlined'} value={value} onChange={(event) => setValue(event.target.value)}/>
+
       <Toast open={open} timeout={5000} onClose={() => {setOpen(false)}} dark={dark}>
         Toast message
       </Toast>
