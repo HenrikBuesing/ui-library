@@ -3,7 +3,7 @@ title: Toast
 description: Showcase and usage guide of the toast component
 ---
 
-import ToastDefault, {ToastTimeout} from './_toast';
+import ToastDefault, {Stack, ToastContent, ToastTimeout} from './_toast';
 
 # Toast
 
@@ -20,4 +20,13 @@ The `timeout` prop defines the duration (in ms) for which the toast will remain 
 
 ## Content
 
+In addition to default HTML, you can use the `Notification` component.
+
+<ToastContent/>
+
+
 ## Alignment
+
+## Stack
+
+<Stack/>
