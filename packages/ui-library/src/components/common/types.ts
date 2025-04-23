@@ -7,5 +7,5 @@ export type Status = 'success' | 'warning' | 'error';
 export type BaseComponentProps<T extends ElementType> = ComponentPropsWithRef<T> & BaseProps;
 
 export type BaseProps = {
-  dark?: boolean;
+  dark?: boolean | undefined;
 };

@@ -1,5 +1,5 @@
+import React, {isValidElement, useEffect, useMemo, useRef, useState} from 'react';
 import global from '../../common/styles/global.module.scss';
-import React, {isValidElement, useRef} from 'react';
 import {Notification} from '../../notification';
 import cls from '@utils/conditionalClass';
 import styles from '../popup.module.scss';
@@ -10,43 +10,70 @@ export function Toast(props: ToastProps) {
     alignment,
     children,
     dark = false,
+    id,
     onClose,
     open,
     timeout,
   } = props;
 
-  if (!open) return null;
-
   const isNotification = isValidElement(children) && children.type === Notification;
   const ref = useRef<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = useState(open);
 
-  setTimeout(() => {
-    return onClose();
-  }, timeout);
-
-  function setAlignment() {
-    if (!alignment) return [styles.left, styles.bottom];
+  useEffect(() => {
+    let fadeTimer: NodeJS.Timeout;
+    let removeTimer: NodeJS.Timeout;
     
+    if (open) {
+      setIsOpen(true);
+
+      fadeTimer = setTimeout(() => {
+        if (ref.current) ref.current.classList.add(styles.fadeOut);
+
+        removeTimer = setTimeout(() => {
+          setIsOpen(false);
+          onClose?.();
+        }, 500);
+      }, timeout);
+    } else {
+      setIsOpen(false);
+    }
+    
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    }
+  }, [open, timeout, onClose]);
+
+  const alignmentClasses = useMemo(() => {
+    if (!alignment) return [null];
+
     const h = alignment.horizontal, v = alignment.vertical;
-    
+
     return h === 'center' && v === 'center' ? [styles.centerXY] : [
       h === 'center' ? styles.centerX : styles[h],
       v === 'center' ? styles.centerY : styles[v]
     ];
-  }
-  
+  }, [alignment]);
+
   return (
-    <div 
-      className={cls([
-        styles.popup,
-        global.fontMedium,
-        dark && global.dark,
-        !isNotification && styles.content,
-        ...setAlignment(),
-      ])}
-      ref={ref}
-    >
-      <div role={'status'}>{children}</div>
-    </div>
+    <>
+      {isOpen &&
+        <div
+          className={cls([
+            styles.popup,
+            global.fontMedium,
+            dark && global.dark,
+            !isNotification && styles.content,
+            alignment && styles.position,
+            ...alignmentClasses,
+          ])}
+          ref={ref}
+          id={id}
+        >
+          <div role={'status'}>{children}</div>
+        </div>
+      }
+    </>
   );
 }
