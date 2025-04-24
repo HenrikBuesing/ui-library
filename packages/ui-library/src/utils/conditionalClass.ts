@@ -1,14 +1,13 @@
-type Param = string | boolean | null | undefined;
+type Param = string | string[] | boolean | null | undefined;
 
 export default function cls(items: Param[]) {
-  let str = '';
-  
-  items.forEach(item => {
-    if (item === null || item === undefined || item === false) return;
+  const str: string[] = [];
 
-    if (str !== '') str += ' ';
-    str += item;
+  items.forEach(item => {
+    if (!item || typeof item === 'boolean') return;
+
+    str.push(...(Array.isArray(item) ? item : [item]));
   });
 
-  return str;
+  return str.join(' ');
 }
