@@ -1,6 +1,7 @@
 import React, {createContext, useCallback, useContext, useMemo, useState} from 'react';
 import type {PopupProviderProps, ProviderContext} from './types';
 import type {ToastProps} from '../toast/types';
+import getAlignment from '../util/alignment';
 import cls from '@utils/conditionalClass';
 import styles from '../popup.module.scss';
 import {Toast} from '../toast';
@@ -13,6 +14,11 @@ const initial: ProviderContext = {
 const PopupContext = createContext<ProviderContext>(initial);
 
 export function PopupProvider(props: PopupProviderProps) {
+  const {
+    children,
+    alignment
+  } = props;
+  
   const [popups, setPopups] = useState<Omit<ToastProps, 'alignment'>[]>([]);
 
   const addPopup = useCallback((popup: ToastProps[]) => {
@@ -24,16 +30,11 @@ export function PopupProvider(props: PopupProviderProps) {
     addPopup,
   }), [popups, addPopup]);
 
-  const alignment = useMemo(() => {
-    if (!props.alignment) return [styles.left, styles.bottom];
+  function setAlignment() {
+    if (!alignment) return [styles.left, styles.bottom];
 
-    const h = props.alignment.horizontal, v = props.alignment.vertical;
-
-    return h === 'center' && v === 'center' ? [styles.centerXY] : [
-      h === 'center' ? styles.centerX : styles[h],
-      v === 'center' ? styles.centerY : styles[v]
-    ];
-  }, [props.alignment]);
+    return getAlignment(alignment);
+  }
 
   function removePopup(popup: ToastProps) {
     setPopups(prev => prev.filter(p => p.id !== popup.id));
@@ -43,9 +44,9 @@ export function PopupProvider(props: PopupProviderProps) {
 
   return (
     <PopupContext.Provider value={contextValue}>
-      {props.children}
+      {children}
 
-      <div className={cls([styles.position, styles.popupStack, ...alignment])}>
+      <div className={cls([styles.position, styles.popupStack, setAlignment()])}>
         {popups.map((popup) => (
           <Toast key={popup.id} onClose={() => {removePopup(popup)}} {...popup}>
             {popup.children}

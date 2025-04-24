@@ -1,6 +1,7 @@
-import React, {isValidElement, useEffect, useMemo, useRef, useState} from 'react';
+import React, {isValidElement, useEffect, useRef, useState} from 'react';
 import global from '../../common/styles/global.module.scss';
 import {Notification} from '../../notification';
+import getAlignment from '../util/alignment';
 import cls from '@utils/conditionalClass';
 import styles from '../popup.module.scss';
 import type {ToastProps} from './types';
@@ -18,7 +19,7 @@ export function Toast(props: ToastProps) {
 
   const isNotification = isValidElement(children) && children.type === Notification;
   const ref = useRef<HTMLDivElement | null>(null);
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     let fadeTimer: NodeJS.Timeout;
@@ -45,35 +46,25 @@ export function Toast(props: ToastProps) {
     }
   }, [open, timeout, onClose]);
 
-  const alignmentClasses = useMemo(() => {
-    if (!alignment) return [null];
+  function setAlignment(){
+    if (!alignment) return;
 
-    const h = alignment.horizontal, v = alignment.vertical;
+    return getAlignment(alignment);
+  }
 
-    return h === 'center' && v === 'center' ? [styles.centerXY] : [
-      h === 'center' ? styles.centerX : styles[h],
-      v === 'center' ? styles.centerY : styles[v]
-    ];
-  }, [alignment]);
-
-  return (
-    <>
-      {isOpen &&
-        <div
-          className={cls([
-            styles.popup,
-            global.fontMedium,
-            dark && global.dark,
-            !isNotification && styles.content,
-            alignment && styles.position,
-            ...alignmentClasses,
-          ])}
-          ref={ref}
-          id={id}
-        >
-          <div role={'status'}>{children}</div>
-        </div>
-      }
-    </>
-  );
+  return isOpen ?
+    <div
+      className={cls([
+        styles.popup,
+        global.fontMedium,
+        dark && global.dark,
+        !isNotification && styles.content,
+        alignment && styles.position,
+        setAlignment()
+      ])}
+      ref={ref}
+      id={id}
+    >
+      <div role={'status'}>{children}</div>
+    </div> : null;
 }
