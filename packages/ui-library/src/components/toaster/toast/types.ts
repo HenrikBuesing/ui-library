@@ -6,6 +6,7 @@ export type ToastProps = BaseProps & {
   id: string;
   open: boolean;
   timeout: number;
+  action?: ReactNode;
   alignment?: {vertical: 'top' | 'center' | 'bottom', horizontal: 'left' | 'center' | 'right'};
   onClose?: (() => void) | undefined;
 }

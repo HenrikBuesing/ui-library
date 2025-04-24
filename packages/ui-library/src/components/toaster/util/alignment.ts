@@ -1,4 +1,4 @@
-import styles from "../popup.module.scss";
+import styles from "../toast.module.scss";
 
 export default function getAlignment(alignment: Alignment) {
   const h = alignment.horizontal, v = alignment.vertical;

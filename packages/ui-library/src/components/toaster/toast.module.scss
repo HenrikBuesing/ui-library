@@ -39,12 +39,13 @@
   }
 }
 
-.popupStack {
+.toaster {
   display: flex;
   flex-direction: column;
   gap: var(--uil-m);
   background-color: transparent;
   border: none;
+  padding: var(--uil-xs);
   height: 60%;
   max-height: 60%;
   overflow-y: scroll;
@@ -60,7 +61,9 @@
   }
 }
 
-.popup {
+.toast {
+  display: flex;
+  align-items: center;
   width: fit-content;
   border-radius: 5px;
   box-shadow: 0 0 10px -3px var(--uil-black-w);
@@ -75,5 +78,9 @@
     padding: var(--uil-xs);
     color: var(--uil-white-alt);
     background-color: var(--uil-black-lighter);
+  }
+  
+  .action {
+    margin-left: auto;
   }
 }

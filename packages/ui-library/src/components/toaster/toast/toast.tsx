@@ -3,11 +3,12 @@ import global from '../../common/styles/global.module.scss';
 import {Notification} from '../../notification';
 import getAlignment from '../util/alignment';
 import cls from '@utils/conditionalClass';
-import styles from '../popup.module.scss';
+import styles from '../toast.module.scss';
 import type {ToastProps} from './types';
 
 export function Toast(props: ToastProps) {
   const {
+    action,
     alignment,
     children,
     dark = false,
@@ -55,7 +56,7 @@ export function Toast(props: ToastProps) {
   return isOpen ?
     <div
       className={cls([
-        styles.popup,
+        styles.toast,
         global.fontMedium,
         dark && global.dark,
         !isNotification && styles.content,
@@ -65,6 +66,12 @@ export function Toast(props: ToastProps) {
       ref={ref}
       id={id}
     >
-      <div role={'status'}>{children}</div>
+      <div role={'status'}>
+        {children}
+        
+        <div className={styles.action}>
+          {action}
+        </div>
+      </div>
     </div> : null;
 }
