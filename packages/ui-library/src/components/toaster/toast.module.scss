@@ -62,8 +62,6 @@
 }
 
 .toast {
-  display: flex;
-  align-items: center;
   width: fit-content;
   border-radius: 5px;
   box-shadow: 0 0 10px -3px var(--uil-black-w);
@@ -80,7 +78,13 @@
     background-color: var(--uil-black-lighter);
   }
   
-  .action {
-    margin-left: auto;
+  .toastBody {
+    display: flex;
+    align-items: center;
+    gap: var(--uil-xs);
+
+    .action {
+      margin-left: auto;
+    }
   }
 }

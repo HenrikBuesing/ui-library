@@ -66,12 +66,14 @@ export function Toast(props: ToastProps) {
       ref={ref}
       id={id}
     >
-      <div role={'status'}>
-        {children}
-        
-        <div className={styles.action}>
-          {action}
-        </div>
+      <div role={'status'} className={styles.toastBody}>
+        <div className={global.fontMedium}>{children}</div>
+
+        {action &&
+          <div className={styles.action}>
+            {action}
+          </div>
+        }
       </div>
     </div> : null;
 }
