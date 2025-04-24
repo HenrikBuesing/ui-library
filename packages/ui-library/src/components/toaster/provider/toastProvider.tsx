@@ -39,7 +39,7 @@ export function ToastProvider(props: ToastProviderProps) {
   function removePopup(popup: ToastProps) {
     setToasts(prev => prev.filter(p => p.id !== popup.id));
     
-    popup.onClose?.();
+    popup.closeCallback?.();
   }
 
   return (
@@ -48,7 +48,7 @@ export function ToastProvider(props: ToastProviderProps) {
 
       <div className={cls([styles.position, styles.toaster, setAlignment()])}>
         {toasts.map((toast) => (
-          <Toast key={toast.id} onClose={() => {removePopup(toast)}} {...toast}>
+          <Toast key={toast.id} closeCallback={() => {removePopup(toast)}} {...toast}>
             {toast.children}
           </Toast>
         ))}

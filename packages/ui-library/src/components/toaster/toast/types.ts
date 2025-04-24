@@ -8,5 +8,5 @@ export type ToastProps = BaseProps & {
   timeout: number;
   action?: ReactNode;
   alignment?: {vertical: 'top' | 'center' | 'bottom', horizontal: 'left' | 'center' | 'right'};
-  onClose?: (() => void) | undefined;
+  closeCallback?: (() => void) | undefined;
 }

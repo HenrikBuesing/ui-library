@@ -13,7 +13,7 @@ export function Toast(props: ToastProps) {
     children,
     dark = false,
     id,
-    onClose,
+    closeCallback,
     open,
     timeout,
   } = props;
@@ -34,7 +34,7 @@ export function Toast(props: ToastProps) {
 
         removeTimer = setTimeout(() => {
           setIsOpen(false);
-          onClose?.();
+          closeCallback?.();
         }, 500);
       }, timeout);
     } else {
@@ -45,7 +45,7 @@ export function Toast(props: ToastProps) {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
     }
-  }, [open, timeout, onClose]);
+  }, [open, timeout, closeCallback]);
 
   function setAlignment(){
     if (!alignment) return;
