@@ -40,11 +40,7 @@ const globalMeta: Meta = {
           'dialog-controls': 'DialogControls',
           notification: 'Notification',
           toast: 'Toast',
-          '---': {
-            type: 'separator',
-            title: 'Data Display'
-          },
-          backdrop: 'Backdrop', 
+          'toast-provider': 'ToastProvider',
         }
       },
       hooks: {
