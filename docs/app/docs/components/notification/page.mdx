@@ -3,7 +3,7 @@ title: Notification
 description: Showcase and usage guide of the notification component
 ---
 
-import DefaultNotification, {NotificationAction, NotificationCancel, NotificationTypes, NotificationVariant} from './_notification';
+import DefaultNotification, {NotificationAction, NotificationClose, NotificationTypes, NotificationVariant} from './_notification';
 import {Callout} from 'nextra/components';
 import {Table} from 'nextra/components';
 
@@ -122,28 +122,28 @@ The `type` property specifies the color scheme of the notification. Available op
 
 ## User Interactivity
 
-To add user interactivity use either the `onCancel` or `action` prop. 
+To add user interactivity use either the `onClose` or `action` prop. 
 
 <Callout type={'warning'}>
   Note that these props are mutually exclusive. \
-  If you just need a close button consider using the `onCancel` prop, otherwise use the `action` prop instead.
+  If you just need a close button consider using the `onClose` prop, otherwise use the `action` prop instead.
 </Callout>
 
-### OnCancel
+### OnClose
 
-If the `onCancel` prop is set, a predefined close button will be added to the notification. 
+If the `onClose` prop is set, a predefined close button will be added to the notification. 
 
-<NotificationCancel/>
+<NotificationClose/>
 
 <details>
   <summary>Expand code</summary>
 
   ```jsx
-  <Notification variant={'filled'} type={'info'} onCancel={() => {alert('close button clicked')}}>
+  <Notification variant={'filled'} type={'info'} onClose={() => {alert('close button clicked')}}>
     Notification with the predefined close button
   </Notification>
 
-  <Notification variant={'outlined'} type={'info'} onCancel={() => {alert('close button clicked')}}>
+  <Notification variant={'outlined'} type={'info'} onClose={() => {alert('close button clicked')}}>
     Notification with the predefined close button
   </Notification>
   ```
@@ -202,7 +202,7 @@ The `action` prop allows you to add your own action to the notification
     <Table.Td>Content of the component</Table.Td>
   </Table.Tr>
   <Table.Tr>
-    <Table.Td>onCancel</Table.Td>
+    <Table.Td>onClose</Table.Td>
     <Table.Td>`func`</Table.Td>
     <Table.Td>-</Table.Td>
     <Table.Td>Enable the close button and set the onClick function</Table.Td>

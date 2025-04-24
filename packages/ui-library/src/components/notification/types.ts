@@ -7,8 +7,8 @@ export type NotificationProps = BaseProps & {
   variant: 'outlined' | 'filled';
 } & ({
   action?: ReactNode;
-  onCancel?: never;
+  onClose?: MouseEventHandler<HTMLButtonElement>;
 } | {
   action?: never;
-  onCancel?: MouseEventHandler<HTMLButtonElement>;
+  onClose?: MouseEventHandler<HTMLButtonElement>;
 })

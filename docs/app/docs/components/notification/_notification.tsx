@@ -51,17 +51,17 @@ export function NotificationTypes({type}: {type: 'info' | 'success' | 'warning' 
   );
 }
 
-export function NotificationCancel() {
+export function NotificationClose() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
 
   return (
     <div className={styles.showcaseWrapperCol}>
-      <Notification variant={'filled'} type={'info'} dark={dark} onCancel={() => {alert('close button clicked')}}>
+      <Notification variant={'filled'} type={'info'} dark={dark} onClose={() => {alert('close button clicked')}}>
         Notification with the predefined close button
       </Notification>
 
-      <Notification variant={'outlined'} type={'info'} dark={dark} onCancel={() => {alert('close button clicked')}}>
+      <Notification variant={'outlined'} type={'info'} dark={dark} onClose={() => {alert('close button clicked')}}>
         Notification with the predefined close button
       </Notification>
     </div>
