@@ -36,9 +36,9 @@ describe('general', () => {
   test('should render notification with onCancel', () => {
     const fn = vi.fn();
     
-    const {container} = render(<Notification type={'info'} variant={'filled'} onCancel={fn}>Message</Notification>);
+    const {container} = render(<Notification type={'info'} variant={'filled'} onClose={fn}>Message</Notification>);
 
-    const cancel = container.getElementsByClassName('cancelButton')[0];
+    const cancel = container.getElementsByClassName('closeButton')[0];
     expect(cancel).toBeDefined();
 
     fireEvent.click(cancel);

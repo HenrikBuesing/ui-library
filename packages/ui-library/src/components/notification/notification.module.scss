@@ -3,6 +3,7 @@
 .notification {
   display: flex;
   align-items: center;
+  gap: var(--uil-xs);
   padding: var(--uil-xs);
   border-radius: 5px;
   
@@ -60,12 +61,12 @@
     margin-left: auto;
   }
 
-  .cancelButton {
+  .closeButton {
     height: var(--uil-m);
     width: var(--uil-m);
     box-sizing: content-box;
     margin-left: auto;
-    padding: var(--uil-xs);
+    padding: var(--uil-xxs);
     border-radius: 50%;
     cursor: pointer;
     border: none;
