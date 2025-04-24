@@ -3,7 +3,9 @@ title: Toast
 description: Showcase and usage guide of the toast component
 ---
 
-import ToastDefault, {Stack, ToastContent, ToastTimeout} from './_toast';
+import ToastDefault, {Stack, ToastActions, ToastActionsNotification, ToastAlignment, ToastContent, ToastTimeout} from './_toast';
+import {Callout} from 'nextra/components';
+import {Table} from 'nextra/components';
 
 # Toast
 
@@ -12,21 +14,223 @@ unobtrusive manner.
 
 <ToastDefault/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setOpen(true)}>Show toast</Button>
+
+  <Toast id={'simple-toast'} open={open} timeout={5000} closeCallback={() => {setOpen(false)}} alignment={{vertical: 'bottom', horizontal: 'left'}}>
+    Toast message
+  </Toast>
+  ```
+</details>
+
 ## Timeout
 
 The `timeout` prop defines the duration (in ms) for which the toast will remain visible.
 
 <ToastTimeout/>
 
-## Content
+<details>
+  <summary>Expand code</summary>
 
-In addition to default HTML, you can use the `Notification` component.
+  ```jsx
+  <Input
+    label={'Duration'}
+    variant={'basic'}
+    type={'number'}
+    min={0}
+    value={value}
+    onChange={(event) => setValue(Number(event.target.value))}
+    id={'timeout-duration'}
+  />
+
+  <Button variant={'outlined'} onClick={() => {setOpen(true)}}>
+    Show toast
+  </Button>
+
+  <Toast id={'toast-timer'} open={open} timeout={value} closeCallback={() => {setOpen(false)}} alignment={{vertical: 'bottom', horizontal: 'left'}}>
+    Timeout: {value}
+  </Toast>
+  ```
+</details>
+
+## Children
+
+In addition to default HTML, you can also use the [Notification](/docs/components/notification) component.
 
 <ToastContent/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setOpen(true)}>Show toast</Button>
+
+  <Toast id={'toast-content'} open={open} timeout={5000} alignment={{vertical: 'bottom', horizontal: 'left'}} closeCallback={() => {setOpen(false)}}>
+    <Notification type={'success'} variant={'filled'}>Success notification</Notification>
+  </Toast>
+  ```
+</details>
 
 ## Alignment
 
+Use the `alignment` prop to override the default vertical (bottom) and horizontal (left) positioning of the toast.
+
+<ToastAlignment/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <span>Vertical alignment</span>
+  <RadioGroup
+    direction={'row'}
+    name={'vertical'}
+    selected={vertical}
+    options={[{label: 'top', value: 'top'}, {label: 'center', value: 'center'}, {label: 'bottom', value: 'bottom'}]}
+    onChange={(event) => setVertical(event.target.value)}
+  />
+
+  <span>Horizontal alignment</span>
+  <RadioGroup
+    direction={'row'}
+    name={'horizontal'}
+    selected={horizontal}
+    options={[{label: 'left', value: 'left'}, {label: 'center', value: 'center'}, {label: 'right', value: 'right'}]}
+    onChange={(event) => setHorizontal(event.target.value)}
+  />
+
+  <Button variant={'outlined'} onClick={() => {setOpen(true)}}>
+    Show toast
+  </Button>
+
+  <Toast id={'toast-timer'} open={open} timeout={3000} closeCallback={() => {setOpen(false)}} alignment={{vertical: vertical, horizontal: horizontal}}>
+    Toast with custom position
+  </Toast>
+  ```
+</details>
+
+<Callout type={'info'}>
+  If you use the `ToastProvider` and set the alignment to bottom, the newest toast will be at the top of the stack.
+</Callout>
+
+## CloseCallback
+
+The `closeCallabck` function will run after the set timeout. You can use this to reset the `open` state afterwards. 
+
+## Actions
+
+The `action` prop allows you to add additional user interactivity, such as including a close button.
+
+<ToastActions/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setOpen(true)}>Show toast</Button>
+
+  <Toast
+    id={'toast-action'}
+    open={open}
+    timeout={5000}
+    closeCallback={() => {setOpen(false)}}
+    alignment={{vertical: 'bottom', horizontal: 'left'}}
+    action={<Button color={'success'} variant={'text'} size={'small'} onClick={() => {setOpen(false)}}>Close</Button>}
+  >
+    Wait for the timeout or close with the close button
+  </Toast>
+  ```
+</details>
+
+<Callout type={'info'}>
+  When using the `Notification` component, you can instead utilize the `action` or `onClose` props for additional functionality.
+</Callout>
+
+<ToastActionsNotification/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Button variant={'outlined'} onClick={() => setOpen(true)}>Show toast</Button>
+
+  <Toast id={'notify-toast'} open={open} timeout={5000} closeCallback={() => {setOpen(false)}} alignment={{vertical: 'bottom', horizontal: 'left'}}>
+    <Notification type={'success'} variant={'filled'} onClose={() => {setOpen(false)}}>
+      Wait for the timeout or close with the close button
+    </Notification>
+  </Toast>
+  ```
+</details>
+
 ## Stack
 
+The `ToastProvider` component enables stacking multiple toasts on top of each other. For detailed usage instructions,
+refer to the [ToastProvider](/docs/components/toast-provider) documentation.
+
 <Stack/>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>action</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>add custom actions to the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>alignment</Table.Td>
+    <Table.Td>`{vertical: 'top' | 'center' | 'bottom', horizontal: 'left' | 'center' | 'right'}`</Table.Td>
+    <Table.Td><b>vertical: 'bottom', horizontal: 'left'</b></Table.Td>
+    <Table.Td>set the position of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>closeCallback</Table.Td>
+    <Table.Td>`func`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Callback function that runs after the component timeout</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>id</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Unique identifier for the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>open</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the visibility of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>timeout</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the timeout of the component</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
