@@ -1,5 +1,5 @@
 import {afterEach, beforeAll, describe, expect, test, vi} from 'vitest';
-import { DialogContent } from './dialogContent';
+import {DialogContent} from './dialogContent';
 import {DialogControls} from './dialogControls';
 import {render} from '@testing-library/react';
 import {DialogTitle} from './dialogTitle';
@@ -21,9 +21,9 @@ describe('dialog', () => {
   });
   
   test('should render dialog', () => {
-    render(<Dialog open={true} disableEscapeKey><div>test content</div></Dialog>);
+    const {container} = render(<Dialog open={true} disableEscapeKey><div>test content</div></Dialog>);
 
-    const dialog = document.body.getElementsByClassName('dialog')[0];
+    const dialog = container.getElementsByClassName('dialog')[0];
     expect(dialog).toBeDefined();
 
     expect(document.body.style.paddingRight).toEqual('15px');
