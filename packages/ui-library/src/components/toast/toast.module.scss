@@ -1,0 +1,120 @@
+.toaster {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uil-m);
+  background-color: transparent;
+  border: none;
+  padding: var(--uil-xs);
+  height: 60%;
+  max-height: 60%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  z-index: 2147483647;
+  position: fixed;
+  top: var(--uil-top);
+  bottom: var(--uil-bottom);
+  left: var(--uil-left);
+  right: var(--uil-right);
+
+  &.top {
+    --uil-top: var(--uil-l);
+  }
+
+  &.bottom {
+    --uil-bottom: var(--uil-l);
+    flex-direction: column-reverse;
+  }
+
+  &.centerX {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.centerY {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.centerXY {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+  }
+
+  &.left {
+    --uil-left: var(--uil-l);
+  }
+
+  &.right {
+    --uil-right: var(--uil-l);
+    align-items: end;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: var(--uil-s);
+    opacity: 0;
+    color: var(--uil-white-alt);
+    background-color: var(--uil-black-lighter);
+    padding: var(--uil-xs);
+    width: fit-content;
+    border-radius: 3px;
+    transition: all .5s linear;
+    transform: translateY(6px);
+    box-shadow: 1px 5px 6px -1px var(--uil-box-shadow-w);
+    -webkit-box-shadow: 1px 5px 6px -1px var(--uil-box-shadow-w);
+    -moz-box-shadow: 1px 5px 6px -1px var(--uil-box-shadow-w);
+
+    &.fadeIn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &.fadeOut {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    &.info {
+      color: var(--uil-white);
+      background-color: var(--uil-outline-focus);
+    }
+
+    &.success {
+      color: var(--uil-white);
+      background-color: var(--uil-success);
+    }
+
+    &.warning {
+      color: var(--uil-black);
+      background-color: var(--uil-warning);
+    }
+
+    &.error {
+      color: var(--uil-white);
+      background-color: var(--uil-error);
+    }
+
+    .closeButton {
+      height: var(--uil-s);
+      width: var(--uil-s);
+      box-sizing: content-box;
+      padding: var(--uil-xs);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      fill: var(--uil-white-b);
+
+      &:hover {
+        background-color: var(--uil-hover-black);
+      }
+    }
+  }
+}

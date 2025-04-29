@@ -8,4 +8,4 @@ export type BaseComponentProps<T extends ElementType> = ComponentPropsWithRef<T>
 
 export type BaseProps = {
   dark?: boolean | undefined;
-};
+}
