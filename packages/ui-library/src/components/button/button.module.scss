@@ -18,7 +18,7 @@
       background-color: var(--uil-info);
 
       &:hover {
-        background-color: rgba(var(--uil-default-hover), .9);
+        background-color: rgba(var(--uil-info-hover), .8);
       }
     }
 
@@ -27,7 +27,7 @@
       border-color: var(--uil-info);
 
       &:not(:disabled):hover {
-        background-color: rgba(var(--uil-default-hover), .12);
+        background-color: rgba(var(--uil-info-hover), .08);
       }
     }
 
@@ -35,7 +35,7 @@
       color: var(--uil-info);
 
       &:not(:disabled):hover {
-        background-color: rgba(var(--uil-default-hover), .08);
+        background-color: rgba(var(--uil-info-hover), .08);
       }
     }
   }
@@ -46,7 +46,7 @@
       background-color: var(--uil-success);
 
       &:hover {
-        background-color: rgba(var(--uil-success-hover), .9);
+        background-color: rgba(var(--uil-success-hover), .8);
       }
     }
 
@@ -55,7 +55,7 @@
       border-color: var(--uil-success);
 
       &:hover {
-        background-color: rgba(var(--uil-success-hover), .15);
+        background-color: rgba(var(--uil-success-hover), .08);
       }
     }
 
@@ -63,7 +63,7 @@
       color: var(--uil-success);
 
       &:hover {
-        background-color: rgba(var(--uil-success-hover), .07);
+        background-color: rgba(var(--uil-success-hover), .08);
       }
     }
   }
@@ -74,7 +74,7 @@
       background-color: var(--uil-warning);
 
       &:hover {
-        background-color: rgba(var(--uil-warning-hover), .7);
+        background-color: rgba(var(--uil-warning-hover), .8);
       }
     }
 
@@ -83,7 +83,7 @@
       border-color: var(--uil-warning);
 
       &:hover {
-        background-color: rgba(var(--uil-warning-hover), .1);
+        background-color: rgba(var(--uil-warning-hover), .08);
       }
     }
 
@@ -91,7 +91,7 @@
       color: var(--uil-warning-alt);
 
       &:hover {
-        background-color: rgba(var(--uil-warning-hover), .1);
+        background-color: rgba(var(--uil-warning-hover), .08);
       }
     }
   }
@@ -102,7 +102,7 @@
       background-color: var(--uil-error);
 
       &:hover {
-        background-color: rgba(var(--uil-error-hover), .9);
+        background-color: rgba(var(--uil-error-hover), .8);
       }
     }
 
@@ -111,7 +111,7 @@
       border-color: var(--uil-error);
 
       &:hover {
-        background-color: rgba(var(--uil-error-hover), .12);
+        background-color: rgba(var(--uil-error-hover), .08);
       }
     }
 
@@ -126,8 +126,8 @@
 
   &:not(:disabled).custom {
      &.filled:hover, &.outlined:hover, &.text:hover {
-       opacity: .9;
-       background-color: rgba(var(--uil-custom-hover), .05);
+       opacity: .85;
+       background-color: rgba(var(--uil-custom-hover), .03);
      }
   }
 
