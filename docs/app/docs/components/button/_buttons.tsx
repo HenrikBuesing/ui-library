@@ -64,7 +64,7 @@ export function ColorButtons() {
   return (
     <div className={styles.showcaseWrapper}>
       <div className={styles.showcaseCol}>
-        <Button variant={'filled'} dark={dark}>Filled</Button>
+        <Button variant={'filled'} color={'info'} dark={dark}>Info</Button>
         <Button variant={'filled'} color={'success'} dark={dark}>Success</Button>
         <Button variant={'filled'} color={'warning'} dark={dark}>Warning</Button>
         <Button variant={'filled'} color={'error'} dark={dark}>Error</Button>
@@ -73,7 +73,7 @@ export function ColorButtons() {
       </div>
 
       <div className={styles.showcaseCol}>
-        <Button variant={'outlined'} dark={dark}>Outlined</Button>
+        <Button variant={'outlined'} dark={dark}>Info</Button>
         <Button variant={'outlined'} color={'success'} dark={dark}>Success</Button>
         <Button variant={'outlined'} color={'warning'} dark={dark}>Warning</Button>
         <Button variant={'outlined'} color={'error'} dark={dark}>Error</Button>
@@ -82,7 +82,7 @@ export function ColorButtons() {
       </div>
 
       <div className={styles.showcaseCol}>
-        <Button variant={'text'} dark={dark}>Text</Button>
+        <Button variant={'text'} dark={dark}>Info</Button>
         <Button variant={'text'} color={'success'} dark={dark}>Success</Button>
         <Button variant={'text'} color={'warning'} dark={dark}>Warning</Button>
         <Button variant={'text'} color={'error'} dark={dark}>Error</Button>

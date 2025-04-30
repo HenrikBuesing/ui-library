@@ -8,9 +8,9 @@ import type {ButtonProps} from './types';
 export function Button(props: ButtonProps) {
   const {
     children,
-    color,
-    dark,
-    disabled,
+    color = 'info',
+    dark = false,
+    disabled = false,
     href,
     size = 'medium',
     target,
