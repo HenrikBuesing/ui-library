@@ -184,7 +184,7 @@
 
     &:not(.error) .input:not(:disabled):focus ~ .label {
       opacity: 1;
-      color: var(--uil-outline-focus);
+      color: var(--uil-info);
     }
 
     .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .input:focus ~ .decorator.focus ~ .fieldset,
@@ -193,7 +193,7 @@
     }
 
     .input:focus ~ .fieldset {
-      border-color: var(--uil-outline-focus);
+      border-color: var(--uil-info);
       border-width: 2px;
     }
 
