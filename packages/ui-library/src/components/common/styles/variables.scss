@@ -6,9 +6,10 @@
   --uil-black-lighter: #333333;
   
   --uil-hover-black: rgba(0, 0, 0, .1);
-  --uil-hover-black-w: rgba(0, 0, 0, .1);
+  --uil-box-shadow-w: rgba(0, 0, 0, .3);
 
   --uil-white: #ffffff;
+  --uil-white-b: #ffffff;
   --uil-white-alt: #ffffff;
 
   --uil-grey: #f3f3f3;
@@ -27,6 +28,11 @@
   --uil-error: #CF0934;
   --uil-warning: #FFD700;
   --uil-warning-alt: #d1b21a;
+  
+  --uil-top: initial;
+  --uil-bottom: initial;
+  --uil-left: initial;
+  --uil-right: initial;
 
   --uil-xxxs: .125rem;
   --uil-xxs: .25rem;

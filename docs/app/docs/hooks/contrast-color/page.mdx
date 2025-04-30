@@ -5,7 +5,7 @@ description: Showcase and usage guide of the useContrastColor hook
 
 # useContrastColor
 
-The `useContrastColor` function takes a hex color string as input and returns either `#000000` (black) or `#ffffff` (white),
+The `useContrastColor` function takes a hex color string as input and returns either `#000000` or `#ffffff`,
 based on the contrast ratio of the hex color.
 
 ## Parameters
@@ -15,8 +15,6 @@ The function parameter, `hex`, requires A valid 3 or 6-character hexadecimal col
 ## Usage Example
 
 ```ts
-import {useContrastColor} from "@hbuesing/ui-library";
-
 const textColor = useContrastColor('#37EDDE');
 console.log(textColor); // Output: "#000000"
 ```

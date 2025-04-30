@@ -1,0 +1,230 @@
+---
+title: Toast
+description: Showcase and usage guide of the toast component
+---
+
+import Provider, {alerting, ProviderAlign, ProviderVariant, SimpleToast, TestButton} from './_toast';
+import {Callout} from 'nextra/components';
+
+# Toast
+
+A toast component is a small, temporary popup message used to provide brief feedback or notifications to users in an
+unobtrusive manner.
+
+<Provider>
+  <SimpleToast/>
+</Provider>
+
+## Provider
+
+The `ToastProvider` serves as a wrapper container for displaying toasts. It allows you to configure global settings
+that apply to all toasts, unless overridden by individual toast-specific options. Additionally, it allows you to control
+the on-screen positioning of the toasts.
+
+<Callout type={'info'}>
+  The provider should ideally be set at the root level. However, for the sake of simplicity, it is currently wrapping only the specific showcase content.
+</Callout>
+
+### Alignment
+
+Use the `alignment` prop to override the default vertical (bottom) and horizontal (left) positioning.
+
+<ProviderAlign>
+  <SimpleToast/>
+</ProviderAlign>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <ToastProvider alignment={{vertical: 'top', horizontal: 'right'}}>...</ToastProvider>
+  ```
+</details>
+
+<Callout>
+  Vertical options are `top`, `center` & `bottom` and horizontal options are `left`, `center` & `right`. \
+  If the vertical alignment is set to `bottom`, the newest toast will be at the top instead of at the bottom of the stack.
+</Callout>
+
+### Global toast options
+
+These options apply to all toasts, unless overridden by individual toast options. 
+
+#### Dark
+
+This option allows you to apply the dark-mode setting to all toasts, eliminating the need to configure it individually for each toast. \
+By default the global option is set to `false`.
+
+```tsx
+<ToastProvider dark={true}>
+  ...
+</ToastProvider>
+```
+
+#### Dismissible
+
+Use this option to add a close button. Clicking on the close button will also trigger the `closeCallback` function if
+it is provided. \
+By default the global option is set to `false`.
+
+```tsx
+<ToastProvider dismissible={true}>
+  ...
+</ToastProvider>
+```
+
+#### Limit
+
+The `limit` option overrides the default (4) limit of active toasts on screen. \
+If the limit is reached, the oldest toast will be removed.
+
+```tsx
+<ToastProvider limit={5}>
+  ...
+</ToastProvider>
+```
+
+#### Timeout
+
+The `timeout` specifies when a toast should disappear. Use `persistent` to prevent toasts from disappearing. \
+By default the global option is set to `5000`.
+
+```tsx
+// set the timeout in ms or use 'persistent' to disable the timeout
+<ToastProvider timeout={3000}>
+  ...
+</ToastProvider>
+```
+
+<Callout type={'warning'}>
+  If a toast is persistent, make sure to either use the `dismissible` prop or add your own `action` to allow users to close the toast.
+</Callout>
+
+## Adding toasts
+
+To add toasts you need to use the `queueToast` function. \
+Individual toast options will be preferred over the global options.
+
+```tsx
+const {queueToast} = useToastContext();
+
+queueToast('toast message', {timeout: 3000}); // optionally add toast options
+```
+
+The function returns the toast's ID, which is required for removing it programmatically.
+
+## Removing toasts
+
+To remove toasts programmatically use the `closeToast` function. \
+If you do not provide an ID, every currently active toast will be removed.
+
+```tsx
+const {closeToast} = useToastContext();
+
+closeToast('foo'); // ID returned from queueToast func
+closeToast(); // remove every active toast
+```
+
+## Toast options
+
+Toast options allow you to customize the appearance and behaviour of a toast.
+
+### Action
+
+Add custom actions to the toast.
+
+<Provider>
+  <SimpleToast options={{action: <TestButton/>}}/>
+</Provider>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  queueToast('Toast notification', {action: <Button variant={'text'} dark={dark} onClick={() => closeToast()}>Close</Button>});
+  ```
+</details>
+
+### CloseCallback
+
+Callback function that runs after the toast closes automatically or after clicking the close button.
+
+<Provider>
+  <SimpleToast options={{closeCallback: alerting}}/>
+</Provider>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```ts
+  queueToast('Toast notification', {{closeCallback: callbackFunc()}});
+  ```
+</details>
+
+### Dark
+
+Apply the dark-mode setting.
+
+<Provider>
+  <SimpleToast options={{dark: true}}/>
+</Provider>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```ts
+  queueToast('Toast notification', {dark: true});
+  ```
+</details>
+
+### Dismissible
+
+Use this option to add a close button. Clicking on the close button will also trigger the `closeCallback` function if
+it is provided.
+
+<Provider>
+  <SimpleToast options={{dismissible: true}}/>
+</Provider>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```ts
+  queueToast('Toast notification', {dismissible: true});
+  ```
+</details>
+
+### Timeout
+
+The `timeout` specifies when a toast should disappear. Use `persistent` to prevent toasts from disappearing.
+
+<Provider>
+  <SimpleToast options={{timeout: 'persistent', dismissible: true}}/>
+</Provider>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```ts
+  queueToast('Toast notification', {timeout: 'persistent', dismissible: true});
+  ```
+</details>
+
+### Variant
+
+Set the style of the toast. Use one of `info`, `success`, `warning` or `error`. \
+Not setting this option will render a default styled toast.
+
+<ProviderVariant/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```ts
+  queueToast('Default toast');
+  queueToast('Info toast', {variant: 'info'});
+  queueToast('Success toast', {variant: 'success'});
+  queueToast('Warning toast', {variant: 'warning'});
+  queueToast('Error toast', {variant: 'error'});
+  ```
+</details>

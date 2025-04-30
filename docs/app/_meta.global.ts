@@ -1,4 +1,4 @@
-import {Meta} from "nextra";
+import {Meta} from 'nextra';
 
 const globalMeta: Meta = {
   index: {
@@ -38,7 +38,7 @@ const globalMeta: Meta = {
           'dialog-title': 'DialogTitle',
           'dialog-content': 'DialogContent',
           'dialog-controls': 'DialogControls',
-          notification: 'Notification',
+          toast: 'Toast',
         }
       },
       hooks: {
