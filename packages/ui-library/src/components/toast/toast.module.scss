@@ -83,7 +83,7 @@
 
     &.info {
       color: var(--uil-white);
-      background-color: var(--uil-outline-focus);
+      background-color: var(--uil-info);
     }
 
     &.success {
@@ -113,7 +113,7 @@
       fill: var(--uil-white-b);
 
       &:hover {
-        background-color: var(--uil-hover-black);
+        background-color: rgba(0, 0, 0, .1);
       }
     }
   }

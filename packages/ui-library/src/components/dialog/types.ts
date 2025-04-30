@@ -20,7 +20,7 @@ export type DialogProps = BaseProps & {
 
 export type DialogTitleProps = {
   children: ReactNode;
-  color?: Status | 'info';
+  color?: Status;
   id?: string;
 };
 

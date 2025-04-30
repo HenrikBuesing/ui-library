@@ -22,7 +22,7 @@ export type ToastOptions = {
   dark?: boolean;
   dismissible?: boolean;
   timeout?: number | 'persistent';
-  variant?: 'info' | Status;
+  variant?: Status;
 }
 
 export type ToastProps = BaseProps & {
@@ -32,7 +32,7 @@ export type ToastProps = BaseProps & {
   timeout: number | 'persistent';
   action?: ReactNode;
   dismissible?: boolean;
-  variant?: 'info' | Status | undefined;
+  variant?: Status | undefined;
 }
 
 export type InternalToast = ReactElement<ToastProps, typeof Toast>;
