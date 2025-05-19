@@ -127,7 +127,7 @@
   &:not(:disabled).custom {
      &.filled:hover, &.outlined:hover, &.text:hover {
        opacity: .85;
-       background-color: rgba(var(--uil-custom-hover), .03);
+       background-color: var(--uil-custom-hover);
      }
   }
 
