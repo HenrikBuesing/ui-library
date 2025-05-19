@@ -39,6 +39,11 @@ const globalMeta: Meta = {
           'dialog-content': 'DialogContent',
           'dialog-controls': 'DialogControls',
           toast: 'Toast',
+          '---': {
+            type: 'separator',
+            title: 'Data Display'
+          },
+          tag: 'Tag'
         }
       },
       hooks: {
