@@ -5,5 +5,6 @@ export {Input, InputDecorator} from './components/input';
 export {Checkbox} from './components/check/checkbox';
 export {Radio} from './components/check/radio';
 export {Button} from './components/button';
+export {Tag} from './components/tag';
 
 export {useContrastColor} from './hooks/index';
