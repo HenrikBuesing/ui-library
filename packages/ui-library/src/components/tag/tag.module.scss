@@ -2,8 +2,8 @@
 
 .tag {
   display: block;
-  padding: .25rem .5rem;
-  border-radius: 1rem;
+  padding: var(--uil-xxs) var(--uil-xs);
+  border-radius: var(--uil-m);
 
   &.filled {
     border: transparent;
