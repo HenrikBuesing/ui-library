@@ -8,14 +8,15 @@ import type {TagProps} from './types';
 
 export function Tag(props: TagProps) {
   const {
-    dark,
-    elevated,
-    label,
     color,
-    href,
+    dark,
     deleteIcon,
+    elevated,
+    href,
+    label,
     onDelete,
     onClick,
+    size = 'medium',
     style,
     target,
     variant
@@ -24,10 +25,27 @@ export function Tag(props: TagProps) {
   let delIcon: ReactElement | null = null;
 
   if (onDelete) {
+    let iconColor;
+    
+    switch (color) {
+      case 'info':
+      case 'success':
+      case 'error':
+        iconColor = 'white';
+        break;
+      case 'warning':
+        iconColor = 'black';
+        break;
+      default:
+        iconColor = useContrastColor(color);
+    }
+    
+    if (variant === 'outlined') iconColor = 'black';
+    
     delIcon = deleteIcon && isValidElement(deleteIcon) ? cloneElement(deleteIcon as ReactHTMLElement<HTMLElement>, {
         onClick: handleDelete
       }) :
-      <svg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' onClick={handleDelete}>
+      <svg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' onClick={handleDelete} className={cls([styles.delIcon, styles[size]])} fill={iconColor}>
         <path d='M64 64a16 16 0 0 1 22 0l170 166L425 64a16 16 0 1 1 23 22L278 256l170 169a16 16 0 1 1-23 23L256 280 86 449a16 16 0 1 1-22-24l169-169L64 86a16 16 0 0 1 0-22'/>
       </svg>;
   }
@@ -53,18 +71,35 @@ export function Tag(props: TagProps) {
         borderColor: color,
       };
   }
-  
+
   function setClassName() {
+    let fontsize = global.fontMedium;
+
+    switch (size) {
+      case 'small':
+        fontsize = global.fontSmall;
+        break;
+      case 'medium':
+        fontsize = global.fontMedium;
+        break;
+      case 'large':
+        fontsize = global.fontLarge;
+        break;
+      default:
+        throw new Error(`<Tag> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
+    }
+
     return cls([
-      styles.tag, color && !color.includes('#') && styles[color as Status], styles[variant],
-      elevated && styles.elevated, dark && global.dark, global.fit
+      styles.tag, color && !color.includes('#') && styles[color as Status], styles[variant], global.fit,
+      elevated && styles.elevated, dark && global.dark, fontsize, size === 'small' ? styles.small : styles.large,
+      (onClick ?? href) && styles.clickable
     ]);
   }
   
   if (href) {
     return (
       <a href={href} target={target} style={setStyle()} className={setClassName()}>
-        {label}
+        <span>{label}</span>
 
         {delIcon}
       </a>
@@ -73,7 +108,7 @@ export function Tag(props: TagProps) {
 
   return (
     <div style={setStyle()} className={setClassName()} onClick={() => {onClick?.()}}>
-      {label}
+      <span>{label}</span>
 
       {delIcon}
     </div>

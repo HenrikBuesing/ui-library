@@ -1,9 +1,24 @@
 @use '../common/styles/mixin' as *;
 
 .tag {
-  display: block;
-  padding: var(--uil-xxs) var(--uil-xs);
-  border-radius: var(--uil-m);
+  display: flex;
+  align-items: center;
+  gap: var(--uil-xs);
+  cursor: default;
+  
+  &.clickable {
+    cursor: pointer;
+  }
+  
+  &.small {
+    padding: var(--uil-xs) var(--uil-xs);
+    border-radius: var(--uil-m);
+  }
+  
+  &.large {
+    padding: var(--uil-s) var(--uil-s);
+    border-radius: var(--uil-xxxl);
+  }
 
   &.filled {
     border: transparent;
@@ -64,6 +79,25 @@
     &.outlined {
       color: var(--uil-error);
       border-color: 1px solid var(--uil-error);
+    }
+  }
+  
+  .delIcon {
+    cursor: pointer;
+    
+    &.small {
+      width: var(--uil-s);
+      height: var(--uil-s);
+    }
+
+    &.medium {
+      width: var(--uil-m);
+      height: var(--uil-m);
+    }
+
+    &.large {
+      width: var(--uil-l);
+      height: var(--uil-l);
     }
   }
 }
