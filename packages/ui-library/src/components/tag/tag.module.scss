@@ -11,13 +11,18 @@
   }
   
   &.small {
-    padding: var(--uil-xs) var(--uil-xs);
+    padding: var(--uil-xxs) var(--uil-xs);
     border-radius: var(--uil-m);
   }
   
+  &.medium {
+    padding: var(--uil-xs) var(--uil-s);
+    border-radius: var(--uil-xl);
+  }
+  
   &.large {
-    padding: var(--uil-s) var(--uil-s);
-    border-radius: var(--uil-xxxl);
+    padding: var(--uil-xs) var(--uil-s);
+    border-radius: var(--uil-xxl);
   }
 
   &.filled {
