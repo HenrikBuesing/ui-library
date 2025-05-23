@@ -6,6 +6,10 @@
   gap: var(--uil-xs);
   cursor: default;
   
+  &:focus {
+    opacity: .8;
+  }
+  
   &.clickable {
     cursor: pointer;
   }

@@ -8,6 +8,7 @@ import type {TagProps} from './types';
 
 export function Tag(props: TagProps) {
   const {
+    children,
     color,
     dark,
     deleteIcon,
@@ -17,31 +18,34 @@ export function Tag(props: TagProps) {
     onDelete,
     onClick,
     size = 'medium',
-    style,
     target,
     variant
   } = props;
-  
+
+  const style = setStyle();
+  const classNames = setClassName();
   let delIcon: ReactElement | null = null;
 
   if (onDelete) {
     let iconColor;
-    
-    switch (color) {
-      case 'info':
-      case 'success':
-      case 'error':
-        iconColor = 'white';
-        break;
-      case 'warning':
-        iconColor = 'black';
-        break;
-      default:
-        iconColor = useContrastColor(color);
+
+    if (variant === 'outlined') {
+      iconColor = 'black';
+    } else {
+      switch (color) {
+        case 'info':
+        case 'success':
+        case 'error':
+          iconColor = 'white';
+          break;
+        case 'warning':
+          iconColor = 'black';
+          break;
+        default:
+          iconColor = useContrastColor(color);
+      }
     }
-    
-    if (variant === 'outlined') iconColor = 'black';
-    
+
     delIcon = deleteIcon && isValidElement(deleteIcon) ? cloneElement(deleteIcon as ReactHTMLElement<HTMLElement>, {
         onClick: handleDelete
       }) :
@@ -49,24 +53,22 @@ export function Tag(props: TagProps) {
         <path d='M64 64a16 16 0 0 1 22 0l170 166L425 64a16 16 0 1 1 23 22L278 256l170 169a16 16 0 1 1-23 23L256 280 86 449a16 16 0 1 1-22-24l169-169L64 86a16 16 0 0 1 0-22'/>
       </svg>;
   }
-  
+
   function handleDelete(e: React.MouseEvent<HTMLElement | SVGElement>) {
     e.stopPropagation();
-    
+
     onDelete?.();
   }
 
   function setStyle() {
-    if (!color?.includes('#')) return style;
+    if (!color?.includes('#')) return;
 
     return variant === 'filled' ?
       {
-        ...style,
         backgroundColor: color,
         color: useContrastColor(color),
       } :
       {
-        ...style,
         color: color,
         borderColor: color,
       };
@@ -91,15 +93,19 @@ export function Tag(props: TagProps) {
 
     return cls([
       styles.tag, color && !color.includes('#') && styles[color as Status], styles[variant], global.fit,
-      elevated && styles.elevated, dark && global.dark, fontsize, size === 'small' ? styles.small : styles.large,
+      elevated && styles.elevated, dark && global.dark, fontsize, styles[size],
       (onClick ?? href) && styles.clickable
     ]);
   }
   
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key === 'Enter') onClick?.();
+  }
+
   if (href) {
     return (
-      <a href={href} target={target} style={setStyle()} className={setClassName()}>
-        <span>{label}</span>
+      <a href={href} target={target} style={style} className={classNames}>
+        {label ?? children}
 
         {delIcon}
       </a>
@@ -107,8 +113,15 @@ export function Tag(props: TagProps) {
   }
 
   return (
-    <div style={setStyle()} className={setClassName()} onClick={() => {onClick?.()}}>
-      <span>{label}</span>
+    <div
+      className={classNames}
+      onClick={() => {onClick?.()}}
+      onKeyDown={onClick && handleKeyDown}
+      role={onClick && 'button'}
+      style={style}
+      tabIndex={onClick && 0}
+    >
+      {label ?? children}
 
       {delIcon}
     </div>
