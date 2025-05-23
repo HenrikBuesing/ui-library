@@ -3,15 +3,55 @@ title: Tag
 description: Showcase and usage guide of the tag component
 ---
 
-import Tags, {TagSize} from './_tag';
+import Tags, {ClickTag, TagColor, TagElevation, TagSize, TagVariant} from './_tag';
+import {Callout} from 'nextra/components';
 
 # Tag
 
+A tag component is a small, interactive element typically used in user interfaces to display keywords, labels, or
+categories, often with the ability to be added, removed, or filtered.
+
 <Tags/>
 
+## Variants
+
+The input component offers two distinct variants: `filled` and `outlined`.
+
+<TagVariant/>
+
+## Elevation
+
+The `elevation` prop enables or disables box-shadow styling.
+
+<TagElevation/>
 
 ## Size
 
 The tag component comes in three different sizes: `small`, `medium` and `large`.
 
 <TagSize/>
+
+## Color
+
+Each button variant offers predefined color options, along with the ability to set a custom color. Below are the available options:
+
+<TagColor/>
+
+## OnClick
+
+Add interactivity by providing an `onClick` function. 
+
+<Callout type={'warning'}>
+  Tags are not intended to function as fully interactive buttons. The `onClick` property should be reserved for simple
+  actions, such as applying filters.
+</Callout>
+
+<ClickTag/>
+
+## OnDelete
+
+### Custom Delete Icon
+
+## Link
+
+## Props
