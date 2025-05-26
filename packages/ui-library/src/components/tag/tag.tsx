@@ -84,7 +84,7 @@ export function Tag(props: TagProps) {
   }
   
   function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
-    if (e.key === 'Enter') onClick?.();
+    if (e.key === 'Enter' || e.key === ' ') onClick?.();
   }
 
   if (href) {
