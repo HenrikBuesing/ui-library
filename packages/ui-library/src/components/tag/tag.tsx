@@ -1,6 +1,7 @@
 import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLElement} from 'react';
 import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
+import getFontsize from '@utils/getFontsize';
 import type {Status} from '../common/types';
 import cls from '@utils/conditionalClass';
 import styles from './tag.module.scss';
@@ -75,25 +76,9 @@ export function Tag(props: TagProps) {
   }
 
   function setClassName() {
-    let fontsize = global.fontMedium;
-
-    switch (size) {
-      case 'small':
-        fontsize = global.fontSmall;
-        break;
-      case 'medium':
-        fontsize = global.fontMedium;
-        break;
-      case 'large':
-        fontsize = global.fontLarge;
-        break;
-      default:
-        throw new Error(`<Tag> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
-    }
-
     return cls([
       styles.tag, color && !color.includes('#') && styles[color as Status], styles[variant], global.fit,
-      elevated && styles.elevated, dark && global.dark, fontsize, styles[size],
+      elevated && styles.elevated, dark && global.dark, getFontsize(size), styles[size],
       (onClick ?? href) && styles.clickable
     ]);
   }

@@ -81,7 +81,7 @@ describe('general', () => {
     expect(() => {
       // @ts-expect-error -> test using unsupported size
       render(<Button variant={'text'} size={'unknown size'}>test</Button>)
-    }).toThrowError(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: unknown size`);
+    }).toThrowError(`Error: unsupported size. Expected 'small', 'medium' or 'large', but got: unknown size`);
   });
 
   test('should throw error when using unknown variant', () => {
@@ -183,7 +183,7 @@ describe('color options', () => {
 
     expect(button.style.color).toBeDefined();
     expect(button.style.color).toEqual(rgb);
-    expect(button.className).toEqual('button fit fontMedium medium text custom');
+    expect(button.className).toEqual('button fit medium text custom fontMedium');
   });
 
   test('should render default style', () => {
