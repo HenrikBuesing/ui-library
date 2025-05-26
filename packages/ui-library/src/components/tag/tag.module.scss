@@ -5,13 +5,14 @@
   align-items: center;
   gap: var(--uil-xs);
   cursor: default;
-  
-  &:focus {
-    opacity: .8;
-  }
+  outline: none;
   
   &.clickable {
     cursor: pointer;
+
+    &:focus, &:hover {
+      opacity: .85;
+    }
   }
   
   &.small {
