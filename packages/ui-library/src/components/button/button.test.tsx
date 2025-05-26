@@ -153,10 +153,7 @@ describe('color options', () => {
     // result returns rgb so the provided hex has to be converted to compare
     const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
 
-    expect(button.style.backgroundColor).toBeDefined();
     expect(button.style.backgroundColor).toEqual(rgb);
-
-    expect(button.style.color).toBeDefined();
     expect(button.style.color).toEqual('rgb(255, 255, 255)');
   });
 
@@ -167,10 +164,7 @@ describe('color options', () => {
     // result returns rgb so the provided hex has to be converted to compare
     const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
 
-    expect(button.style.color).toBeDefined();
     expect(button.style.color).toEqual(rgb);
-
-    expect(button.style.border).toBeDefined();
     expect(button.style.border).toEqual(rgb);
   });
 
@@ -181,7 +175,6 @@ describe('color options', () => {
     // result returns rgb so the provided hex has to be converted to compare
     const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
 
-    expect(button.style.color).toBeDefined();
     expect(button.style.color).toEqual(rgb);
     expect(button.className).toEqual('button fit medium text custom fontMedium');
   });
