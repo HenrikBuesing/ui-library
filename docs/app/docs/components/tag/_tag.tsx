@@ -15,6 +15,21 @@ export default function Tags() {
   );
 }
 
+export function TagContent() {
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <div className={styles.showcaseWrapper}>
+      <Tag label={'Label prop'} variant={'filled'} color={'info'} dark={dark}/>
+      
+      <Tag variant={'filled'} color={'info'} dark={dark}>
+        <span>React Children</span>
+      </Tag>
+    </div>
+  );
+}
+
 export function TagVariant() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
@@ -108,6 +123,31 @@ export function ClickTag() {
   return (
     <div className={styles.showcaseWrapper}>
       <Tag label={'Clickable tag'} variant={'filled'} color={'info'} dark={dark} onClick={() => {alert('tag clicked')}}/>
+      <Tag label={'Clickable tag'} variant={'outlined'} color={'info'} dark={dark} onClick={() => {alert('tag clicked')}}/>
+    </div>
+  );
+}
+
+export function DeleteTag() {
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <div className={styles.showcaseWrapper}>
+      <Tag label={'Deletable tag'} variant={'filled'} color={'info'} dark={dark} onDelete={() => {alert('delete clicked')}}/>
+      <Tag label={'Deletable tag'} variant={'outlined'} color={'info'} dark={dark} onDelete={() => {alert('delete clicked')}}/>
+    </div>
+  );
+}
+
+export function LinkTag() {
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <div className={styles.showcaseWrapper}>
+      <Tag label={'Link tag'} variant={'filled'} color={'info'} dark={dark} href={'#link'}/>
+      <Tag label={'Link tag'} variant={'outlined'} color={'info'} dark={dark} href={'#link'}/>
     </div>
   );
 }

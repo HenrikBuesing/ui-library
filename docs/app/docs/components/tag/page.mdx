@@ -3,8 +3,8 @@ title: Tag
 description: Showcase and usage guide of the tag component
 ---
 
-import Tags, {ClickTag, TagColor, TagElevation, TagSize, TagVariant} from './_tag';
-import {Callout} from 'nextra/components';
+import Tags, {ClickTag, DeleteTag, LinkTag, TagColor, TagContent, TagElevation, TagSize, TagVariant} from './_tag';
+import {Callout, Table} from 'nextra/components';
 
 # Tag
 
@@ -13,11 +13,47 @@ categories, often with the ability to be added, removed, or filtered.
 
 <Tags/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag variant={'filled'} label={'Info tag'} color={'info'}/>
+  ```
+</details>
+
+## Content
+
+You can either use React children or the `label` prop to set the content.
+
+<TagContent/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag label={'Label prop'} variant={'filled'} color={'info'}/>
+
+  <Tag variant={'filled'} color={'info'}>
+    <span>React Children</span>
+  </Tag>
+  ```
+</details>
+
 ## Variants
 
 The input component offers two distinct variants: `filled` and `outlined`.
 
 <TagVariant/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag variant={'filled'} label={'Filled tag'} color={'info'}/>
+
+  <Tag variant={'outlined'} label={'Outlined tag'} color={'info'}/>
+  ```
+</details>
 
 ## Elevation
 
@@ -25,11 +61,35 @@ The `elevation` prop enables or disables box-shadow styling.
 
 <TagElevation/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag variant={'filled'} label={'Elevated'} color={'info'} elevated/>
+
+  <Tag variant={'outlined'} label={'Elevated'} color={'info'} elevated/>
+  ```
+</details>
+
 ## Size
 
 The tag component comes in three different sizes: `small`, `medium` and `large`.
 
 <TagSize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag variant={'filled'} label={'Small tag'} color={'info'} size={'small'}/>
+  <Tag variant={'filled'} label={'Medium tag'} color={'info'} size={'medium'}/>
+  <Tag variant={'filled'} label={'Large tag'} color={'info'} size={'large'}/>
+
+  <Tag variant={'outlined'} label={'Small tag'} color={'info'} size={'small'}/>
+  <Tag variant={'outlined'} label={'Medium tag'} color={'info'} size={'medium'}/>
+  <Tag variant={'outlined'} label={'Large tag'} color={'info'} size={'large'}/>
+  ```
+</details>
 
 ## Color
 
@@ -37,21 +97,177 @@ Each button variant offers predefined color options, along with the ability to s
 
 <TagColor/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag label={'Info'} variant={'filled'} color={'info'}/>
+  <Tag label={'Info'} variant={'outlined'} color={'info'}/>
+
+  <Tag label={'Success'} variant={'filled'} color={'success'}/>
+  <Tag label={'Success'} variant={'outlined'} color={'success'}/>
+
+  <Tag label={'Warning'} variant={'filled'} color={'warning'}/>
+  <Tag label={'Warning'} variant={'outlined'} color={'warning'}/>
+
+  <Tag label={'Error'} variant={'filled'} color={'error'}/>
+  <Tag label={'Error'} variant={'outlined'} color={'error'}/>
+
+  <Tag label={'Custom'} variant={'filled'} color={'#c322a7'}/>
+  <Tag label={'Custom'} variant={'outlined'} color={'#c322a7'}/>
+
+  <Tag label={'Custom'} variant={'filled'} color={'#63d5c5'}/>
+  <Tag label={'Custom'} variant={'outlined'} color={'#63d5c5'}/>
+  ```
+</details>
+
 ## OnClick
 
 Add interactivity by providing an `onClick` function. 
 
 <Callout type={'warning'}>
-  Tags are not intended to function as fully interactive buttons. The `onClick` property should be reserved for simple
+  Tags are **not** intended to function as fully interactive buttons. The `onClick` property should be reserved for simple
   actions, such as applying filters.
 </Callout>
 
 <ClickTag/>
 
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag label={'Clickable tag'} variant={'filled'} color={'info'} onClick={() => {alert('tag clicked')}}/>
+  <Tag label={'Clickable tag'} variant={'outlined'} color={'info'} onClick={() => {alert('tag clicked')}}/>
+  ```
+</details>
+
 ## OnDelete
 
-### Custom Delete Icon
+Use the `onDelete` prop to clear filter options or remove the tag from a selection of tags.
+
+<DeleteTag/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag label={'Deletable tag'} variant={'filled'} color={'info'} onDelete={() => {alert('delete clicked')}}/>
+  <Tag label={'Deletable tag'} variant={'outlined'} color={'info'} onDelete={() => {alert('delete clicked')}}/>
+  ```
+</details>
+
+you can use third-party icon components such as [fontawesome icons](https://fontawesome.com) to customize the delete icon.
 
 ## Link
 
+Use the `href` prop  to convert the tag into a link-tag.
+
+<LinkTag/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Tag label={'Link tag'} variant={'filled'} color={'info'} href={'#link'}/>
+  <Tag label={'Link tag'} variant={'outlined'} color={'info'} href={'#link'}/>
+  ```
+</details>
+
 ## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`info` | `success` | `warning` | `error` | `string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Color of the tag</p>
+      <p>⚠️ If you use a custom color make sure it is a valid HEX value.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>deleteIcon</Table.Td>
+    <Table.Td>`Node`</Table.Td>
+    <Table.Td></Table.Td>
+    <Table.Td>Sets a custom delete icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>elevated</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the elevated style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>href</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Set the link target</p>
+      <p>Transforms the tag to a link-tag.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>label</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Content of the component</p>
+      <p>⚠️ This is mutually exclusive with the `children` prop.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onClick</Table.Td>
+    <Table.Td>`function`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the onClick handler function.</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onDelete</Table.Td>
+    <Table.Td>`function`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the onDelete handler function.</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>size</Table.Td>
+    <Table.Td>`small` | `medium` | `large`</Table.Td>
+    <Table.Td><b>medium</b></Table.Td>
+    <Table.Td>Set the size of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>target</Table.Td>
+    <Table.Td>`_self` | `_blank` | `_parent` | `_top` | `_unfencedTop`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>
+      <p>Set the link target</p>
+      <p>⚠️ This is only available if the `href` prop is set.</p>
+    </Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>variant</Table.Td>
+    <Table.Td>`filled` | `outlined`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>The variant to use</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
