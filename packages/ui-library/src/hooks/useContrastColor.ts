@@ -1,5 +1,6 @@
 // as soon as css color-contrast() is widely available this won't be necessary anymore
 // for current status see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-contrast and https://caniuse.com/?search=color-contrast()
+// UPDATE 26.05.2025: color-contrast has been renamed to contrast-color, docs have been removed until browsers implement the feature
 
 const HEX_COLOR = new RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
 

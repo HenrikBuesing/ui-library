@@ -1,6 +1,6 @@
 import {afterEach, beforeAll, describe, expect, test, vi} from 'vitest';
-import {DialogContent} from './dialogContent';
 import {DialogControls} from './dialogControls';
+import {DialogContent} from './dialogContent';
 import {render} from '@testing-library/react';
 import {DialogTitle} from './dialogTitle';
 import {Dialog} from './dialog';

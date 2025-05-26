@@ -21,7 +21,7 @@ export function RadioGroup(props: RadioGroupProps) {
   }
 
   return (
-    <div className={cls([styles.radioWrapper, styles[direction]])}>
+    <div className={cls([styles.radioWrapper, styles[direction]])} role={'radiogroup'}>
       {options.map((option, idx) =>
         <Radio
           key={idx}

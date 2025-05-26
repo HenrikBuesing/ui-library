@@ -10,17 +10,17 @@
 
 .fontSmall {
   font-size: var(--uil-m);
-  line-height: var(--uil-m);
+  line-height: var(--uil-xl);
 }
 
 .fontMedium {
   font-size: var(--uil-l);
-  line-height: var(--uil-l);
+  line-height: var(--uil-xxl);
 }
 
 .fontLarge {
   font-size: var(--uil-xxl);
-  line-height: var(--uil-xxl);
+  line-height: 2.25rem;
 }
 
 .dark {
@@ -47,7 +47,7 @@
   --uil-error: #fb0b41;
   --uil-error-hover: 239, 34, 79;
   
-  --uil-custom-hover: 255, 255, 255;
+  --uil-custom-hover: rgba(255, 255, 255, .03);
 
   --uil-box-shadow-w: rgba(150, 150, 150, 0.3);
 }

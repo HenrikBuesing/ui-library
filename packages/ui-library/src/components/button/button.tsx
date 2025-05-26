@@ -1,6 +1,8 @@
 import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
 import React, {type CSSProperties} from 'react';
+import getFontsize from '@utils/getFontsize';
+import type {Status} from '../common/types';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';
 import type {ButtonProps} from './types';
@@ -44,26 +46,10 @@ export function Button(props: ButtonProps) {
   }
   
   function setClasses() {
-    let fontSize;
-
-    switch (size) {
-      case 'small':
-        fontSize = global.fontSmall;
-        break;
-      case 'medium':
-        fontSize = global.fontMedium;
-        break;
-      case 'large':
-        fontSize = global.fontLarge;
-        break;
-      default:
-        throw new Error(`<Button> received an unsupported size. Expected 'small', 'medium' or 'large', but got: ${String(size)}`);
-    }
-
     return cls([
-      styles.button, global.fit, fontSize, styles[size], styles[variant], dark && global.dark,
-      color && !color.includes('#') && styles[color as 'success' | 'warning' | 'error'], style && styles.custom,
-      disabled && styles.disabled
+      styles.button, global.fit, styles[size], styles[variant], dark && global.dark,
+      color && !color.includes('#') && styles[color as Status], style && styles.custom,
+      disabled && styles.disabled, getFontsize(size)
     ]);
   }
   
