@@ -11,9 +11,9 @@ export function Tag(props: TagProps) {
   const {
     children,
     color,
-    dark,
+    dark = false,
     deleteIcon,
-    elevated,
+    elevated = false,
     href,
     label,
     onDelete,
