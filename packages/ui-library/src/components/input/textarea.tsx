@@ -8,8 +8,8 @@ import React from 'react';
 
 export function Textarea(props: Omit<TextareaProps, 'placeholder'>) {
   const {
-    dark,
-    error,
+    dark = false,
+    error = false,
     helpText,
     id,
     label,
@@ -22,7 +22,7 @@ export function Textarea(props: Omit<TextareaProps, 'placeholder'>) {
   const helpId = helpText ? generateKey() : undefined;
 
   return (
-    <Wrapper dark={dark} error={error} helpText={helpText} id={ID} label={label} required={required} isTextarea>
+    <Wrapper dark={dark} error={error} helpId={helpId} helpText={helpText} id={ID} label={label} required={required} isTextarea>
       <textarea
         id={ID}
         className={cls([styles.input, styles.textarea, styles[resize], global.fontMedium])}

@@ -27,7 +27,7 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
   const helpId = helpText ? generateKey() : undefined;
 
   return (
-    <Wrapper dark={dark} error={error} helpText={helpText} id={ID} label={label} required={required} variant={variant}>
+    <Wrapper dark={dark} error={error} helpId={helpId} helpText={helpText} id={ID} label={label} required={required} variant={variant}>
       <input
         id={ID}
         className={`${styles.input} ${global.fontMedium}`}
