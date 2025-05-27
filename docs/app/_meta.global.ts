@@ -27,6 +27,7 @@ const globalMeta: Meta = {
           button: 'Button',
           input: 'Input',
           'input-decorator': 'InputDecorator',
+          textarea: 'Textarea',
           checkbox: 'Checkbox',
           radio: 'Radio',
           'radio-group': 'RadioGroup',
