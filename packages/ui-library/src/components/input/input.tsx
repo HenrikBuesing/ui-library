@@ -2,9 +2,9 @@ import global from '../common/styles/global.module.scss';
 import {InputDecorator} from './inputDecorator';
 import generateKey from '@utils/generateKey';
 import React, {isValidElement} from 'react';
-import cls from '@utils/conditionalClass';
-import type {InputProps} from './types';
+import Wrapper from './internal/wrapper';
 import styles from './input.module.scss';
+import type {InputProps} from './types';
 
 export function Input(props: Omit<InputProps, 'placeholder'>) {
   const {
@@ -27,33 +27,15 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
   const helpId = helpText ? generateKey() : undefined;
 
   return (
-    <div className={cls([styles.inputField, dark && global.dark])}>
-      <div className={cls([styles.inputWrapper, variant === 'basic' ? styles.basic : styles.outlined, error && styles.error])}>
-        <input
-          id={ID}
-          className={`${styles.input} ${global.fontMedium}`}
-          placeholder={''}
-          required={required}
-          {...inputProps}
-          aria-describedby={helpId}
-        />
-
-        {children && children}
-
-        <fieldset className={styles.fieldset} aria-hidden>
-          <legend className={styles.legend}>
-            <span className={styles.labelText}>{label}</span>
-            {required && <span className={`${styles.labelText} ${styles.asterisk}`} aria-hidden>*</span>}
-          </legend>
-        </fieldset>
-
-        <label htmlFor={ID} className={styles.label}>
-          <span className={styles.labelText}>{label}</span>
-          {required && <span className={`${styles.labelText} ${styles.asterisk}`} aria-hidden>*</span>}
-        </label>
-      </div>
-
-      {helpText && <div className={cls([styles.helpText, error && styles.error])} id={helpId}>{helpText}</div>}
-    </div>
+    <Wrapper dark={dark} error={error} helpText={helpText} id={ID} label={label} required={required} variant={variant}>
+      <input
+        id={ID}
+        className={`${styles.input} ${global.fontMedium}`}
+        placeholder={''}
+        required={required}
+        {...inputProps}
+        aria-describedby={helpId}
+      />
+    </Wrapper>
   );
 }
