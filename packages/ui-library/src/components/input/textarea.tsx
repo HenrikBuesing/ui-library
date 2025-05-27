@@ -13,7 +13,7 @@ export function Textarea(props: Omit<TextareaProps, 'placeholder'>) {
     helpText,
     id,
     label,
-    resizable = 'both',
+    resize = 'both',
     required,
     ...inputProps
   } = props;
@@ -25,7 +25,7 @@ export function Textarea(props: Omit<TextareaProps, 'placeholder'>) {
     <Wrapper dark={dark} error={error} helpText={helpText} id={ID} label={label} required={required} isTextarea>
       <textarea
         id={ID}
-        className={cls([styles.input, styles.textarea, styles[resizable], global.fontMedium])}
+        className={cls([styles.input, styles.textarea, styles[resize], global.fontMedium])}
         placeholder={''}
         required={required}
         {...inputProps}

@@ -14,7 +14,7 @@ export type TextareaProps = BaseComponentProps<'textarea'> & {
   label: string;
   error?: boolean;
   helpText?: string;
-  resizable?: 'both' | 'vertical' | 'horizontal' | 'none';
+  resize?: 'both' | 'vertical' | 'horizontal' | 'none';
 };
 
 export type InputDecoratorProps = {
