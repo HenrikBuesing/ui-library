@@ -1,0 +1,107 @@
+---
+title: textarea
+description: Showcase and usage guide of the textarea component
+---
+
+import DefaultTextarea, {TextareaResize, TextAreaValidate} from './_textarea';
+import {Callout, Table} from 'nextra/components';
+
+# Textarea
+
+The textarea component allows users to enter and edit multi-line text.
+
+<DefaultTextarea/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Textarea label={'Textarea'} rows={1}/>
+  ```
+</details>
+
+The `textarea` and `input` components function similarly, with the key differences being that the `textarea` offers
+only a single variant and does not support the `decorator` component.  
+For more usage examples, please refer to the [input](/docs/components/input) documentation page.
+
+## Resize
+
+The textarea can be resized vertically, horizontally, both directions, or can be fixed without resizing.
+
+<TextareaResize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Textarea label={'Textarea'} rows={5} cols={50} resize={'none'}/>
+  ```
+</details>
+
+<Callout>
+  Use the props `rows` and `cols` to overwrite the default width and height.
+</Callout>
+
+## Validation
+
+Use a combination of the error state and helpText prop to give users additional information.
+
+<TextAreaValidate/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```jsx
+  <Textarea label={'Textarea'} rows={1} cols={75} resize={'vertical'} error 
+            helpText={'Additional information about the textarea or error'} defaultValue={'Error'}/>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>error</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Toggle the error state</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>helpText</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the help text</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>label</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the label text</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>resize</Table.Td>
+    <Table.Td>`both` | `vertical` | `horizontal` | `none`</Table.Td>
+    <Table.Td><b>both</b></Table.Td>
+    <Table.Td>Define how the textarea can be resized</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `textarea` props (e.g. `rows` & `cols`).
+</Callout>

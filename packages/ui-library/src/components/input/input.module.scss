@@ -7,6 +7,8 @@
     position: relative;
     display: flex;
     align-items: center;
+    width: fit-content;
+    max-width: 100%;
 
     &.basic {
       border-bottom: 1px solid var(--uil-grey-dark);
@@ -122,6 +124,10 @@
       color: var(--uil-black-w);
       opacity: .6;
       transition: top .25s ease-in-out;
+      
+      &.textareaLabel {
+        top: var(--uil-m);
+      }
     }
 
     .labelText {
@@ -163,7 +169,29 @@
         }
       }
     }
+    
+    .textarea {
+      min-width: fit-content;
+      min-height: fit-content;
+      margin: var(--uil-xxs);
 
+      &.both {
+        resize: both;
+      }
+
+      &.vertical {
+        resize: vertical;
+      }
+
+      &.horizontal {
+        resize: horizontal;
+      }
+
+      &.none {
+        resize: none;
+      }
+    }
+    
     .decorator {
       min-width: fit-content;
       opacity: .75;
@@ -179,7 +207,7 @@
 
     .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label,
     .decorator.visible ~ .label {
-      top: -35%;
+      top: -1rem;
     }
 
     &:not(.error) .input:not(:disabled):focus ~ .label {

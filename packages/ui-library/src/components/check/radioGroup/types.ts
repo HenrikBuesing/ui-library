@@ -1,9 +1,7 @@
 import type {ChangeEventHandler, CSSProperties, ReactNode} from 'react';
 import type {BaseProps} from '../../common/types';
 
-export type RadioGroupProps = BaseProps & AdditionalRadioGroupProps;
-
-type AdditionalRadioGroupProps = {
+export type RadioGroupProps = BaseProps & {
   options: RadioOption[];
   color?: CSSProperties['backgroundColor'];
   direction?: 'row' | 'column';
