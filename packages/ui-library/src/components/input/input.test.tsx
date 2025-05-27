@@ -1,6 +1,7 @@
 import {render, screen} from '@testing-library/react';
 import {InputDecorator} from './inputDecorator';
 import {describe, expect, test} from 'vitest';
+import {Textarea} from './textarea';
 import {Input} from './input';
 import React from 'react';
 
@@ -32,12 +33,12 @@ describe('input', () => {
   test('should render input with helpText', () => {
     const {container} = render(<Input label={'basic'} variant={'basic'} helpText={'helpText'}/>);
 
-    const help = container.getElementsByClassName('helpText');
-    expect(help[0].textContent).toEqual('helpText');
+    const help = container.getElementsByClassName('helpText')[0];
+    expect(help.textContent).toEqual('helpText');
 
     const input = container.getElementsByClassName('input')[0] as HTMLInputElement;
 
-    expect(input.getAttribute('aria-describedby')).toEqual(help[0].id);
+    expect(input.getAttribute('aria-describedby')).toEqual(help.id);
   });
 
   test('should render input with children', () => {
@@ -128,5 +129,36 @@ describe('InputDecorator', () => {
 
     const image = screen.getByAltText('test');
     expect(image).toBeDefined();
+  });
+});
+
+describe('textarea', () => {
+  test('should render textarea', () => {
+    const {container} = render(<Textarea label={'Test'}/>);
+    
+    const textarea = container.getElementsByClassName('textarea')[0];
+    
+    expect(textarea).toBeDefined();
+  });
+
+  test('should render not resizable textarea', () => {
+    const {container} = render(<Textarea label={'Not resizable'} resize={'none'}/>);
+
+    const textarea = container.getElementsByClassName('textarea none')[0];
+    expect(textarea).toBeDefined();
+
+    const label = container.getElementsByClassName('textareaLabel')[0];
+    expect(label.textContent).toEqual('Not resizable');
+  });
+
+  test('should render textarea with helpText', () => {
+    const {container} = render(<Textarea label={'basic'} helpText={'HelpText'}/>);
+
+    const help = container.getElementsByClassName('helpText')[0];
+    expect(help.textContent).toEqual('HelpText');
+
+    const input = container.getElementsByClassName('input')[0] as HTMLInputElement;
+
+    expect(input.getAttribute('aria-describedby')).toEqual(help.id);
   });
 });
