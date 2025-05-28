@@ -1,0 +1,58 @@
+@use '../common/styles/mixin' as *;
+
+.circularProgress {
+  transform: rotate(-90deg);
+
+  &.indeterminate {
+    animation: 1.5s ease-in-out 0s infinite normal none running rotate;
+
+    .spinner {
+      animation: 1.5s ease-in-out 0s infinite normal none running spinning;
+    }
+  }
+
+  .spinner {
+    &.info {
+      stroke: var(--uil-info);
+    }
+
+    &.success {
+      stroke: var(--uil-success);
+    }
+
+    &.warning {
+      stroke: var(--uil-warning);
+    }
+
+    &.error {
+      stroke: var(--uil-error);
+    }
+  }
+}
+
+@keyframes spinning {
+  0% {
+    stroke-dasharray: 1px, 120px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90px, 120px;
+    stroke-dashoffset: -10px;
+  }
+
+  100% {
+    stroke-dasharray: 1px, 120px;
+    stroke-dashoffset: -120px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
