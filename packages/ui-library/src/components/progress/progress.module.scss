@@ -1,0 +1,156 @@
+@use '../common/styles/mixin' as *;
+
+.circularProgress {
+  height: 1.875rem;
+  width: 1.875rem;
+  transform: rotate(-90deg);
+
+  &.indeterminate {
+    animation: 1.5s ease-in-out 0s infinite normal none running rotate;
+
+    .spinner {
+      animation: 1.5s ease-in-out 0s infinite normal none running spinning;
+    }
+  }
+
+  .spinner {
+    transition: stroke-dashoffset var(--uil-progress-delay) ease-in-out 0ms;
+    
+    &.info {
+      stroke: var(--uil-info);
+    }
+
+    &.success {
+      stroke: var(--uil-success);
+    }
+
+    &.warning {
+      stroke: var(--uil-warning);
+    }
+
+    &.error {
+      stroke: var(--uil-error);
+    }
+  }
+}
+
+.linearProgress {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 5px;
+
+  &.info {
+    background-color: var(--uil-info-o);
+  }
+
+  &.success {
+    background-color: var(--uil-success-o);
+  }
+
+  &.warning {
+    background-color: var(--uil-warning-o);
+  }
+
+  &.error {
+    background-color: var(--uil-error-o);
+  }
+  
+  &.custom {
+    background-color: var(--uil-grey-alt);
+  }
+
+  .progressBar {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 100%;
+    width: auto;
+    transition: right var(--uil-progress-delay) ease-in-out 0ms;
+
+    &.first {
+      animation: 2.5s ease-in-out 0s infinite normal none running moving;
+    }
+
+    &.second {
+      animation: 2.5s ease-in-out 0s infinite normal none running moving-alt;
+    }
+
+    &.info {
+      background-color: var(--uil-info);
+    }
+
+    &.success {
+      background-color: var(--uil-success);
+    }
+
+    &.warning {
+      background-color: var(--uil-warning);
+    }
+
+    &.error {
+      background-color: var(--uil-error);
+    }
+  }
+}
+
+@keyframes spinning {
+  0% {
+    stroke-dasharray: 1px, 120px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90px, 120px;
+    stroke-dashoffset: -10px;
+  }
+
+  100% {
+    stroke-dasharray: 1px, 120px;
+    stroke-dashoffset: -120px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moving {
+  0% {
+    left: -25%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes moving-alt {
+  0% {
+    left: -25%;
+    right: 100%;
+  }
+
+  55% {
+    left: -35%;
+    right: 100%;
+  }
+
+  100% {
+    left: 100%;
+    right: -150%;
+  }
+}
