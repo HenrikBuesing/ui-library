@@ -2,7 +2,7 @@ import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
 import React, {type CSSProperties} from 'react';
 import getFontsize from '@utils/getFontsize';
-import type {Status} from '../common/types';
+import {isStatus} from '@utils/checkTypes';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';
 import type {ButtonProps} from './types';
@@ -21,9 +21,10 @@ export function Button(props: ButtonProps) {
   } = props;
 
   const style = setStyle();
+  const className = setClasses();
 
   function setStyle(): CSSProperties | undefined {
-    if (disabled || !color?.includes('#')) return undefined;
+    if (disabled || isStatus(color)) return undefined;
 
     switch (variant) {
       case 'filled':
@@ -48,7 +49,7 @@ export function Button(props: ButtonProps) {
   function setClasses() {
     return cls([
       styles.button, global.fit, styles[size], styles[variant], dark && global.dark,
-      color && !color.includes('#') && styles[color as Status], style && styles.custom,
+      isStatus(color) ? styles[color] : styles.custom,
       disabled && styles.disabled, getFontsize(size)
     ]);
   }
@@ -61,7 +62,7 @@ export function Button(props: ButtonProps) {
         id={buttonProps.id}
         title={buttonProps.title}
         style={style}
-        className={setClasses()}
+        className={className}
       >
         {children}
       </a>
@@ -71,7 +72,7 @@ export function Button(props: ButtonProps) {
   return (
     <button
       style={style}
-      className={setClasses()}
+      className={className}
       type={buttonProps.type ?? 'button'}
       disabled={disabled}
       aria-disabled={disabled}
