@@ -1,0 +1,197 @@
+---
+title: Progress
+description: Showcase and usage guide of the progress components
+---
+
+import CircleDefault, {
+  CircleColor,
+  CircleDeterminate,
+  CircleSize, LinearColor,
+  LinearDefault,
+  LinearDeterminate,
+  LinearSize
+} from './_progress';
+import {Callout, Table} from 'nextra/components';
+
+# Progress
+
+A progress component is a visual indicator that shows the completion status of a task or process in real-time and can
+be either determinate, displaying specific progress, or indeterminate, indicating ongoing activity without a known endpoint.
+
+Currently, two types of progress components are available: `CircularProgress` and `LinearProgress`.
+
+## Circular
+
+<CircleDefault/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <CircularProgress/>
+  ```
+</details>
+
+### Size
+
+Use the `size` prop to modify the components size. By default, the size is set to 30.
+
+<CircleSize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <CircularProgress size={30}/>
+  <CircularProgress size={50}/>
+  <CircularProgress size={'70px'}/> // you can also use px or rem units
+  ```
+</details>
+
+### Deterministic
+
+If the `value` prop is provided, the component switches to a determinate loading state, reflecting specific progress.
+
+<CircleDeterminate/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <CircularProgress value={25}/>
+  <CircularProgress value={50}/>
+  <CircularProgress value={75}/>
+  <CircularProgress value={value}/>
+  ```
+</details>
+
+<Callout type={'warning'}>
+  The component utilizes a CSS `transition` to enable smoother animations, with a default duration of 250ms.
+  If you need to update the `value` prop more rapidly, consider adjusting the CSS variable `--uil-progress-delay`.
+</Callout>
+
+### Color
+
+The `color` prop allows you to change the color of the loading spinner.
+
+<CircleColor/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <CircularProgress color={'info'}/>
+  <CircularProgress color={'success'}/>
+  <CircularProgress color={'warning'}/>
+  <CircularProgress color={'error'}/>
+  <CircularProgress color={'#ba26f8'}/>
+  ```
+</details>
+
+## Linear
+
+<LinearDefault/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <LinearProgress/>
+  ```
+</details>
+
+### Size
+
+Modify the height of the progress-bar. By default, the height is set to 5.  
+The progress-bar will always match the width of its parent component.
+
+<LinearSize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <LinearProgress size={3}/>
+  <LinearProgress size={6}/>
+  <LinearProgress size={'9px'}/> // you can also use px or rem units
+  ```
+</details>
+
+### Deterministic
+
+If the `value` prop is provided, the component switches to a determinate loading state, reflecting specific progress.
+
+<LinearDeterminate/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <LinearProgress value={25}/>
+  <LinearProgress value={50}/>
+  <LinearProgress value={75}/>
+  <LinearProgress value={value}/>
+  ```
+</details>
+
+<Callout type={'warning'}>
+  The component utilizes a CSS `transition` to enable smoother animations, with a default duration of 250ms.
+  If you need to update the `value` prop more rapidly, consider adjusting the CSS variable `--uil-progress-delay`.
+</Callout>
+
+### Color
+
+The `color` prop allows you to change the color of the progress-bar.
+
+<LinearColor/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <LinearProgress color={'info'}/>
+  <LinearProgress color={'success'}/>
+  <LinearProgress color={'warning'}/>
+  <LinearProgress color={'error'}/>
+  <LinearProgress color={'#ba26f8'}/>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td><b>info</b></Table.Td>
+    <Table.Td>color of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>size</Table.Td>
+    <Table.Td>`number` | `string`</Table.Td>
+    <Table.Td><b>30</b> | <b>5</b></Table.Td>
+    <Table.Td>Increase or decrease the components size</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>value</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Switches the component to a determinate state</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
