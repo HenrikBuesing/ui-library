@@ -26,17 +26,17 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.9",
-    "@eslint/js": "^9.27.0",
-    "@types/node": "^22.15.21",
-    "@types/react": "^19.1.5",
+    "@eslint/js": "^9.28.0",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.28.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.2.0",
-    "sass": "^1.89.0",
-    "turbo": "^2.5.3",
+    "sass": "^1.89.1",
+    "turbo": "^2.5.4",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.33.1"
   },
   "packageManager": "npm@11.4.1"
 }
