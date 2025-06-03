@@ -3,15 +3,17 @@ import {writeFileSync} from 'node:fs';
 import * as esbuild from 'esbuild';
 
 try {
-  console.log(`using [${process.env.NODE_ENV ?? 'dev'}] config...`);
+  const isProduction = process.env.NODE_ENV === 'production';
+  
+  console.log(`using ${isProduction ? 'production' : 'dev'} config...`);
   
   const result = await esbuild.build(
     {
       entryPoints: ['src/index.ts'],
       outdir: 'dist',
       bundle: true,
-      minify: process.env.NODE_ENV === 'production',
-      sourcemap: process.env.NODE_ENV !== 'production',
+      minify: isProduction,
+      sourcemap: !isProduction,
       metafile: true,
       external: ['react', 'react-dom'],
       format: 'esm',
@@ -22,7 +24,7 @@ try {
     }
   );
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (!isProduction) {
     writeFileSync('meta.json', JSON.stringify(result.metafile));
   }
 
