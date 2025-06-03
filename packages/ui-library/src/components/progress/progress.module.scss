@@ -6,10 +6,10 @@
   transform: rotate(-90deg);
 
   &.indeterminate {
-    animation: 1.5s ease-in-out 0s infinite normal none running rotate;
+    animation: 1.5s ease-in-out 0s infinite rotate;
 
     .spinner {
-      animation: 1.5s ease-in-out 0s infinite normal none running spinning;
+      animation: 1.5s ease-in-out 0s infinite spinning;
     }
   }
 
@@ -30,6 +30,33 @@
 
     &.error {
       stroke: var(--uil-error);
+    }
+  }
+
+  @keyframes spinning {
+    0% {
+      stroke-dasharray: 1px, 120px;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 90px, 120px;
+      stroke-dashoffset: -10px;
+    }
+
+    100% {
+      stroke-dasharray: 1px, 120px;
+      stroke-dashoffset: -120px;
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
     }
   }
 }
@@ -69,11 +96,11 @@
     transition: right var(--uil-progress-delay) ease-in-out 0ms;
 
     &.first {
-      animation: 2.5s ease-in-out 0s infinite normal none running moving;
+      animation: 2.5s ease-in-out 0s infinite moving;
     }
 
     &.second {
-      animation: 2.5s ease-in-out 0s infinite normal none running moving-alt;
+      animation: 2.5s ease-in-out 0s infinite moving-alt;
     }
 
     &.info {
@@ -92,65 +119,38 @@
       background-color: var(--uil-error);
     }
   }
-}
 
-@keyframes spinning {
-  0% {
-    stroke-dasharray: 1px, 120px;
-    stroke-dashoffset: 0;
+  @keyframes moving {
+    0% {
+      left: -25%;
+      right: 100%;
+    }
+
+    60% {
+      left: 100%;
+      right: -90%;
+    }
+
+    100% {
+      left: 100%;
+      right: -90%;
+    }
   }
 
-  50% {
-    stroke-dasharray: 90px, 120px;
-    stroke-dashoffset: -10px;
-  }
+  @keyframes moving-alt {
+    0% {
+      left: -25%;
+      right: 100%;
+    }
 
-  100% {
-    stroke-dasharray: 1px, 120px;
-    stroke-dashoffset: -120px;
-  }
-}
+    55% {
+      left: -35%;
+      right: 100%;
+    }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes moving {
-  0% {
-    left: -25%;
-    right: 100%;
-  }
-
-  60% {
-    left: 100%;
-    right: -90%;
-  }
-
-  100% {
-    left: 100%;
-    right: -90%;
-  }
-}
-
-@keyframes moving-alt {
-  0% {
-    left: -25%;
-    right: 100%;
-  }
-
-  55% {
-    left: -35%;
-    right: 100%;
-  }
-
-  100% {
-    left: 100%;
-    right: -150%;
+    100% {
+      left: 100%;
+      right: -150%;
+    }
   }
 }
