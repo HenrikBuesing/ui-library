@@ -41,6 +41,7 @@ const globalMeta: Meta = {
           'dialog-controls': 'DialogControls',
           toast: 'Toast',
           progress: 'Progress',
+          skeleton: 'Skeleton',
           '---': {
             type: 'separator',
             title: 'Data Display'

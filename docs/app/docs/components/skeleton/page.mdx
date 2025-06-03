@@ -1,0 +1,128 @@
+---
+title: Skeleton
+description: Showcase and usage guide of the skeleton component
+---
+
+import DefaultSkeleton, {SkeletonAnim, SkeletonRadius, SkeletonSize} from './_skeleton';
+import {Callout, Table} from 'nextra/components';
+
+# Skeleton
+
+A skeleton component provides a placeholder of the UI while data is loading, improving perceived responsiveness.
+
+<DefaultSkeleton/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <div className={'header'}>
+    <Skeleton width={'2rem'} height={'2rem'} rounded={'full'}/>
+    <Skeleton width={'15rem'}/>
+  </div>
+
+  <Skeleton height={'9rem'} rounded={'light'}/>
+  <Skeleton width={'75%'} rounded={'light'}/>
+  ```
+</details>
+
+## Size
+
+Customize the skeleton dimensions with the `height` and `width` props.
+
+<SkeletonSize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Skeleton height={'7rem'} width={'12rem'}/>
+  <Skeleton height={'10rem'} width={'5rem'}/>
+  ```
+</details>
+
+## Pulse animation
+
+By default, every Skeleton has a pulse animation. To disable it, use the `disableAnimation` prop.
+
+<SkeletonAnim/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <div className={'header'}>
+    <Skeleton width={'2rem'} height={'2rem'} rounded={'full'} disableAnimation/>
+    <Skeleton width={'15rem'} disableAnimation/>
+  </div>
+
+  <Skeleton height={'9rem'} rounded={'light'} disableAnimation/>
+  <Skeleton width={'75%'} rounded={'light'} disableAnimation/>
+  ```
+</details>
+
+<Callout type={'info'}>
+  The default animation duration is 2.5 seconds. To customize it, override the CSS variable `--uil-pulse-anim`.
+</Callout>
+
+## Rounded
+
+Use one of `light`, `medium` or `full` to customize the skeletons border radius.
+
+<SkeletonRadius/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Skeleton height={'5rem'} width={'5rem'}/>
+  <Skeleton height={'5rem'} width={'5rem'} rounded={'light'}/>
+  <Skeleton height={'5rem'} width={'5rem'} rounded={'medium'}/>
+  <Skeleton height={'5rem'} width={'5rem'} rounded={'full'}/>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disableAnimation</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Disables the pulse animation</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>height</Table.Td>
+    <Table.Td>`string` | number</Table.Td>
+    <Table.Td><b>1rem</b></Table.Td>
+    <Table.Td>Set the component height</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>rounded</Table.Td>
+    <Table.Td>`light` | `medium` | `full`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Set the border radius</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>width</Table.Td>
+    <Table.Td>`string` | number</Table.Td>
+    <Table.Td><b>100%</b></Table.Td>
+    <Table.Td>Set the component width</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
