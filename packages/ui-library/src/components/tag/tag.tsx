@@ -2,7 +2,7 @@ import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLEl
 import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
 import getFontsize from '@utils/getFontsize';
-import type {Status} from '../common/types';
+import {isStatus} from '@utils/checkTypes';
 import cls from '@utils/conditionalClass';
 import styles from './tag.module.scss';
 import type {TagProps} from './types';
@@ -62,7 +62,7 @@ export function Tag(props: TagProps) {
   }
 
   function setStyle() {
-    if (!color?.includes('#')) return;
+    if (isStatus(color)) return;
 
     return variant === 'filled' ?
       {
@@ -77,7 +77,7 @@ export function Tag(props: TagProps) {
 
   function setClassName() {
     return cls([
-      styles.tag, color && !color.includes('#') && styles[color as Status], styles[variant], global.fit,
+      styles.tag, isStatus(color) && styles[color], styles[variant], global.fit,
       elevated && styles.elevated, dark && global.dark, getFontsize(size), styles[size],
       (onClick ?? href) && styles.clickable
     ]);
