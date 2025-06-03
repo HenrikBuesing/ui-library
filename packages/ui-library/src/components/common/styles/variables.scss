@@ -23,14 +23,21 @@
 
   --uil-info: #2779ca;
   --uil-success: #009c73;
-  --uil-error: #CF0934;
   --uil-warning: #FFD700;
   --uil-warning-alt: #d1b21a;
+  --uil-error: #CF0934;
+
+  --uil-info-o: rgba(39, 121, 202, .3);
+  --uil-success-o: rgba(0, 156, 115, .3);
+  --uil-warning-o: rgba(255, 215, 0, .3);
+  --uil-error-o: rgba(207, 9, 52, .3);
   
   --uil-top: initial;
   --uil-bottom: initial;
   --uil-left: initial;
   --uil-right: initial;
+  
+  --uil-progress-delay: 250ms;
 
   --uil-xxxs: .125rem;
   --uil-xxs: .25rem;
