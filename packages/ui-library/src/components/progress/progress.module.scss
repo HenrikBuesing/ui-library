@@ -1,6 +1,8 @@
 @use '../common/styles/mixin' as *;
 
 .circularProgress {
+  height: 1.875rem;
+  width: 1.875rem;
   transform: rotate(-90deg);
 
   &.indeterminate {
@@ -12,6 +14,8 @@
   }
 
   .spinner {
+    transition: stroke-dashoffset var(--uil-progress-delay) ease-in-out 0ms;
+    
     &.info {
       stroke: var(--uil-info);
     }
