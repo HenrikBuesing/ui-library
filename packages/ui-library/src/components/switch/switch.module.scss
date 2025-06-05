@@ -1,0 +1,141 @@
+@use '../common/styles/mixin' as *;
+
+.switch {
+  height: var(--uil-xxxl);
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+
+  &.small {
+    padding: .7rem 0;
+    width: var(--uil-xxxl);
+
+    .thumbWrapper {
+      width: var(--uil-m);
+      height: var(--uil-m);
+      top: var(--uil-xs);
+
+      &:has(input:checked) {
+        left: calc(100% - var(--uil-m));
+      }
+    }
+
+    .track {
+      border-radius: 6px;
+    }
+  }
+
+  &.medium {
+    padding: var(--uil-xs) 0;
+    width: 2.75rem;
+
+    .thumbWrapper {
+      width: var(--uil-l);
+      height: var(--uil-l);
+      top: .375rem;
+
+      &:has(input:checked) {
+        left: calc(100% - var(--uil-l));
+      }
+    }
+
+    .track {
+      border-radius: 9px;
+    }
+  }
+
+  &.large {
+    padding: var(--uil-xxs) 0;
+    width: 4.25rem;
+
+    .thumbWrapper {
+      width: var(--uil-xxxl);
+      height: var(--uil-xxxl);
+      top: .0125rem;
+
+      &:has(input:checked) {
+        left: calc(100% - var(--uil-xxxl));
+      }
+    }
+
+    .track {
+      border-radius: var(--uil-s);
+    }
+  }
+
+  &.info {
+    --uil-switch-color: var(--uil-info);
+  }
+
+  &.success {
+    --uil-switch-color: var(--uil-success);
+  }
+
+  &.warning {
+    --uil-switch-color: var(--uil-warning);
+  }
+
+  &.error {
+    --uil-switch-color: var(--uil-error);
+  }
+
+  .track {
+    height: 100%;
+    width: 100%;
+    opacity: .25;
+    z-index: -1;
+    background-color: var(--uil-black-lighter);
+    transition: background-color 100ms ease-in-out;
+  }
+
+  .thumbWrapper {
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    transition: left 150ms ease-in-out;
+    border-radius: 50%;
+
+    &:not(:has(input:disabled)) {
+      &:hover, &:has(input:focus) {
+        outline: 6px solid var(--uil-switch-hover-w);
+      }
+    }
+
+    &:not(:has(input:disabled)):has(input:checked) {
+      ~ .track {
+        background-color: var(--uil-switch-color);
+      }
+
+      .thumb {
+        background-color: var(--uil-switch-color);
+      }
+    }
+
+    &:has(input:disabled) {
+      cursor: default;
+
+      .thumb {
+        background-color: var(--uil-grey-dark);
+      }
+    }
+
+    .thumb {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: var(--uil-white);
+      box-shadow: 1px 1px 3px -1px var(--uil-black-alt);
+    }
+
+    input {
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      width: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+    }
+  }
+}

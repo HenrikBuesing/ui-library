@@ -7,6 +7,7 @@ export {Checkbox} from './components/check/checkbox';
 export {Radio} from './components/check/radio';
 export {Skeleton} from './components/skeleton';
 export {Button} from './components/button';
+export {Switch} from './components/switch';
 export {Tag} from './components/tag';
 
 export {useContrastColor} from './hooks/index';
