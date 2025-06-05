@@ -1,0 +1,97 @@
+---
+title: Switch
+description: Showcase and usage guide of the switch component
+---
+
+import DefaultSwitch, {ColorSwitch, SwitchSize} from './_switch';
+import {Callout, Table} from 'nextra/components';
+
+# Switch
+
+The switch component is a UI control used to toggle between two distinct states, commonly representing an on/off or
+enabled/disabled setting.
+
+<DefaultSwitch/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Switch/>
+  <Switch disabled/>
+  <Switch defaultChecked/>
+  <Switch defaultChecked disabled/>
+  ```
+</details>
+
+## Size
+
+The switch component comes in three different sizes: `small`, `medium` and `large`.
+
+<SwitchSize/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Switch size={'small'}/>
+  <Switch size={'medium'}/>
+  <Switch size={'large'}/>
+  ```
+</details>
+
+## Color
+
+Each button variant offers predefined color options, along with the ability to set a custom color.
+
+<ColorSwitch/>
+
+<details>
+  <summary>Expand code</summary>
+
+  ```tsx
+  <Switch defaultChecked color={'info'}/>
+  <Switch defaultChecked color={'success'}/>
+  <Switch defaultChecked color={'warning'}/>
+  <Switch defaultChecked color={'error'}/>
+  <Switch defaultChecked color={'mediumpurple'}/>
+  <Switch defaultChecked color={'#0f7488'}/>
+  ```
+</details>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>color</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Color of the button</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>size</Table.Td>
+    <Table.Td>`small` | `medium` | `large`</Table.Td>
+    <Table.Td><b>medium</b></Table.Td>
+    <Table.Td>size of the component</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `input` props (e.g. `checked`).
+</Callout>

@@ -29,6 +29,7 @@ const globalMeta: Meta = {
           'input-decorator': 'InputDecorator',
           textarea: 'Textarea',
           checkbox: 'Checkbox',
+          switch: 'Switch',
           radio: 'Radio',
           'radio-group': 'RadioGroup',
           '--': {
