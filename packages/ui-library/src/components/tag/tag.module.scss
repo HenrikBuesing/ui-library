@@ -53,6 +53,10 @@
     &.outlined {
       color: var(--uil-info);
       border-color: var(--uil-info);
+
+      .delIcon {
+        fill: var(--uil-info);
+      }
     }
   }
 
@@ -65,6 +69,10 @@
     &.outlined {
       color: var(--uil-success);
       border-color: 1px solid var(--uil-success);
+
+      .delIcon {
+        fill: var(--uil-success);
+      }
     }
   }
 
@@ -77,6 +85,10 @@
     &.outlined {
       color: var(--uil-warning-alt);
       border-color: 1px solid var(--uil-warning);
+
+      .delIcon {
+        fill: var(--uil-warning-alt);
+      }
     }
   }
 
@@ -89,6 +101,10 @@
     &.outlined {
       color: var(--uil-error);
       border-color: 1px solid var(--uil-error);
+      
+      .delIcon {
+        fill: var(--uil-error);
+      }
     }
   }
   
