@@ -5,6 +5,7 @@ description: Showcase and usage guide of the toast component
 
 import Provider, {alerting, ProviderAlign, ProviderVariant, SimpleToast, TestButton} from './_toast';
 import {Callout} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Toast
 
@@ -33,13 +34,11 @@ Use the `alignment` prop to override the default vertical (bottom) and horizonta
   <SimpleToast/>
 </ProviderAlign>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <ToastProvider alignment={{vertical: 'top', horizontal: 'right'}}>...</ToastProvider>
   ```
-</details>
+</Detail>
 
 <Callout>
   Vertical options are `top`, `center` & `bottom` and horizontal options are `left`, `center` & `right`. \
@@ -137,13 +136,11 @@ Add custom actions to the toast.
   <SimpleToast options={{action: <TestButton/>}}/>
 </Provider>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   queueToast('Toast notification', {action: <Button variant={'text'} onClick={() => closeToast()}>Close</Button>});
   ```
-</details>
+</Detail>
 
 ### CloseCallback
 
@@ -153,13 +150,11 @@ Callback function that runs after the toast closes automatically or after clicki
   <SimpleToast options={{closeCallback: alerting}}/>
 </Provider>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```ts
   queueToast('Toast notification', {{closeCallback: callbackFunc()}});
   ```
-</details>
+</Detail>
 
 ### Dark
 
@@ -169,13 +164,11 @@ Apply the dark-mode setting.
   <SimpleToast options={{dark: true}}/>
 </Provider>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```ts
   queueToast('Toast notification', {dark: true});
   ```
-</details>
+</Detail>
 
 ### Dismissible
 
@@ -186,13 +179,11 @@ it is provided.
   <SimpleToast options={{dismissible: true}}/>
 </Provider>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```ts
   queueToast('Toast notification', {dismissible: true});
   ```
-</details>
+</Detail>
 
 ### Timeout
 
@@ -202,13 +193,11 @@ The `timeout` specifies when a toast should disappear. Use `persistent` to preve
   <SimpleToast options={{timeout: 'persistent', dismissible: true}}/>
 </Provider>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```ts
   queueToast('Toast notification', {timeout: 'persistent', dismissible: true});
   ```
-</details>
+</Detail>
 
 ### Variant
 
@@ -217,9 +206,7 @@ Not setting this option will render a default styled toast.
 
 <ProviderVariant/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```ts
   queueToast('Default toast');
   queueToast('Info toast', {variant: 'info'});
@@ -227,4 +214,4 @@ Not setting this option will render a default styled toast.
   queueToast('Warning toast', {variant: 'warning'});
   queueToast('Error toast', {variant: 'error'});
   ```
-</details>
+</Detail>

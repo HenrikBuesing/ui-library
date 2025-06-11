@@ -5,6 +5,7 @@ description: Showcase and usage guide of the skeleton component
 
 import DefaultSkeleton, {SkeletonAnim, SkeletonRadius, SkeletonSize} from './_skeleton';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Skeleton
 
@@ -12,9 +13,7 @@ A skeleton component provides a placeholder of the UI while data is loading, imp
 
 <DefaultSkeleton/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <div className={'header'}>
     <Skeleton width={'2rem'} height={'2rem'} rounded={'full'}/>
@@ -24,7 +23,7 @@ A skeleton component provides a placeholder of the UI while data is loading, imp
   <Skeleton height={'9rem'} rounded={'light'}/>
   <Skeleton width={'75%'} rounded={'light'}/>
   ```
-</details>
+</Detail>
 
 ## Size
 
@@ -32,14 +31,12 @@ Customize the skeleton dimensions with the `height` and `width` props.
 
 <SkeletonSize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Skeleton height={'7rem'} width={'12rem'}/>
   <Skeleton height={'10rem'} width={'5rem'}/>
   ```
-</details>
+</Detail>
 
 ## Pulse animation
 
@@ -47,9 +44,7 @@ By default, every Skeleton has a pulse animation. To disable it, use the `disabl
 
 <SkeletonAnim/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <div className={'header'}>
     <Skeleton width={'2rem'} height={'2rem'} rounded={'full'} disableAnimation/>
@@ -59,7 +54,7 @@ By default, every Skeleton has a pulse animation. To disable it, use the `disabl
   <Skeleton height={'9rem'} rounded={'light'} disableAnimation/>
   <Skeleton width={'75%'} rounded={'light'} disableAnimation/>
   ```
-</details>
+</Detail>
 
 <Callout type={'info'}>
   The default animation duration is 2.5 seconds. To customize it, override the CSS variable `--uil-pulse-anim`.
@@ -71,16 +66,14 @@ Use one of `light`, `medium` or `full` to customize the skeletons border radius.
 
 <SkeletonRadius/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Skeleton height={'5rem'} width={'5rem'}/>
   <Skeleton height={'5rem'} width={'5rem'} rounded={'light'}/>
   <Skeleton height={'5rem'} width={'5rem'} rounded={'medium'}/>
   <Skeleton height={'5rem'} width={'5rem'} rounded={'full'}/>
   ```
-</details>
+</Detail>
 
 ## Props
 

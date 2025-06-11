@@ -5,6 +5,7 @@ description: Showcase and usage guide of the radio-group component
 
 import DefaultRadio, {GroupColor, GroupDirection, GroupInactive} from './_radioGroup';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # RadioGroup
 
@@ -12,9 +13,7 @@ The radioGroup component allows users to select an option from a set of [radio](
 
 <DefaultRadio/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   const options = [
     {label: 'Foo', value: 'foo'},
@@ -28,7 +27,7 @@ The radioGroup component allows users to select an option from a set of [radio](
     onChange={(e) => {setSelectedValue(e.target.value)}}
   />
   ```
-</details>
+</Detail>
 
 ## Direction
 
@@ -36,9 +35,7 @@ The radio options can be presented in either a horizontal or vertical layout (de
 
 <GroupDirection/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   const options = [
     {label: 'Foo', value: 'foo'},
@@ -62,7 +59,7 @@ The radio options can be presented in either a horizontal or vertical layout (de
     onChange={(e) => {setColValue(e.target.value)}}
   />
   ```
-</details>
+</Detail>
 
 ## Disabled state
 
@@ -70,9 +67,7 @@ Individual options can be deactivated or all at once.
 
 <GroupInactive/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   const options = [
   {label: 'Foo', value: 'foo'},
@@ -88,7 +83,7 @@ Individual options can be deactivated or all at once.
 
   <RadioGroup options={options} disabled/>
   ```
-</details>
+</Detail>
 
 <Callout type={'info'}>
   The disabled state of the grouped radio component will take precedence over the individual disabled states.
@@ -100,9 +95,7 @@ You can customize the checkmark color using any value supported by the `backgrou
 
 <GroupColor/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   const options = [
   {label: 'Foo', value: 'foo'},
@@ -124,7 +117,7 @@ You can customize the checkmark color using any value supported by the `backgrou
     disabled
   />
   ```
-</details>
+</Detail>
 
 <Callout>
   The color of a disabled radio cannot be overwritten.

@@ -58,14 +58,23 @@ describe('tag', () => {
   test('should render onDelete tag', () => {
     const fn = vi.fn();
     
-    const {container} = render(<Tag color={'info'} variant={'outlined'} label={'test'} onDelete={() => {fn()}}/>);
+    const {container} = render(<Tag color={'#4f90d3'} variant={'outlined'} label={'test'} onDelete={() => {fn()}}/>);
     const delIcon = container.getElementsByClassName('delIcon')[0];
 
     expect(delIcon).toBeDefined();
-    expect((delIcon as SVGSVGElement).attributes.getNamedItem('fill')?.value).toEqual('black');
+    expect((delIcon as SVGSVGElement).attributes.getNamedItem('fill')?.value).toEqual('#4f90d3');
     
     fireEvent.click(delIcon);
     expect(fn).toHaveBeenCalled();
+  });
+
+  test('should render onDelete tag with status color', () => {
+    const fn = vi.fn();
+
+    const {container} = render(<Tag color={'warning'} variant={'outlined'} label={'test'} onDelete={() => {fn()}}/>);
+    const delIcon = container.getElementsByClassName('delIcon')[0];
+
+    expect((delIcon as SVGSVGElement).attributes.getNamedItem('fill')?.value).not.toBeDefined();
   });
 
   test('should render onDelete tag with white icon', () => {

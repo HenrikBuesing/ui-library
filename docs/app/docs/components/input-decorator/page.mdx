@@ -4,8 +4,9 @@ description: Showcase and usage guide of the input-decorator component
 ---
 
 import Deco, {DecoContent, DecoHidden, DecoPosition} from './_decorator';
-import {InputDeco} from '../input/_input';
 import {Callout, Table} from 'nextra/components';
+import {InputDeco} from '../input/_input';
+import {Detail} from '../../../_util';
 
 # InputDecorator
 
@@ -14,9 +15,7 @@ This component is a utility component designed for the [`Input`](/docs/component
 <InputDeco variant={'outlined'}/>
 <InputDeco variant={'basic'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator>
@@ -46,7 +45,7 @@ This component is a utility component designed for the [`Input`](/docs/component
     </InputDecorator>
   </Input>
   ```
-</details>
+</Detail>
 
 <Callout type={'warning'}>
   Since `InputDecorator` is a utility component, using it outside the `input` component will just render the content of the decorator:
@@ -68,9 +67,7 @@ Alternatively, you can use third-party icon components such as [fontawesome icon
 <DecoContent variant={'outlined'}/>
 <DecoContent variant={'basic'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'String'} variant={'outlined'}>
     <InputDecorator>
@@ -112,7 +109,7 @@ Alternatively, you can use third-party icon components such as [fontawesome icon
     </InputDecorator>
   </Input>
   ```
-</details>
+</Detail>
 
 <Callout type={'warning'}>
   Note that as the content length increases, the input field size will decrease. \
@@ -126,9 +123,7 @@ The `position` prop allows you to define whether the decorator should be a prefi
 <DecoPosition variant={'outlined'}/>
 <DecoPosition variant={'basic'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator position={'start'}>
@@ -154,7 +149,7 @@ The `position` prop allows you to define whether the decorator should be a prefi
     </InputDecorator>
   </Input>
   ```
-</details>
+</Detail>
 
 ## Hidden Decorator
 
@@ -162,9 +157,7 @@ The decorator can be hidden when the `input` is neither focused nor contains a v
 
 <DecoHidden/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator onFocus>
@@ -182,7 +175,7 @@ The decorator can be hidden when the `input` is neither focused nor contains a v
     </InputDecorator>
   </Input>
   ```
-</details>
+</Detail>
 
 ## Props
 

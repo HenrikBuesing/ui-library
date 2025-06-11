@@ -47,6 +47,7 @@ const globalMeta: Meta = {
             type: 'separator',
             title: 'Data Display'
           },
+          details: 'Details',
           tag: 'Tag'
         }
       },

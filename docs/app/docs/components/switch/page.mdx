@@ -5,6 +5,7 @@ description: Showcase and usage guide of the switch component
 
 import DefaultSwitch, {ColorSwitch, SwitchSize} from './_switch';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Switch
 
@@ -13,16 +14,14 @@ enabled/disabled setting.
 
 <DefaultSwitch/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Switch/>
   <Switch disabled/>
   <Switch defaultChecked/>
   <Switch defaultChecked disabled/>
   ```
-</details>
+</Detail>
 
 ## Size
 
@@ -30,15 +29,13 @@ The switch component comes in three different sizes: `small`, `medium` and `larg
 
 <SwitchSize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Switch size={'small'}/>
   <Switch size={'medium'}/>
   <Switch size={'large'}/>
   ```
-</details>
+</Detail>
 
 ## Color
 
@@ -46,9 +43,7 @@ Each button variant offers predefined color options, along with the ability to s
 
 <ColorSwitch/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Switch defaultChecked color={'info'}/>
   <Switch defaultChecked color={'success'}/>
@@ -57,7 +52,7 @@ Each button variant offers predefined color options, along with the ability to s
   <Switch defaultChecked color={'mediumpurple'}/>
   <Switch defaultChecked color={'#0f7488'}/>
   ```
-</details>
+</Detail>
 
 ## Props
 

@@ -5,6 +5,7 @@ description: Showcase and usage guide of the dialog component
 
 import DefaultDialog, {DialogAlert, DialogESC, DialogScroll, DialogSize} from './_dialog';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Dialog
 
@@ -14,9 +15,7 @@ asking for user input, or confirming actions.
 
 <DefaultDialog/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
@@ -35,7 +34,7 @@ asking for user input, or confirming actions.
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 <Callout type={'info'}>
   The content of the dialog can be constructed using dialog-specific components
@@ -49,9 +48,7 @@ By default, the dialog size will be determined by its content.
 
 <DialogSize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => {setShowSmall(true)}}>Small Dialog</Button>
   <Button variant={'outlined'} onClick={() => {setShowMedium(true)}}>Medium Dialog</Button>
@@ -102,7 +99,7 @@ By default, the dialog size will be determined by its content.
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 ## Scrolling
 
@@ -110,9 +107,7 @@ The `scrollable` prop overrides the default behaviour that would normally disabl
 
 <DialogScroll/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
@@ -131,7 +126,7 @@ The `scrollable` prop overrides the default behaviour that would normally disabl
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 
 ## OnCancel Callback
@@ -148,9 +143,7 @@ You can prevent users from closing the dialog with the escape key.
 
 <DialogESC/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx 
   <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
@@ -169,7 +162,7 @@ You can prevent users from closing the dialog with the escape key.
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 ## Accessibility 
 
@@ -178,9 +171,7 @@ If the `ariaModal` prop is provided, the role of the dialog will change from `di
 
 <DialogAlert/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => {setIsVisible(true)}}>Show Dialog</Button>
 
@@ -199,7 +190,7 @@ If the `ariaModal` prop is provided, the role of the dialog will change from `di
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 ## Props
 
