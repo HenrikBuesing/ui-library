@@ -55,6 +55,6 @@
     "esbuild-sass-plugin": "^3.3.1",
     "jsdom": "^26.1.0",
     "typescript-plugin-css-modules": "^5.1.0",
-    "vitest": "^3.2.0"
+    "vitest": "^3.2.3"
   }
 }
