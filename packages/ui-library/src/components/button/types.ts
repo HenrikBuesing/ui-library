@@ -5,6 +5,7 @@ export type ButtonProps = BaseComponentProps<'button'> & {
   children: ReactNode;
   variant: 'filled' | 'outlined' | 'text';
   color?: `#${string}` | Status;
+  rounded?: boolean;
   size?: Size;
 } & ({
   href: string;

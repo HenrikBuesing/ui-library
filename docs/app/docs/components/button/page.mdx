@@ -3,7 +3,7 @@ title: Button
 description: Showcase and usage guide of the button component
 ---
 
-import DefaultButtons, {Buttons, ButtonSizes, ColorButtons} from './_buttons';
+import DefaultButtons, {Buttons, ButtonSizes, ColorButtons, RoundedButtons} from './_buttons';
 import {Callout, Table} from 'nextra/components';
 import {Detail} from '../../../_util';
 
@@ -65,6 +65,20 @@ Text buttons are low-emphasis elements, generally used for less critical actions
   <Button variant={'text'}>Text</Button>
   <Button variant={'text'} disabled>Disabled</Button>
   <Button variant={'text'} href={'#text'}>Link</Button>
+  ```
+</Detail>
+
+## Rounded
+
+Use the `rounded` prop to change the button's border radius.
+
+<RoundedButtons/>
+
+<Detail>
+  ```tsx
+  <Button variant={'filled'} rounded>Filled</Button>
+  <Button variant={'outlined'} rounded>Outlined</Button>
+  <Button variant={'text'} rounded>Text</Button>
   ```
 </Detail>
 

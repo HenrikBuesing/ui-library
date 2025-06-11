@@ -14,6 +14,7 @@ export function Button(props: ButtonProps) {
     dark = false,
     disabled = false,
     href,
+    rounded = false,
     size = 'medium',
     target,
     variant,
@@ -48,9 +49,8 @@ export function Button(props: ButtonProps) {
   
   function setClasses() {
     return cls([
-      styles.button, global.fit, styles[size], styles[variant], dark && global.dark,
-      isStatus(color) ? styles[color] : styles.custom,
-      disabled && styles.disabled, getFontsize(size)
+      styles.button, global.fit, styles[size], styles[variant], dark && global.dark, disabled && styles.disabled,
+      isStatus(color) ? styles[color] : styles.custom, getFontsize(size), rounded && styles.rounded
     ]);
   }
   

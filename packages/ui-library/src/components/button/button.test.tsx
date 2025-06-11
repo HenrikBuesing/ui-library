@@ -12,6 +12,13 @@ describe('general', () => {
     expect(button.textContent).toEqual('Hello World');
   });
 
+  test('should render rounded button', () => {
+    const {container} = render(<Button variant={'text'} rounded>Hello World</Button>);
+
+    const button = container.getElementsByClassName('button rounded')[0];
+    expect(button).toBeDefined();
+  });
+
   test('should render link button', () => {
     render(<Button variant={'text'} href={'/test'}>link</Button>);
 

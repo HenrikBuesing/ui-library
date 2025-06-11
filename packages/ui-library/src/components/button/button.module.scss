@@ -146,16 +146,28 @@
 
   &.small {
     letter-spacing: 1px;
-    padding: var(--uil-xxs);
+    padding: var(--uil-xxs) var(--uil-xs);
+
+    &.rounded {
+      border-radius: var(--uil-m);
+    }
   }
 
   &.medium {
     letter-spacing: 2px;
-    padding: var(--uil-xs);
+    padding: var(--uil-xs) var(--uil-s);
+
+    &.rounded {
+      border-radius: var(--uil-xl);
+    }
   }
 
   &.large {
     letter-spacing: 2px;
-    padding: var(--uil-s);
+    padding: var(--uil-xs) var(--uil-s);
+
+    &.rounded {
+      border-radius: var(--uil-xxl);
+    }
   }
 }
