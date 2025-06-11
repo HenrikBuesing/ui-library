@@ -5,6 +5,7 @@ description: Showcase and usage guide of the button component
 
 import DefaultButtons, {Buttons, ButtonSizes, ColorButtons} from './_buttons';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Button
 
@@ -15,15 +16,13 @@ The button component offers three distinct variants: `filled`, `outlined` and `t
 
 <DefaultButtons/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'filled'}>Filled</Button>
   <Button variant={'outlined'}>Outlined</Button>
   <Button variant={'text'}>Text</Button>
   ```
-</details>
+</Detail>
 
 <Callout type={'info'}>
   Each variant can be converted into a link-button by providing the `href` prop. This allows the button to function as a
@@ -35,54 +34,46 @@ Filled buttons are high-emphasis elements, typically used for primary actions wi
 
 <Buttons variant={'filled'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'filled'}>Filled</Button>
   <Button variant={'filled'} disabled>Disabled</Button>
   <Button variant={'filled'} href={'#filled'}>Link</Button>
   ```
-</details>
+</Detail>
 
 ## Outlined
 Outlined buttons are medium-emphasis elements, commonly used for secondary actions within your application.
 
 <Buttons variant={'outlined'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'}>Outlined</Button>
   <Button variant={'outlined'} disabled>Disabled</Button>
   <Button variant={'outlined'} href={'#outlined'}>Link</Button>
   ```
-</details>
+</Detail>
 
 ## Text
 Text buttons are low-emphasis elements, generally used for less critical actions or links within your application.
 
 <Buttons variant={'text'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'text'}>Text</Button>
   <Button variant={'text'} disabled>Disabled</Button>
   <Button variant={'text'} href={'#text'}>Link</Button>
   ```
-</details>
+</Detail>
 
 ## Size
 The button component comes in three different sizes: `small`, `medium` and `large`.
 
 <ButtonSizes/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'filled'} size={'small'}>Small</Button>
   <Button variant={'filled'} size={'medium'}>Medium</Button>
@@ -96,7 +87,7 @@ The button component comes in three different sizes: `small`, `medium` and `larg
   <Button variant={'text'} size={'medium'}>Medium</Button>
   <Button variant={'text'} size={'large'}>Large</Button>
   ```
-</details>
+</Detail>
 
 
 ## Color Options
@@ -104,9 +95,7 @@ Each button variant offers predefined color options, along with the ability to s
 
 <ColorButtons/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'filled'} color={'info'}>Info</Button>
   <Button variant={'filled'} color={'success'}>Success</Button>
@@ -129,7 +118,7 @@ Each button variant offers predefined color options, along with the ability to s
   <Button variant={'text'} color={'#37edde'}>Custom</Button>
   <Button variant={'text'} color={'#9437ed'}>Custom</Button>
   ```
-</details>
+</Detail>
 
 The default color option is `info`.
 

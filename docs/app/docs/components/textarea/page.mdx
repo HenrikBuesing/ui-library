@@ -5,6 +5,7 @@ description: Showcase and usage guide of the textarea component
 
 import DefaultTextarea, {TextareaResize, TextAreaValidate} from './_textarea';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Textarea
 
@@ -12,13 +13,11 @@ The textarea component allows users to enter and edit multi-line text.
 
 <DefaultTextarea/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Textarea label={'Textarea'} rows={1}/>
   ```
-</details>
+</Detail>
 
 The `textarea` and `input` components function similarly, with the key differences being that the `textarea` offers
 only a single variant and does not support the `decorator` component.  
@@ -30,13 +29,11 @@ The textarea can be resized vertically, horizontally, both directions, or can be
 
 <TextareaResize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Textarea label={'Textarea'} rows={5} cols={50} resize={'none'}/>
   ```
-</details>
+</Detail>
 
 <Callout>
   Use the props `rows` and `cols` to overwrite the default width and height.
@@ -48,14 +45,12 @@ Use a combination of the error state and helpText prop to give users additional 
 
 <TextAreaValidate/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Textarea label={'Textarea'} rows={1} cols={75} resize={'vertical'} error 
             helpText={'Additional information about the textarea or error'} defaultValue={'Error'}/>
   ```
-</details>
+</Detail>
 
 ## Props
 

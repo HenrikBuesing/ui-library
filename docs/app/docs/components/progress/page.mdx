@@ -3,15 +3,9 @@ title: Progress
 description: Showcase and usage guide of the progress components
 ---
 
-import CircleDefault, {
-  CircleColor,
-  CircleDeterminate,
-  CircleSize, LinearColor,
-  LinearDefault,
-  LinearDeterminate,
-  LinearSize
-} from './_progress';
+import CircleDefault, {CircleColor, CircleDeterminate, CircleSize, LinearColor, LinearDefault, LinearDeterminate, LinearSize} from './_progress';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Progress
 
@@ -24,13 +18,11 @@ Currently, two types of progress components are available: `CircularProgress` an
 
 <CircleDefault/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <CircularProgress/>
   ```
-</details>
+</Detail>
 
 ### Size
 
@@ -38,15 +30,13 @@ Use the `size` prop to modify the components size. By default, the size is set t
 
 <CircleSize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <CircularProgress size={30}/>
   <CircularProgress size={50}/>
   <CircularProgress size={'70px'}/> // you can also use px or rem units
   ```
-</details>
+</Detail>
 
 ### Deterministic
 
@@ -54,16 +44,14 @@ If the `value` prop is provided, the component switches to a determinate loading
 
 <CircleDeterminate/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <CircularProgress value={25}/>
   <CircularProgress value={50}/>
   <CircularProgress value={75}/>
   <CircularProgress value={value}/>
   ```
-</details>
+</Detail>
 
 <Callout type={'warning'}>
   The component utilizes a CSS `transition` to enable smoother animations, with a default duration of 250ms.
@@ -76,9 +64,7 @@ The `color` prop allows you to change the color of the loading spinner.
 
 <CircleColor/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <CircularProgress color={'info'}/>
   <CircularProgress color={'success'}/>
@@ -86,19 +72,17 @@ The `color` prop allows you to change the color of the loading spinner.
   <CircularProgress color={'error'}/>
   <CircularProgress color={'#ba26f8'}/>
   ```
-</details>
+</Detail>
 
 ## Linear
 
 <LinearDefault/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <LinearProgress/>
   ```
-</details>
+</Detail>
 
 ### Size
 
@@ -107,15 +91,13 @@ The progress-bar will always match the width of its parent component.
 
 <LinearSize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <LinearProgress size={3}/>
   <LinearProgress size={6}/>
   <LinearProgress size={'9px'}/> // you can also use px or rem units
   ```
-</details>
+</Detail>
 
 ### Deterministic
 
@@ -123,16 +105,14 @@ If the `value` prop is provided, the component switches to a determinate loading
 
 <LinearDeterminate/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <LinearProgress value={25}/>
   <LinearProgress value={50}/>
   <LinearProgress value={75}/>
   <LinearProgress value={value}/>
   ```
-</details>
+</Detail>
 
 <Callout type={'warning'}>
   The component utilizes a CSS `transition` to enable smoother animations, with a default duration of 250ms.
@@ -145,9 +125,7 @@ The `color` prop allows you to change the color of the progress-bar.
 
 <LinearColor/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <LinearProgress color={'info'}/>
   <LinearProgress color={'success'}/>
@@ -155,7 +133,7 @@ The `color` prop allows you to change the color of the progress-bar.
   <LinearProgress color={'error'}/>
   <LinearProgress color={'#ba26f8'}/>
   ```
-</details>
+</Detail>
 
 ## Props
 

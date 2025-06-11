@@ -5,6 +5,7 @@ description: Showcase and usage guide of the dialog-content component
 
 import Content, {DialogContentBasic, DialogDivider, DialogAC} from './_dialogContent';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # DialogContent
 
@@ -12,9 +13,7 @@ This component is a utility component designed for the [`Dialog`](/docs/componen
 
 <DialogContentBasic/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => setIsVisible(true)}>Show Dialog</Button>
 
@@ -30,7 +29,7 @@ This component is a utility component designed for the [`Dialog`](/docs/componen
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 <Callout type={'warning'}>
   Since `dialogContent` is a utility component, using it outside the `dialog` component will just render the content of the component:
@@ -48,9 +47,7 @@ You can separate the content of the dialog from other elements by using the `div
 
 <DialogDivider/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => setIsVisible(true)}>Show Dialog</Button>
 
@@ -67,7 +64,7 @@ You can separate the content of the dialog from other elements by using the `div
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 ## Accessibility
 
@@ -76,9 +73,7 @@ Use the `id` prop in combination with the dialog's `describedby` prop to add add
 <DialogAC/>
 
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} onClick={() => setIsVisible(true)}>Show Dialog</Button>
 
@@ -94,7 +89,7 @@ Use the `id` prop in combination with the dialog's `describedby` prop to add add
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 ## Props
 
