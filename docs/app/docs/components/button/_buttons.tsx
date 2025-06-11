@@ -30,6 +30,19 @@ export function Buttons({variant}: {variant: 'filled' | 'outlined' | 'text'}) {
   );
 }
 
+export function RoundedButtons() {
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <div className={styles.showcaseWrapper}>
+      <Button variant={'filled'} dark={dark} rounded>Filled</Button>
+      <Button variant={'outlined'} dark={dark} rounded>Outlined</Button>
+      <Button variant={'text'} dark={dark} rounded>Text</Button>
+    </div>
+  );
+}
+
 export function ButtonSizes() {
   const {theme} = useTheme();
   const dark = theme === 'dark';
