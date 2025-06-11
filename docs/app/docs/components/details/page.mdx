@@ -1,0 +1,101 @@
+---
+title: Details
+description: Showcase and usage guide of the details component
+---
+
+import DefaultDetails, {DetailsIcon, DetailsPos} from './_details';
+import {Callout, Table} from 'nextra/components';
+
+# Details
+
+The details component is a UI element that allows users to expand and collapse sections of content vertically to show
+or hide detailed information.
+
+<DefaultDetails/>
+
+```tsx
+<Details summary={'Click to show details'}>
+  <p>Lorem ipsum...</p>
+</Details>
+```
+
+## Icon position
+
+The position of the icon can be set to `start` (default) or `end`.
+
+<DetailsPos/>
+
+```tsx
+<Details summary={'Click to show details'} iconPosition={'start'} name={'expand'}>
+  <p>Lorem ipsum...</p>
+</Details>
+
+<Details summary={'Click to show details'} iconPosition={'end'} name={'expand'}>
+  <p>Lorem ipsum...</p>
+</Details>
+```
+
+## Custom icon
+
+By default, Detailss will be rendered with a chevron icon. To customize the icon, use the `icon` prop.
+
+<DetailsIcon/>
+
+```tsx
+<Details summary={'Click to show details'} icon={<svg>...</svg>}>
+  <p>Lorem ipsum...</p>
+</Details>
+
+<Details summary={'Click to show details'} icon={<svg>...</svg>}>
+  <p>Lorem ipsum...</p>
+</Details>
+```
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>summary</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Summary text</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>icon</Table.Td>
+    <Table.Td>`Node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom expand/collapse icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>iconPosition</Table.Td>
+    <Table.Td>`start` | `end`</Table.Td>
+    <Table.Td><b>start</b></Table.Td>
+    <Table.Td>Set the position of the icon</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type={'info'}>
+  In addition to these props the component uses the default html `details` props (e.g. `name`).
+</Callout>

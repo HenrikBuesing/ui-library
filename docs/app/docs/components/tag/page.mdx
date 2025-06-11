@@ -5,6 +5,7 @@ description: Showcase and usage guide of the tag component
 
 import Tags, {ClickTag, DeleteTag, LinkTag, TagColor, TagContent, TagElevation, TagSize, TagVariant} from './_tag';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Tag
 
@@ -13,13 +14,11 @@ categories, often with the ability to be added, removed, or filtered.
 
 <Tags/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag variant={'filled'} label={'Info tag'} color={'info'}/>
   ```
-</details>
+</Detail>
 
 ## Content
 
@@ -27,9 +26,7 @@ You can either use React children or the `label` prop to set the content.
 
 <TagContent/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag label={'Label prop'} variant={'filled'} color={'info'}/>
 
@@ -37,7 +34,7 @@ You can either use React children or the `label` prop to set the content.
     <span>React Children</span>
   </Tag>
   ```
-</details>
+</Detail>
 
 ## Variants
 
@@ -45,15 +42,13 @@ The input component offers two distinct variants: `filled` and `outlined`.
 
 <TagVariant/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag variant={'filled'} label={'Filled tag'} color={'info'}/>
 
   <Tag variant={'outlined'} label={'Outlined tag'} color={'info'}/>
   ```
-</details>
+</Detail>
 
 ## Elevation
 
@@ -61,15 +56,13 @@ The `elevation` prop enables or disables box-shadow styling.
 
 <TagElevation/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag variant={'filled'} label={'Elevated'} color={'info'} elevated/>
 
   <Tag variant={'outlined'} label={'Elevated'} color={'info'} elevated/>
   ```
-</details>
+</Detail>
 
 ## Size
 
@@ -77,9 +70,7 @@ The tag component comes in three different sizes: `small`, `medium` and `large`.
 
 <TagSize/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag variant={'filled'} label={'Small tag'} color={'info'} size={'small'}/>
   <Tag variant={'filled'} label={'Medium tag'} color={'info'} size={'medium'}/>
@@ -89,7 +80,7 @@ The tag component comes in three different sizes: `small`, `medium` and `large`.
   <Tag variant={'outlined'} label={'Medium tag'} color={'info'} size={'medium'}/>
   <Tag variant={'outlined'} label={'Large tag'} color={'info'} size={'large'}/>
   ```
-</details>
+</Detail>
 
 ## Color
 
@@ -97,9 +88,7 @@ Each button variant offers predefined color options, along with the ability to s
 
 <TagColor/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag label={'Info'} variant={'filled'} color={'info'}/>
   <Tag label={'Info'} variant={'outlined'} color={'info'}/>
@@ -119,7 +108,7 @@ Each button variant offers predefined color options, along with the ability to s
   <Tag label={'Custom'} variant={'filled'} color={'#63d5c5'}/>
   <Tag label={'Custom'} variant={'outlined'} color={'#63d5c5'}/>
   ```
-</details>
+</Detail>
 
 ## OnClick
 
@@ -132,14 +121,12 @@ Add interactivity by providing an `onClick` function.
 
 <ClickTag/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag label={'Clickable tag'} variant={'filled'} color={'info'} onClick={() => {alert('tag clicked')}}/>
   <Tag label={'Clickable tag'} variant={'outlined'} color={'info'} onClick={() => {alert('tag clicked')}}/>
   ```
-</details>
+</Detail>
 
 ## OnDelete
 
@@ -147,16 +134,19 @@ Use the `onDelete` prop to clear filter options or remove the tag from a selecti
 
 <DeleteTag/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag label={'Deletable tag'} variant={'filled'} color={'info'} onDelete={() => {alert('delete clicked')}}/>
   <Tag label={'Deletable tag'} variant={'outlined'} color={'info'} onDelete={() => {alert('delete clicked')}}/>
   ```
-</details>
+</Detail>
 
-you can use third-party icon components such as [fontawesome icons](https://fontawesome.com) to customize the delete icon.
+<Callout type={'info'}>
+  By default, if the `onDelete` prop is provided, a fallback icon will be rendered.  
+  The icon is designed by the [fontawesome team](https://fontawesome.com).
+</Callout>
+
+To customize the icon, use the `deleteIcon` prop.
 
 ## Link
 
@@ -164,14 +154,12 @@ Use the `href` prop  to convert the tag into a link-tag.
 
 <LinkTag/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Tag label={'Link tag'} variant={'filled'} color={'info'} href={'#link'}/>
   <Tag label={'Link tag'} variant={'outlined'} color={'info'} href={'#link'}/>
   ```
-</details>
+</Detail>
 
 ## Props
 

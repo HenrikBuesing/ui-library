@@ -6,6 +6,7 @@ description: Showcase and usage guide of the dialog-controls component
 import Controls, {DialogControlsBasic, DialogPos} from './_dialogControls';
 import styles from '@/styles/styles.module.scss';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # DialogControls
 
@@ -13,9 +14,7 @@ This component is a utility component designed for the [`Dialog`](/docs/componen
 
 <DialogControlsBasic/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} dark={dark} onClick={() => setIsVisible(true)}>Show Dialog</Button>
 
@@ -32,7 +31,7 @@ This component is a utility component designed for the [`Dialog`](/docs/componen
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 <Callout type={'warning'}>
   Since `dialogContent` is a utility component, using it outside the `dialog` component will just render the content of the component:
@@ -56,9 +55,7 @@ The position of the children can be either `start`, `end` or `space-between`.
   <DialogPos position={'space-between'} content={'Children of the dialog-controls will be positioned with space between them'}/>
 </div>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Button variant={'outlined'} dark={dark} onClick={() => setIsVisible(true)}>Show Dialog</Button>
 
@@ -75,7 +72,7 @@ The position of the children can be either `start`, `end` or `space-between`.
     </DialogControls>
   </Dialog>
   ```
-</details>
+</Detail>
 
 ## Props
 

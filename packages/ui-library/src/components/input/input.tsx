@@ -36,6 +36,8 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
         {...inputProps}
         aria-describedby={helpId}
       />
+
+      {children}
     </Wrapper>
   );
 }

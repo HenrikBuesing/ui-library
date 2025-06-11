@@ -5,6 +5,7 @@ description: Showcase and usage guide of the radio component
 
 import DefaultRadio, {RadioColor, RadioContent} from './_radio';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Radio
 
@@ -12,15 +13,13 @@ A radio component is a UI element that allows users to select one option from a 
 
 <DefaultRadio/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Radio name={'showcase-1'} value={'foo'} defaultChecked/>
   <Radio name={'showcase-1'} value={'bar'}/>
   <Radio name={'showcase-1'} value={'baz'} disabled/>
   ```
-</details>
+</Detail>
 
 ## Content
 The `children` prop allows you to add extra content to the radio component. \
@@ -28,15 +27,13 @@ This content is rendered within a `label` element that is associated with the ra
 
 <RadioContent/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Radio name={'showcase-2'} value={'foo'} defaultChecked>First option</Radio>
   <Radio name={'showcase-2'} value={'bar'}>Second option</Radio>
   <Radio name={'showcase-2'} value={'baz'} disabled>Disabled option</Radio>
   ```
-</details>
+</Detail>
 
 ## Color
 
@@ -44,16 +41,14 @@ You can customize the checkmark color using any value supported by the `backgrou
 
 <RadioColor/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```jsx
   <Radio name={'foo'} value={'foo'} defaultChecked color={'red'}/>
   <Radio name={'abc'} value={'abc'} defaultChecked color={'#11aa33'}/>
   <Radio name={'bar'} value={'bar'} defaultChecked color={'rgb(181,46,213)'}/>
   <Radio name={'baz'} value={'baz'} defaultChecked color={'rgb(0,0,0)'} disabled/>
   ```
-</details>
+</Detail>
 
 <Callout>
   The color of a disabled radio cannot be overwritten.

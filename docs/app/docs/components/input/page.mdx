@@ -5,6 +5,7 @@ description: Showcase and usage guide of the input component
 
 import InputVariants, {InputAttributes, InputDeco, InputError, InputHelp, InputHelpEmpty} from './_input.tsx';
 import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
 
 # Input
 
@@ -16,14 +17,12 @@ The input component offers two distinct variants: `outlined` and `basic`.
 
 <InputVariants/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}/>
   <Input label={'Basic'} variant={'basic'}/>
   ```
-</details>
+</Detail>
 
 ## Input Types
 
@@ -32,9 +31,7 @@ Standard input attributes, like `disabled` or `type` can be used to modify the i
 <InputAttributes variant={'outlined'}/>
 <InputAttributes variant={'basic'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Required'} variant={'outlined'} required/>
   <Input label={'Disabled'} variant={'outlined'} disabled/>
@@ -46,7 +43,7 @@ Standard input attributes, like `disabled` or `type` can be used to modify the i
   <Input label={'Number'} variant={'basic'} type={'number'}/>
   <Input label={'Password'} variant={'basic'} type={'password'}/>
   ```
-</details>
+</Detail>
 
 ## HelpText
 
@@ -54,14 +51,12 @@ You can use the `helpText` prop to give additional information about the input.
 
 <InputHelp/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Outlined'} variant={'outlined'} helpText={'Input with help text'}/>
   <Input label={'Basic'} variant={'basic'} helpText={'Input with help text'}/>
   ```
-</details>
+</Detail>
 
 <Callout>
   Please be aware that the `helpText` prop affects the height of the component. When placing two inputs next to each other,
@@ -84,9 +79,7 @@ additional information about the error.
 <InputError variant={'outlined'}/>
 <InputError variant={'basic'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Error'} variant={'outlined'} error helpText={' '} defaultValue={'Lorem ipsum'}/>
   <Input label={'Error'} variant={'outlined'} error helpText={'Error message'} defaultValue={'Lorem ipsum'}/>
@@ -94,7 +87,7 @@ additional information about the error.
   <Input label={'Error'} variant={'basic'} error helpText={' '} defaultValue={'Lorem ipsum'}/>
   <Input label={'Error'} variant={'basic'} error helpText={'Error message'} defaultValue={'Lorem ipsum'}/>
   ```
-</details>
+</Detail>
 
 ## InputDecorator
 
@@ -104,9 +97,7 @@ For more information go to the [inputDecorator](/docs/components/input-decorator
 <InputDeco variant={'outlined'}/>
 <InputDeco variant={'basic'}/>
 
-<details>
-  <summary>Expand code</summary>
-
+<Detail>
   ```tsx
   <Input label={'Outlined'} variant={'outlined'}>
     <InputDecorator>
@@ -136,7 +127,7 @@ For more information go to the [inputDecorator](/docs/components/input-decorator
     </InputDecorator>
   </Input>
   ```
-</details>
+</Detail>
 
 ## Props
 

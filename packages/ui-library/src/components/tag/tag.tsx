@@ -1,6 +1,7 @@
-import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLElement} from 'react';
+import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLElement, useRef} from 'react';
 import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
+import useAddAttribution from '@utils/addAttribution';
 import getFontsize from '@utils/getFontsize';
 import {isStatus} from '@utils/checkTypes';
 import cls from '@utils/conditionalClass';
@@ -23,16 +24,15 @@ export function Tag(props: TagProps) {
     variant
   } = props;
 
+  const svgRef = useRef<SVGSVGElement>(null);
   const style = setStyle();
   const classNames = setClassName();
   let delIcon: ReactElement | null = null;
 
   if (onDelete) {
     let iconColor;
-
-    if (variant === 'outlined') {
-      iconColor = 'black';
-    } else {
+    
+    if (variant === 'filled') {
       switch (color) {
         case 'info':
         case 'success':
@@ -45,15 +45,21 @@ export function Tag(props: TagProps) {
         default:
           iconColor = useContrastColor(color);
       }
+    } else if (!isStatus(color)) {
+      iconColor = color;
+    } else {
+      iconColor = undefined;
     }
 
     delIcon = deleteIcon && isValidElement(deleteIcon) ? cloneElement(deleteIcon as ReactHTMLElement<HTMLElement>, {
         onClick: handleDelete
       }) :
-      <svg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' onClick={handleDelete} className={cls([styles.delIcon, styles[size]])} fill={iconColor}>
-        <path d='M64 64a16 16 0 0 1 22 0l170 166L425 64a16 16 0 1 1 23 22L278 256l170 169a16 16 0 1 1-23 23L256 280 86 449a16 16 0 1 1-22-24l169-169L64 86a16 16 0 0 1 0-22'/>
-      </svg>;
+      <svg ref={svgRef} xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 384 512'} onClick={handleDelete} className={cls([styles.delIcon, styles[size]])} fill={iconColor}>
+        <path d={'M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z'}/>
+      </svg>
   }
+
+  useAddAttribution(svgRef);
 
   function handleDelete(e: React.MouseEvent<HTMLElement | SVGElement>) {
     e.stopPropagation();
