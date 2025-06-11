@@ -1,6 +1,7 @@
-import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLElement, useLayoutEffect, useRef} from 'react';
+import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLElement, useRef} from 'react';
 import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
+import useAddAttribution from '@utils/addAttribution';
 import getFontsize from '@utils/getFontsize';
 import {isStatus} from '@utils/checkTypes';
 import cls from '@utils/conditionalClass';
@@ -58,13 +59,7 @@ export function Tag(props: TagProps) {
       </svg>
   }
 
-  useLayoutEffect(() => {
-    const comment = document.createComment('Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.');
-    
-    if (svgRef.current) {
-      svgRef.current?.appendChild(comment);
-    }
-  }, []);
+  useAddAttribution(svgRef);
 
   function handleDelete(e: React.MouseEvent<HTMLElement | SVGElement>) {
     e.stopPropagation();

@@ -1,5 +1,6 @@
-import React, {useEffect, useLayoutEffect, useRef} from 'react';
 import global from '../common/styles/global.module.scss';
+import useAddAttribution from '@utils/addAttribution';
+import React, {useEffect, useRef} from 'react';
 import cls from '@utils/conditionalClass';
 import styles from './toast.module.scss';
 import type {ToastProps} from './types';
@@ -19,14 +20,7 @@ export function Toast(props: ToastProps) {
   const toastRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
-  useLayoutEffect(() => {
-    const comment = document.createComment('Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.');
-
-    if (svgRef.current && !svgRef.current.innerHTML.includes('https://fontawesome.com License')) {
-      svgRef.current?.appendChild(comment);
-    }
-  }, []);
-
+  useAddAttribution(svgRef);
   useEffect(() => {
     setTimeout(() => {
       if (toastRef.current) toastRef.current.classList.add(styles.fadeIn);

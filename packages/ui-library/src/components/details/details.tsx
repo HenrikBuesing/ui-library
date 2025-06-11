@@ -1,8 +1,9 @@
 import global from '../common/styles/global.module.scss';
-import React, {useLayoutEffect, useRef} from 'react';
+import useAddAttribution from '@utils/addAttribution';
 import styles from './details.module.scss';
 import type {DetailsProps} from './types';
 import cls from '@utils/conditionalClass';
+import React, {useRef} from 'react';
 
 export function Details(props: DetailsProps) {
   const {
@@ -15,14 +16,7 @@ export function Details(props: DetailsProps) {
   } = props;
 
   const svgRef = useRef<SVGSVGElement>(null);
-
-  useLayoutEffect(() => {
-    const comment = document.createComment('Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.');
-
-    if (svgRef.current && !svgRef.current.innerHTML.includes('https://fontawesome.com License')) {
-      svgRef.current?.appendChild(comment);
-    }
-  }, []);
+  useAddAttribution(svgRef);
   
   return (
     <details className={cls([styles.details, dark && global.dark])} {...other}>
