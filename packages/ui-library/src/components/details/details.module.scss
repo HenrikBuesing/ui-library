@@ -1,0 +1,60 @@
+@use '../common/styles/mixin' as *;
+
+.details {
+  width: 100%;
+  padding: var(--uil-xs);
+  color: var(--uil-black-w);
+  background-color: var(--uil-white-alt);
+  box-shadow: 0 1px 3px -1px var(--uil-grey-alt);
+  border: 1px solid var(--uil-grey-alt);
+  border-radius: 5px;
+  
+  &[open] {
+    overflow-x: auto;
+    
+    .summary {
+      margin-bottom: var(--uil-s);
+      
+      .chevron {
+        rotate: 90deg;
+      }
+    }
+  }
+
+  .summary {
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &::marker {
+      content: none;
+    }
+    
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
+    &.start {
+      .chevron {
+        margin-right: var(--uil-s);
+      }
+    }
+    
+    &.end {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      .chevron {
+        margin-left: var(--uil-s);
+      }
+    }
+    
+    .chevron {
+      height: var(--uil-s);
+      width: var(--uil-s);
+      fill: var(--uil-black-lighter);
+      transition: rotate 200ms ease-in-out;
+    }
+  }
+}
