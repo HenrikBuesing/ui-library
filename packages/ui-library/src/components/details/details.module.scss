@@ -65,4 +65,24 @@
     padding: var(--uil-xs);
   }
 }
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  
+  .details {
+    border-radius: unset;
+    border-bottom: none;
+    
+    &:first-of-type {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-bottom: 1px solid var(--uil-grey-alt);
+    }
+  }
 }
