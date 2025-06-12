@@ -2,7 +2,6 @@
 
 .details {
   width: 100%;
-  padding: var(--uil-xs);
   color: var(--uil-black-w);
   background-color: var(--uil-white-alt);
   box-shadow: 0 1px 3px -1px var(--uil-grey-alt);
@@ -13,7 +12,10 @@
     overflow-x: auto;
     
     .summary {
-      margin-bottom: var(--uil-s);
+      &.divider {
+        border-bottom: 1px solid var(--uil-grey-alt);
+        box-shadow: 0 0 1px 0 var(--uil-grey-alt)
+      }
       
       .chevron {
         rotate: 90deg;
@@ -26,6 +28,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: var(--uil-xs);
 
     &::marker {
       content: none;
@@ -57,4 +60,9 @@
       transition: rotate 200ms ease-in-out;
     }
   }
+  
+  .content {
+    padding: var(--uil-xs);
+  }
+}
 }

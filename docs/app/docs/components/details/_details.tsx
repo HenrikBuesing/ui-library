@@ -76,3 +76,20 @@ export function DetailsIcon() {
     </div>
   );
 }
+
+export function DetailDivider() {
+  const {theme} = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <div style={{margin: '2rem 0'}}>
+      <Details summary={'Click to show details'} dark={dark} divider>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac diam fermentum, sagittis erat at, rhoncus
+          ante. Sed vestibulum orci vel efficitur auctor. Donec tempor odio nec felis blandit, ut vulputate ligula tincidunt.
+          Sed finibus varius finibus. Fusce non enim et metus accumsan commodo. Pellentesque auctor arcu eu consectetur tincidunt.
+        </p>
+      </Details>
+    </div>
+  );
+}

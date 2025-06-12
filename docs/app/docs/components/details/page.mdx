@@ -3,7 +3,7 @@ title: Details
 description: Showcase and usage guide of the details component
 ---
 
-import DefaultDetails, {DetailsIcon, DetailsPos} from './_details';
+import DefaultDetails, {DetailDivider, DetailsIcon, DetailsPos} from './_details';
 import {Callout, Table} from 'nextra/components';
 
 # Details
@@ -51,6 +51,18 @@ By default, Detailss will be rendered with a chevron icon. To customize the icon
 </Details>
 ```
 
+## Divider 
+
+Use the `divider` prop to add a divider between the summary and the content.
+
+<DetailDivider/>
+
+```tsx
+<Details summary={'Click to show details'} divider>
+  <p>Lorem ipsum...</p>
+</Details>
+```
+
 ## Props
 
 <Table style={{marginTop: '2rem'}}>
@@ -74,6 +86,12 @@ By default, Detailss will be rendered with a chevron icon. To customize the icon
     <Table.Td>`boolean`</Table.Td>
     <Table.Td><b>false</b></Table.Td>
     <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>divider</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Add a divider between summary and content</Table.Td>
   </Table.Tr>
   <Table.Tr>
     <Table.Td>summary</Table.Td>

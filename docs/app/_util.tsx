@@ -8,7 +8,7 @@ export function Detail({children}: {children: ReactNode}) {
   const dark = theme === 'dark';
   
   return (
-    <Details summary={'Expand code'} dark={dark}>
+    <Details summary={'Expand code'} dark={dark} divider>
       {children}
     </Details>
   );
