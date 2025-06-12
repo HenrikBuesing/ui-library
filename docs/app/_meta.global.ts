@@ -47,6 +47,7 @@ const globalMeta: Meta = {
             type: 'separator',
             title: 'Data Display'
           },
+          accordion: 'Accordion',
           details: 'Details',
           tag: 'Tag'
         }
