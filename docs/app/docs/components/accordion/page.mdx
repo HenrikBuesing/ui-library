@@ -1,0 +1,50 @@
+---
+title: Accordion
+description: Showcase and usage guide of the accordion component
+---
+
+import DefaultAccordion, {AccordionCustom, AccordionSingle} from './_accordion';
+
+# Accordion
+
+The accordion component is used to stack multiple `<Details/>` components.
+
+<DefaultAccordion/>
+
+```tsx
+<Accordion>
+  <Details>...</Details>
+  <Details>...</Details>
+  <Details>...</Details>
+</Accordion>
+```
+
+## Options
+
+The props `icon`, `iconPosition` & `divider` allow you to customize the styling of all details components within the accordion.  
+Please refer to the [details documentation](/docs/components/details) to learn more about what each option does.
+
+<AccordionCustom/>
+
+```tsx
+<Accordion divider icon={plusIcon} iconPosition={'end'}>
+  <Details>...</Details>
+  <Details>...</Details>
+  <Details>...</Details>
+</Accordion>
+```
+
+## Expanded state
+
+By default, every detail can be expanded independently.  
+Use the `name` prop if only one detail should be open at the same time.
+
+<AccordionSingle/>
+
+```tsx
+<Accordion name={'single-select'}>
+  <Details>...</Details>
+  <Details>...</Details>
+  <Details>...</Details>
+</Accordion>
+```
