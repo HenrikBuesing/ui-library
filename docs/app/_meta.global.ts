@@ -49,7 +49,12 @@ const globalMeta: Meta = {
           },
           accordion: 'Accordion',
           details: 'Details',
-          tag: 'Tag'
+          tag: 'Tag',
+          '----': {
+            type: 'separator',
+            title: 'Navigation'
+          },
+          breadcrumbs: 'Breadcrumbs',
         }
       },
       hooks: {
