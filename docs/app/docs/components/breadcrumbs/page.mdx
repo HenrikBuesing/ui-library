@@ -1,0 +1,168 @@
+---
+title: Breadcrumbs
+description: Showcase and usage guide of the breadcrumbs component
+---
+
+import BreadcrumbsDefault, {BreadcrumbHidden, BreadcrumbHighlight, BreadcrumbSeparator} from './_breadcrumbs';
+import {Table} from 'nextra/components';
+import {Detail} from '../../../_util';
+
+# Breadcrumbs
+
+Breadcrumb components are UI elements that display a navigational trail, helping users understand and traverse the
+hierarchy or path within a website or application.
+
+<BreadcrumbsDefault/>
+
+<Detail>
+  ```tsx
+  <Breadcrumbs>
+    <a href={'/docs'}>Documentation</a>
+    <a href={'/docs/components'}>Components</a>
+    <span>Breadcrumbs</span>
+  </Breadcrumbs>
+  ```
+</Detail>
+
+## HighlightLast
+
+Use the `highlightLast` prop to add additional styling for the last entry.
+
+<BreadcrumbHighlight/>
+
+<Detail>
+  ```tsx
+  <Breadcrumbs highlightLast>
+    <a href={'/docs'}>Documentation</a>
+    <a href={'/docs/components'}>Components</a>
+    <span>Breadcrumbs</span>
+  </Breadcrumbs>
+  ```
+</Detail>
+
+## Separator
+
+The separator between the breadcrumb elements can be freely customized.
+
+<BreadcrumbSeparator/>
+
+<Detail>
+  ```tsx
+  <Breadcrumbs separator={'-'}>
+    <a href={'/docs'}>Documentation</a>
+    <a href={'/docs/components'}>Components</a>
+    <span>Breadcrumbs</span>
+  </Breadcrumbs>
+
+  <Breadcrumbs separator={icon}>
+    <a href={'/docs'}>Documentation</a>
+    <a href={'/docs/components'}>Components</a>
+    <span>Breadcrumbs</span>
+  </Breadcrumbs>
+  ```
+</Detail>
+
+## Collapsed breadcrumbs
+
+The `maxEntries` prop determines how many elements can be visible before they are collapsed.  
+By default, the limit is set to `five`.
+
+<BreadcrumbHidden/>
+
+<Detail>
+  ```tsx
+  <Breadcrumbs>
+    <span>Documentation</span>
+    <span>Foo</span>
+    <span>Bar</span>
+    <span>Lorem</span>
+    <span>Ipsum</span>
+    <span>Components</span>
+    <span>Breadcrumbs</span>
+  </Breadcrumbs>
+  ```
+</Detail>
+
+### Collapsed customization
+
+By default, if the breadcrumbs component is in collapsed state, the first element and the last two elements will still be visible.
+Use the `beforeCollapse` & `afterCollapse` props to change the default behaviour.
+
+<BreadcrumbHidden custom/>
+
+<Detail>
+  ```tsx
+  <Breadcrumbs beforeCollapse={3} afterCollapse={1}>
+    <span>Documentation</span>
+    <span>Foo</span>
+    <span>Bar</span>
+    <span>Lorem</span>
+    <span>Ipsum</span>
+    <span>Components</span>
+    <span>Breadcrumbs</span>
+  </Breadcrumbs>
+  ```
+</Detail>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>afterCollapse</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>2</b></Table.Td>
+    <Table.Td>Number of elements after the collapse</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>aria-label</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Adds the `aria-label` attribute for the `<nav/>` element wrapping the breadcrumbs</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>beforeCollapse</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>1</b></Table.Td>
+    <Table.Td>Number of elements before the collapse</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>highlightLast</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Highlights the last element of the breadcrumbs</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>maxEntries</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>5</b></Table.Td>
+    <Table.Td>Number of total elements before collapsing takes effect</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>separator</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td><b>"/"</b></Table.Td>
+    <Table.Td>Customizes the separator</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>
