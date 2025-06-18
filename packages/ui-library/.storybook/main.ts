@@ -10,7 +10,7 @@ const config: StorybookConfig = {
   stories: [
     '../**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
-  addons: [getAbsolutePath("@storybook/addon-a11y")],
+  addons: [getAbsolutePath('@storybook/addon-a11y')],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {}
@@ -26,7 +26,7 @@ const config: StorybookConfig = {
       {find: '@utils', replacement: path.resolve(__dirname, '../src/utils/')}
     ];
     
-    return {...config};
+    return config;
   }
 };
 export default config;
