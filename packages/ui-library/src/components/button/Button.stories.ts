@@ -25,6 +25,7 @@ export const Filled: Story = {
     children: 'Button',
     dark: false,
     rounded: false,
+    size: 'medium'
   },
   parameters: {
     controls: {exclude: ['variant', 'dark']}
@@ -36,7 +37,8 @@ export const Outlined: Story = {
     variant: 'outlined',
     children: 'Button',
     dark: false,
-    rounded: false
+    rounded: false,
+    size: 'medium'
   },
   parameters: {
     controls: {exclude: ['variant', 'dark']}
@@ -48,7 +50,8 @@ export const Text: Story = {
     variant: 'text',
     children: 'Button',
     dark: false,
-    rounded: false
+    rounded: false,
+    size: 'medium'
   },
   parameters: {
     controls: {exclude: ['variant', 'dark']}
@@ -60,13 +63,27 @@ export const Dark: Story = {
     variant: 'filled',
     children: 'Button',
     dark: true,
-    rounded: false
+    rounded: false,
+    size: 'medium'
   },
   parameters: {
     controls: {exclude: ['dark']}
   },
   globals: {
     backgrounds: {value: 'dark'}
+  }
+};
+
+export const Rounded: Story = {
+  args: {
+    variant: 'filled',
+    children: 'Button',
+    dark: false,
+    rounded: true,
+    size: 'medium'
+  },
+  parameters: {
+    controls: {exclude: ['rounded']}
   }
 };
 
@@ -107,4 +124,27 @@ export const Large: Story = {
   parameters: {
     controls: {exclude: ['size']}
   }
+};
+
+export const Disabled: Story = {
+  args: {
+    variant: 'filled',
+    children: 'Button',
+    dark: false,
+    rounded: false,
+    size: 'medium',
+    disabled: true
+  },
+};
+
+export const Link: Story = {
+  args: {
+    variant: 'filled',
+    children: 'Button',
+    dark: false,
+    rounded: false,
+    size: 'medium',
+    href: '/?path=/story/button--link',
+    target: ''
+  },
 };
