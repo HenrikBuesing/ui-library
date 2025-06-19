@@ -3,14 +3,11 @@ import {Breadcrumbs} from './breadcrumbs';
 import React from 'react';
 
 const meta = {
-  title: 'Breadcrumbs',
+  title: 'Navigation/Breadcrumbs',
   component: Breadcrumbs,
-  subcomponents: {},
-  tags: ['Inputs'],
   argTypes: {
     dark: {control: 'boolean'},
   },
-  args: {},
 } satisfies Meta<typeof Breadcrumbs>;
 
 export default meta;

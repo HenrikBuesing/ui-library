@@ -3,10 +3,8 @@ import {fn} from 'storybook/test';
 import {Button} from './button';
 
 const meta = {
-  title: 'Button',
+  title: 'Inputs/Button',
   component: Button,
-  subcomponents: {},
-  tags: ['Inputs'],
   argTypes: {
     dark: {control: 'boolean'},
     rounded: {control: 'boolean'},
