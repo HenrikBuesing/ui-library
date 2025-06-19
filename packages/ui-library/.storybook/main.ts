@@ -14,7 +14,7 @@ const config: StorybookConfig = {
   },
   framework: getAbsolutePath('@storybook/react-vite'),
   stories: [
-    '../src/components/*/*.stories.ts'
+    '../src/components/*/*.stories.@(ts|tsx)'
   ],
   viteFinal: async (config) => {
     config.resolve.alias = [
