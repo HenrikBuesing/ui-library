@@ -35,8 +35,7 @@
     },
     "storybook": {
       "cache": false,
-      "persistent": true,
-      "interactive": true
+      "persistent": true
     }
   }
 }

@@ -19,7 +19,7 @@
     "test:watch": "turbo test:watch --ui=tui",
     "test:coverage": "turbo test:coverage",
     "start": "turbo start",
-    "storybook": "turbo storybook --ui=tui"
+    "storybook": "turbo storybook"
   },
   "dependencies": {
     "react": "^19.1.0",
