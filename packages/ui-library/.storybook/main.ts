@@ -3,22 +3,19 @@ import {join, dirname} from 'path';
 import * as path from 'node:path';
 
 function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')))
+  return dirname(require.resolve(join(value, 'package.json')));
 }
 
 const config: StorybookConfig = {
-  stories: [
-    '../**/*.stories.@(js|jsx|mjs|ts|tsx)'
-  ],
   addons: [getAbsolutePath('@storybook/addon-a11y')],
-  framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
-    options: {}
-  },
   core: {
     builder: '@storybook/builder-vite',
     disableTelemetry: true
   },
+  framework: getAbsolutePath('@storybook/react-vite'),
+  stories: [
+    '../src/components/*/*.stories.ts'
+  ],
   viteFinal: async (config) => {
     config.resolve.alias = [
       {find: '@common', replacement: path.resolve(__dirname, '../src/components/common/')},
