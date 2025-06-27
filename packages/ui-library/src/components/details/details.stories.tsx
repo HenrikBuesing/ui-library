@@ -3,7 +3,7 @@ import {Details} from './details';
 import React from 'react';
 
 const meta = {
-  title: 'Inputs/Details',
+  title: 'Data-Display/Details',
   component: Details,
   argTypes: {
     dark: {control: 'boolean'},

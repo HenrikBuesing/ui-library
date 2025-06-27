@@ -4,7 +4,7 @@ import {Details} from './details';
 import React from 'react';
 
 const meta = {
-  title: 'Inputs/Accordion',
+  title: 'Data-Display/Accordion',
   component: Accordion,
   argTypes: {
     dark: {control: 'boolean'},
