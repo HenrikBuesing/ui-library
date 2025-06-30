@@ -59,7 +59,7 @@ export const Dark: Story = {
   }
 }
 
-export const Title: Story = {
+export const TitleBasic: Story = {
   args: {
     dark: false,
     open: true,
@@ -70,6 +70,132 @@ export const Title: Story = {
       <div>
         <DialogTitle id={'dialog-header'}>Title of the dialog</DialogTitle>
         <p>Content of the dialog</p>
+      </div>,
+    disableEscapeKey: false,
+  },
+  parameters: {
+    controls: {exclude: ['children', 'dark', 'describedby', 'labelledby', 'onClickBackdrop', 'scrollable']},
+  }
+}
+
+export const TitleColor: Story = {
+  args: {
+    dark: false,
+    open: true,
+    scrollable: false,
+    ariaModal: false,
+    labelledby: 'dialog-header',
+    children:
+      <div>
+        <DialogTitle id={'dialog-header'} color={'info'}>Title of the dialog</DialogTitle>
+        <p>Content of the dialog</p>
+      </div>,
+    disableEscapeKey: false,
+  },
+  parameters: {
+    controls: {exclude: ['children', 'dark', 'describedby', 'labelledby', 'onClickBackdrop', 'scrollable']},
+  }
+}
+
+export const ContentBasic: Story = {
+  args: {
+    dark: false,
+    open: true,
+    scrollable: false,
+    ariaModal: false,
+    labelledby: 'dialog-header',
+    children:
+      <div>
+        <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
+        <DialogContent><p>Content of the dialog</p></DialogContent>
+      </div>,
+    disableEscapeKey: false,
+  },
+  parameters: {
+    controls: {exclude: ['children', 'dark', 'describedby', 'labelledby', 'onClickBackdrop', 'scrollable']},
+  }
+}
+
+export const ContentDivider: Story = {
+  args: {
+    dark: false,
+    open: true,
+    scrollable: false,
+    ariaModal: false,
+    labelledby: 'dialog-header',
+    children:
+      <div>
+        <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
+        <DialogContent divider><p>Content of the dialog</p></DialogContent>
+      </div>,
+    disableEscapeKey: false,
+  },
+  parameters: {
+    controls: {exclude: ['children', 'dark', 'describedby', 'labelledby', 'onClickBackdrop', 'scrollable']},
+  }
+}
+
+export const ControlsStart: Story = {
+  args: {
+    dark: false,
+    open: true,
+    scrollable: false,
+    ariaModal: false,
+    labelledby: 'dialog-header',
+    children:
+      <div>
+        <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
+        <p>Content of the dialog</p>
+        <DialogControls position={'start'}>
+          <button>confirm</button>
+          <button>cancel</button>
+        </DialogControls>
+      </div>,
+    disableEscapeKey: false,
+  },
+  parameters: {
+    controls: {exclude: ['children', 'dark', 'describedby', 'labelledby', 'onClickBackdrop', 'scrollable']},
+  }
+}
+
+export const ControlsBetween: Story = {
+  args: {
+    dark: false,
+    open: true,
+    scrollable: false,
+    ariaModal: false,
+    labelledby: 'dialog-header',
+    children:
+      <div>
+        <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
+        <p>Content of the dialog</p>
+        <DialogControls position={'space-between'}>
+          <button>confirm</button>
+          <button>cancel</button>
+        </DialogControls>
+      </div>,
+    disableEscapeKey: false,
+  },
+  parameters: {
+    controls: {exclude: ['children', 'dark', 'describedby', 'labelledby', 'onClickBackdrop', 'scrollable']},
+  }
+}
+
+export const ControlsEnd: Story = {
+  args: {
+    dark: false,
+    open: true,
+    scrollable: false,
+    ariaModal: false,
+    labelledby: 'dialog-header',
+    children:
+      <div>
+        <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
+        <p>Content of the dialog</p>
+        <DialogControls position={'end'}>
+          <button>confirm</button>
+          <button>cancel</button>
+        </DialogControls>
       </div>,
     disableEscapeKey: false,
   },
