@@ -1,31 +1,108 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {InputDecorator} from './inputDecorator';
 import {fn} from 'storybook/test';
-import {Button} from '../button';
+import {Input} from './input';
+import React from 'react';
 
 const meta = {
   title: 'Inputs/Input',
-  component: Button,
+  component: Input,
   argTypes: {
     dark: {control: 'boolean'},
-    rounded: {control: 'boolean'},
-    color: {control: 'select', options: ['info', 'success', 'warning', 'error', '#7f2bcf', '#39dddd']},
-    children: {control: 'text'},
+    error: {control: 'boolean'},
+    variant: {control: 'select', options: ['basic', 'outlined']},
+    type: {control: 'select', options: ['text', 'number', 'password']},
   },
   args: {onClick: fn()},
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Filled: Story = {
+export const Outlined: Story = {
   args: {
-    variant: 'filled',
-    children: 'Button',
+    variant: 'outlined',
+    label: 'Testing',
     dark: false,
-    rounded: false,
-    size: 'medium'
+    error: false
   },
   parameters: {
     controls: {exclude: ['variant', 'dark']}
   }
+};
+
+export const Basic: Story = {
+  args: {
+    variant: 'basic',
+    label: 'Testing',
+    dark: false,
+    error: false
+  },
+  parameters: {
+    controls: {exclude: ['variant', 'dark']}
+  }
+};
+
+export const Dark: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: true,
+    error: false
+  },
+  parameters: {
+    controls: {exclude: ['dark']}
+  },
+  globals: {
+    backgrounds: {value: 'dark'}
+  }
+};
+
+export const HelpText: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: false,
+    error: false,
+    helpText: 'Testing help text'
+  }
+};
+
+export const DecoratorStart: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: false,
+    error: false,
+    children: <InputDecorator position={'start'}>kg</InputDecorator>
+  },
+  parameters: {
+    controls: {exclude: ['children']}
+  },
+};
+
+export const DecoratorEnd: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: false,
+    error: false,
+    children: <InputDecorator position={'end'}>kg</InputDecorator>
+  },
+  parameters: {
+    controls: {exclude: ['children']}
+  },
+};
+
+export const DecoratorFocus: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: false,
+    error: false,
+    children: <InputDecorator onFocus>kg</InputDecorator>
+  },
+  parameters: {
+    controls: {exclude: ['children']}
+  },
 };
