@@ -32,6 +32,10 @@
     "test:coverage": {},
     "clear": {
       "cache": false
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

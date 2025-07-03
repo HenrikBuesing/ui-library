@@ -1,3 +1,4 @@
+import storybook from 'eslint-plugin-storybook';
 import reactPlugin from 'eslint-plugin-react';
 import tseslint from 'typescript-eslint';
 import eslint from '@eslint/js';
@@ -37,7 +38,8 @@ const baseConfig = [
       ],
       "@typescript-eslint/no-empty-function": 0
     }
-  }
+  },
+  ...storybook.configs["flat/recommended"]
 ];
 
 export default baseConfig;

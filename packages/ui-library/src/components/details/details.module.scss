@@ -29,6 +29,7 @@
     display: flex;
     align-items: center;
     padding: var(--uil-xs);
+    box-sizing: border-box;
 
     &::marker {
       content: none;
