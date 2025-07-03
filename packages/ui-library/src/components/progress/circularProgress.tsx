@@ -25,6 +25,7 @@ export function CircularProgress(props: ProgressProps) {
       className={cls([styles.circularProgress, typeof value !== 'number' && styles.indeterminate, dark && global.dark])}
       role={'progressbar'}
       style={{width: size, height: size}} 
+      aria-label={props['aria-label'] ?? 'Circular progressbar'}
     >
       <svg viewBox={`0 0 40 40`}>
         <circle 

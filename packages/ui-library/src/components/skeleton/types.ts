@@ -4,6 +4,6 @@ import type {CSSProperties} from 'react';
 export type SkeletonProps = BaseProps & {
   disableAnimation?: boolean;
   height?: CSSProperties['height'];
-  rounded?: 'light' | 'medium' | 'full';
+  radius?: CSSProperties['borderRadius'];
   width?: CSSProperties['width'];
 }

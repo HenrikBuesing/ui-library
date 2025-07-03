@@ -37,7 +37,7 @@ export function Tag(props: TagProps) {
         case 'info':
         case 'success':
         case 'error':
-          iconColor = 'white';
+          iconColor = dark ? 'black' : 'white';
           break;
         case 'warning':
           iconColor = 'black';

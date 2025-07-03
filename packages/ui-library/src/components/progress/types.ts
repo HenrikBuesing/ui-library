@@ -5,4 +5,5 @@ export type ProgressProps = BaseProps & {
   color?: CSSProperties['stroke'] | Status;
   size?: CSSProperties['height'];
   value?: number
+  'aria-label'?: string;
 };

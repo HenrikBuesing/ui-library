@@ -10,6 +10,7 @@ export function Breadcrumbs(props: BreadcrumbsType) {
     beforeCollapse = 1,
     children,
     dark = false,
+    expandButtonLabel = 'expand',
     highlightLast = false,
     maxEntries = 5,
     separator = '/'
@@ -39,7 +40,7 @@ export function Breadcrumbs(props: BreadcrumbsType) {
     return [
       ...allEntries.slice(0, beforeCollapse),
       <li className={styles.li} key={'hidden-entries'}>
-        <button className={styles.hiddenEntries} type={'button'} onClick={() => {setExpand(true)}}>
+        <button className={styles.hiddenEntries} type={'button'} aria-label={expandButtonLabel} onClick={() => {setExpand(true)}}>
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <circle cx="04" cy="18" r="1"/>
             <circle cx="12" cy="18" r="1"/>

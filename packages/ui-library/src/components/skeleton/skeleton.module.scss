@@ -9,18 +9,6 @@
     animation: ease-in-out var(--uil-pulse-anim) infinite pulse;
   }
   
-  &.light {
-    border-radius: 5px;
-  }
-  
-  &.medium {
-    border-radius: 25%;
-  }
-  
-  &.full {
-    border-radius: 50%;
-  }
-  
   @keyframes pulse {
     0% {
       opacity: 1;

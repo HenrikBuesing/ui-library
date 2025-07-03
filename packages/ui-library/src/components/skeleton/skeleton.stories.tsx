@@ -6,7 +6,7 @@ const meta = {
   component: Skeleton,
   argTypes: {
     dark: {control: 'boolean'},
-    rounded: {control: 'select', options: ['light', 'medium', 'full', null]},
+    radius: {control: 'select', options: ['5px', '20px', '25%', '50%', null]},
   }
 } satisfies Meta<typeof Skeleton>;
 
