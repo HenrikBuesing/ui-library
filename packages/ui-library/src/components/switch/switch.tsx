@@ -1,6 +1,5 @@
 import React, {type ChangeEvent, type CSSProperties, useRef} from 'react';
 import global from '../common/styles/global.module.scss';
-import generateKey from '@utils/generateKey';
 import {isStatus} from '@utils/checkTypes';
 import styles from './switch.module.scss';
 import cls from '@utils/conditionalClass';
@@ -16,7 +15,6 @@ export function Switch(props: SwitchProps) {
     ...other
   } = props;
 
-  const ID = other.id ?? generateKey();
   const StatusColor = isStatus(color);
   const customColor = StatusColor ? undefined : {
     '--uil-switch-color': color
@@ -41,7 +39,7 @@ export function Switch(props: SwitchProps) {
     >
       <div className={styles.thumbWrapper}>
         <div className={styles.thumb}/>
-        <input type={'checkbox'} id={ID} disabled={disabled} ref={inputRef} onChange={handleChange} {...other}/>
+        <input type={'checkbox'} disabled={disabled} ref={inputRef} onChange={handleChange} {...other}/>
       </div>
 
       <div className={styles.track}/>
