@@ -25,6 +25,7 @@ export function LinearProgress(props: ProgressProps) {
       className={cls([styles.linearProgress, statusColor ? styles[color] : styles.custom, dark && global.dark])}
       role={'progressbar'}
       style={{height: size}}
+      aria-label={props['aria-label'] ?? 'Linear progressbar'}
     >
       <div 
         className={cls([styles.progressBar, typeof value !== 'number' && styles.first, statusColor && styles[color]])}
