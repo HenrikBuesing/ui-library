@@ -33,7 +33,9 @@ export function ToastProvider(props: ToasterProps) {
     pendingToasts.current.push(toast);
 
     if (total >= limit) {
-      closeToast(toasts[0].props.id);
+      for (let i = 0; i < (total - limit) + 1; i++) {
+        closeToast(toasts[i].props.id); 
+      }
 
       timeoutRef.current = new Promise<void>((resolve) => {
         setTimeout(() => {
