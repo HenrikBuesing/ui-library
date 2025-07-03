@@ -46,7 +46,7 @@
   
   &.info {
     &.filled {
-      color: var(--uil-white);
+      color: var(--uil-white-b);
       background-color: var(--uil-info);
     }
     
@@ -62,7 +62,7 @@
 
   &.success {
     &.filled {
-      color: var(--uil-white);
+      color: var(--uil-white-b);
       background-color: var(--uil-success);
     }
 
@@ -94,7 +94,7 @@
 
   &.error {
     &.filled {
-      color: var(--uil-white);
+      color: var(--uil-white-b);
       background-color: var(--uil-error);
     }
 

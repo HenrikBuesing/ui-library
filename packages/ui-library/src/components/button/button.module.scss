@@ -7,6 +7,7 @@
   box-sizing: border-box;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
   
   &.filled {
     box-shadow: 0 0 2px 0 var(--uil-black-alt);
@@ -14,7 +15,7 @@
 
   &:not(:disabled).info {
     &.filled {
-      color: var(--uil-white);
+      color: var(--uil-white-b);
       background-color: var(--uil-info);
 
       &:hover {
@@ -42,7 +43,7 @@
 
   &:not(:disabled).success {
     &.filled {
-      color: var(--uil-white);
+      color: var(--uil-white-b);
       background-color: var(--uil-success);
 
       &:hover {
@@ -98,7 +99,7 @@
 
   &:not(:disabled).error {
     &.filled {
-      color: var(--uil-white);
+      color: var(--uil-white-b);
       background-color: var(--uil-error);
 
       &:hover {
