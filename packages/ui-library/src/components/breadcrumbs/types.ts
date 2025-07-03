@@ -5,6 +5,7 @@ export type BreadcrumbsType = BaseProps & {
   children: ReactNode;
   afterCollapse?: number;
   beforeCollapse?: number;
+  expandButtonLabel?: string;
   highlightLast?: boolean;
   maxEntries?: number;
   separator?: ReactNode;
