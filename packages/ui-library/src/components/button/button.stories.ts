@@ -133,6 +133,9 @@ export const Disabled: Story = {
     size: 'medium',
     disabled: true
   },
+  parameters: {
+    controls: {exclude: ['disabled']}
+  }
 };
 
 export const Link: Story = {
@@ -142,7 +145,7 @@ export const Link: Story = {
     dark: false,
     rounded: false,
     size: 'medium',
-    href: '/?path=/story/button--link',
+    href: '/?path=/story/inputs-button--link',
     target: ''
   },
 };
