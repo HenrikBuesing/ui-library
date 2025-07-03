@@ -6,7 +6,7 @@ const exclude = [
   './src/index.ts',
   './src/*/**/index.ts',
   './src/*/**/types.ts',
-  './src/components/*/*.stories.ts'
+  './src/components/**/*.stories.@(ts|tsx)'
 ];
 
 export default defineConfig(
