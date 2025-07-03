@@ -10,7 +10,7 @@ export function Skeleton(props: SkeletonProps) {
     disableAnimation = false,
     height,
     width,
-    rounded
+    radius
   } = props;
   
   return (
@@ -18,10 +18,9 @@ export function Skeleton(props: SkeletonProps) {
       className={cls([
         styles.skeleton,
         !disableAnimation && styles.animation,
-        rounded && styles[rounded],
         dark && global.dark
       ])} 
-      style={{height: height, width: width}}
+      style={{height: height, width: width, borderRadius: radius}}
     />
   );
 }

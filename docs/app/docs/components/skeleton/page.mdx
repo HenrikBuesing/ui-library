@@ -16,12 +16,12 @@ A skeleton component provides a placeholder of the UI while data is loading, imp
 <Detail>
   ```tsx
   <div className={'header'}>
-    <Skeleton width={'2rem'} height={'2rem'} rounded={'full'}/>
+    <Skeleton width={'2rem'} height={'2rem'} radius={'50%'}/>
     <Skeleton width={'15rem'}/>
   </div>
 
-  <Skeleton height={'9rem'} rounded={'light'}/>
-  <Skeleton width={'75%'} rounded={'light'}/>
+  <Skeleton height={'9rem'} radius={'5px'}/>
+  <Skeleton width={'75%'} radius={'15px'}/>
   ```
 </Detail>
 
@@ -47,12 +47,12 @@ By default, every Skeleton has a pulse animation. To disable it, use the `disabl
 <Detail>
   ```tsx
   <div className={'header'}>
-    <Skeleton width={'2rem'} height={'2rem'} rounded={'full'} disableAnimation/>
+    <Skeleton width={'2rem'} height={'2rem'} radius={'50%'} disableAnimation/>
     <Skeleton width={'15rem'} disableAnimation/>
   </div>
 
-  <Skeleton height={'9rem'} rounded={'light'} disableAnimation/>
-  <Skeleton width={'75%'} rounded={'light'} disableAnimation/>
+  <Skeleton height={'9rem'} radius={'5px'} disableAnimation/>
+  <Skeleton width={'75%'} radius={'15px'} disableAnimation/>
   ```
 </Detail>
 
@@ -60,18 +60,18 @@ By default, every Skeleton has a pulse animation. To disable it, use the `disabl
   The default animation duration is 2.5 seconds. To customize it, override the CSS variable `--uil-pulse-anim`.
 </Callout>
 
-## Rounded
+## Radius
 
-Use one of `light`, `medium` or `full` to customize the skeletons border radius.
+Use the `radius` prop to customize the border radius.
 
 <SkeletonRadius/>
 
 <Detail>
   ```tsx
   <Skeleton height={'5rem'} width={'5rem'}/>
-  <Skeleton height={'5rem'} width={'5rem'} rounded={'light'}/>
-  <Skeleton height={'5rem'} width={'5rem'} rounded={'medium'}/>
-  <Skeleton height={'5rem'} width={'5rem'} rounded={'full'}/>
+  <Skeleton height={'5rem'} width={'5rem'} radius={'5px'}/>
+  <Skeleton height={'5rem'} width={'5rem'} radius={'25%'}/>
+  <Skeleton height={'5rem'} width={'5rem'} radius={'50%'}/>
   ```
 </Detail>
 
@@ -106,8 +106,8 @@ Use one of `light`, `medium` or `full` to customize the skeletons border radius.
     <Table.Td>Set the component height</Table.Td>
   </Table.Tr>
   <Table.Tr>
-    <Table.Td>rounded</Table.Td>
-    <Table.Td>`light` | `medium` | `full`</Table.Td>
+    <Table.Td>radius</Table.Td>
+    <Table.Td>`string`</Table.Td>
     <Table.Td>-</Table.Td>
     <Table.Td>Set the border radius</Table.Td>
   </Table.Tr>

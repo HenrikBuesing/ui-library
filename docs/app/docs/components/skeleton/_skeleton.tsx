@@ -11,12 +11,12 @@ export default function DefaultSkeleton() {
   return (
     <div className={styles.showcaseWrapperCol}>
       <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
-        <Skeleton width={'2rem'} height={'2rem'} rounded={'full'} dark={dark}/>
+        <Skeleton width={'2rem'} height={'2rem'} radius={'50%'} dark={dark}/>
         <Skeleton width={'15rem'} dark={dark}/>
       </div>
       
-      <Skeleton height={'9rem'} rounded={'light'} dark={dark}/>
-      <Skeleton width={'75%'} rounded={'light'} dark={dark}/>
+      <Skeleton height={'9rem'} radius={'5px'} dark={dark}/>
+      <Skeleton width={'75%'} radius={'15px'} dark={dark}/>
     </div>
   );
 }
@@ -40,12 +40,12 @@ export function SkeletonAnim() {
   return (
     <div className={styles.showcaseWrapperCol}>
       <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
-        <Skeleton width={'2rem'} height={'2rem'} rounded={'full'} dark={dark} disableAnimation/>
+        <Skeleton width={'2rem'} height={'2rem'} radius={'50%'} dark={dark} disableAnimation/>
         <Skeleton width={'15rem'} dark={dark} disableAnimation/>
       </div>
 
-      <Skeleton height={'9rem'} rounded={'light'} dark={dark} disableAnimation/>
-      <Skeleton width={'75%'} rounded={'light'} dark={dark} disableAnimation/>
+      <Skeleton height={'9rem'} radius={'5px'} dark={dark} disableAnimation/>
+      <Skeleton width={'75%'} radius={'15px'} dark={dark} disableAnimation/>
     </div>
   );
 }
@@ -57,9 +57,9 @@ export function SkeletonRadius() {
   return (
     <div className={styles.showcaseWrapper}>
       <Skeleton height={'5rem'} width={'5rem'} dark={dark}/>
-      <Skeleton height={'5rem'} width={'5rem'} rounded={'light'} dark={dark}/>
-      <Skeleton height={'5rem'} width={'5rem'} rounded={'medium'} dark={dark}/>
-      <Skeleton height={'5rem'} width={'5rem'} rounded={'full'} dark={dark}/>
+      <Skeleton height={'5rem'} width={'5rem'} radius={'5px'} dark={dark}/>
+      <Skeleton height={'5rem'} width={'5rem'} radius={'25%'} dark={dark}/>
+      <Skeleton height={'5rem'} width={'5rem'} radius={'50%'} dark={dark}/>
     </div>
   );
 }
