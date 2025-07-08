@@ -12,8 +12,8 @@ export function useContrastColor(hex: string) {
 
   if (hex.length === 3) {
     srgb = [
-      parseInt(hex.substring(0), 16) / 255,
-      parseInt(hex.substring(1), 16) / 255,
+      parseInt(hex.substring(0, 1), 16) / 255,
+      parseInt(hex.substring(1, 2), 16) / 255,
       parseInt(hex.substring(2), 16) / 255
     ];
   } else {
