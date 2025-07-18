@@ -1,0 +1,51 @@
+.pagination {
+  --uil-pagination-size: 1.75rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--uil-s);
+  margin: 0;
+  padding: 0;
+  
+  .item {
+    height: var(--uil-pagination-size);
+    width: var(--uil-pagination-size);
+
+    .button {
+      background-color: transparent;
+      border: none;
+      height: 100%;
+      width: 100%;
+      padding: var(--uil-xxs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 6px;
+      color: var(--uil-black-lighter);
+      font-size: calc(var(--uil-pagination-size) - .5rem);
+
+      &:disabled {
+        cursor: default;
+
+        .svg {
+          fill: var(--uil-grey-dark);
+        }
+      }
+      
+      &.active, &:not(:disabled):hover {
+        background-color: var(--uil-grey);
+      }
+
+      .svg {
+        height: 100%;
+        width: 100%;
+        fill: var(--uil-black-lighter);
+      }
+    }
+
+    .dots {
+      fill: var(--uil-grey-dark);
+    }
+  }
+}

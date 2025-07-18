@@ -4,15 +4,24 @@ import type {ReactNode} from 'react';
 export type PaginationProps = BaseProps & {
   pages: number;
   activePage?: number;
-  afterCollapse?: number;
-  beforeCollapse?: number;
-  collapse?: number;
-  firstButton?: ReactNode;
+  ariaLabels?: AriaLabels;
+  boundary?: number;
   disableFirstButton?: boolean;
-  lastButton?: ReactNode;
   disableLastButton?: boolean;
-  nextButton?: ReactNode;
   disableNextButton?: boolean;
-  prevButton?: ReactNode;
   disablePrevButton?: boolean;
+  firstButton?: ReactNode;
+  lastButton?: ReactNode;
+  nextButton?: ReactNode;
+  onChange?: (page: number) => void;
+  prevButton?: ReactNode;
+  siblings?: number;
+}
+
+type AriaLabels = {
+  first?: string;
+  last?: string;
+  next?: string;
+  prev?: string;
+  page?: string;
 }
