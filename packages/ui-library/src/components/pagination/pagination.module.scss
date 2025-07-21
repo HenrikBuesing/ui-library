@@ -1,11 +1,18 @@
+@use '../common/styles/mixin' as *;
+
 .pagination {
-  --uil-pagination-size: 1.75rem;
+  --uil-pagination-size: var(--uil-xl);
   list-style: none;
   display: flex;
   align-items: center;
-  gap: var(--uil-s);
+  gap: var(--uil-xs);
   margin: 0;
   padding: 0;
+  
+  @include uil-tablet {
+    --uil-pagination-size: var(--uil-xxl);
+    gap: var(--uil-s);
+  }
   
   .item {
     height: var(--uil-pagination-size);
@@ -23,7 +30,7 @@
       cursor: pointer;
       border-radius: 6px;
       color: var(--uil-black-lighter);
-      font-size: calc(var(--uil-pagination-size) - .5rem);
+      font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
 
       &:disabled {
         cursor: default;
