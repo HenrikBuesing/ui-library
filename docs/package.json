@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@next/eslint-plugin-next": "^15.3.4",
+    "@next/eslint-plugin-next": "^15.4.6",
     "eslint-config-next": "^15.3.4"
   }
 }
