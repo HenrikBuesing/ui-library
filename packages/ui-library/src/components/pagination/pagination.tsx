@@ -37,14 +37,13 @@ export function Pagination(props: PaginationProps) {
   // https://github.com/mui/material-ui/blob/93c97482531a02b700c264844aeea809e5acf935/packages/mui-material/src/usePagination/usePagination.js
   const pageStart = Math.max(Math.min(page - siblings, pages - boundary - siblings * 2 - 1), boundary + 2);
   const pageEnd = Math.min(Math.max(page + siblings, boundary + siblings * 2 + 2), pages - boundary - 1);
-  const items = [
+  const items = [...new Set([
     ...range(1, boundary),
     ...(pageStart > boundary + 2 ? ['ellipsis-a'] : boundary < pages - boundary ? [boundary + 1] : []),
     ...range(pageStart, pageEnd),
     ...(pageEnd < (pages - boundary - 1) ? ['ellipsis-b'] : pages - boundary > boundary ? [pages - boundary] : []),
     ...range(pages - boundary + 1, pages)
-  ];
-  
+  ])];
   const refs = [
     useRef<SVGSVGElement>(null),
     useRef<SVGSVGElement>(null),
@@ -89,7 +88,7 @@ export function Pagination(props: PaginationProps) {
               className={styles.button}
               onClick={() => {handleClick(page - 1)}}
               disabled={page <= 1}
-              aria-label={ariaLabels?.first ?? 'Go to previous page'}
+              aria-label={ariaLabels?.prev ?? 'Go to previous page'}
             >
               {prevButton ??
                 <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} ref={refs[1]} className={styles.svg}>
@@ -125,7 +124,7 @@ export function Pagination(props: PaginationProps) {
               className={styles.button}
               onClick={() => {handleClick(page + 1)}}
               disabled={page >= pages}
-              aria-label={ariaLabels?.first ?? 'Go to next page'}
+              aria-label={ariaLabels?.next ?? 'Go to next page'}
             >
               {nextButton ??
                 <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} ref={refs[2]} className={styles.svg}>
@@ -142,7 +141,7 @@ export function Pagination(props: PaginationProps) {
               className={styles.button}
               onClick={() => {handleClick(pages)}}
               disabled={page >= pages}
-              aria-label={ariaLabels?.first ?? 'Go to last page'}
+              aria-label={ariaLabels?.last ?? 'Go to last page'}
             >
               {lastButton ??
                 <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 512 512'} ref={refs[3]} className={styles.svg}>
