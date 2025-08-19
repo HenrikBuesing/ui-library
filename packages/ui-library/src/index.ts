@@ -2,6 +2,7 @@ export {Dialog, DialogTitle, DialogContent, DialogControls} from './components/d
 export {ToastProvider, useToastContext, type ToastOptions} from './components/toast';
 export {RadioGroup, type RadioOption} from './components/check/radioGroup';
 export {CircularProgress, LinearProgress} from './components/progress';
+export {Pagination, type AriaLabels} from './components/pagination';
 export {Input, InputDecorator, Textarea} from './components/input';
 export {Details, Accordion} from './components/details';
 export {Checkbox} from './components/check/checkbox';

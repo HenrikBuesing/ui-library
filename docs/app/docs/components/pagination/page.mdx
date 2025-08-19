@@ -1,0 +1,247 @@
+---
+title: Pagination
+description: Showcase and usage guide of the pagination component
+---
+
+import DefaultPagination, {ActivePage, AriaPages, BoundaryPages, ChangePages, ControlsPage, IconPages, PagesPagination, SiblingsPages} from './_pagination';
+import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
+
+# Pagination
+
+A pagination component lets users navigate through content split across multiple pages.
+
+<DefaultPagination/>
+
+<Detail>
+  ```tsx
+  <Pagination pages={10}/>
+  ```
+</Detail>
+
+## Pages 
+
+The `pages` prop defines how many pages will be available to navigate.
+
+<PagesPagination/>
+
+<Detail>
+  ```tsx
+  <Pagination pages={3}/>
+  <Pagination pages={15}/>
+  ```
+</Detail>
+
+## Active page
+
+You can set the currently selected page with the `activePage` prop. \
+If the prop is omitted, it will fall back to `1`.
+
+<ActivePage/>
+
+<Detail>
+  ```tsx
+  <Pagination pages={12} activePage={6}/>
+  ```
+</Detail>
+
+<Callout type={'warning'}>
+  The currently selected page must not be greater than the number of total pages and must be at least `1`.
+</Callout>
+
+## Change detection
+
+You can handle navigation changes with the prop `onChange`. The function will be called whenever one of the controls or
+any visible page is clicked.
+
+<ChangePages/>
+
+<Detail>
+  ```tsx
+  const [page, setPage] = React.useState(1);
+  
+  <div>current page: {page}</div>
+  <Pagination pages={10} activePage={page} onChange={setPage}/>
+  ```
+</Detail>
+
+## Controls
+
+### Visibility
+
+The props `disableFirstButton`, `disablepreviousButton`, `disableNextButton` and `disableLastButton` determine whether
+a control should be hidden. \
+By default, all controls are visible.
+
+<ControlsPage/>
+
+<Detail>
+  ```tsx
+  <Pagination pages={10} disableFirstButton disableLastButton/>
+  <Pagination pages={10} disableNextButton disablePrevButton/>
+  <Pagination pages={10} disableFirstButton disableLastButton disableNextButton disablePrevButton/>
+  ```
+</Detail>
+
+### Custom icons
+
+You can use different icons for the controls, by using the `firstButton`, `previousButton`, `nextButton` or `lastButton` prop.
+
+<IconPages/>
+
+<Detail>
+  ```tsx
+  // const first = <svg>...</svg>
+  // const last = <svg>...</svg>
+  
+  <Pagination pages={10} firstButton={first} lastButton={last} disableNextButton disablePrevButton/>
+  ```
+</Detail>
+
+## Boundary
+
+The `boundary` prop sets the amount of visible entries at the bounds of the pagination.
+
+<BoundaryPages/>
+
+<Detail>
+  ```tsx
+  <Pagination pages={15} activePage={7} boundary={3}/>
+  ```
+</Detail>
+
+<Callout type={'warning'}>
+  The boundary must not be greater than the number of total pages and must be at least `1`.
+</Callout>
+
+## Siblings
+
+Customize the amount of visible pages around the currently selected page with the `siblings` prop.
+
+<SiblingsPages/>
+
+<Detail>
+  ```tsx
+  <Pagination pages={15} activePage={7} siblings={3}/>
+  ```
+</Detail>
+
+## Accessibility
+
+Every control and page has the ARIA attribute `aria-label`. You can customize it by using the `ariaLabels` prop. \
+By default, the aria-label attributes are set to `Go to (first/previous/next/last/) page` and `Go to page x`.
+
+<AriaPages/>
+
+<Detail>
+  ```tsx
+  const aria: AriaLabels = {
+    first: 'First page',
+    last: 'Last page',
+    next: 'Next page',
+    prev: 'Previous page',
+    page: 'Page'
+  };
+  
+  <Pagination pages={10} ariaLabels={aria}/>
+  ```
+</Detail>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>activePage</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>1</b></Table.Td>
+    <Table.Td>currently selected page</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>ariaLabels</Table.Td>
+    <Table.Td>`object`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Sets the aria-label attributes for the controls and pages</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>boundary</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>1</b></Table.Td>
+    <Table.Td>Visible pages at the pagination bounds</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disableFirstButton</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Enable or disable the first page control</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disableLastButton</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Enable or disable the last page control</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disableNextButton</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Enable or disable the next page control</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>disablePrevButton</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Enable or disable the previous page control</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>firstButton</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>lastButton</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>nextButton</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onChange</Table.Td>
+    <Table.Td>`function`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>On change, get the current page</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>prevButton</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>pages</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Number of available pages</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>siblings</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>1</b></Table.Td>
+    <Table.Td>Number of pages surrounding the selected page</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>

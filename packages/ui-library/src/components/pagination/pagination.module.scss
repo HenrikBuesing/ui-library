@@ -1,0 +1,58 @@
+@use '../common/styles/mixin' as *;
+
+.pagination {
+  --uil-pagination-size: var(--uil-xl);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--uil-xs);
+  margin: 0;
+  padding: 0;
+  
+  @include uil-tablet {
+    --uil-pagination-size: var(--uil-xxl);
+    gap: var(--uil-s);
+  }
+  
+  .item {
+    height: var(--uil-pagination-size);
+    width: var(--uil-pagination-size);
+
+    .button {
+      background-color: transparent;
+      border: none;
+      height: 100%;
+      width: 100%;
+      padding: var(--uil-xxs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 6px;
+      color: var(--uil-black-lighter);
+      font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
+
+      &:disabled {
+        cursor: default;
+
+        .svg {
+          fill: var(--uil-grey-dark);
+        }
+      }
+      
+      &.active, &:not(:disabled):hover {
+        background-color: var(--uil-grey);
+      }
+
+      .svg {
+        height: 100%;
+        width: 100%;
+        fill: var(--uil-black-lighter);
+      }
+    }
+
+    .dots {
+      fill: var(--uil-grey-dark);
+    }
+  }
+}

@@ -55,6 +55,7 @@ const globalMeta: Meta = {
             title: 'Navigation'
           },
           breadcrumbs: 'Breadcrumbs',
+          pagination: 'Pagination',
         }
       },
       hooks: {
