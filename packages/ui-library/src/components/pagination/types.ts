@@ -18,7 +18,7 @@ export type PaginationProps = BaseProps & {
   siblings?: number;
 }
 
-type AriaLabels = {
+export type AriaLabels = {
   first?: string;
   last?: string;
   next?: string;
