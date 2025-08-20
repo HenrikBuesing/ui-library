@@ -1,6 +1,6 @@
-import global from '../common/styles/global.module.scss';
+import global from '../../common/styles/global.module.scss';
 import useAddAttribution from '@utils/addAttribution';
-import styles from './details.module.scss';
+import styles from '../collapsible.module.scss';
 import type {DetailsProps} from './types';
 import cls from '@utils/conditionalClass';
 import React, {useRef} from 'react';

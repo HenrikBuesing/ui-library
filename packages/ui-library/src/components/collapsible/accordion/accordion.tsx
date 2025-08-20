@@ -1,8 +1,8 @@
+import styles from '../collapsible.module.scss';
 import type {AccordionProps} from './types';
 import React, {isValidElement} from 'react';
-import styles from './details.module.scss';
 import cls from '@utils/conditionalClass';
-import {Details} from './details';
+import {Details} from '../details';
 
 export function Accordion(props: AccordionProps) {
   const {
