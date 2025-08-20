@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {Accordion} from './accordion';
-import {Details} from './details';
+import {Details} from '../details';
 import React from 'react';
 
 const meta = {
