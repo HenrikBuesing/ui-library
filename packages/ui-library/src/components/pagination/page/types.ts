@@ -1,4 +1,4 @@
-import type {BaseProps} from '../common/types';
+import type {BaseProps} from '../../common/types';
 import type {ReactNode} from 'react';
 
 export type PaginationProps = BaseProps & {

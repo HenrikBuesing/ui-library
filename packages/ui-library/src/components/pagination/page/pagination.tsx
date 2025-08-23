@@ -1,4 +1,4 @@
-import global from '../common/styles/global.module.scss';
+import global from '../../common/styles/global.module.scss';
 import useAddAttribution from '@utils/addAttribution';
 import React, {useRef, useState} from 'react';
 import styles from './pagination.module.scss';
