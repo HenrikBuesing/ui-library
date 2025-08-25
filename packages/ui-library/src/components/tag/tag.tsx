@@ -1,4 +1,4 @@
-import React, {cloneElement, isValidElement, type ReactElement, type ReactHTMLElement, useRef} from 'react';
+import React, {cloneElement, type CSSProperties, isValidElement, type ReactElement, type ReactHTMLElement, useRef} from 'react';
 import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
 import useAddAttribution from '@utils/addAttribution';
@@ -67,18 +67,13 @@ export function Tag(props: TagProps) {
     onDelete?.();
   }
 
-  function setStyle() {
+  function setStyle(): CSSProperties | undefined {
     if (isStatus(color)) return;
 
-    return variant === 'filled' ?
-      {
-        backgroundColor: color,
-        color: useContrastColor(color),
-      } :
-      {
-        color: color,
-        borderColor: color,
-      };
+    return {
+    '--uil-tag-font-color': useContrastColor(color),
+    '--uil-tag-color': color
+    } as CSSProperties;
   }
 
   function setClassName() {

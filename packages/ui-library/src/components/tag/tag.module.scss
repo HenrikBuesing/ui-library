@@ -6,6 +6,8 @@
   gap: var(--uil-xs);
   cursor: default;
   outline: none;
+  border-width: 2px;
+  border-style: solid;
   
   &.clickable {
     cursor: pointer;
@@ -32,12 +34,18 @@
 
   &.filled {
     border: transparent;
+    color: var(--uil-tag-font-color);
+    background-color: var(--uil-tag-color);
   }
 
   &.outlined {
     background-color: transparent;
-    border-width: 1px;
-    border-style: solid;
+    color: var(--uil-tag-color);
+    border-color: var(--uil-tag-color);
+
+    .delIcon {
+      fill: var(--uil-tag-color);
+    }
   }
   
   &.elevated {
@@ -45,67 +53,27 @@
   }
   
   &.info {
-    &.filled {
-      color: var(--uil-white-b);
-      background-color: var(--uil-info);
-    }
-    
-    &.outlined {
-      color: var(--uil-info);
-      border-color: var(--uil-info);
-
-      .delIcon {
-        fill: var(--uil-info);
-      }
-    }
+    --uil-tag-font-color: var(--uil-white-b);
+    --uil-tag-color: var(--uil-info);
   }
 
   &.success {
-    &.filled {
-      color: var(--uil-white-b);
-      background-color: var(--uil-success);
-    }
-
-    &.outlined {
-      color: var(--uil-success);
-      border-color: 1px solid var(--uil-success);
-
-      .delIcon {
-        fill: var(--uil-success);
-      }
-    }
+    --uil-tag-font-color: var(--uil-white-b);
+    --uil-tag-color: var(--uil-success);
   }
 
   &.warning {
-    &.filled {
-      color: var(--uil-black);
-      background-color: var(--uil-warning);
-    }
+    --uil-tag-font-color: var(--uil-black-light);
+    --uil-tag-color: var(--uil-warning);
 
     &.outlined {
-      color: var(--uil-warning-alt);
-      border-color: 1px solid var(--uil-warning);
-
-      .delIcon {
-        fill: var(--uil-warning-alt);
-      }
+      --uil-tag-color: var(--uil-warning-alt);
     }
   }
 
   &.error {
-    &.filled {
-      color: var(--uil-white-b);
-      background-color: var(--uil-error);
-    }
-
-    &.outlined {
-      color: var(--uil-error);
-      border-color: 1px solid var(--uil-error);
-      
-      .delIcon {
-        fill: var(--uil-error);
-      }
-    }
+    --uil-tag-font-color: var(--uil-white-b);
+    --uil-tag-color: var(--uil-error);
   }
   
   .delIcon {
