@@ -61,6 +61,8 @@ export function Toast(props: ToastProps) {
     >
       {message}
 
+      {action && <div>{action}</div>}
+
       {dismissible &&
         <button className={styles.closeButton} onClick={handleClose}>
           <svg ref={svgRef} xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 384 512'}>
@@ -68,8 +70,6 @@ export function Toast(props: ToastProps) {
           </svg>
         </button>
       }
-
-      {action && <div>{action}</div>}
     </div>
   );
 }
