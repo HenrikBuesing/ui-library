@@ -13,123 +13,58 @@
     box-shadow: 0 0 2px 0 var(--uil-black-alt);
   }
 
-  &:not(:disabled).info {
-    &.filled {
-      color: var(--uil-white-b);
-      background-color: var(--uil-info);
+  &.info {
+    --uil-button-font-color: var(--uil-white-b);
+    --uil-button-color: var(--uil-info);
+    --uil-button-hover-color: var(--uil-info-hover);
+  }
 
-      &:hover {
-        background-color: rgba(var(--uil-info-hover), .8);
-      }
-    }
+  &.success {
+    --uil-button-font-color: var(--uil-white-b);
+    --uil-button-color: var(--uil-success);
+    --uil-button-hover-color: var(--uil-success-hover);
+  }
 
-    &.outlined {
-      color: var(--uil-info);
-      border-color: var(--uil-info);
-
-      &:not(:disabled):hover {
-        background-color: rgba(var(--uil-info-hover), .08);
-      }
-    }
-
-    &.text {
-      color: var(--uil-info);
-
-      &:not(:disabled):hover {
-        background-color: rgba(var(--uil-info-hover), .08);
-      }
+  &.warning {
+    --uil-button-font-color: var(--uil-black-light);
+    --uil-button-color: var(--uil-warning);
+    --uil-button-hover-color: var(--uil-warning-hover);
+    
+    &.outlined, &.text {
+      --uil-button-color: var(--uil-warning-alt);
     }
   }
 
-  &:not(:disabled).success {
-    &.filled {
-      color: var(--uil-white-b);
-      background-color: var(--uil-success);
+  &.error {
+    --uil-button-font-color: var(--uil-white-b);
+    --uil-button-color: var(--uil-error);
+    --uil-button-hover-color: var(--uil-error-hover);
+  }
+  
+  &:not(:disabled).filled {
+    color: var(--uil-button-font-color);
+    background-color: var(--uil-button-color);
 
-      &:hover {
-        background-color: rgba(var(--uil-success-hover), .8);
-      }
-    }
-
-    &.outlined {
-      color: var(--uil-success);
-      border-color: var(--uil-success);
-
-      &:hover {
-        background-color: rgba(var(--uil-success-hover), .08);
-      }
-    }
-
-    &.text {
-      color: var(--uil-success);
-
-      &:hover {
-        background-color: rgba(var(--uil-success-hover), .08);
-      }
+    &:hover {
+      background-color: rgba(var(--uil-button-hover-color), .8);
     }
   }
 
-  &:not(:disabled).warning {
-    &.filled {
-      color: var(--uil-black-light);
-      background-color: var(--uil-warning);
+  &:not(:disabled).outlined {
+    color: var(--uil-button-color);
+    border-color: var(--uil-button-color);
 
-      &:hover {
-        background-color: rgba(var(--uil-warning-hover), .8);
-      }
-    }
-
-    &.outlined {
-      color: var(--uil-warning-alt);
-      border-color: var(--uil-warning);
-
-      &:hover {
-        background-color: rgba(var(--uil-warning-hover), .08);
-      }
-    }
-
-    &.text {
-      color: var(--uil-warning-alt);
-
-      &:hover {
-        background-color: rgba(var(--uil-warning-hover), .08);
-      }
+    &:hover {
+      background-color: rgba(var(--uil-button-hover-color), .08);
     }
   }
 
-  &:not(:disabled).error {
-    &.filled {
-      color: var(--uil-white-b);
-      background-color: var(--uil-error);
+  &:not(:disabled).text {
+    color: var(--uil-button-color);
 
-      &:hover {
-        background-color: rgba(var(--uil-error-hover), .8);
-      }
+    &:hover {
+      background-color: rgba(var(--uil-button-hover-color), .08);
     }
-
-    &.outlined {
-      color: var(--uil-error);
-      border-color: var(--uil-error);
-
-      &:hover {
-        background-color: rgba(var(--uil-error-hover), .08);
-      }
-    }
-
-    &.text {
-      color: var(--uil-error);
-
-      &:hover {
-        background-color: rgba(var(--uil-error-hover), .08);
-      }
-    }
-  }
-
-  &:not(:disabled).custom {
-     &.filled:hover, &.outlined:hover, &.text:hover {
-       opacity: .85;
-       background-color: var(--uil-custom-hover);
-     }
   }
 
   &.disabled {

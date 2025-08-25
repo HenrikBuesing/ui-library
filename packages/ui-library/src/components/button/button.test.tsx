@@ -91,11 +91,11 @@ describe('general', () => {
     }).toThrowError(`Error: unsupported size. Expected 'small', 'medium' or 'large', but got: unknown size`);
   });
 
-  test('should throw error when using unknown variant', () => {
+  test('should throw error when using invalid color format', () => {
     expect(() => {
-      // @ts-expect-error -> test using unsupported variant
-      render(<Button variant={'unknown'} color={'#3143c1'}>test</Button>)
-    }).toThrowError(`<Button> received an unexpected variant. Expected 'filled', 'outline' or 'text', but got: unknown`);
+      // @ts-expect-error -> test using invalid color format
+      render(<Button variant={'text'} color={'invalid'}>test</Button>)
+    }).toThrowError(`<Button> received an invalid hex color format. Expected '#000' or '#000000', but got: invalid`);
   });
 });
 
@@ -157,33 +157,22 @@ describe('color options', () => {
     render(<Button variant={'filled'} color={'#3143c1'}>custom</Button>);
     const button = screen.getByText('custom');
 
-    // result returns rgb so the provided hex has to be converted to compare
-    const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
-
-    expect(button.style.backgroundColor).toEqual(rgb);
-    expect(button.style.color).toEqual('rgb(255, 255, 255)');
+    expect(button.style.getPropertyValue('--uil-button-color')).toEqual('#3143c1');
+    expect(button.style.getPropertyValue('--uil-button-font-color')).toEqual('#ffffff');
   });
 
   test('should render blue outline (custom color)', () => {
     render(<Button variant={'outlined'} color={'#3143c1'}>custom</Button>);
     const button = screen.getByText('custom');
 
-    // result returns rgb so the provided hex has to be converted to compare
-    const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
-
-    expect(button.style.color).toEqual(rgb);
-    expect(button.style.border).toEqual(rgb);
+    expect(button.style.getPropertyValue('--uil-button-color')).toEqual('#3143c1');
   });
 
   test('should render blue text (custom color)', () => {
     render(<Button variant={'text'} color={'#3143c1'}>custom</Button>);
     const button = screen.getByText('custom');
 
-    // result returns rgb so the provided hex has to be converted to compare
-    const rgb = `rgb(${parseInt('31', 16)}, ${parseInt('43', 16)}, ${parseInt('c1', 16)})`;
-
-    expect(button.style.color).toEqual(rgb);
-    expect(button.className).toEqual('button fit medium text custom fontMedium');
+    expect(button.style.getPropertyValue('--uil-button-color')).toEqual('#3143c1');
   });
 
   test('should render default style', () => {

@@ -2,6 +2,7 @@ import {useContrastColor} from '@hooks/useContrastColor';
 import global from '../common/styles/global.module.scss';
 import React, {type CSSProperties} from 'react';
 import getFontsize from '@utils/getFontsize';
+import {hexToRgb} from '@utils/colorConvert';
 import {isStatus} from '@utils/checkTypes';
 import styles from './button.module.scss';
 import cls from '@utils/conditionalClass';
@@ -21,37 +22,26 @@ export function Button(props: ButtonProps) {
     ...buttonProps
   } = props;
 
+  const className = setClassName();
   const style = setStyle();
-  const className = setClasses();
+
+  function setClassName() {
+    return cls([
+      styles.button, global.fit, styles[size], styles[variant], dark && global.dark, disabled && styles.disabled,
+      isStatus(color) && styles[color], getFontsize(size), rounded && styles.rounded
+    ]);
+  }
 
   function setStyle(): CSSProperties | undefined {
     if (disabled || isStatus(color)) return undefined;
+    
+    const rgb = hexToRgb(color, '<Button>');
 
-    switch (variant) {
-      case 'filled':
-        return {
-          color: useContrastColor(color),
-          backgroundColor: color
-        };
-      case 'outlined':
-        return {
-          color: color,
-          borderColor: color
-        };
-      case 'text':
-        return {
-          color: color
-        };
-      default:
-        throw new Error(`<Button> received an unexpected variant. Expected 'filled', 'outline' or 'text', but got: ${String(variant)}'`);
-    }
-  }
-  
-  function setClasses() {
-    return cls([
-      styles.button, global.fit, styles[size], styles[variant], dark && global.dark, disabled && styles.disabled,
-      isStatus(color) ? styles[color] : styles.custom, getFontsize(size), rounded && styles.rounded
-    ]);
+    return {
+      '--uil-button-font-color': useContrastColor(color),
+      '--uil-button-color': color,
+      '--uil-button-hover-color': `${rgb[0]}, ${rgb[1]}, ${rgb[2]}`,
+    } as CSSProperties;
   }
   
   if (href || href === '') {
