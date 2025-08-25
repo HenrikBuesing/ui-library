@@ -37,22 +37,15 @@ describe('tag', () => {
     const {container} = render(<Tag color={'#19bfa9'} variant={'filled'} label={'test'}/>);
     const tag = container.getElementsByClassName('tag')[0] as HTMLDivElement;
 
-    // result returns rgb so the provided hex has to be converted to compare
-    const rgb = `rgb(${parseInt('19', 16)}, ${parseInt('bf', 16)}, ${parseInt('a9', 16)})`;
-
-    expect(tag.style.backgroundColor).toEqual(rgb);
-    expect(tag.style.color).toEqual('rgb(0, 0, 0)');
+    expect(tag.style.getPropertyValue('--uil-tag-color')).toEqual('#19bfa9');
+    expect(tag.style.getPropertyValue('--uil-tag-font-color')).toEqual('#000000');
   });
 
   test('should render custom outlined tag', () => {
     const {container} = render(<Tag color={'#0f2ba1'} variant={'outlined'} label={'test'}/>);
     const tag = container.getElementsByClassName('tag')[0] as HTMLDivElement;
 
-    // result returns rgb so the provided hex has to be converted to compare
-    const rgb = `rgb(${parseInt('0f', 16)}, ${parseInt('2b', 16)}, ${parseInt('a1', 16)})`;
-
-    expect(tag.style.borderColor).toEqual(rgb);
-    expect(tag.style.color).toEqual(rgb);
+    expect(tag.style.getPropertyValue('--uil-tag-color')).toEqual('#0f2ba1');
   });
 
   test('should render onDelete tag', () => {
@@ -84,6 +77,15 @@ describe('tag', () => {
     const delIcon = container.getElementsByClassName('delIcon')[0];
 
     expect((delIcon as SVGSVGElement).attributes.getNamedItem('fill')?.value).toEqual('white');
+  });
+
+  test('should render onDelete tag with black icon', () => {
+    const fn = vi.fn();
+
+    const {container} = render(<Tag color={'info'} dark={true} variant={'filled'} label={'test'} onDelete={() => {fn()}}/>);
+    const delIcon = container.getElementsByClassName('delIcon')[0];
+
+    expect((delIcon as SVGSVGElement).attributes.getNamedItem('fill')?.value).toEqual('black');
   });
 
   test('should render onDelete warning tag', () => {
