@@ -3,7 +3,7 @@
 .tag {
   display: flex;
   align-items: center;
-  gap: var(--uil-xs);
+  gap: var(--uil-s);
   cursor: default;
   outline: none;
   border-width: 2px;
@@ -80,18 +80,18 @@
     cursor: pointer;
     
     &.small {
-      width: var(--uil-s);
-      height: var(--uil-s);
-    }
-
-    &.medium {
       width: var(--uil-m);
       height: var(--uil-m);
     }
 
+    &.medium {
+      width: var(--uil-xl);
+      height: var(--uil-xl);
+    }
+
     &.large {
-      width: var(--uil-l);
-      height: var(--uil-l);
+      width: var(--uil-xxl);
+      height: var(--uil-xxl);
     }
   }
 }
