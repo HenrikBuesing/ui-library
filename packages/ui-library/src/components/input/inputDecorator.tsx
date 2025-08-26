@@ -17,7 +17,7 @@ export function InputDecorator(props: InputDecoratorProps) {
         style.decorator,
         global.fontSmall,
         position === 'start' ? style.start : style.end,
-        onFocus ? style.focus : style.visible
+        onFocus ? style.onFocus : style.visible
       ])}
     >
       {children}

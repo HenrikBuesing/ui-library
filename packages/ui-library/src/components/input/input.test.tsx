@@ -116,7 +116,7 @@ describe('InputDecorator', () => {
   test('should render decorator onFocus', () => {
     const {container} = render(<InputDecorator onFocus>testing</InputDecorator>);
 
-    const decorator = container.getElementsByClassName('decorator end focus');
+    const decorator = container.getElementsByClassName('decorator end onFocus');
     expect(decorator[0]).toBeDefined();
   });
 
