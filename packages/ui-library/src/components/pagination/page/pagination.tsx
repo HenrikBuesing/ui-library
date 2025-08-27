@@ -57,7 +57,7 @@ export function Pagination(props: PaginationProps) {
     return Array.from({length}, (_,  idx) => start + idx);
   }
   
-  function handleClick(newPage: number) {
+  function handlePageChange(newPage: number) {
     setPage(newPage);
     onChange?.(newPage);
   }
@@ -69,7 +69,7 @@ export function Pagination(props: PaginationProps) {
           <li className={styles.item}>
             <button
               className={styles.button}
-              onClick={() => {handleClick(1)}}
+              onClick={() => {handlePageChange(1)}}
               disabled={page <= 1}
               aria-label={ariaLabels?.first ?? 'Go to first page'}
             >
@@ -86,7 +86,7 @@ export function Pagination(props: PaginationProps) {
           <li className={styles.item}>
             <button
               className={styles.button}
-              onClick={() => {handleClick(page - 1)}}
+              onClick={() => {handlePageChange(page - 1)}}
               disabled={page <= 1}
               aria-label={ariaLabels?.prev ?? 'Go to previous page'}
             >
@@ -104,7 +104,7 @@ export function Pagination(props: PaginationProps) {
             {typeof item === 'number' ? 
               <button 
                 className={cls([page === item && styles.active, styles.button])}
-                onClick={() => {handleClick(item)}}
+                onClick={() => {handlePageChange(item)}}
                 aria-label={ariaLabels?.page ? `${ariaLabels.page} ${item}` : `Go to page ${item}`}
               >
                 {item}
@@ -122,7 +122,7 @@ export function Pagination(props: PaginationProps) {
           <li className={styles.item}>
             <button
               className={styles.button}
-              onClick={() => {handleClick(page + 1)}}
+              onClick={() => {handlePageChange(page + 1)}}
               disabled={page >= pages}
               aria-label={ariaLabels?.next ?? 'Go to next page'}
             >
@@ -139,7 +139,7 @@ export function Pagination(props: PaginationProps) {
           <li className={styles.item}>
             <button 
               className={styles.button}
-              onClick={() => {handleClick(pages)}}
+              onClick={() => {handlePageChange(pages)}}
               disabled={page >= pages}
               aria-label={ariaLabels?.last ?? 'Go to last page'}
             >
