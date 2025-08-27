@@ -144,8 +144,8 @@ describe('textarea', () => {
   test('should render not resizable textarea', () => {
     const {container} = render(<Textarea label={'Not resizable'} resize={'none'}/>);
 
-    const textarea = container.getElementsByClassName('textarea none')[0];
-    expect(textarea).toBeDefined();
+    const textarea = container.getElementsByClassName('textarea')[0] as HTMLTextAreaElement;
+    expect(textarea.style.getPropertyValue('--uil-textarea-resize')).toEqual('none');
 
     const label = container.getElementsByClassName('textareaLabel')[0];
     expect(label.textContent).toEqual('Not resizable');
