@@ -23,7 +23,7 @@
       }
 
       .fieldset {
-        border-bottom: 1px solid var(--uil-grey-dark);
+        border-bottom: 1px solid transparent;
       }
 
       .decorator.start {
@@ -40,7 +40,7 @@
       border-radius: 5px;
 
       .fieldset {
-        border: 1px solid var(--uil-grey-dark);
+        border: 1px solid transparent;
         border-radius: 5px;
       }
 
@@ -75,22 +75,22 @@
       }
     }
 
-    &.error {
+    &.error .label {
+      color: var(--uil-error);
+      opacity: 1;
+    }
+    
+    &.error, &.error .fieldset {
       border-color: var(--uil-error);
-
-      .fieldset, .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
-        border-color: var(--uil-error);
-      }
-
-      .label {
-        color: var(--uil-error);
-        opacity: 1;
-      }
     }
 
     &:not(.error) .input:not(:disabled):focus ~ .label {
       opacity: 1;
       color: var(--uil-input-focus-color);
+    }
+
+    &:not(.error) .input:focus ~ .fieldset {
+      border-color: var(--uil-input-focus-color);
     }
 
     .fieldset {
@@ -143,18 +143,14 @@
       background-color: transparent;
       border-radius: 0;
       padding: var(--uil-xs);
-      padding-left: .875rem;
+      padding-left: .65rem;
       border: none;
       outline: none;
 
       &:disabled {
         color: var(--uil-grey-dark);
 
-        & ~ .fieldset {
-          border-color: var(--uil-grey-alt);
-        }
-
-        &:not(:placeholder-shown) ~ .fieldset {
+        & ~ .fieldset, &:not(:placeholder-shown) ~ .fieldset {
           border-color: var(--uil-grey-alt);
         }
 
@@ -170,7 +166,6 @@
       }
       
       &:focus ~ .fieldset {
-        border-color: var(--uil-input-focus-color);
         border-width: 2px;
       }
     }
@@ -195,15 +190,15 @@
       }
     }
 
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .decorator.visible ~ .label {
-      top: -.55rem;
-    }
-
-    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .decorator.visible ~ .fieldset {
-      visibility: visible;
-    }
-
     .input:focus ~ *, .input:not(:placeholder-shown) ~ *, .decorator.visible ~ * {
+      &.fieldset {
+        visibility: visible;
+      }
+      
+      &.label {
+        top: -.55rem;
+      }
+      
       .labelText {
         font-size: var(--uil-m);
         line-height: var(--uil-m);
