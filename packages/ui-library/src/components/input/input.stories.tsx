@@ -58,6 +58,16 @@ export const Dark: Story = {
   }
 };
 
+export const Disabled: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: false,
+    error: false,
+    disabled: true
+  }
+};
+
 export const HelpText: Story = {
   args: {
     variant: 'outlined',
