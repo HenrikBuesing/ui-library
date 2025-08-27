@@ -2,6 +2,7 @@
 
 .inputField {
   width: 100%;
+  --uil-input-focus-color: var(--uil-info);
 
   .inputWrapper {
     position: relative;
@@ -28,6 +29,10 @@
       .decorator.start {
         margin-right: .875rem;
       }
+      
+      & ~ .helpText {
+        margin-left: 0;
+      }
     }
 
     &.outlined {
@@ -50,20 +55,14 @@
 
     &.basic, &.outlined {
       &:not(:has(.input:disabled)):not(.error):not(:focus-within) {
-        &:has(.input:placeholder-shown):hover {
-          border-color: var(--uil-black-w);
-
-          .fieldset {
-            border-color: var(--uil-black-w);
-          }
-        }
-
+        &:not(:has(.decorator.visible)):has(.input:placeholder-shown):hover,
         &:has(:not(.input:placeholder-shown)):hover .fieldset {
           border-color: var(--uil-black-w);
         }
       }
 
-      &:focus-within, &:has(.input:not(:placeholder-shown)) {
+      &:focus-within, &:has(.input:not(:placeholder-shown)), &:has(.input:disabled:not(:placeholder-shown)),
+      &:has(.decorator.visible) {
         border-color: transparent;
       }
 
@@ -71,44 +70,41 @@
         flex-direction: row-reverse;
       }
 
-      &:has(.decorator.visible) {
-        border: transparent;
-      }
-
       &:has(.input:disabled) {
         border-color: var(--uil-grey-alt);
       }
-
-      &:has(.input:disabled:not(:placeholder-shown)) {
-        border-color: transparent;
-      }
     }
 
-    &.error {
+    &.error .label {
+      color: var(--uil-error);
+      opacity: 1;
+    }
+    
+    &.error, &.error .fieldset {
       border-color: var(--uil-error);
+    }
 
-      .fieldset, .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset {
-        border-color: var(--uil-error);
-      }
+    &:not(.error) .input:not(:disabled):focus ~ .label {
+      opacity: 1;
+      color: var(--uil-input-focus-color);
+    }
 
-      .label {
-        color: var(--uil-error);
-        opacity: 1;
-      }
+    &:not(.error) .input:focus ~ .fieldset {
+      border-color: var(--uil-input-focus-color);
     }
 
     .fieldset {
       border-radius: 0;
-      padding: var(--uil-s);
+      padding: var(--uil-xs);
       margin: 0;
       position: absolute;
-      top: -.8125rem;
       left: 0;
       right: 0;
       bottom: 0;
       pointer-events: none;
       visibility: hidden;
       border: none;
+      min-height: 2.1875rem;
 
       .legend {
         visibility: hidden;
@@ -119,11 +115,11 @@
     .label {
       position: absolute;
       top: 25%;
-      left: var(--uil-m);
+      left: .6rem;
       cursor: text;
       color: var(--uil-black-w);
       opacity: .6;
-      transition: top .25s ease-in-out;
+      transition: top .25s ease;
       
       &.textareaLabel {
         top: var(--uil-m);
@@ -133,7 +129,7 @@
     .labelText {
       font-size: var(--uil-l);
       line-height: var(--uil-l);
-      transition: font-size 0.25s ease, line-height 0.25s ease;
+      transition: font-size .2s ease;
 
       &.asterisk {
         margin-left: var(--uil-xxxs);
@@ -147,18 +143,14 @@
       background-color: transparent;
       border-radius: 0;
       padding: var(--uil-xs);
-      padding-left: .875rem;
+      padding-left: .65rem;
       border: none;
       outline: none;
 
       &:disabled {
         color: var(--uil-grey-dark);
 
-        & ~ .fieldset {
-          border-color: var(--uil-grey-alt);
-        }
-
-        &:not(:placeholder-shown) ~ .fieldset {
+        & ~ .fieldset, &:not(:placeholder-shown) ~ .fieldset {
           border-color: var(--uil-grey-alt);
         }
 
@@ -168,27 +160,25 @@
           cursor: default;
         }
       }
+      
+      &:focus ~ .decorator.onFocus, &:not(:placeholder-shown) ~ .decorator.onFocus {
+        visibility: visible;
+      }
+      
+      &:focus ~ .fieldset {
+        border-width: 2px;
+        padding: 7px;
+      }
     }
     
     .textarea {
       min-width: fit-content;
       min-height: fit-content;
       margin: var(--uil-xxs);
-
-      &.both {
-        resize: both;
-      }
-
-      &.vertical {
-        resize: vertical;
-      }
-
-      &.horizontal {
-        resize: horizontal;
-      }
-
-      &.none {
-        resize: none;
+      resize: var(--uil-textarea-resize);
+      
+      & ~ .fieldset {
+        top: -.5rem;
       }
     }
     
@@ -196,41 +186,23 @@
       min-width: fit-content;
       opacity: .75;
 
-      &.focus {
+      &.onFocus {
         visibility: hidden;
       }
     }
 
-    .input:focus ~ .decorator.focus, .input:not(:placeholder-shown) ~ .decorator.focus {
-      visibility: visible;
-    }
-
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label,
-    .decorator.visible ~ .label {
-      top: -1rem;
-    }
-
-    &:not(.error) .input:not(:disabled):focus ~ .label {
-      opacity: 1;
-      color: var(--uil-info);
-    }
-
-    .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset, .input:focus ~ .decorator.focus ~ .fieldset,
-    .decorator.visible ~ .fieldset {
-      visibility: visible;
-    }
-
-    .input:focus ~ .fieldset {
-      border-color: var(--uil-info);
-      border-width: 2px;
-    }
-
-    .input:focus ~ .label, .input:not(:placeholder-shown) ~ .label, .input:focus ~ .decorator.focus ~ .label,
-    .decorator.visible ~ .label, .input:focus ~ .fieldset, .input:not(:placeholder-shown) ~ .fieldset,
-    .input:focus ~ .decorator.focus ~ .fieldset, .decorator.visible ~ .fieldset {
+    .input:focus ~ *, .input:not(:placeholder-shown) ~ *, .decorator.visible ~ * {
+      &.fieldset {
+        visibility: visible;
+      }
+      
+      &.label {
+        top: -.65rem;
+      }
+      
       .labelText {
-        font-size: var(--uil-s);
-        line-height: var(--uil-s);
+        font-size: var(--uil-m);
+        line-height: var(--uil-m);
       }
     }
   }
@@ -246,9 +218,5 @@
     &.error {
       color: var(--uil-error);
     }
-  }
-
-  .inputWrapper.basic ~ .helpText {
-    margin-left: 0;
   }
 }

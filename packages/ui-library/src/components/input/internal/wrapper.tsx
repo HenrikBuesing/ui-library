@@ -21,7 +21,7 @@ export default function Wrapper(props: WrapperProps) {
 
   return (
     <div className={cls([styles.inputField, dark && global.dark])}>
-      <div className={cls([styles.inputWrapper, variant === 'basic' ? styles.basic : styles.outlined, error && styles.error])}>
+      <div className={cls([styles.inputWrapper, styles[variant], error && styles.error])}>
         {children}
 
         <fieldset className={styles.fieldset} aria-hidden>

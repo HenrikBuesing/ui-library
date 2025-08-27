@@ -12,7 +12,7 @@
   "dependencies": {
     "@hbuesing/ui-library": "*",
     "next": "^15.5.0",
-    "nextra": "^4.3.0",
+    "nextra": "^4.4.0",
     "nextra-theme-docs": "^4.3.0"
   },
   "devDependencies": {
