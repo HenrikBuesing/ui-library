@@ -23,7 +23,7 @@
       }
 
       .fieldset {
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid var(--uil-grey-dark);
       }
 
       .decorator.start {
@@ -40,7 +40,7 @@
       border-radius: 5px;
 
       .fieldset {
-        border: 1px solid transparent;
+        border: 1px solid var(--uil-grey-dark);
         border-radius: 5px;
       }
 
@@ -104,7 +104,7 @@
       pointer-events: none;
       visibility: hidden;
       border: none;
-      min-height: var(--uil-xxxl);
+      min-height: 2.1875rem;
 
       .legend {
         visibility: hidden;
@@ -115,7 +115,7 @@
     .label {
       position: absolute;
       top: 25%;
-      left: var(--uil-s);
+      left: .6rem;
       cursor: text;
       color: var(--uil-black-w);
       opacity: .6;
@@ -129,7 +129,7 @@
     .labelText {
       font-size: var(--uil-l);
       line-height: var(--uil-l);
-      transition: font-size .2s ease, line-height .2s ease;
+      transition: font-size .2s ease;
 
       &.asterisk {
         margin-left: var(--uil-xxxs);
@@ -167,6 +167,7 @@
       
       &:focus ~ .fieldset {
         border-width: 2px;
+        padding: 7px;
       }
     }
     
@@ -196,7 +197,7 @@
       }
       
       &.label {
-        top: -.55rem;
+        top: -.65rem;
       }
       
       .labelText {
