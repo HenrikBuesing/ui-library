@@ -32,7 +32,7 @@ export function TablePagination(props: TablePaginationProps) {
   
   const [count, setCount] = useState(rows[0]);
   const pages = Math.ceil(entries / count);
-  const [page, setPage] = useState(activePage > pages ? pages : 1);
+  const [page, setPage] = useState(activePage > pages ? pages : activePage < 0 ? 1 : activePage);
   
   const start = count * (page - 1) + 1;
   const end = count * page;
