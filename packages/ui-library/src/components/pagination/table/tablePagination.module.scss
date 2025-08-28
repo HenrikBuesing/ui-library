@@ -17,6 +17,10 @@
     height: 100%;
   }
   
+  p {
+    margin: 0;
+  }
+  
   .controls {
     display: flex;
     gap: var(--uil-xxs);
