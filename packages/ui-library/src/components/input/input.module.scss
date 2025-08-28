@@ -106,6 +106,7 @@
       visibility: hidden;
       border: none;
       min-height: 2.1875rem;
+      box-sizing: content-box;
 
       .legend {
         visibility: hidden;
