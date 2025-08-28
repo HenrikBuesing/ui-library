@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
