@@ -30,7 +30,7 @@
     "build:dev": "NODE_ENV=dev node esbuild.js",
     "build": "NODE_ENV=production node esbuild.js",
     "postbuild": "npm run build:types",
-    "build:types": "tsc --emitDeclarationOnly -p tsconfig.build.json",
+    "build:types": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "test:watch": "vitest -w",
     "test:coverage": "vitest run --coverage",
