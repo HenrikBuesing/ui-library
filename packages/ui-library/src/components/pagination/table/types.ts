@@ -4,8 +4,12 @@ import type {ReactNode} from 'react';
 export type TablePaginationProps = BaseProps & {
   entries: number;
   activePage?: number;
+  entriesDescription?: string;
   nextButton?: ReactNode;
-  onChange?: (page: number) => void;
+  nextLabel?: string;
+  onChange?: (page: number, count: number) => void;
   prevButton?: ReactNode;
-  rowsSelection?: number[];
+  prevLabel?: string;
+  rowLabel?: string;
+  rows?: number[];
 }

@@ -15,11 +15,26 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     dark: false,
-    entries: 20,
-    activePage: 0,
-    rowsSelection: [10, 20, 50]
+    entries: 200,
+    activePage: 1,
+    rows: [10, 25, 50, 100]
   },
   parameters: {
     controls: {exclude: ['dark', 'onChange']}
+  }
+}
+
+export const Dark: Story = {
+  args: {
+    dark: true,
+    entries: 200,
+    activePage: 1,
+    rows: [10, 25, 50, 100]
+  },
+  parameters: {
+    controls: {exclude: ['dark', 'onChange']}
+  },
+  globals: {
+    backgrounds: {value: 'dark'}
   }
 }
