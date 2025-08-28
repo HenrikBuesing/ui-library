@@ -1,0 +1,29 @@
+@use '../../common/styles/mixin' as *;
+
+.pagination {
+  gap: var(--uil-xs);
+
+  @include uil-tablet {
+    gap: var(--uil-m);
+  }
+
+  .select {
+    color: var(--uil-black-alt);
+    background-color: var(--uil-white-alt);
+    border: 1px solid var(--uil-black-alt);
+    border-radius: 3px;
+    outline: none;
+    padding: var(--uil-xxs) var(--uil-xxs) var(--uil-xxs) 0;
+    height: 100%;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .controls {
+    display: flex;
+    gap: var(--uil-xxs);
+    height: 100%;
+  }
+}

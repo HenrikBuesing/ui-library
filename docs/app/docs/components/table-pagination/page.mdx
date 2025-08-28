@@ -1,0 +1,198 @@
+---
+title: TablePagination
+description: Showcase and usage guide of the table-pagination component
+---
+
+import DefaultTabPagination, {
+  ActiveTabPagination,
+  DescriptionPagination,
+  EntriesPagination, IconTabPagination,
+  RowLabelPagination,
+  RowsPagination
+} from './_tablePagination';
+import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
+
+# TablePagination
+
+A table pagination component lets users navigate through tabular data split across multiple pages.
+
+<DefaultTabPagination/>
+
+<Detail>
+  ```tsx
+  <TablePagination entries={200}/>
+  ```
+</Detail>
+
+## Entries
+
+The `entries` prop determines, how many total rows will be available to navigate.
+
+<EntriesPagination/>
+
+<Detail>
+  ```tsx
+  <EntriesPagination entries={500}/>
+  <EntriesPagination entries={1000}/>
+  ```
+</Detail>
+
+## Rows
+By default, users can select between 10, 25, 50 or 100 rows to be displayed at a time. Use the `rows` prop to override
+the select options.
+
+<RowsPagination/>
+
+<Detail>
+  ```tsx
+  <EntriesPagination entries={500} rows={[25, 50, 100]}/>
+  <EntriesPagination entries={1000} rows={[50, 100, 250]}/>
+  ```
+</Detail>
+
+## Text overrides
+
+### RowLabel
+
+The `rowLabel` sets the text before the select dropdown.
+
+<RowLabelPagination/>
+
+<Detail>
+  ```tsx
+  <TablePagination entries={200} rowLabel={'Select amount of rows to display'}/>
+  ```
+</Detail>
+
+### EntriesDescription
+
+The `entriesDescription` overrides the text between the current rows and total entries.
+
+<DescriptionPagination/>
+
+<Detail>
+  ```tsx
+  <TablePagination entries={200} entriesDescription={'/'}/>
+  ```
+</Detail>
+
+## ActivePage
+
+You can set the currently selected page (defaults to `1`) with the `activePage` prop.
+
+<ActiveTabPagination/>
+
+<Detail>
+  ```tsx
+  <TablePagination entries={200} activePage={3}/>
+  ```
+</Detail>
+
+<Callout type={'important'}>
+  Pages will be calculated based on the entries and currently selected row count. \
+  If the prop is greater than the calculated number of pages, it will fall back to the last page. \
+  If it is smaller than 0, it will fall back to `1`.
+</Callout>
+
+## Change detection
+
+You can handle navigation changes with the prop `onChange`. \
+The function uses two parameters: `newPage`, the navigated page & `count`, the currently selected row count.
+
+## Control customization
+
+The navigation controls can be customized, by overriding the icons or aria-labels.
+
+<IconTabPagination/>
+
+<Detail>
+  ```tsx
+  const next = <svg>...</svg>
+  const prev = <svg>...</svg>
+  
+  <TablePagination 
+    entries={200}
+    activePage={3}
+    nextLabel={'Next'}
+    prevLabel={'Previous'}
+    nextButton={next}
+    prevButton={prev}
+  />
+  ```
+</Detail>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>activePage</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td><b>1</b></Table.Td>
+    <Table.Td>currently selected page</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>entries</Table.Td>
+    <Table.Td>`number`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Number of total entries</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>entriesDescription</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td><b>of</b></Table.Td>
+    <Table.Td>Sets the text between current rows & total rows</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>nextButton</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>nextLabel</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td><b>Go to next page</b></Table.Td>
+    <Table.Td>Sets aria-label attribute</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>onChange</Table.Td>
+    <Table.Td>`function`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>On change, get the current page</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>prevButton</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Use a custom icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>prevLabel</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td><b>Go to previous page</b></Table.Td>
+    <Table.Td>Sets aria-label attribute</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>rowLabel</Table.Td>
+    <Table.Td>`string`</Table.Td>
+    <Table.Td><b>Rows per page</b></Table.Td>
+    <Table.Td>Sets text before the select dropdown</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>rows</Table.Td>
+    <Table.Td>`number[]`</Table.Td>
+    <Table.Td><b>[10, 25, 50, 100]</b></Table.Td>
+    <Table.Td>Sets row count options</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>

@@ -2,6 +2,7 @@
   "extends": "../../tsconfig-base.json",
   "compilerOptions": {
     "outDir": "./dist/",
+    "emitDeclarationOnly": true,
     "paths": {
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"]

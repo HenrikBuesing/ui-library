@@ -56,6 +56,7 @@ const globalMeta: Meta = {
           },
           breadcrumbs: 'Breadcrumbs',
           pagination: 'Pagination',
+          'table-pagination': 'TablePagination',
         }
       },
       hooks: {

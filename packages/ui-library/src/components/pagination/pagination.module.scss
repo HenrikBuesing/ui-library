@@ -2,57 +2,48 @@
 
 .pagination {
   --uil-pagination-size: var(--uil-xl);
-  list-style: none;
+  color: var(--uil-black-w);
   display: flex;
   align-items: center;
-  gap: var(--uil-xs);
   margin: 0;
   padding: 0;
-  
+  min-height: var(--uil-pagination-size);
+  font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
+
   @include uil-tablet {
     --uil-pagination-size: var(--uil-xxl);
-    gap: var(--uil-s);
   }
-  
-  .item {
+
+  .button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: var(--uil-xxs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
     height: var(--uil-pagination-size);
     width: var(--uil-pagination-size);
+    font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
 
-    .button {
-      background-color: transparent;
-      border: none;
-      height: 100%;
-      width: 100%;
-      padding: var(--uil-xxs);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border-radius: 6px;
-      color: var(--uil-black-lighter);
-      font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
-
-      &:disabled {
-        cursor: default;
-
-        .svg {
-          fill: var(--uil-grey-dark);
-        }
-      }
-      
-      &.active, &:not(:disabled):hover {
-        background-color: var(--uil-grey);
-      }
+    &:disabled {
+      cursor: default;
 
       .svg {
-        height: 100%;
-        width: 100%;
-        fill: var(--uil-black-lighter);
+        fill: var(--uil-grey-alt);
       }
     }
 
-    .dots {
-      fill: var(--uil-grey-dark);
+    &.active, &:not(:disabled):hover {
+      background-color: var(--uil-grey);
+    }
+
+    .svg {
+      fill: var(--uil-black-lighter);
+      height: 100%;
+      width: 100%;
     }
   }
 }
