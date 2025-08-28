@@ -1,0 +1,49 @@
+@use '../common/styles/mixin' as *;
+
+.pagination {
+  --uil-pagination-size: var(--uil-xl);
+  color: var(--uil-black-w);
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  min-height: var(--uil-pagination-size);
+  font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
+
+  @include uil-tablet {
+    --uil-pagination-size: var(--uil-xxl);
+  }
+
+  .button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: var(--uil-xxs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
+    height: var(--uil-pagination-size);
+    width: var(--uil-pagination-size);
+    font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
+
+    &:disabled {
+      cursor: default;
+
+      .svg {
+        fill: var(--uil-grey-alt);
+      }
+    }
+
+    &.active, &:not(:disabled):hover {
+      background-color: var(--uil-grey);
+    }
+
+    .svg {
+      fill: var(--uil-black-lighter);
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

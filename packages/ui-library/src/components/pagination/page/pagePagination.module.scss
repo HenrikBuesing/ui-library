@@ -1,0 +1,19 @@
+@use '../../common/styles/mixin' as *;
+
+.pagination {
+  list-style: none;
+  gap: var(--uil-xs);
+  
+  @include uil-tablet {
+    gap: var(--uil-s);
+  }
+  
+  .item {
+    height: var(--uil-pagination-size);
+    width: var(--uil-pagination-size);
+
+    .dots {
+      fill: var(--uil-grey-dark);
+    }
+  }
+}
