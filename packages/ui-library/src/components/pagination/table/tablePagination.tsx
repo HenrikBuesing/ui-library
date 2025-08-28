@@ -32,20 +32,21 @@ export function TablePagination(props: TablePaginationProps) {
   
   const [count, setCount] = useState(rows[0]);
   const pages = Math.ceil(entries / count);
-  const [page, setPage] = useState(activePage > pages ? pages : activePage < 0 ? 1 : activePage);
+  const [page, setPage] = useState(activePage > pages ? pages : (activePage <= 0 ? 1 : activePage));
   
   const start = count * (page - 1) + 1;
   const end = count * page;
 
   function handleRowCountChange(event: ChangeEvent<HTMLSelectElement>) {
-    setCount(Number(event.target.value));
+    const newCount = Number(event.target.value)
     
-    handlePageChange(1);
+    setCount(newCount);
+    handlePageChange(1, newCount);
   }
   
-  function handlePageChange(newPage: number) {
+  function handlePageChange(newPage: number, newCount?: number) {
     setPage(newPage);
-    onChange?.(newPage, count);
+    onChange?.(newPage, newCount ?? count);
   }
 
   return (
