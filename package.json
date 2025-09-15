@@ -34,7 +34,7 @@
     "eslint": "^9.34.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
-    "sass": "^1.91.0",
+    "sass": "^1.92.1",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.41.0"
