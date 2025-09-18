@@ -8,9 +8,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: fit-content;
-    max-width: 100%;
-    box-sizing: content-box;
+    width: 100%;
+    box-sizing: border-box;
 
     &.basic {
       border-bottom: 1px solid var(--uil-grey-dark);
@@ -117,7 +116,7 @@
     .label {
       position: absolute;
       top: 25%;
-      left: .6rem;
+      left: .7rem;
       cursor: text;
       color: var(--uil-black-w);
       opacity: .6;
