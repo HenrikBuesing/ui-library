@@ -10,6 +10,7 @@ const meta = {
   argTypes: {
     dark: {control: 'boolean'},
     error: {control: 'boolean'},
+    required: {control: 'boolean'},
     variant: {control: 'select', options: ['basic', 'outlined']},
     type: {control: 'select', options: ['text', 'number', 'password']},
   },
@@ -24,7 +25,8 @@ export const Outlined: Story = {
     variant: 'outlined',
     label: 'Testing',
     dark: false,
-    error: false
+    error: false,
+    required: false
   },
   parameters: {
     controls: {exclude: ['variant', 'dark']}
@@ -36,7 +38,8 @@ export const Basic: Story = {
     variant: 'basic',
     label: 'Testing',
     dark: false,
-    error: false
+    error: false,
+    required: false
   },
   parameters: {
     controls: {exclude: ['variant', 'dark']}
@@ -48,7 +51,8 @@ export const Dark: Story = {
     variant: 'outlined',
     label: 'Testing',
     dark: true,
-    error: false
+    error: false,
+    required: false
   },
   parameters: {
     controls: {exclude: ['dark']}
@@ -64,7 +68,8 @@ export const Disabled: Story = {
     label: 'Testing',
     dark: false,
     error: false,
-    disabled: true
+    disabled: true,
+    required: false
   }
 };
 
@@ -74,6 +79,7 @@ export const HelpText: Story = {
     label: 'Testing',
     dark: false,
     error: false,
+    required: false,
     helpText: 'Testing help text'
   }
 };
@@ -84,6 +90,7 @@ export const DecoratorStart: Story = {
     label: 'Testing',
     dark: false,
     error: false,
+    required: false,
     children: <InputDecorator position={'start'}>kg</InputDecorator>
   },
   parameters: {
@@ -97,6 +104,7 @@ export const DecoratorEnd: Story = {
     label: 'Testing',
     dark: false,
     error: false,
+    required: false,
     children: <InputDecorator position={'end'}>kg</InputDecorator>
   },
   parameters: {
@@ -110,6 +118,7 @@ export const DecoratorFocus: Story = {
     label: 'Testing',
     dark: false,
     error: false,
+    required: false,
     children: <InputDecorator onFocus>kg</InputDecorator>
   },
   parameters: {
