@@ -6,9 +6,6 @@ const withNextra = nextra({
 
 const nextConfig = withNextra({
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   transpilePackages: ['@hbuesing/ui-library']
 });
 
