@@ -4,6 +4,7 @@ import * as path from "node:path";
 const exclude = [
   'esbuild.js',
   './src/index.ts',
+  './src/*/**/*.scss',
   './src/*/**/index.ts',
   './src/*/**/types.ts',
   './src/components/**/*.stories.@(ts|tsx)'
