@@ -5,6 +5,10 @@ env:
 on:
   release:
     types: [created]
+    
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   ESLint:
@@ -42,13 +46,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
+          registry-url: "https://registry.npmjs.org"#
+          
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Install dependencies
         run: npm ci
-      - name: Bundle package
+      - name: Build package
         run: npm run build:library
-      - uses: JS-DevTools/npm-publish@v4
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/ui-library
-          dry-run: false
+      - name: Publish package to npm
+        run: npm publish --access public --workspace packages/ui-library
