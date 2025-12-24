@@ -15,9 +15,9 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--uil-xs);
-    overflow: hidden;
     color: var(--uil-black-w);
     cursor: pointer;
+    white-space: nowrap;
 
     &.disabled {
       cursor: default;
@@ -50,7 +50,8 @@
     border-radius: var(--uil-xs);
     cursor: default;
     opacity: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.1s ease;
 
     &.top {
       bottom: 100%;
@@ -67,6 +68,7 @@
     &.top, &.bottom {
       &.open {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
         box-shadow: 0 var(--uil-xs) var(--uil-m) rgba(0,0,0,0.15);
       }

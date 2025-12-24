@@ -1,4 +1,5 @@
 import type {BaseProps} from '../common/types';
+import type {CSSProperties} from 'react';
 
 export type SelectOption = {
   value: string;
@@ -30,4 +31,5 @@ export type SelectProps = BaseProps & {
   disabled?: boolean;
   value: string;
   openPosition?: 'top' | 'bottom';
+  width: CSSProperties['width'];
 };

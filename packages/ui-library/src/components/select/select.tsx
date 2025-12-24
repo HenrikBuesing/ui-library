@@ -16,6 +16,7 @@ export function Select(props: SelectProps) {
     options,
     placeholder,
     value,
+    width
   } = props;
 
   const [open, setOpen] = useState(false);
@@ -127,7 +128,7 @@ export function Select(props: SelectProps) {
   }, [open]);
 
   return (
-    <div className={cls([styles.selectWrapper, dark && global.dark])} ref={wrapperRef}>
+    <div className={cls([styles.selectWrapper, dark && global.dark])} ref={wrapperRef} style={{width: width, minWidth: width}}>
       <button
         ref={buttonRef}
         type={'button'}
@@ -142,7 +143,7 @@ export function Select(props: SelectProps) {
         className={cls([styles.trigger, disabled && styles.disabled])}
         aria-label={selectedOption?.label ?? placeholder}
       >
-        {selectedOption?.label ?? placeholder}
+        <span style={{overflow: 'hidden'}}>{selectedOption?.label ?? placeholder}</span>
 
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' className={styles.chevron} ref={svgRef} aria-hidden>
           <path d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/>
