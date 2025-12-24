@@ -31,5 +31,5 @@ export type SelectProps = BaseProps & {
   disabled?: boolean;
   value: string;
   openPosition?: 'top' | 'bottom';
-  width: CSSProperties['width'];
+  width?: CSSProperties['width'];
 };
