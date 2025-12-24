@@ -1,0 +1,104 @@
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  min-width: 10rem;
+
+  .trigger {
+    padding: var(--uil-xs);
+    font-size:  var(--uil-l);
+    line-height:  var(--uil-xl);
+    border: 1px solid var(--uil-black-alt);
+    background-color: var(--uil-white-alt);
+    border-radius: var(--uil-xs);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--uil-xs);
+    overflow: hidden;
+    color: var(--uil-black-w);
+    cursor: pointer;
+
+    &.disabled {
+      cursor: default;
+      color: var(--uil-grey-dark);
+      background-color: var(--uil-grey-light);
+      border-color: var(--uil-grey-dark);
+
+      .chevron {
+        fill: var(--uil-grey-dark);
+      }
+    }
+
+    .chevron {
+      width: var(--uil-m);
+      height: var(--uil-m);
+      fill: var(--uil-black-w);
+    }
+  }
+
+  .optionsList {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: var(--uil-xxs);
+    padding: var(--uil-xs);
+    box-sizing: border-box;
+    background-color: var(--uil-white-alt);
+    width: 100%;
+    border: 1px solid var(--uil-black-alt);
+    border-radius: var(--uil-xs);
+    cursor: default;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    &.top {
+      bottom: 100%;
+      margin-bottom: var(--uil-xxs);
+      transform: translateY(0.5rem);
+    }
+
+    &.bottom {
+      top: 100%;
+      margin-top: var(--uil-xxs);
+      transform: translateY(-0.5rem);
+    }
+
+    &.top, &.bottom {
+      &.open {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 var(--uil-xs) var(--uil-m) rgba(0,0,0,0.15);
+      }
+    }
+
+    .group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--uil-xxs);
+
+      .groupLabel {
+        color: var(--uil-black-alt);
+        font-size: .875rem;
+        margin-bottom: var(--uil-xxs);
+        margin-top: var(--uil-xxs);
+        text-decoration: underline;
+      }
+    }
+
+    .option {
+      cursor: pointer;
+      color: var(--uil-black-w);
+      border-radius: var(--uil-xxs);
+
+      &.active {
+        background-color: var(--uil-grey-light-alt);
+      }
+
+      &.disabled {
+        color: var(--uil-grey-alt);
+        cursor: default;
+      }
+    }
+  }
+}
