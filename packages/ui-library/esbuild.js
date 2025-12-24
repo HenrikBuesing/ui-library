@@ -3,9 +3,10 @@ import {writeFileSync} from 'node:fs';
 import * as esbuild from 'esbuild';
 
 try {
-  const isProduction = process.env.NODE_ENV === 'production';
+  const mode = process.argv.includes('--prod') ? 'production' : 'development';
+  const isProduction = mode === 'production';
   
-  console.log(`using ${isProduction ? 'production' : 'dev'} config...`);
+  console.log(`using ${mode} config...`);
   
   const result = await esbuild.build(
     {

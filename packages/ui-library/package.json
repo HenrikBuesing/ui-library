@@ -27,8 +27,8 @@
   "scripts": {
     "lint": "eslint src --max-warnings 0",
     "clear": "npx rimraf dist",
-    "build:dev": "NODE_ENV=dev node esbuild.js",
-    "build": "NODE_ENV=production node esbuild.js",
+    "build:dev": "node esbuild.js --dev",
+    "build": "node esbuild.js --prod",
     "postbuild": "npm run build:types",
     "build:types": "tsc -p tsconfig.build.json",
     "test": "vitest run",
