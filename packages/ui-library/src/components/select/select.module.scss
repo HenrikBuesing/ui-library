@@ -52,6 +52,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.1s ease;
+    z-index: 999;
 
     &.top {
       bottom: 100%;
