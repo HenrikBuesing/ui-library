@@ -1,8 +1,8 @@
 import global from '../../common/styles/global.module.scss';
+import React, {useEffect, useRef, useState} from 'react';
 import useAddAttribution from '@utils/addAttribution';
 import pagination from '../pagination.module.scss';
 import styles from './pagePagination.module.scss';
-import React, {useRef, useState} from 'react';
 import type {PaginationProps} from './types';
 import cls from '@utils/conditionalClass';
 
@@ -62,6 +62,10 @@ export function Pagination(props: PaginationProps) {
     setPage(newPage);
     onChange?.(newPage);
   }
+
+  useEffect(() => {
+    setPage(activePage);
+  }, [activePage]);
   
   return (
     <nav className={cls([dark && global.dark])}>
