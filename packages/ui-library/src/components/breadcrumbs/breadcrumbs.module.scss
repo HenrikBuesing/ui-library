@@ -6,6 +6,8 @@
   align-items: center;
   flex-wrap: wrap;
   gap: .5rem;
+  margin: 0;
+  padding: 0;
 
   &.highlight {
     li:last-child {
