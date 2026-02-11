@@ -3,6 +3,7 @@ export {ToastProvider, useToastContext, type ToastOptions} from './components/to
 export {RadioGroup, type RadioOption} from './components/check/radioGroup';
 export {Pagination, type AriaLabels} from './components/pagination/page';
 export {CircularProgress, LinearProgress} from './components/progress';
+export {BurgerMenu, MenuHeader, MenuItem} from './components/burger';
 export {Input, InputDecorator, Textarea} from './components/input';
 export {TablePagination} from './components/pagination/table';
 export {Accordion} from './components/collapsible/accordion';
@@ -16,4 +17,4 @@ export {Switch} from './components/switch';
 export {Select} from './components/select';
 export {Tag} from './components/tag';
 
-export {useContrastColor} from './hooks/index';
+export {useContrastColor, useScrollLock} from './hooks/index';

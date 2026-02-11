@@ -1,0 +1,107 @@
+@use '../common/styles/mixin' as *;
+
+.burgerControl {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+
+  .icon {
+    width: var(--uil-xxl);
+    height: var(--uil-xxl);
+    fill: var(--uil-black-w);
+  }
+}
+
+.menuWrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: var(--uil-xl);
+  box-sizing: border-box;
+  padding: var(--uil-xl) 2rem;
+  background-color: var(--uil-white-alt);
+  color: var(--uil-black-w);
+  
+  @include uil-tablet {
+    min-width: 50%;
+    width: auto;
+  }
+  
+  @include uil-desktop {
+    min-width: 40%;
+  }
+  
+  @include uil-widescreen {
+    min-width: 25%;
+  }
+  
+  @include uil-fullHD {
+    min-width: 15%;
+  }
+  
+  &.left {
+    right: 100%;
+
+    &.transform {
+      transform: translateX(100%);
+    }
+  }
+  
+  &.right {
+    left: 100%;
+    
+    &.transform {
+      transform: translateX(-100%);
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--uil-xl);
+    overflow: auto;
+    height: 100%;
+  }
+
+  .menuHeader {
+    font-size: var(--uil-xxl);
+    line-height: var(--uil-xxl);
+    font-weight: 400;
+    width: 100%;
+    padding-bottom: var(--uil-xxs);
+    margin-top: var(--uil-xxxl);
+    border-bottom: 1px solid var(--uil-grey-dark);
+    cursor: default;
+  }
+
+  .menuItem {
+    font-size: var(--uil-xl);
+    line-height: var(--uil-xl);
+    opacity: .75;
+    font-weight: 400;
+    cursor: default;
+    width: 100%;
+
+    &:hover {
+      font-size: var(--uil-xxl);
+      opacity: 1;
+    }
+  }
+}
+
+.blur {
+  position: fixed;
+  inset: 0;
+  background-color: var(--uil-black);
+  opacity: .5;
+  z-index: 90;
+}
