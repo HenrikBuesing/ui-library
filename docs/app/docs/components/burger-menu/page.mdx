@@ -1,0 +1,92 @@
+---
+title: BurgerMenu
+description: Showcase and usage guide of the burger-menu component
+---
+
+import DefaultBurger, {IconBurger} from './_burger.tsx';
+import {Callout, Table} from 'nextra/components';
+import {Detail} from '../../../_util';
+
+# BurgerMenu
+
+The BurgerMenu component is a toggleable sidebar navigation menu that opens and closes via a burger button.
+
+## Alignment
+
+The `alignment` prop controls whether the sidebar menu should open on the left or right side of the screen.
+
+<DefaultBurger align={'right'}/>
+<DefaultBurger align={'left'}/>
+
+<Detail>
+  ```jsx
+  <BurgerMenu alignment={'right'}>...</BurgerMenu>
+  <BurgerMenu alignment={'left'}>...</BurgerMenu>
+  ```
+</Detail>
+
+## Icon customisation
+
+The close and open icons can be customized with the `openIcon` and `closeIcon` prop.
+
+<IconBurger/>
+
+<Detail>
+  ```jsx
+  <BurgerMenu alignment={'right'} openIcon={openIcon} closeIcon={closeIcon}>...</BurgerMenu>
+  ```
+</Detail>
+
+## MenuHeader & MenuItem
+
+The `MenuHeader` and `MenuItem` components are helper components for the burger menu. 
+They accept `children` as props and are only useful in combination with the `BurgerMenu` component.
+
+<Callout type={'info'}>
+  Every example on this page uses these components.
+</Callout>
+
+## Props
+
+<Table style={{marginTop: '2rem'}}>
+  <thead>
+  <Table.Tr>
+    <Table.Th>Name</Table.Th>
+    <Table.Th>Type</Table.Th>
+    <Table.Th>Default</Table.Th>
+    <Table.Th>Description</Table.Th>
+  </Table.Tr>
+  </thead>
+  <tbody>
+  <Table.Tr>
+    <Table.Td>alignment</Table.Td>
+    <Table.Td>`left` | `right`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Controls whether the menu will open form the left or right side</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>children</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Content of the component</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>closeIcon</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Customize the close icon</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>dark</Table.Td>
+    <Table.Td>`boolean`</Table.Td>
+    <Table.Td><b>false</b></Table.Td>
+    <Table.Td>Use the darkmode style</Table.Td>
+  </Table.Tr>
+  <Table.Tr>
+    <Table.Td>openIcon</Table.Td>
+    <Table.Td>`node`</Table.Td>
+    <Table.Td>-</Table.Td>
+    <Table.Td>Customize the open icon</Table.Td>
+  </Table.Tr>
+  </tbody>
+</Table>

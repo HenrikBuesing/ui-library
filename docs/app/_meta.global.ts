@@ -55,6 +55,7 @@ const globalMeta: Meta = {
             title: 'Navigation'
           },
           breadcrumbs: 'Breadcrumbs',
+          'burger-menu': 'BurgerMenu',
           pagination: 'Pagination',
           'table-pagination': 'TablePagination',
         }
