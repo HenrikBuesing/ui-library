@@ -1,9 +1,9 @@
 import global from '../../common/styles/global.module.scss';
 import React, {type ChangeEvent} from 'react';
-import generateKey from '@utils/generateKey';
 import type {CheckboxProps} from './types';
 import cls from '@utils/conditionalClass';
 import styles from '../check.module.scss';
+import {useStableId} from '@utils/getId';
 
 export function Checkbox(props: CheckboxProps) {
   const {
@@ -16,7 +16,7 @@ export function Checkbox(props: CheckboxProps) {
     ...other
   } = props;
 
-  const ID = other.id ?? generateKey();
+  const ID = other.id ?? useStableId();
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     if (!disabled && onChange) onChange(e);

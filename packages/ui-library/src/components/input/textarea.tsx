@@ -1,10 +1,10 @@
 import global from '../common/styles/global.module.scss';
 import React, {type CSSProperties} from 'react';
-import generateKey from '@utils/generateKey';
 import type {TextareaProps} from './types';
 import cls from '@utils/conditionalClass';
 import Wrapper from './internal/wrapper';
 import styles from './input.module.scss';
+import {useStableId} from '@utils/getId';
 
 export function Textarea(props: Omit<TextareaProps, 'placeholder'>) {
   const {
@@ -18,8 +18,8 @@ export function Textarea(props: Omit<TextareaProps, 'placeholder'>) {
     ...inputProps
   } = props;
 
-  const ID = id ?? generateKey();
-  const helpId = helpText ? generateKey() : undefined;
+  const ID = id ?? useStableId();
+  const helpId = helpText ? useStableId() : undefined;
   const style = {
     '--uil-textarea-resize': resize,
     ...inputProps.style

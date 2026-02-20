@@ -4,8 +4,8 @@ import useAddAttribution from '@utils/addAttribution';
 import pagination from '../pagination.module.scss';
 import styles from './tablePagination.module.scss';
 import type {TablePaginationProps} from './types';
-import generateKey from '@utils/generateKey';
 import cls from '@utils/conditionalClass';
+import {useStableId} from '@utils/getId';
 
 export function TablePagination(props: TablePaginationProps) {
   const {
@@ -22,7 +22,7 @@ export function TablePagination(props: TablePaginationProps) {
     rows = [10, 25, 50, 100]
   } = props;
 
-  const id = generateKey();
+  const id = useStableId();
   
   const nextRef = useRef<SVGSVGElement>(null);
   const prevRef = useRef<SVGSVGElement>(null);

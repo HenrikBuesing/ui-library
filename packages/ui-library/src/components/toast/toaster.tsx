@@ -1,8 +1,8 @@
 import type {InternalToast, ToasterContext, ToasterProps, ToastOptions, ToastProps} from './types';
 import React, {createContext, useContext, useRef, useState} from 'react';
-import generateKey from '@utils/generateKey';
 import cls from '@utils/conditionalClass';
 import styles from './toast.module.scss';
+import generateKey from '@utils/getId';
 import {Toast} from './toast';
 
 const initial: ToasterContext = {
