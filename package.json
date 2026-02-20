@@ -31,7 +31,7 @@
     "@types/node": "^25.2.2",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.3.0",
     "sass": "^1.97.3",
