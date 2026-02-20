@@ -1,8 +1,8 @@
 import global from '../../common/styles/global.module.scss';
 import React, {type ChangeEvent} from 'react';
-import generateKey from '@utils/generateKey';
 import cls from '@utils/conditionalClass';
 import styles from '../check.module.scss';
+import {useStableId} from '@utils/getId';
 import type {RadioProps} from './types';
 
 export function Radio(props: RadioProps) {
@@ -19,7 +19,7 @@ export function Radio(props: RadioProps) {
     ...other
   } = props;
 
-  const ID = id ?? generateKey();
+  const ID = id ?? useStableId();
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     if (!disabled && onChange) onChange(e);
