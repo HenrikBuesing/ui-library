@@ -22,10 +22,10 @@ export function Select(props: SelectProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const listId = useId();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   useAddAttribution(svgRef);
 
   const flatOptions = useMemo(() => {
@@ -46,8 +46,15 @@ export function Select(props: SelectProps) {
   function openList() {
     if (disabled) return;
 
-    const firstEnabledIndex = flatOptions.findIndex(f => !f.option.disabled && !f.groupDisabled);
-    setActiveIndex(firstEnabledIndex >= 0 ? firstEnabledIndex : 0);
+    const selectedIndex = flatOptions.findIndex(opt => opt.option.value === value);
+
+    if (selectedIndex >= 0) {
+      setActiveIndex(selectedIndex);
+    } else {
+      const first = flatOptions.findIndex(opt => !opt.option.disabled && !opt.groupDisabled);
+      setActiveIndex(first >= 0 ? first : 0);
+    }
+
     setOpen(true);
   }
 
@@ -60,68 +67,75 @@ export function Select(props: SelectProps) {
 
     switch (e.key) {
       case 'ArrowDown':
-        if (!open) {
-          openList();
-        } else {
-          setActiveIndex(i => {
-            let nextIndex = i;
-            do {
-              nextIndex = Math.min(nextIndex + 1, flatOptions.length - 1);
-            } while (
-              flatOptions[nextIndex].option.disabled ||
-              flatOptions[nextIndex].groupDisabled
-              );
-            return nextIndex;
-          });
-        }
-        break;
+        e.preventDefault();
+
+        return !open ? openList() : setActiveIndex(i => getNextEnabledIndex(i, 1, flatOptions));
       case 'ArrowUp':
         e.preventDefault();
-        if (!open) {
-          openList();
-        } else {
-          // Move to previous enabled option
-          setActiveIndex(i => {
-            let prevIndex = i;
-            do {
-              prevIndex = Math.max(prevIndex - 1, 0);
-            } while (
-              flatOptions[prevIndex].option.disabled ||
-              flatOptions[prevIndex].groupDisabled
-              );
-            return prevIndex;
-          });
-        }
-        break;
-      case 'Home':
+
+        return !open ? openList() : setActiveIndex(i => getNextEnabledIndex(i, -1, flatOptions));
+      case 'Home': {
         e.preventDefault();
-        setActiveIndex(0);
+
+        const idx = flatOptions.findIndex(f => !f.option.disabled && !f.groupDisabled);
+        if (idx !== -1) setActiveIndex(idx);
+
         break;
-      case 'End':
+      }
+      case 'End': {
         e.preventDefault();
-        setActiveIndex(flatOptions.length - 1);
+
+        const idx = getLastEnabledIndex();
+        if (idx !== -1) setActiveIndex(idx);
+
         break;
+      }
       case 'Enter':
       case ' ': {
         e.preventDefault();
+
         const {option, groupDisabled} = flatOptions[activeIndex];
         if (!option.disabled && !groupDisabled) handleSelect(option.value);
+
         break;
       }
       case 'Escape':
-        closeList();
-        break;
+        return closeList();
     }
+  }
+
+  function getNextEnabledIndex(start: number, direction: 1 | -1, options: typeof flatOptions) {
+    let index = start + direction;
+
+    while (index >= 0 && index < options.length) {
+      const item = options[index];
+
+      if (!item.option.disabled && !item.groupDisabled) {
+        return index;
+      }
+
+      index += direction;
+    }
+
+    return start;
+  }
+
+  function getLastEnabledIndex() {
+    for (let i = flatOptions.length - 1; i >= 0; i--) {
+      const opt = flatOptions[i];
+      
+      if (!opt.option.disabled && !opt.groupDisabled) return i;
+    }
+
+    return -1;
   }
 
   useEffect(() => {
     if (!open) return;
 
-    const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) setOpen(false);
+    }
 
     document.addEventListener('pointerdown', handleClickOutside);
     return () => document.removeEventListener('pointerdown', handleClickOutside);
@@ -132,11 +146,10 @@ export function Select(props: SelectProps) {
       <button
         ref={buttonRef}
         type={'button'}
-        role={'combobox'}
         aria-haspopup={'listbox'}
         aria-expanded={open}
         aria-controls={listId}
-        aria-activedescendant={open ? `${listId}-option-${activeIndex}` : undefined}
+        aria-activedescendant={open && activeIndex >= 0 ? `${listId}-option-${activeIndex}` : undefined}
         disabled={disabled}
         onClick={() => (open ? closeList() : openList())}
         onKeyDown={onKeyDown}
@@ -153,7 +166,6 @@ export function Select(props: SelectProps) {
       <div
         role={'listbox'} id={listId}
         className={cls([styles.optionsList, open && styles.open, openPosition === 'top' ? styles.top : styles.bottom])}
-        onMouseLeave={() => setActiveIndex(-1)}
       >
         {options.map(items => {
           if ('options' in items) {
@@ -161,7 +173,7 @@ export function Select(props: SelectProps) {
               <div key={items.label} className={styles.group}>
                 <div className={styles.groupLabel}>{items.label}</div>
 
-                {items.options.map(opt => (
+                {items.options.map(opt =>
                   <Option
                     key={opt.value}
                     option={opt}
@@ -173,7 +185,7 @@ export function Select(props: SelectProps) {
                     setActiveIndex={setActiveIndex}
                     listId={listId}
                   />
-                ))}
+                )}
               </div>
             );
           } else {
