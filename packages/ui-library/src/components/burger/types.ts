@@ -5,6 +5,7 @@ export type BurgerMenuProps = BaseProps & {
   alignment: 'left' | 'right';
   children: ReactNode;
   closeIcon?: ReactNode;
+  footer?: ReactNode;
   openIcon?: ReactNode;
 }
 

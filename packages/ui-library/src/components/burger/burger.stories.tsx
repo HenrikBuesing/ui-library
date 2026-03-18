@@ -9,7 +9,6 @@ const meta = {
   component: BurgerMenu,
   argTypes: {
     dark: {control: 'boolean'},
-    toggleBackground: {control: 'boolean'},
     alignment: {control: 'select', options: ['left', 'right']},
   }
 } satisfies Meta<typeof BurgerMenu>;
@@ -65,10 +64,9 @@ export const DarkMode: Story = {
   }
 };
 
-export const ToggleBackground: Story = {
+export const WithFooter: Story = {
   args: {
     alignment: 'right',
-    toggleBackground: false,
     children: [
       <MenuHeader key={1}>Header 1</MenuHeader>,
       <MenuItem key={2}>item 1</MenuItem>,
@@ -77,5 +75,6 @@ export const ToggleBackground: Story = {
       <MenuItem key={5}>item 3</MenuItem>,
     ],
     dark: false,
+    footer: <div>Custom footer</div>
   }
 };

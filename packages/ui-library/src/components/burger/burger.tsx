@@ -12,6 +12,7 @@ export function BurgerMenu(props: BurgerMenuProps) {
     children,
     closeIcon,
     dark,
+    footer,
     openIcon,
   } = props;
 
@@ -42,7 +43,7 @@ export function BurgerMenu(props: BurgerMenuProps) {
         <div className={styles.blur} onClick={handleSidebar}/>
       }
 
-      <div className={cls([styles.menuWrapper, alignment === 'left' ? styles.left : styles.right, visibility && styles.transform, dark && global.dark])}>
+      <div className={cls([styles.menuWrapper, alignment === 'left' ? styles.left : styles.right, visibility && styles.transform, dark && global.dark])} onClick={handleSidebar}>
         <button className={styles.burgerControl} onClick={handleSidebar}>
           {closeIcon ??
             <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 640 640'} className={styles.icon} ref={closeRef}>
@@ -54,6 +55,8 @@ export function BurgerMenu(props: BurgerMenuProps) {
         <nav onClick={handleSidebar}>
           {children}
         </nav>
+
+        {footer}
       </div>
     </>
   );
