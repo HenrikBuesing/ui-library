@@ -7,7 +7,7 @@
     padding: var(--uil-xs);
     font-size:  var(--uil-l);
     line-height:  var(--uil-xl);
-    border: 1px solid var(--uil-black-alt);
+    border: 1px solid var(--uil-grey-dark);
     background-color: var(--uil-white-alt);
     border-radius: var(--uil-xs);
     width: 100%;
@@ -18,6 +18,10 @@
     color: var(--uil-black-w);
     cursor: pointer;
     white-space: nowrap;
+    
+    &:hover, &:focus {
+      border-color: var(--uil-black-alt);
+    }
 
     &.disabled {
       cursor: default;
