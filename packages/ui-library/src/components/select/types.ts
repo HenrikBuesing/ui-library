@@ -33,3 +33,13 @@ export type SelectProps = BaseProps & {
   openPosition?: 'top' | 'bottom';
   width?: CSSProperties['width'];
 };
+
+export type RenderItem = {
+  type: 'group';
+  label: string
+} | {
+  type: 'option';
+  option: SelectOption;
+  groupDisabled: boolean;
+  index: number;
+};
