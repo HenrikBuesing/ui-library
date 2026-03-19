@@ -91,6 +91,9 @@
       color: var(--uil-black-w);
       padding: var(--uil-xs);
       
+      --uil-is-active: var(--uil-grey-light-alt);
+      --uil-is-selected: rgba(123, 180, 255, 0.2);
+      
       &:last-of-type {
         border-bottom-left-radius: var(--uil-xs);
         border-bottom-right-radius: var(--uil-xs);
@@ -102,11 +105,15 @@
       }
 
       &.active {
-        background-color: var(--uil-grey-light-alt);
+        background-color: var(--uil-is-active);
+      }
+      
+      &.selected {
+        background-color: var(--uil-is-selected);
       }
 
       &.disabled {
-        color: var(--uil-grey-alt);
+        color: var(--uil-grey-dark);
         cursor: default;
       }
     }

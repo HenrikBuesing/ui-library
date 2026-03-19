@@ -25,7 +25,7 @@ export function Option(props: OptionProps) {
       role='option'
       aria-selected={isSelected}
       aria-disabled={disabled}
-      className={cls([styles.option, isActive && styles.active, disabled && styles.disabled])}
+      className={cls([styles.option, isActive && styles.active, isSelected && styles.selected, disabled && styles.disabled])}
       onMouseEnter={() => setActiveIndex(index)}
       onClick={() => {if (!disabled) onSelect(option.value);}}
     >
