@@ -37,6 +37,14 @@ const meta = {
           {value: 'strawberry', label: 'Strawberry'},
           {value: 'blueberry', label: 'Blueberry'},
         ],
+      },
+      {
+        label: 'Vegetables',
+        disabled: true,
+        options: [
+          {value: 'cucumber', label: 'Cucumber'},
+          {value: 'carrot', label: 'Carrot'},
+        ],
       }
     ],
     dark: false
@@ -75,7 +83,10 @@ export const Options: Story = {
 };
 
 export const Dark: Story = {
-  render: (args: SelectProps) => <Select {...args} />,
+  render: (args: SelectProps) => {
+    const [value, setValue] = React.useState(args.value);
+    return <Select {...args} value={value} onChange={setValue}/>;
+  },
   args: {
     value: '',
     dark: true
