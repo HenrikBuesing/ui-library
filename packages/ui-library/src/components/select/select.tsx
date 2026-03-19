@@ -198,7 +198,7 @@ export function Select(props: SelectProps) {
             <Option
               key={item.option.value}
               option={item.option}
-              groupDisabled={item.groupDisabled}
+              disabled={item.groupDisabled || item.option.disabled}
               activeIndex={activeIndex}
               value={value}
               index={item.index}

@@ -15,7 +15,7 @@ export type SelectOptionGroup = {
 
 export type OptionProps = {
   activeIndex: number;
-  groupDisabled: boolean;
+  disabled: boolean | undefined;
   index: number;
   listId: string;
   onSelect: (val: string) => void;
