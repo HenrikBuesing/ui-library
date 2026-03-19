@@ -6,7 +6,7 @@ import React from 'react';
 export function Option(props: OptionProps) {
   const {
     activeIndex,
-    groupDisabled,
+    disabled,
     index,
     listId,
     onSelect,
@@ -16,8 +16,7 @@ export function Option(props: OptionProps) {
   } = props;
 
   const isActive = index === activeIndex;
-  const isSelected = option.value === value;
-  const disabledOpt = option.disabled ?? groupDisabled;
+  const isSelected = Array.isArray(value) ? value.includes(option.value) : value === option.value;
 
   return (
     <div
@@ -25,10 +24,10 @@ export function Option(props: OptionProps) {
       id={`${listId}-option-${index}`}
       role='option'
       aria-selected={isSelected}
-      aria-disabled={disabledOpt || undefined}
-      className={cls([styles.option, isActive && styles.active, disabledOpt && styles.disabled])}
+      aria-disabled={disabled}
+      className={cls([styles.option, isActive && styles.active, isSelected && styles.selected, disabled && styles.disabled])}
       onMouseEnter={() => setActiveIndex(index)}
-      onClick={() => {if (!disabledOpt) onSelect(option.value);}}
+      onClick={() => {if (!disabled) onSelect(option.value);}}
     >
       {option.label}
     </div>

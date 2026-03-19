@@ -1,9 +1,9 @@
 import React, {type KeyboardEvent, useEffect, useMemo, useRef, useState} from 'react';
 import global from '../common/styles/global.module.scss';
 import useAddAttribution from '@utils/addAttribution';
+import type {RenderItem, SelectProps} from './types';
 import styles from './select.module.scss';
 import cls from '@utils/conditionalClass';
-import type {SelectProps} from './types';
 import {Option} from './option';
 import {useId} from 'react';
 
@@ -11,6 +11,7 @@ export function Select(props: SelectProps) {
   const {
     dark,
     disabled,
+    multi,
     onChange,
     openPosition = 'bottom',
     options,
@@ -22,32 +23,75 @@ export function Select(props: SelectProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const listId = useId();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   useAddAttribution(svgRef);
 
-  const flatOptions = useMemo(() => {
-    return options.flatMap(items => 'options' in items ? items.options.map(o => ({
-      option: o,
-      groupDisabled: items.disabled ?? false
-    })) : [{option: items, groupDisabled: false}]);
-  }, [options]);
+  const renderItems = useMemo(() => {
+    const items: RenderItem[] = [];
 
-  const selectedOption = flatOptions.find(f => f.option.value === value)?.option;
+    for (const item of options) {
+      if ('options' in item) {
+        items.push({ type: 'group', label: item.label });
+
+        for (const opt of item.options) {
+          items.push({
+            type: 'option',
+            option: opt,
+            groupDisabled: item.disabled ?? false,
+            index: items.length
+          });
+        }
+      } else {
+        items.push({
+          type: 'option',
+          option: item,
+          groupDisabled: false,
+          index: items.length
+        });
+      }
+    }
+
+    return items;
+  }, [options]);
+  const flatOptions = renderItems.filter(i => i.type === 'option');
+  const selectedOptions = flatOptions.filter(opt => multi ? value.includes(opt.option.value) : opt.option.value === value);
+
+  const displayLabel = selectedOptions.length === 0 ? placeholder : selectedOptions.map(o => o.option.label).join(', ');
 
   function handleSelect(val: string) {
-    onChange(val);
-    setOpen(false);
-    buttonRef.current?.focus();
+    if (multi) {
+      let newValue: string[];
+
+      if (value.includes(val)) {
+        newValue = value.filter(v => v !== val)
+      } else {
+        newValue = [...value, val];
+      }
+
+      onChange(newValue);
+    } else {
+      onChange(val);
+      setOpen(false);
+      buttonRef.current?.focus();
+    }
   }
 
   function openList() {
     if (disabled) return;
 
-    const firstEnabledIndex = flatOptions.findIndex(f => !f.option.disabled && !f.groupDisabled);
-    setActiveIndex(firstEnabledIndex >= 0 ? firstEnabledIndex : 0);
+    const selectedItem = flatOptions.find(i => i.type === 'option' && i.option.value === value);
+
+    if (selectedItem) {
+      setActiveIndex(selectedItem.index);
+    } else {
+      const first = flatOptions.find(i => i.type === 'option' && !i.option.disabled && !i.groupDisabled);
+
+      setActiveIndex(first ? first.index : 0);
+    }
+
     setOpen(true);
   }
 
@@ -60,68 +104,74 @@ export function Select(props: SelectProps) {
 
     switch (e.key) {
       case 'ArrowDown':
-        if (!open) {
-          openList();
-        } else {
-          setActiveIndex(i => {
-            let nextIndex = i;
-            do {
-              nextIndex = Math.min(nextIndex + 1, flatOptions.length - 1);
-            } while (
-              flatOptions[nextIndex].option.disabled ||
-              flatOptions[nextIndex].groupDisabled
-              );
-            return nextIndex;
-          });
-        }
-        break;
+        e.preventDefault();
+
+        return !open ? openList() : setActiveIndex(i => getNextEnabledIndex(i, 1));
       case 'ArrowUp':
         e.preventDefault();
-        if (!open) {
-          openList();
-        } else {
-          // Move to previous enabled option
-          setActiveIndex(i => {
-            let prevIndex = i;
-            do {
-              prevIndex = Math.max(prevIndex - 1, 0);
-            } while (
-              flatOptions[prevIndex].option.disabled ||
-              flatOptions[prevIndex].groupDisabled
-              );
-            return prevIndex;
-          });
+
+        return !open ? openList() : setActiveIndex(i => getNextEnabledIndex(i, -1));
+      case 'Home': {
+        e.preventDefault();
+
+        const first = flatOptions.find(i => !i.option.disabled && !i.groupDisabled);
+
+        if (first) setActiveIndex(first.index);
+
+        break;
+      }
+      case 'End': {
+        e.preventDefault();
+
+        for (let i = renderItems.length - 1; i >= 0; i--) {
+          const item = renderItems[i];
+          if (item.type === 'option' && !item.option.disabled && !item.groupDisabled) {
+            setActiveIndex(i);
+            break;
+          }
         }
+
         break;
-      case 'Home':
-        e.preventDefault();
-        setActiveIndex(0);
-        break;
-      case 'End':
-        e.preventDefault();
-        setActiveIndex(flatOptions.length - 1);
-        break;
+      }
       case 'Enter':
       case ' ': {
         e.preventDefault();
-        const {option, groupDisabled} = flatOptions[activeIndex];
-        if (!option.disabled && !groupDisabled) handleSelect(option.value);
+
+        const activeItem = renderItems[activeIndex];
+        
+        if (activeItem?.type === 'option' && !activeItem.option.disabled && !activeItem.groupDisabled) {
+          handleSelect(activeItem.option.value);
+        }
+
         break;
       }
       case 'Escape':
-        closeList();
-        break;
+        return closeList();
     }
+  }
+
+  function getNextEnabledIndex(start: number, direction: 1 | -1) {
+    let index = start + direction;
+
+    while (index >= 0 && index < renderItems.length) {
+      const item = renderItems[index];
+
+      if (item.type === 'option' && !item.option.disabled && !item.groupDisabled) {
+        return index;
+      }
+
+      index += direction;
+    }
+
+    return start;
   }
 
   useEffect(() => {
     if (!open) return;
 
-    const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) setOpen(false);
+    }
 
     document.addEventListener('pointerdown', handleClickOutside);
     return () => document.removeEventListener('pointerdown', handleClickOutside);
@@ -132,66 +182,48 @@ export function Select(props: SelectProps) {
       <button
         ref={buttonRef}
         type={'button'}
-        role={'combobox'}
         aria-haspopup={'listbox'}
         aria-expanded={open}
         aria-controls={listId}
-        aria-activedescendant={open ? `${listId}-option-${activeIndex}` : undefined}
+        aria-activedescendant={open && activeIndex >= 0 ? `${listId}-option-${activeIndex}` : undefined}
         disabled={disabled}
         onClick={() => (open ? closeList() : openList())}
         onKeyDown={onKeyDown}
         className={cls([styles.trigger, disabled && styles.disabled])}
-        aria-label={selectedOption?.label ?? placeholder}
+        aria-label={displayLabel}
+        title={displayLabel}
       >
-        <span style={{overflow: 'hidden'}}>{selectedOption?.label ?? placeholder}</span>
+        <span className={styles.displayText}>{displayLabel}</span>
 
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' className={styles.chevron} ref={svgRef} aria-hidden>
           <path d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/>
         </svg>
       </button>
 
-      <div
-        role={'listbox'} id={listId}
-        className={cls([styles.optionsList, open && styles.open, openPosition === 'top' ? styles.top : styles.bottom])}
-        onMouseLeave={() => setActiveIndex(-1)}
-      >
-        {options.map(items => {
-          if ('options' in items) {
-            return (
-              <div key={items.label} className={styles.group}>
-                <div className={styles.groupLabel}>{items.label}</div>
+      <div id={listId} role="listbox" className={cls([styles.optionsList, open && styles.open, openPosition === 'top' ? styles.top : styles.bottom])}>
+        <div className={styles.scrollArea}>
+          {renderItems.map(item => {
+            if (item.type === 'group') {
+              return (
+                <div key={`group-${item.label}`} className={styles.group}>{item.label}</div>
+              );
+            }
 
-                {items.options.map(opt => (
-                  <Option
-                    key={opt.value}
-                    option={opt}
-                    groupDisabled={!!items.disabled}
-                    activeIndex={activeIndex}
-                    value={value}
-                    index={flatOptions.findIndex(f => f.option === opt)}
-                    onSelect={handleSelect}
-                    setActiveIndex={setActiveIndex}
-                    listId={listId}
-                  />
-                ))}
-              </div>
-            );
-          } else {
             return (
               <Option
-                key={items.value}
-                option={items}
-                groupDisabled={false}
+                key={item.option.value}
+                option={item.option}
+                disabled={item.groupDisabled || item.option.disabled}
                 activeIndex={activeIndex}
                 value={value}
-                index={flatOptions.findIndex(f => f.option === items)}
+                index={item.index}
                 onSelect={handleSelect}
                 setActiveIndex={setActiveIndex}
                 listId={listId}
               />
             );
-          }
-        })}
+          })}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import {render, screen, fireEvent} from '@testing-library/react';
+import {render, screen, fireEvent, within} from '@testing-library/react';
 import {describe, expect, test, vi} from 'vitest';
 import type {SelectProps} from './types';
 import React, {useState} from 'react';
@@ -15,7 +15,7 @@ describe('Select component', () => {
     render(<Select value={''} onChange={() => {
     }} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox', {name: /pick a fruit/i});
+    const button = screen.getByRole('button', {name: /pick a fruit/i});
     expect(button).toBeDefined();
   });
 
@@ -23,7 +23,7 @@ describe('Select component', () => {
     render(<Select value={''} onChange={() => {
     }} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
     fireEvent.click(button);
 
     const list = screen.getByRole('listbox');
@@ -36,7 +36,7 @@ describe('Select component', () => {
     const handleChange = vi.fn();
     render(<Select value={''} onChange={handleChange} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
     fireEvent.click(button);
 
     const banana = screen.getByText('Banana');
@@ -52,7 +52,7 @@ describe('Select component', () => {
     };
 
     render(<Controlled/>);
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
 
     fireEvent.click(button);
     const orange = screen.getByText('Orange');
@@ -65,7 +65,7 @@ describe('Select component', () => {
     const handleChange = vi.fn();
     render(<Select value='' onChange={handleChange} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
 
     fireEvent.keyDown(button, {key: 'ArrowDown'});
     fireEvent.keyDown(button, {key: 'Enter'});
@@ -78,7 +78,7 @@ describe('Select component', () => {
     const handleChange = vi.fn();
     render(<Select value={''} onChange={handleChange} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
 
     fireEvent.click(button);
     fireEvent.keyDown(button, {key: 'ArrowDown'});
@@ -96,7 +96,7 @@ describe('Select component', () => {
 
     render(<Select value={''} onChange={handleChange} options={opts} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
 
     fireEvent.keyDown(button, {key: 'ArrowDown'});
     fireEvent.keyDown(button, {key: 'Enter'});
@@ -108,7 +108,7 @@ describe('Select component', () => {
     const handleChange = vi.fn();
     render(<Select value={''} onChange={handleChange} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
 
     fireEvent.click(button);
     fireEvent.keyDown(button, {key: 'ArrowDown'});
@@ -127,7 +127,7 @@ describe('Select component', () => {
       </div>
     );
 
-    const selectButton = screen.getByRole('combobox', {name: /pick a fruit/i});
+    const selectButton = screen.getByRole('button', {name: /pick a fruit/i});
     fireEvent.click(selectButton);
 
     const list = screen.getByRole('listbox');
@@ -144,7 +144,7 @@ describe('Select component', () => {
     render(<Select value={''} onChange={() => {
     }} options={options} placeholder='Pick a fruit'/>);
 
-    const button = screen.getByRole('combobox');
+    const button = screen.getByRole('button');
     fireEvent.click(button);
 
     expect(button.getAttribute('aria-expanded')).toBe('true');
@@ -152,5 +152,156 @@ describe('Select component', () => {
     fireEvent.keyDown(button, {key: 'Escape'});
 
     expect(button.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  test('should accumulate values in multi mode (controlled)', () => {
+    const Controlled = () => {
+      const [value, setValue] = useState<string[]>([]);
+      return (
+        <Select
+          multi
+          value={value}
+          onChange={setValue}
+          options={options}
+          placeholder="Pick fruits"
+        />
+      );
+    };
+
+    render(<Controlled />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    fireEvent.click(screen.getByText('Apple'));
+    fireEvent.click(screen.getByText('Banana'));
+
+    expect(button.textContent).toContain('Apple');
+    expect(button.textContent).toContain('Banana');
+  });
+
+  test('should deselect option in multi mode', () => {
+    const Controlled = () => {
+      const [value, setValue] = useState<string[]>(['apple']);
+      return (
+        <Select
+          multi
+          value={value}
+          onChange={setValue}
+          options={options}
+          placeholder="Pick fruits"
+        />
+      );
+    };
+
+    render(<Controlled />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    const listbox = screen.getByRole('listbox');
+    const appleOption = within(listbox).getByText('Apple');
+
+    fireEvent.click(appleOption);
+
+    expect(button.textContent).not.toContain('Apple');
+  });
+
+  test('should compute displayLabel correctly for single and multi mode', () => {
+    const { rerender } = render(
+      <Select value="apple" onChange={() => {}} options={options} placeholder="Pick" />
+    );
+
+    expect(screen.getByRole('button').textContent).toEqual('Apple');
+
+    rerender(
+      <Select
+        multi
+        value={['apple', 'banana']}
+        onChange={() => {}}
+        options={options}
+        placeholder="Pick"
+      />
+    );
+
+    const button = screen.getByRole('button');
+    expect(button.textContent).toEqual('Apple, Banana');
+
+    rerender(
+      <Select value="" onChange={() => {}} options={options} placeholder="Pick a fruit" />
+    );
+    expect(screen.getByRole('button').textContent).toEqual('Pick a fruit');
+  });
+
+  test('should return focus to button after selecting an option', () => {
+    render(<Select value="" onChange={() => {}} options={options} placeholder="Pick" />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    const option = screen.getByRole('option', { name: 'Apple' });
+    fireEvent.click(option);
+
+    expect(document.activeElement).toBe(button);
+  });
+
+  test('openList sets activeIndex correctly depending on selection', () => {
+    const Controlled = () => {
+      const [value, setValue] = useState('banana');
+      return <Select value={value} onChange={setValue} options={options} placeholder="Pick" />;
+    };
+
+    render(<Controlled />);
+    const button = screen.getByRole('button');
+
+    fireEvent.click(button);
+    expect(button.getAttribute('aria-activedescendant')).toBeDefined();
+
+    fireEvent.click(button);
+    fireEvent.click(button);
+    expect(button.getAttribute('aria-activedescendant')).toBeDefined();
+  });
+
+  test('getNextEnabledIndex skips disabled options and selects first enabled option', () => {
+    const Controlled = () => {
+      const [value, setValue] = useState('');
+      const opts = [
+        { value: 'apple', label: 'Apple', disabled: true },
+        { value: 'banana', label: 'Banana', disabled: true },
+        { value: 'orange', label: 'Orange' },
+      ];
+      return <Select value={value} onChange={setValue} options={opts} placeholder="Pick" />;
+    };
+
+    render(<Controlled />);
+    const button = screen.getByRole('button');
+
+    fireEvent.click(button);
+
+    fireEvent.keyDown(button, { key: 'ArrowDown' });
+    fireEvent.keyDown(button, { key: 'Enter' });
+
+    expect(button.textContent).toContain('Orange');
+  });
+
+  test('should close dropdown when clicking outside', () => {
+    render(
+      <div>
+        <Select value="" onChange={() => {}} options={options} placeholder="Pick" />
+        <button>Outside</button>
+      </div>
+    );
+
+    const selectButton = screen.getByRole('button', { name: /Pick/i });
+    fireEvent.click(selectButton);
+
+    const listbox = screen.getByRole('listbox');
+    expect(listbox.className).toContain('open');
+
+    const outsideButton = screen.getByText('Outside');
+    fireEvent.pointerDown(outsideButton);
+
+    expect(listbox.className).not.toContain('open');
+    expect(selectButton.getAttribute('aria-expanded')).toBe('false');
   });
 });

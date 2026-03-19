@@ -7,17 +7,21 @@
     padding: var(--uil-xs);
     font-size:  var(--uil-l);
     line-height:  var(--uil-xl);
-    border: 1px solid var(--uil-black-alt);
+    border: 1px solid var(--uil-grey-dark);
     background-color: var(--uil-white-alt);
     border-radius: var(--uil-xs);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--uil-xs);
+    gap: var(--uil-s);
     color: var(--uil-black-w);
     cursor: pointer;
     white-space: nowrap;
+    
+    &:hover, &:focus {
+      border-color: var(--uil-black-alt);
+    }
 
     &.disabled {
       cursor: default;
@@ -29,11 +33,18 @@
         fill: var(--uil-grey-dark);
       }
     }
+    
+    .displayText {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     .chevron {
       width: var(--uil-m);
       height: var(--uil-m);
       fill: var(--uil-black-w);
+      flex-shrink: 0;
     }
   }
 
@@ -41,8 +52,6 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: var(--uil-xxs);
-    padding: var(--uil-xs);
     box-sizing: border-box;
     background-color: var(--uil-white-alt);
     width: 100%;
@@ -53,6 +62,7 @@
     visibility: hidden;
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.1s ease;
     z-index: 999;
+    overflow: hidden;
 
     &.top {
       bottom: 100%;
@@ -75,31 +85,65 @@
       }
     }
 
-    .group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--uil-xxs);
+    .scrollArea {
+      max-height: 200px;
+      overflow-y: auto;
 
-      .groupLabel {
-        color: var(--uil-black-alt);
-        font-size: .875rem;
-        margin-bottom: var(--uil-xxs);
-        margin-top: var(--uil-xxs);
-        text-decoration: underline;
+      &::-webkit-scrollbar {
+        width: 6px;
       }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    .group {
+      color: var(--uil-black-alt);
+      font-size: .875rem;
+      margin-bottom: var(--uil-xxs);
+      margin-top: var(--uil-xxs);
+      text-decoration: underline;
+      padding: var(--uil-xs);
     }
 
     .option {
       cursor: pointer;
       color: var(--uil-black-w);
-      border-radius: var(--uil-xxs);
+      padding: var(--uil-xs);
+      
+      --uil-is-active: var(--uil-grey-light-alt);
+      --uil-is-selected: rgba(123, 180, 255, 0.2);
+      
+      &:last-of-type {
+        border-bottom-left-radius: var(--uil-xs);
+        border-bottom-right-radius: var(--uil-xs);
+      }
+
+      &:first-of-type {
+        border-top-left-radius: var(--uil-xs);
+        border-top-right-radius: var(--uil-xs);
+      }
 
       &.active {
-        background-color: var(--uil-grey-light-alt);
+        background-color: var(--uil-is-active);
+      }
+      
+      &.selected {
+        background-color: var(--uil-is-selected);
       }
 
       &.disabled {
-        color: var(--uil-grey-alt);
+        color: var(--uil-grey-dark);
         cursor: default;
       }
     }
