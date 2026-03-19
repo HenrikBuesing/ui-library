@@ -14,6 +14,7 @@ const meta = {
     openPosition: {control: 'select', options: ['top', 'bottom']},
     onChange: {action: 'change'},
     options: {control: 'object'},
+    width: {control: 'number'},
   },
   args: {
     placeholder: 'Select an option',
@@ -27,7 +28,7 @@ const meta = {
         options: [
           {value: 'orange', label: 'Orange'},
           {value: 'lemon', label: 'Lemon', disabled: true},
-          {value: 'test', label: 'Test', disabled: false},
+          {value: 'grapefruit', label: 'Grapefruit'},
         ],
       },
       {
@@ -36,6 +37,7 @@ const meta = {
         options: [
           {value: 'strawberry', label: 'Strawberry'},
           {value: 'blueberry', label: 'Blueberry'},
+          {value: 'banana', label: 'Banana'},
         ],
       },
       {
@@ -44,6 +46,7 @@ const meta = {
         options: [
           {value: 'cucumber', label: 'Cucumber'},
           {value: 'carrot', label: 'Carrot'},
+          {value: 'cabbage', label: 'Cabbage'},
         ],
       }
     ],
@@ -56,34 +59,93 @@ type Story = StoryObj<typeof meta>;
 
 export const GroupedOptions: Story = {
   render: (args: SelectProps) => {
+    if (args.multi) {
+      throw new Error('Options story is single-select only');
+    }
+    
     const [value, setValue] = React.useState(args.value);
-    return <Select {...args} value={value} onChange={setValue}/>;
+    return <Select {...args} multi={false} value={value} onChange={setValue}/>;
   },
   args: {
     value: '',
+    multi: false,
     dark: false
-  }
+  },
+  parameters: {
+    controls: {exclude: ['multi', 'value']}
+  },
 };
 
 export const Options: Story = {
-  render: (args: SelectProps) => {
+  render: (args) => {
+    if (args.multi) {
+      throw new Error('Options story is single-select only');
+    }
+
     const [value, setValue] = React.useState(args.value);
-    return <Select {...args} value={value} onChange={setValue}/>;
+
+    return <Select{...args} multi={false} value={value} onChange={setValue}/>;
   },
   args: {
     value: 'kiwi',
-    dark: false,
+    multi: false,
     options: [
       { value: "apple", label: "Apple" },
       { value: "banana", label: "Banana" },
       { value: "orange", label: "Orange" },
       { value: "kiwi", label: "Kiwi" },
     ],
-  }
+  },
+  parameters: {
+    controls: {exclude: ['multi', 'value']}
+  },
+};
+
+export const MultiSelect: Story = {
+  render: (args: SelectProps) => {
+    if (!args.multi) {
+      throw new Error('Options story is multi-select only');
+    }
+    
+    const [value, setValue] = React.useState(args.value);
+    return <Select {...args} value={value} multi onChange={setValue}/>;
+  },
+  args: {
+    value: [''],
+    multi: true,
+    dark: false
+  },
+  parameters: {
+    controls: {exclude: ['multi', 'value']}
+  },
+};
+
+export const CustomWidth: Story = {
+  render: (args: SelectProps) => {
+    if (!args.multi) {
+      throw new Error('Options story is multi-select only');
+    }
+
+    const [value, setValue] = React.useState(args.value);
+    return <Select {...args} value={value} multi onChange={setValue}/>;
+  },
+  args: {
+    value: [''],
+    multi: true,
+    dark: false,
+    width: 200
+  },
+  parameters: {
+    controls: {exclude: ['multi', 'value']}
+  },
 };
 
 export const Dark: Story = {
   render: (args: SelectProps) => {
+    if (args.multi) {
+      throw new Error('Options story is single-select only');
+    }
+    
     const [value, setValue] = React.useState(args.value);
     return <Select {...args} value={value} onChange={setValue}/>;
   },
@@ -92,7 +154,7 @@ export const Dark: Story = {
     dark: true
   },
   parameters: {
-    controls: {exclude: ['dark']}
+    controls: {exclude: ['dark', 'multi', 'value']}
   },
   globals: {
     backgrounds: {value: 'dark'}
@@ -104,5 +166,8 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     value: ''
+  },
+  parameters: {
+    controls: {exclude: ['multi', 'value']}
   },
 };

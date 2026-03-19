@@ -11,6 +11,7 @@ export function Select(props: SelectProps) {
   const {
     dark,
     disabled,
+    multi,
     onChange,
     openPosition = 'bottom',
     options,
@@ -56,12 +57,26 @@ export function Select(props: SelectProps) {
     return items;
   }, [options]);
   const flatOptions = renderItems.filter(i => i.type === 'option');
-  const selectedOption = flatOptions.find((i) => i.option.value === value)?.option;
+  const selectedOptions = flatOptions.filter(opt => multi ? value.includes(opt.option.value) : opt.option.value === value);
+
+  const displayLabel = selectedOptions.length === 0 ? placeholder : selectedOptions.map(o => o.option.label).join(', ');
 
   function handleSelect(val: string) {
-    onChange(val);
-    setOpen(false);
-    buttonRef.current?.focus();
+    if (multi) {
+      let newValue: string[];
+
+      if (value.includes(val)) {
+        newValue = value.filter(v => v !== val)
+      } else {
+        newValue = [...value, val];
+      }
+
+      onChange(newValue);
+    } else {
+      onChange(val);
+      setOpen(false);
+      buttonRef.current?.focus();
+    }
   }
 
   function openList() {
@@ -175,9 +190,10 @@ export function Select(props: SelectProps) {
         onClick={() => (open ? closeList() : openList())}
         onKeyDown={onKeyDown}
         className={cls([styles.trigger, disabled && styles.disabled])}
-        aria-label={selectedOption?.label ?? placeholder}
+        aria-label={displayLabel}
+        title={displayLabel}
       >
-        <span style={{overflow: 'hidden'}}>{selectedOption?.label ?? placeholder}</span>
+        <span className={styles.displayText}>{displayLabel}</span>
 
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' className={styles.chevron} ref={svgRef} aria-hidden>
           <path d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/>
@@ -185,27 +201,29 @@ export function Select(props: SelectProps) {
       </button>
 
       <div id={listId} role="listbox" className={cls([styles.optionsList, open && styles.open, openPosition === 'top' ? styles.top : styles.bottom])}>
-        {renderItems.map(item => {
-          if (item.type === 'group') {
-            return (
-              <div key={`group-${item.label}`} className={styles.group}>{item.label}</div>
-            );
-          }
+        <div className={styles.scrollArea}>
+          {renderItems.map(item => {
+            if (item.type === 'group') {
+              return (
+                <div key={`group-${item.label}`} className={styles.group}>{item.label}</div>
+              );
+            }
 
-          return (
-            <Option
-              key={item.option.value}
-              option={item.option}
-              disabled={item.groupDisabled || item.option.disabled}
-              activeIndex={activeIndex}
-              value={value}
-              index={item.index}
-              onSelect={handleSelect}
-              setActiveIndex={setActiveIndex}
-              listId={listId}
-            />
-          );
-        })}
+            return (
+              <Option
+                key={item.option.value}
+                option={item.option}
+                disabled={item.groupDisabled || item.option.disabled}
+                activeIndex={activeIndex}
+                value={value}
+                index={item.index}
+                onSelect={handleSelect}
+                setActiveIndex={setActiveIndex}
+                listId={listId}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

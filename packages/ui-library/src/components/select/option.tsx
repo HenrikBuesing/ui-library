@@ -16,7 +16,7 @@ export function Option(props: OptionProps) {
   } = props;
 
   const isActive = index === activeIndex;
-  const isSelected = option.value === value;
+  const isSelected = Array.isArray(value) ? value.includes(option.value) : value === option.value;
 
   return (
     <div

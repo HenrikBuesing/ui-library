@@ -21,18 +21,24 @@ export type OptionProps = {
   onSelect: (val: string) => void;
   option: SelectOption;
   setActiveIndex: (index: number) => void;
-  value: string;
+  value: string | string[];
 }
 
 export type SelectProps = BaseProps & {
-  onChange: (value: string) => void;
   options: SelectOption[] | SelectOptionGroup [];
   placeholder: string;
   disabled?: boolean;
-  value: string;
   openPosition?: 'top' | 'bottom';
   width?: CSSProperties['width'];
-};
+} & ({
+  onChange: (value: string) => void;
+  value: string;
+  multi?: false;
+} | {
+  multi: true;
+  onChange: (value: string[]) => void;
+  value: string[]
+});
 
 export type RenderItem = {
   type: 'group';
