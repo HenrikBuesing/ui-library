@@ -188,9 +188,7 @@ export function Select(props: SelectProps) {
         {renderItems.map(item => {
           if (item.type === 'group') {
             return (
-              <div key={`group-${item.label}`} className={styles.group}>
-                <div className={styles.groupLabel}>{item.label}</div>
-              </div>
+              <div key={`group-${item.label}`} className={styles.group}>{item.label}</div>
             );
           }
 

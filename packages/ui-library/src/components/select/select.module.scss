@@ -45,8 +45,6 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: var(--uil-xxs);
-    padding: var(--uil-xs);
     box-sizing: border-box;
     background-color: var(--uil-white-alt);
     width: 100%;
@@ -80,23 +78,28 @@
     }
 
     .group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--uil-xxs);
-
-      .groupLabel {
-        color: var(--uil-black-alt);
-        font-size: .875rem;
-        margin-bottom: var(--uil-xxs);
-        margin-top: var(--uil-xxs);
-        text-decoration: underline;
-      }
+      color: var(--uil-black-alt);
+      font-size: .875rem;
+      margin-bottom: var(--uil-xxs);
+      margin-top: var(--uil-xxs);
+      text-decoration: underline;
+      padding: var(--uil-xs);
     }
 
     .option {
       cursor: pointer;
       color: var(--uil-black-w);
-      border-radius: var(--uil-xxs);
+      padding: var(--uil-xs);
+      
+      &:last-of-type {
+        border-bottom-left-radius: var(--uil-xs);
+        border-bottom-right-radius: var(--uil-xs);
+      }
+
+      &:first-of-type {
+        border-top-left-radius: var(--uil-xs);
+        border-top-right-radius: var(--uil-xs);
+      }
 
       &.active {
         background-color: var(--uil-grey-light-alt);
