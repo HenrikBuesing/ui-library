@@ -58,7 +58,7 @@
     "esbuild-sass-plugin": "^3.7.0",
     "eslint-plugin-storybook": "^10.3.0",
     "jsdom": "^29.0.0",
-    "storybook": "^10.3.0",
+    "storybook": "^10.3.3",
     "typescript-plugin-css-modules": "^5.2.0",
     "vitest": "^4.1.0"
   }
