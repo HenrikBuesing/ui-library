@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@hbuesing/ui-library",
-  "version": "9.2.0",
+  "version": "9.3.0",
   "description": "Collection of reusable ui components for react based applications",
   "source": "src/index.ts",
   "type": "module",
@@ -49,17 +49,17 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^10.3.0",
-    "@storybook/react-vite": "^10.3.0",
+    "@storybook/addon-a11y": "^10.3.3",
+    "@storybook/react-vite": "^10.3.3",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@vitest/coverage-v8": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.2",
     "esbuild": "0.27.4",
     "esbuild-sass-plugin": "^3.7.0",
-    "eslint-plugin-storybook": "^10.3.0",
-    "jsdom": "^29.0.0",
-    "storybook": "^10.3.0",
+    "eslint-plugin-storybook": "^10.3.3",
+    "jsdom": "^29.0.1",
+    "storybook": "^10.3.3",
     "typescript-plugin-css-modules": "^5.2.0",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.2"
   }
 }

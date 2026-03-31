@@ -6,7 +6,8 @@
     "paths": {
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"]
-    }
+    },
+    "rootDir": "./src"
   },
   "include": [
     "./src/components/**/index.ts",

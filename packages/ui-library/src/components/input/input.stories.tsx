@@ -125,3 +125,17 @@ export const DecoratorFocus: Story = {
     controls: {exclude: ['children']}
   },
 };
+
+export const DecoratorClick: Story = {
+  args: {
+    variant: 'outlined',
+    label: 'Testing',
+    dark: false,
+    error: false,
+    required: false,
+    children: <InputDecorator position={'end'} onFocus onClick={() => {alert('Decorator clicked')}}>click</InputDecorator>
+  },
+  parameters: {
+    controls: {exclude: ['children']}
+  },
+};

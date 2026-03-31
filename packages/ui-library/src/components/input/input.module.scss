@@ -188,9 +188,16 @@
     .decorator {
       min-width: fit-content;
       opacity: .75;
+      cursor: default;
+      border: none;
+      background-color: transparent;
 
       &.onFocus {
         visibility: hidden;
+      }
+
+      &.click {
+        cursor: pointer;
       }
     }
 

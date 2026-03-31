@@ -19,6 +19,7 @@ export type TextareaProps = BaseComponentProps<'textarea'> & {
 
 export type InputDecoratorProps = {
   children: ReactNode;
-  position?: 'start' | 'end';
+  onClick?: () => void;
   onFocus?: boolean;
+  position?: 'start' | 'end';
 }

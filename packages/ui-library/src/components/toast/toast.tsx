@@ -28,7 +28,7 @@ export function Toast(props: ToastProps) {
 
     if (timeout === 'persistent') return;
 
-    let removeTimer: NodeJS.Timeout;
+    let removeTimer: ReturnType<typeof setTimeout> | undefined;
 
     const fadeTimer = setTimeout(() => {
       if (toastRef.current) toastRef.current.classList.replace(styles.fadeIn, styles.fadeOut);
@@ -40,7 +40,7 @@ export function Toast(props: ToastProps) {
 
     return () => {
       clearTimeout(fadeTimer);
-      clearTimeout(removeTimer);
+      if (removeTimer) clearTimeout(removeTimer);
     };
   }, [timeout, closeCallback]);
 
