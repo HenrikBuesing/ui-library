@@ -24,7 +24,7 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
   }
 
   const ID = id ?? useStableId();
-  const helpId = helpText ? useStableId() : undefined;
+  const helpId = useStableId();
 
   return (
     <Wrapper dark={dark} error={error} helpId={helpId} helpText={helpText} id={ID} label={label} required={required} variant={variant}>
