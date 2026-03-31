@@ -13,7 +13,8 @@
           "goToDefinition": true
         }
       }
-    ]
+    ],
+    "rootDir": "./src"
   },
   "include": [
     "./src/**/*"
