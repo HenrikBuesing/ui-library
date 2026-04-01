@@ -2,61 +2,89 @@
 
 .dialog {
   margin: auto;
-  border-radius: 5px;
-  background-color: var(--uil-white-alt);
+  border-radius: 6px;
+  background-color: transparent;
   padding: 0;
   border: transparent;
-  
+
   &::backdrop {
     background-color: rgba(0, 0, 0, .5);
   }
 
   &.small {
-    width: 25%;
+    width: 50%;
+
+    @include uil-tablet {
+      width: 25%;
+    }
+
+    @include uil-fullHD {
+      width: 30%;
+    }
   }
 
   &.medium {
-    width: 50%;
+    width: 75%;
+
+    @include uil-tablet {
+      width: 50%;
+    }
+
+    @include uil-fullHD {
+      width: 40%;
+    }
   }
 
   &.large {
-    width: 75%;
+    width: 90%;
+
+    @include uil-tablet {
+      width: 75%;
+    }
+
+    @include uil-fullHD {
+      width: 50%;
+    }
+  }
+
+  .surface {
+    background-color: var(--uil-white-alt);
+    border-radius: 6px;
+    display: flow-root;
   }
 
   .title {
+    --uil-dialog-title-background: transparent;
+    --uil-dialog-title-font-color: var(--uil-black-w);
+
     font-weight: bold;
-    padding: .5rem;
+    padding: var(--uil-xs);
+    background-color: var(--uil-dialog-title-background);
+    color: var(--uil-dialog-title-font-color);
 
     &.info {
-      background-color: var(--uil-info);
-      color: var(--uil-white);
+      --uil-dialog-title-background: var(--uil-info);
+      --uil-dialog-title-font-color: var(--uil-white);
     }
 
     &.success {
-      background-color: var(--uil-success);
-      color: var(--uil-white);
+      --uil-dialog-title-background: var(--uil-success);
+      --uil-dialog-title-font-color: var(--uil-white);
     }
 
     &.warning {
-      background-color: var(--uil-warning);
-      color: var(--uil-black-light);
+      --uil-dialog-title-background: var(--uil-warning);
+      --uil-dialog-title-font-color: var(--uil-black-light);
     }
 
     &.error {
-      background-color: var(--uil-error);
-      color: var(--uil-white);
-    }
-
-    &.default, &.success, &.warning, &.error {
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
+      --uil-dialog-title-background: var(--uil-error);
+      --uil-dialog-title-font-color: var(--uil-white);
     }
   }
 
   .content {
-    display: flex;
-    flex-direction: column;
-    padding: .5rem;
+    padding: var(--uil-xs);
 
     &.divider {
       border-top: 1px solid var(--uil-grey-alt);
@@ -66,17 +94,17 @@
 
   .controls {
     display: flex;
-    gap: 2rem;
-    padding: .5rem;
-    
+    gap: var(--uil-xxxl);
+    padding: var(--uil-xs);
+
     &.start {
       justify-content: start;
     }
-    
+
     &.end {
       justify-content: end;
     }
-    
+
     &.space-between {
       justify-content: space-between;
     }

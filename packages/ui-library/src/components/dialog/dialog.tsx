@@ -69,7 +69,9 @@ export function Dialog(props: DialogProps) {
       onCancel={onCancel}
       role={ariaModal ? 'alertdialog' : 'dialog'}
     >
-      {children}
+      <div className={styles.surface}>
+        {children}
+      </div>
     </dialog>
   );
 }

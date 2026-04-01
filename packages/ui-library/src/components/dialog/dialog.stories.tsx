@@ -26,10 +26,10 @@ export const Default: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children: 
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <p>Content of the dialog</p>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -45,10 +45,10 @@ export const Dark: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <p>Content of the dialog</p>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -67,10 +67,10 @@ export const TitleBasic: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <DialogTitle id={'dialog-header'}>Title of the dialog</DialogTitle>
         <p>Content of the dialog</p>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -86,10 +86,10 @@ export const TitleColor: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <DialogTitle id={'dialog-header'} color={'info'}>Title of the dialog</DialogTitle>
         <p>Content of the dialog</p>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -105,10 +105,10 @@ export const ContentBasic: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <DialogContent><p>Content of the dialog</p></DialogContent>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -124,10 +124,10 @@ export const ContentDivider: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <DialogContent divider><p>Content of the dialog</p></DialogContent>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -143,14 +143,14 @@ export const ControlsStart: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <p>Content of the dialog</p>
         <DialogControls position={'start'}>
           <button>confirm</button>
           <button>cancel</button>
         </DialogControls>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -166,14 +166,14 @@ export const ControlsBetween: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <p>Content of the dialog</p>
         <DialogControls position={'space-between'}>
           <button>confirm</button>
           <button>cancel</button>
         </DialogControls>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
@@ -189,14 +189,14 @@ export const ControlsEnd: Story = {
     ariaModal: false,
     labelledby: 'dialog-header',
     children:
-      <div>
+      <>
         <h2 id={'dialog-header'} style={{margin: '0'}}>Title of the dialog</h2>
         <p>Content of the dialog</p>
         <DialogControls position={'end'}>
           <button>confirm</button>
           <button>cancel</button>
         </DialogControls>
-      </div>,
+      </>,
     disableEscapeKey: false,
   },
   parameters: {
