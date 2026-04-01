@@ -26,8 +26,7 @@ describe('dialog', () => {
     const dialog = container.getElementsByClassName('dialog')[0];
     expect(dialog).toBeDefined();
 
-    expect(document.body.style.paddingRight).toEqual('15px');
-    expect(document.body.style.overflow).toEqual('hidden');
+    expect(document.body.style.position).toEqual('fixed');
   });
 
   test('should not render dialog', () => {
