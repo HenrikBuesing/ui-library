@@ -22,11 +22,13 @@ const config = {
     options: {}
   },
   viteFinal: async (config) => {
-    config.resolve.alias = [
-      {find: '@common', replacement: path.resolve(__dirname, '../src/components/common/')},
-      {find: '@hooks', replacement: path.resolve(__dirname, '../src/hooks/')},
-      {find: '@utils', replacement: path.resolve(__dirname, '../src/utils/')}
-    ];
+    config.resolve ??= {};
+    config.resolve.alias = {
+      ...(typeof config.resolve.alias === 'object' ? config.resolve.alias : {}),
+      '@common': path.resolve(__dirname, '../src/components/common/'),
+      '@hooks': path.resolve(__dirname, '../src/hooks/'),
+      '@utils': path.resolve(__dirname, '../src/utils/')
+    };
 
     return config;
   }
