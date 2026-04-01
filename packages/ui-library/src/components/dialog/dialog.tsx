@@ -1,4 +1,5 @@
 import global from '../common/styles/global.module.scss';
+import {useScrollLock} from '@hooks/useScrollLock';
 import React, {useEffect, useRef} from 'react';
 import cls from '@utils/conditionalClass';
 import styles from './dialog.module.scss';
@@ -20,24 +21,15 @@ export function Dialog(props: DialogProps) {
   } = props;
 
   const dialog = useRef<HTMLDialogElement | null>(null);
+  useScrollLock(open, scrollable);
 
   useEffect(() => {
     dialog.current?.addEventListener('keydown', handleKeydown);
     dialog.current?.addEventListener('mousedown', handleClickBackdrop);
-    
-    if (open) {
-      if (!scrollable) {
-        document.body.style.paddingRight = '15px';
-        document.body.style.overflow = 'hidden';
-      }
 
+    if (open) {
       dialog.current?.showModal();
     } else {
-      if (!scrollable) {
-        document.body.style.paddingRight = '';
-        document.body.style.overflow = '';
-      }
-
       dialog.current?.close();
     }
 

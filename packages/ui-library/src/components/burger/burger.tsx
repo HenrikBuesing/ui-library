@@ -17,7 +17,7 @@ export function BurgerMenu(props: BurgerMenuProps) {
   } = props;
 
   const [visibility, setVisibility] = useState(false);
-  useScrollLock(visibility);
+  useScrollLock(visibility, false);
 
   const closeRef = useRef<SVGSVGElement>(null);
   const openRef = useRef<SVGSVGElement>(null);
