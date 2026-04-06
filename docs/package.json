@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.2.1",
-    "eslint-config-next": "^16.2.1"
+    "eslint-config-next": "^16.2.2"
   }
 }
