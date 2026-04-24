@@ -6,6 +6,8 @@
   background-color: transparent;
   padding: 0;
   border: transparent;
+  
+  --uil-dialog-component-padding: var(--uil-m);
 
   &::backdrop {
     background-color: rgba(0, 0, 0, .5);
@@ -58,7 +60,7 @@
     --uil-dialog-title-font-color: var(--uil-black-w);
 
     font-weight: bold;
-    padding: var(--uil-xs);
+    padding: var(--uil-dialog-component-padding);
     background-color: var(--uil-dialog-title-background);
     color: var(--uil-dialog-title-font-color);
 
@@ -84,7 +86,7 @@
   }
 
   .content {
-    padding: var(--uil-xs);
+    padding: var(--uil-dialog-component-padding);
 
     &.divider {
       border-top: 1px solid var(--uil-grey-alt);
@@ -95,7 +97,7 @@
   .controls {
     display: flex;
     gap: var(--uil-xxxl);
-    padding: var(--uil-xs);
+    padding: var(--uil-dialog-component-padding);
 
     &.start {
       justify-content: start;
