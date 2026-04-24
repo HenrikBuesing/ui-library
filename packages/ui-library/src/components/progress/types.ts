@@ -2,8 +2,9 @@ import type {BaseProps, Status} from '../common/types';
 import type {CSSProperties} from 'react';
 
 export type ProgressProps = BaseProps & {
+  ariaLabel?: string;
   color?: CSSProperties['stroke'] | Status;
-  size?: CSSProperties['height'];
+  height?: CSSProperties['height'];
   value?: number
-  'aria-label'?: string;
+  width?: CSSProperties['width'];
 };

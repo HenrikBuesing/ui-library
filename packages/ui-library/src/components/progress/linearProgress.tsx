@@ -9,8 +9,10 @@ export function LinearProgress(props: ProgressProps) {
   const {
     color = 'info',
     dark,
-    size,
-    value
+    height,
+    value,
+    width,
+    ariaLabel,
   } = props;
 
   if (typeof value === 'number' && (value > 100 || value < 0)) {
@@ -24,8 +26,8 @@ export function LinearProgress(props: ProgressProps) {
       aria-valuenow={value}
       className={cls([styles.linearProgress, statusColor ? styles[color] : styles.custom, dark && global.dark])}
       role={'progressbar'}
-      style={{height: size}}
-      aria-label={props['aria-label'] ?? 'Linear progressbar'}
+      style={{height: height, width: width}}
+      aria-label={ariaLabel ?? 'Linear progressbar'}
     >
       <div 
         className={cls([styles.progressBar, typeof value !== 'number' && styles.first, statusColor && styles[color]])}
