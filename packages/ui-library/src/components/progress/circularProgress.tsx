@@ -1,12 +1,13 @@
 import global from '../common/styles/global.module.scss';
+import type {CircularProgressProps} from './types';
 import styles from './progress.module.scss';
-import type {ProgressProps} from './types';
 import {isStatus} from '@utils/checkTypes';
 import cls from '@utils/conditionalClass';
 import React from 'react';
 
-export function CircularProgress(props: ProgressProps) {
+export function CircularProgress(props: CircularProgressProps) {
   const {
+    ariaLabel,
     color = 'info',
     dark,
     size,
@@ -25,7 +26,7 @@ export function CircularProgress(props: ProgressProps) {
       className={cls([styles.circularProgress, typeof value !== 'number' && styles.indeterminate, dark && global.dark])}
       role={'progressbar'}
       style={{width: size, height: size}} 
-      aria-label={props['aria-label'] ?? 'Circular progressbar'}
+      aria-label={ariaLabel ?? 'Circular progressbar'}
     >
       <svg viewBox={`0 0 40 40`}>
         <circle 

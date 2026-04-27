@@ -1,11 +1,11 @@
 import global from '../common/styles/global.module.scss';
+import type {LinearProgressProps} from './types';
 import styles  from './progress.module.scss';
-import type {ProgressProps} from './types';
 import {isStatus} from '@utils/checkTypes';
 import cls from '@utils/conditionalClass';
 import React from 'react';
 
-export function LinearProgress(props: ProgressProps) {
+export function LinearProgress(props: LinearProgressProps) {
   const {
     color = 'info',
     dark,
