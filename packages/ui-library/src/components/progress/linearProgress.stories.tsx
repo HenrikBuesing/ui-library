@@ -6,7 +6,8 @@ const meta = {
   component: LinearProgress,
   argTypes: {
     dark: {control: 'boolean'},
-    size: {control: 'number'},
+    height: {control: 'number'},
+    width: {control: 'number'},
     value: {control: 'number'},
     color: {control: 'select', options: ['info', 'success', 'warning', 'error', 'mediumpurple', 'fuchsia']},
   },
