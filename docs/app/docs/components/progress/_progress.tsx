@@ -85,9 +85,9 @@ export function LinearSize() {
   
   return (
     <div className={styles.showcaseWrapper}>
-      <LinearProgress size={3} dark={dark}/>
-      <LinearProgress size={6} dark={dark}/>
-      <LinearProgress size={'9px'} dark={dark}/>
+      <LinearProgress height={3} dark={dark}/>
+      <LinearProgress height={6} dark={dark}/>
+      <LinearProgress height={'9px'} dark={dark}/>
     </div>
   );
 }

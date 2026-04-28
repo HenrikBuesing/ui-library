@@ -6,7 +6,8 @@ const meta = {
   component: LinearProgress,
   argTypes: {
     dark: {control: 'boolean'},
-    size: {control: 'number'},
+    height: {control: 'number'},
+    width: {control: 'number'},
     value: {control: 'number'},
     color: {control: 'select', options: ['info', 'success', 'warning', 'error', 'mediumpurple', 'fuchsia']},
   },
@@ -33,5 +34,16 @@ export const Dark: Story = {
   },
   globals: {
     backgrounds: {value: 'dark'}
+  }
+};
+
+export const CustomSize: Story = {
+  args: {
+    dark: false,
+    width: 300,
+    height: 10,
+  },
+  parameters: {
+    controls: {exclude: ['dark']}
   }
 };
