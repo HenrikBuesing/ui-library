@@ -36,3 +36,14 @@ export const Dark: Story = {
     backgrounds: {value: 'dark'}
   }
 };
+
+export const CustomSize: Story = {
+  args: {
+    dark: false,
+    width: 300,
+    height: 10,
+  },
+  parameters: {
+    controls: {exclude: ['dark']}
+  }
+};
