@@ -1,5 +1,5 @@
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import type {CalendarDay, DatePickerProps} from './types';
-import React, {useEffect, useRef, useState} from 'react';
 import global from '../common/styles/global.module.scss';
 import {addAttribution} from '@utils/addAttribution';
 import styles from './datePicker.module.scss';
@@ -8,7 +8,8 @@ import {useStableId} from '@utils/getId';
 
 export function DatePicker(props: DatePickerProps) {
   const {
-    dark,
+    ariaLabels = {calendar: 'Date picker', next: 'Next month', previous: 'Previous month'},
+    dark = false,
     dateFormat = {year: 'numeric', month: '2-digit', day: '2-digit'},
     defaultDate,
     disabled,
@@ -33,9 +34,9 @@ export function DatePicker(props: DatePickerProps) {
   const year = view.getFullYear();
   const month = view.getMonth();
 
-  const days = getCalendarDays(year, month);
+  const days = useMemo(() => getCalendarDays(year, month), [year, month]);
   const weeks = Array.from({length: days.length / 7}, (_, i) => days.slice(i * 7, i * 7 + 7));
-  const weekdays = getWeekdayLabels(locale, weekStart);
+  const weekdays = useMemo(() => getWeekdayLabels(locale, weekStart), [locale, weekStart]);
   const ID = useStableId();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -87,11 +88,11 @@ export function DatePicker(props: DatePickerProps) {
       return next;
     });
   }
-  
+
   function handleDateChange(date: Date) {
     onChange(date);
   }
-  
+
   function isDayDisabled(date: Date) {
     const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
@@ -106,6 +107,12 @@ export function DatePicker(props: DatePickerProps) {
       a.getMonth() === b.getMonth() &&
       a.getDate() === b.getDate();
   }
+  
+  function handleCalendarPopup() {
+    if (disabled) return;
+    
+    setOpen(!open);
+  }
 
   useEffect(() => {
     if (!open) return setView(initialView);
@@ -118,11 +125,29 @@ export function DatePicker(props: DatePickerProps) {
     return () => document.removeEventListener('pointerdown', handleClickOutside);
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false);
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   return (
-    <div className={cls([styles.datePicker, dark && global.dark])} ref={ref}>
-      <button className={styles.trigger} disabled={disabled} onClick={() => {setOpen(!open)}} aria-controls={ID} aria-haspopup={'dialog'} aria-expanded={open}>
+    <div className={cls([styles.datePicker, open && styles.active, value && styles.value, dark && global.dark])} ref={ref}>
+      <button
+        className={styles.trigger}
+        disabled={disabled}
+        onClick={handleCalendarPopup}
+        aria-controls={ID}
+        aria-haspopup={'dialog'}
+        aria-expanded={open}
+      >
         <span>
-          {value ? value.toLocaleDateString(locale, dateFormat) : placeholder}
+          {value?.toLocaleDateString(locale, dateFormat)}
         </span>
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={styles.chevron} ref={el => addAttribution(el)} aria-hidden>
@@ -130,60 +155,62 @@ export function DatePicker(props: DatePickerProps) {
         </svg>
       </button>
 
-      {open &&
-        <div>
-          <div className={styles.calendar} id={ID} role={'dialog'} aria-label={'Date picker'}>
-            <div className={styles.controls}>
-              <button className={styles.button} onClick={() => {changeMonth(-1)}}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={styles.svg} ref={el => addAttribution(el)}>
-                  <path d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z"/>
-                </svg>
-              </button>
+      <fieldset className={styles.fieldset}>
+        <legend>{placeholder}</legend>
+      </fieldset>
 
-              <span>{view.toLocaleDateString(locale, {month: 'long', year: 'numeric'})}</span>
+      <label className={styles.label} onClick={handleCalendarPopup}>{placeholder}</label>
 
-              <button className={styles.button} onClick={() => {changeMonth(1)}}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={styles.svg} ref={el => addAttribution(el)}>
-                  <path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/>
-                </svg>
-              </button>
-            </div>
+        <div className={cls([styles.calendar, open && styles.open])} id={ID} role={'dialog'} aria-label={ariaLabels.calendar}>
+          <div className={styles.controls}>
+            <button className={styles.button} onClick={() => {changeMonth(-1)}} aria-label={ariaLabels.previous}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={styles.svg} ref={el => addAttribution(el)}>
+                <path d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z"/>
+              </svg>
+            </button>
+
+            <span>{view.toLocaleDateString(locale, {month: 'long', year: 'numeric'})}</span>
             
-            <table>
-              <thead className={styles.calendarHeader}>
-                <tr>
-                  {weekdays.map(day => (
-                    <th key={day} className={styles.item}>{day}</th>
-                  ))}
-                </tr>
-              </thead>
-
-              <tbody className={styles.calendarDays}>
-                <tr className={styles.divider}>
-                  <td colSpan={7}></td>
-                </tr>
-              
-                {weeks.map((week, idx) => (
-                  <tr key={idx}>
-                    {week.map((day) => (
-                      <td key={day.date.toISOString()}>
-                        <button
-                          className={cls([styles.item, day.currentMonth && styles.active, isSameDay(value, day.date) && styles.selected])}
-                          onClick={() => {handleDateChange(day.date)}}
-                          disabled={day.disabled}
-                          aria-current={isSameDay(value, day.date) ? 'date' : undefined}
-                        >
-                          {day.date.getDate()}
-                        </button>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <button className={styles.button} onClick={() => {changeMonth(1)}} aria-label={ariaLabels.next}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={styles.svg} ref={el => addAttribution(el)}>
+                <path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/>
+              </svg>
+            </button>
           </div>
+
+          <table>
+            <thead className={styles.calendarHeader}>
+            <tr>
+              {weekdays.map(day => (
+                <th key={day} className={styles.item}>{day}</th>
+              ))}
+            </tr>
+            </thead>
+
+            <tbody className={styles.calendarDays}>
+            <tr className={styles.divider}>
+              <td colSpan={7}></td>
+            </tr>
+
+            {weeks.map((week, idx) => (
+              <tr key={idx}>
+                {week.map(day => (
+                  <td key={`${day.date.getFullYear()}-${day.date.getMonth()}-${day.date.getDate()}`}>
+                    <button
+                      className={cls([styles.item, day.currentMonth && styles.active, isSameDay(value, day.date) && styles.selected])}
+                      onClick={() => {handleDateChange(day.date)}}
+                      disabled={day.disabled}
+                      aria-current={isSameDay(value, day.date) ? 'date' : undefined}
+                    >
+                      {day.date.getDate()}
+                    </button>
+                  </td>
+                ))}
+              </tr>
+            ))}
+            </tbody>
+          </table>
         </div>
-      }
     </div>
   );
 }

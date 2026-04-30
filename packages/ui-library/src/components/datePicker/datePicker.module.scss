@@ -2,13 +2,103 @@
   position: relative;
   width: 250px;
   
+  &.active {
+    .fieldset {
+      border-width: 2px;
+      border-color: var(--uil-info);
+    }
+
+    .label {
+      color: var(--uil-info);
+    }
+  }
+  
+  &.value:not(.active) {
+    .fieldset {
+      border-color: var(--uil-black-w);
+    }
+    
+    .label {
+      color: var(--uil-black-w);
+    }
+  }
+  
+  &.active, &.value {
+    .fieldset {
+      visibility: visible;
+      transform: translateY(-0.5em);
+    }
+
+    .label {
+      top: -.6rem;
+      font-size: var(--uil-m);
+      opacity: 1;
+    }
+
+    .trigger {
+      border-color: transparent;
+    }
+  }
+
+  &:not(:has(.trigger:disabled)):not(.active):not(.value):hover {
+    .trigger {
+      border-color: var(--uil-black-lighter);
+    }
+  }
+  
+  &:has(.trigger:disabled):not(.value) {
+    .trigger {
+      border-color: var(--uil-grey-alt);
+    }
+  }
+  
+  &:has(.trigger:disabled).value {
+    .fieldset {
+      border-color: var(--uil-grey-alt);
+    }
+  }
+  
+  .fieldset {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    visibility: hidden;
+    border: 1px solid var(--uil-grey-dark);
+    border-radius: var(--uil-xs);
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    min-height: 52px;
+    margin: 0;
+    outline: none;
+
+    legend {
+      visibility: hidden;
+      padding: 0 2px;
+      font-size: var(--uil-m);
+    }
+  }
+  
+  .label {
+    position: absolute;
+    top: 25%;
+    left: .7rem;
+    cursor: pointer;
+    color: var(--uil-black-w);
+    opacity: .6;
+    transition: top .25s ease, font-size .2s ease;
+    font-size: 1.125rem;
+  }
+  
   .trigger {
     width: 100%;
     padding: var(--uil-xs);
     font-size:  1.125rem;
     line-height:  var(--uil-l);
-    border: 1px solid var(--uil-black-lighter);
-    background-color: var(--uil-white-alt);
+    border: 1px solid var(--uil-grey-dark);
+    background-color: transparent;
     color: var(--uil-black-w);
     border-radius: var(--uil-xs);
     display: flex;
@@ -16,15 +106,20 @@
     justify-content: space-between;
     gap: var(--uil-s);
     cursor: pointer;
+    min-height: 44px;
+    outline: none;
 
     &:disabled {
       cursor: default;
       color: var(--uil-grey-dark);
-      background-color: var(--uil-grey-light-alt);
-      border-color: var(--uil-grey-dark);
 
       .chevron {
         fill: var(--uil-grey-dark);
+      }
+      
+      ~ .label {
+        cursor: default;
+        color: var(--uil-grey-dark);
       }
     }
 
@@ -32,6 +127,7 @@
       width: var(--uil-m);
       height: var(--uil-m);
       fill: var(--uil-black-w);
+      opacity: .8;
     }
   }
   
@@ -46,6 +142,17 @@
     margin-top: .25rem;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top center;
+    transform: translateY(-0.5rem) scale(.96);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.1s ease;
+    
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
     
     .controls {
       width: 100%;
@@ -59,6 +166,7 @@
         border: none;
         background-color: transparent;
         padding: 0;
+        cursor: pointer;
         
         .svg {
           width: 1rem;
