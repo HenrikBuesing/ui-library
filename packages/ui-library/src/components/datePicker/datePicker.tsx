@@ -10,6 +10,7 @@ export function DatePicker(props: DatePickerProps) {
   const {
     dark,
     dateFormat = {year: 'numeric', month: '2-digit', day: '2-digit'},
+    defaultDate,
     disabled,
     placeholder,
     locale,
@@ -25,7 +26,8 @@ export function DatePicker(props: DatePickerProps) {
   const maxDate = max ? new Date(max.getFullYear(), max.getMonth(), max.getDate()) : null;
 
   const today = new Date();
-  const [view, setView] = useState(value ?? today);
+  const initialView = value ?? defaultDate ?? today
+  const [view, setView] = useState(initialView);
   const [open, setOpen] = useState(false);
 
   const year = view.getFullYear();
@@ -106,7 +108,7 @@ export function DatePicker(props: DatePickerProps) {
   }
 
   useEffect(() => {
-    if (!open) return setView(value ?? today);
+    if (!open) return setView(initialView);
 
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false);

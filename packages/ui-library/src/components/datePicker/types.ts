@@ -5,6 +5,7 @@ export type DatePickerProps = BaseProps & {
   placeholder: string;
   value: Date | null;
   dateFormat?: Intl.DateTimeFormatOptions;
+  defaultDate?: Date;
   disabled?: boolean;
   locale?: string;
   max?: Date;
