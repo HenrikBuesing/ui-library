@@ -136,6 +136,30 @@ export const CustomDateFormat: Story = {
   },
 };
 
+export const ActiveView: Story = {
+  args: {
+    placeholder: 'Select date',
+    activeView: new Date('2020-01-01'),
+    value: null,
+    locale: 'de-DE',
+    onChange: () => {}
+  },
+  render: (args) => {
+    const [value, setValue] = React.useState<Date | null>(args.value);
+
+    return (
+      <DatePicker
+        {...args}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  },
+  parameters: {
+    controls: {exclude: ['dark', 'value', 'dateFormat', 'onChange', 'disabled', 'weekStart']}
+  },
+};
+
 export const Disabled: Story = {
   args: {
     placeholder: 'Select date',

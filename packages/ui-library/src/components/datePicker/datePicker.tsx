@@ -8,10 +8,10 @@ import {useStableId} from '@utils/getId';
 
 export function DatePicker(props: DatePickerProps) {
   const {
+    activeView,
     ariaLabels = {calendar: 'Date picker', next: 'Next month', previous: 'Previous month'},
     dark = false,
     dateFormat = {year: 'numeric', month: '2-digit', day: '2-digit'},
-    defaultDate,
     disabled,
     placeholder,
     locale,
@@ -27,7 +27,7 @@ export function DatePicker(props: DatePickerProps) {
   const maxDate = max ? new Date(max.getFullYear(), max.getMonth(), max.getDate()) : null;
 
   const today = new Date();
-  const initialView = value ?? defaultDate ?? today
+  const initialView = useMemo(() => setInitialView(), [value, activeView, min, max]);
   const [view, setView] = useState(initialView);
   const [open, setOpen] = useState(false);
 
@@ -37,8 +37,24 @@ export function DatePicker(props: DatePickerProps) {
   const days = useMemo(() => getCalendarDays(year, month), [year, month]);
   const weeks = Array.from({length: days.length / 7}, (_, i) => days.slice(i * 7, i * 7 + 7));
   const weekdays = useMemo(() => getWeekdayLabels(locale, weekStart), [locale, weekStart]);
+  const [focusedDate, setFocusedDate] = useState(value ?? days[0].date);
+  
   const ID = useStableId();
   const ref = useRef<HTMLDivElement>(null);
+  const dayRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const isNextDisabled = max ? new Date(year, month + 1, 1) > new Date(max.getFullYear(), max.getMonth(), 1) : false;
+  const isPrevDisabled = min ? new Date(year, month - 1, 1) < new Date(min.getFullYear(), min.getMonth(), 1) : false;
+  
+  function setInitialView() {
+    const date = value ?? activeView ?? today;
+
+    if (min && date < min) return min;
+    if (max && date > max) return max;
+    
+    return date;
+  }
 
   function getCalendarDays(year: number, month: number) {
     const days: CalendarDay[] = [];
@@ -114,27 +130,141 @@ export function DatePicker(props: DatePickerProps) {
     setOpen(!open);
   }
 
-  useEffect(() => {
-    if (!open) return setView(initialView);
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Tab') {
+      const focusable = [
+        prevRef.current,
+        nextRef.current,
+        dayRefs.current[focusedDate?.toDateString() || '']
+      ].filter((el): el is HTMLElement => {return !!el && !el.hasAttribute('disabled')});
 
-    function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false);
+      let currentIndex = focusable.indexOf(document.activeElement as HTMLElement);
+      if (currentIndex === -1) currentIndex = 0;
+
+      if (e.shiftKey) {
+        if (currentIndex === 0) {
+          e.preventDefault();
+          focusable[focusable.length - 1]?.focus();
+        }
+      } else {
+        if (currentIndex === focusable.length - 1) {
+          e.preventDefault();
+          focusable[0]?.focus();
+        }
+      }
+
+      return;
+    }
+    
+    if (!focusedDate) return;
+
+    const currentIndex = days.findIndex(d => isSameDay(d.date, focusedDate));
+
+    if (currentIndex === -1) return;
+
+    let nextIndex = currentIndex;
+
+    switch (e.key) {
+      case 'ArrowRight':
+        nextIndex += 1;
+        break;
+      case 'ArrowLeft':
+        nextIndex -= 1;
+        break;
+      case 'ArrowDown':
+        nextIndex += 7;
+        break;
+      case 'ArrowUp':
+        nextIndex -= 7;
+        break;
+      case 'Home': {
+        nextIndex = currentIndex - (currentIndex % 7);
+        break;
+      }
+      case 'End': {
+        nextIndex = currentIndex + (6 - (currentIndex % 7));
+        break;
+      }
+      case 'PageUp': {
+        e.preventDefault();
+        changeMonth(-1);
+        return;
+      }
+      case 'PageDown': {
+        e.preventDefault();
+        changeMonth(1);
+        return;
+      }
+      default:
+        return;
     }
 
-    document.addEventListener('pointerdown', handleClickOutside);
-    return () => document.removeEventListener('pointerdown', handleClickOutside);
-  }, [open]);
+    e.preventDefault();
+
+    nextIndex = Math.max(0, Math.min(days.length - 1, nextIndex));
+
+    let next = days[nextIndex];
+
+    if (next.disabled) {
+      const direction = nextIndex > currentIndex ? 1 : -1;
+
+      let i = nextIndex;
+      while (i >= 0 && i < days.length) {
+        if (!days[i].disabled) {
+          next = days[i];
+          break;
+        }
+        
+        i += direction;
+      }
+    }
+    
+    if (!next.disabled) setFocusedDate(next.date);
+  }
+
+  useEffect(() => {
+    if (!open) {
+      setView(initialView);
+      return;
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open, initialView]);
+
+  useEffect(() => {
+    if (!focusedDate) return;
+
+    const key = focusedDate.toDateString();
+    const el = dayRefs.current[key];
+
+    el?.focus();
+  }, [focusedDate]);
 
   useEffect(() => {
     if (!open) return;
 
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false);
-    }
+    const firstEnabled = days.find(d => d.currentMonth && !d.disabled) ?? days.find(d => !d.disabled) ?? days[0];
 
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open]);
+    if (firstEnabled) setFocusedDate(firstEnabled.date);
+  }, [open, days]);
 
   return (
     <div className={cls([styles.datePicker, open && styles.active, value && styles.value, dark && global.dark])} ref={ref}>
@@ -161,9 +291,9 @@ export function DatePicker(props: DatePickerProps) {
 
       <label className={styles.label} onClick={handleCalendarPopup}>{placeholder}</label>
 
-        <div className={cls([styles.calendar, open && styles.open])} id={ID} role={'dialog'} aria-label={ariaLabels.calendar}>
+        <div className={cls([styles.calendar, open && styles.open])} id={ID} role={'dialog'} aria-label={ariaLabels.calendar} onKeyDown={handleKeyDown}>
           <div className={styles.controls}>
-            <button className={styles.button} onClick={() => {changeMonth(-1)}} aria-label={ariaLabels.previous}>
+            <button className={styles.button} ref={prevRef} disabled={isPrevDisabled} onClick={() => {changeMonth(-1)}} aria-label={ariaLabels.previous}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={styles.svg} ref={el => addAttribution(el)}>
                 <path d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z"/>
               </svg>
@@ -171,7 +301,7 @@ export function DatePicker(props: DatePickerProps) {
 
             <span>{view.toLocaleDateString(locale, {month: 'long', year: 'numeric'})}</span>
             
-            <button className={styles.button} onClick={() => {changeMonth(1)}} aria-label={ariaLabels.next}>
+            <button className={styles.button} ref={nextRef} disabled={isNextDisabled} onClick={() => {changeMonth(1)}} aria-label={ariaLabels.next}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={styles.svg} ref={el => addAttribution(el)}>
                 <path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/>
               </svg>
@@ -197,10 +327,12 @@ export function DatePicker(props: DatePickerProps) {
                 {week.map(day => (
                   <td key={`${day.date.getFullYear()}-${day.date.getMonth()}-${day.date.getDate()}`}>
                     <button
-                      className={cls([styles.item, day.currentMonth && styles.active, isSameDay(value, day.date) && styles.selected])}
+                      className={cls([styles.item, day.currentMonth && styles.active, isSameDay(value, day.date) && styles.selected, isSameDay(today, day.date) && styles.today])}
                       onClick={() => {handleDateChange(day.date)}}
                       disabled={day.disabled}
                       aria-current={isSameDay(value, day.date) ? 'date' : undefined}
+                      tabIndex={isSameDay(focusedDate, day.date) ? 0 : -1}
+                      ref={el => {dayRefs.current[`${day.date.toDateString()}`] = el}}
                     >
                       {day.date.getDate()}
                     </button>

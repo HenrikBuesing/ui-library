@@ -4,6 +4,7 @@ export type DatePickerProps = BaseProps & {
   onChange: (date: Date | null) => void;
   placeholder: string;
   value: Date | null;
+  activeView?: Date;
   ariaLabels?: AriaLabels;
   dateFormat?: Intl.DateTimeFormatOptions;
   defaultDate?: Date;

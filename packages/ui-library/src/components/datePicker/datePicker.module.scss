@@ -45,6 +45,13 @@
       border-color: var(--uil-black-lighter);
     }
   }
+
+  &:not(:has(.trigger:disabled)):not(.active):not(.value) {
+    .trigger:focus {
+      border-color: var(--uil-black-w);
+      border-width: 2px;
+    }
+  }
   
   &:has(.trigger:disabled):not(.value) {
     .trigger {
@@ -168,6 +175,14 @@
         padding: 0;
         cursor: pointer;
         
+        &:disabled {
+          cursor: default;
+          
+          .svg {
+            fill: var(--uil-grey-dark);
+          }
+        }
+        
         .svg {
           width: 1rem;
           height: 1rem;
@@ -216,6 +231,10 @@
         &.selected {
           color: var(--uil-white);
           background-color: var(--uil-info);
+        }
+        
+        &:not(.selected).today {
+          border: 1px solid var(--uil-black-alt);
         }
         
         &:disabled {
