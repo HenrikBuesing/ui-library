@@ -52,6 +52,13 @@
       border-width: 2px;
     }
   }
+
+  &:not(:has(.trigger:disabled)):not(.active):has(.trigger:focus) {
+    .fieldset {
+      border-color: var(--uil-black-w);
+      border-width: 2px;
+    }
+  }
   
   &:has(.trigger:disabled):not(.value) {
     .trigger {
