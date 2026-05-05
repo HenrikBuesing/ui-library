@@ -106,6 +106,7 @@ export function DatePicker(props: DatePickerProps) {
   }
 
   function handleDateChange(date: Date) {
+    setOpen(false);
     onChange(date);
   }
 
