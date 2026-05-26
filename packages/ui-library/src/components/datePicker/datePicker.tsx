@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import type {CalendarDay, DatePickerProps} from './types';
 import global from '../common/styles/global.module.scss';
-import {addAttribution} from '@utils/addAttribution';
+import addAttribution from '@utils/addAttribution';
 import styles from './datePicker.module.scss';
 import cls from '@utils/conditionalClass';
 import {useStableId} from '@utils/getId';

@@ -1,7 +1,7 @@
 import React, {type KeyboardEvent, useEffect, useMemo, useRef, useState} from 'react';
 import global from '../common/styles/global.module.scss';
-import useAddAttribution from '@utils/addAttribution';
 import type {RenderItem, SelectProps} from './types';
+import addAttribution from '@utils/addAttribution';
 import styles from './select.module.scss';
 import cls from '@utils/conditionalClass';
 import {Option} from './option';
@@ -26,8 +26,6 @@ export function Select(props: SelectProps) {
   const listId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
-  useAddAttribution(svgRef);
 
   const renderItems = useMemo(() => {
     const items: RenderItem[] = [];
@@ -195,7 +193,7 @@ export function Select(props: SelectProps) {
       >
         <span className={styles.displayText}>{displayLabel}</span>
 
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' className={styles.chevron} ref={svgRef} aria-hidden>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' className={styles.chevron} ref={el => addAttribution(el)} aria-hidden>
           <path d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/>
         </svg>
       </button>

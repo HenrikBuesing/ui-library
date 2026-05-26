@@ -1,6 +1,6 @@
-import React, {type ChangeEvent, useRef, useState} from 'react';
 import global from '../../common/styles/global.module.scss';
-import useAddAttribution from '@utils/addAttribution';
+import React, {type ChangeEvent, useState} from 'react';
+import addAttribution from '@utils/addAttribution';
 import pagination from '../pagination.module.scss';
 import styles from './tablePagination.module.scss';
 import type {TablePaginationProps} from './types';
@@ -23,12 +23,6 @@ export function TablePagination(props: TablePaginationProps) {
   } = props;
 
   const id = useStableId();
-  
-  const nextRef = useRef<SVGSVGElement>(null);
-  const prevRef = useRef<SVGSVGElement>(null);
-
-  useAddAttribution(nextRef);
-  useAddAttribution(prevRef);
   
   const [count, setCount] = useState(rows[0]);
   const pages = Math.ceil(entries / count);
@@ -63,7 +57,7 @@ export function TablePagination(props: TablePaginationProps) {
       <div className={styles.controls}>
         <button className={pagination.button} onClick={() => {handlePageChange(page - 1)}} disabled={page <= 1} aria-label={nextLabel}>
           {prevButton ??
-            <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} className={pagination.svg} ref={nextRef}>
+            <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} className={pagination.svg} ref={el => addAttribution(el)}>
               <path d={'M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z'}/>
             </svg>
           }
@@ -71,7 +65,7 @@ export function TablePagination(props: TablePaginationProps) {
 
         <button className={pagination.button} onClick={() => {handlePageChange(page + 1)}} disabled={page >= pages} aria-label={prevLabel}>
           {nextButton ??
-            <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} className={pagination.svg} ref={prevRef}>
+            <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} className={pagination.svg} ref={el => addAttribution(el)}>
               <path d={'M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z'}/>
             </svg>
           }
