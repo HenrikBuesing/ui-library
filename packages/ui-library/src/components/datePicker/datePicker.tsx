@@ -137,9 +137,9 @@ export function DatePicker(props: DatePickerProps) {
         prevRef.current,
         nextRef.current,
         dayRefs.current[focusedDate?.toDateString() || '']
-      ].filter((el): el is HTMLElement => {return !!el && !el.hasAttribute('disabled')});
+      ].filter((el): el is HTMLButtonElement => {return !!el && !el.hasAttribute('disabled')});
 
-      let currentIndex = focusable.indexOf(document.activeElement as HTMLElement);
+      let currentIndex = focusable.indexOf(document.activeElement as HTMLButtonElement);
       if (currentIndex === -1) currentIndex = 0;
 
       if (e.shiftKey) {
