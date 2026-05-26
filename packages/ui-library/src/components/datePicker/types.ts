@@ -16,9 +16,9 @@ export type DatePickerProps = BaseProps & {
 };
 
 export type AriaLabels = {
-  calendar?: string;
-  next?: string;
-  previous?: string;
+  calendar: string;
+  next: string;
+  previous: string;
 }
 
 export type CalendarDay = {
