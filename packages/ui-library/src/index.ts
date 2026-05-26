@@ -10,6 +10,7 @@ export {Accordion} from './components/collapsible/accordion';
 export {Details} from './components/collapsible/details';
 export {Checkbox} from './components/check/checkbox';
 export {Breadcrumbs} from './components/breadcrumbs';
+export {DatePicker} from './components/datePicker';
 export {Radio} from './components/check/radio';
 export {Skeleton} from './components/skeleton';
 export {Button} from './components/button';
