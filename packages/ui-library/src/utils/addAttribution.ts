@@ -1,11 +1,9 @@
-import {type RefObject, useLayoutEffect} from 'react';
+export default function addAttribution(el: SVGSVGElement | null) {
+  if (!el) return;
+  if (el.dataset.attributed) return;
 
-export default function useAddAttribution(ref: RefObject<SVGSVGElement | null>) {
-  useLayoutEffect(() => {
-    const comment = document.createComment('Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.');
+  el.dataset.attributed = 'true';
 
-    if (ref.current && !ref.current.innerHTML.includes('https://fontawesome.com License')) {
-      ref.current?.appendChild(comment);
-    }
-  }, []);
+  const comment = document.createComment('Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.');
+  el.appendChild(comment);
 }

@@ -1,8 +1,8 @@
 import global from '../../common/styles/global.module.scss';
-import React, {useEffect, useRef, useState} from 'react';
-import useAddAttribution from '@utils/addAttribution';
+import addAttribution from '@utils/addAttribution';
 import pagination from '../pagination.module.scss';
 import styles from './pagePagination.module.scss';
+import React, {useEffect, useState} from 'react';
 import type {PaginationProps} from './types';
 import cls from '@utils/conditionalClass';
 
@@ -45,13 +45,6 @@ export function Pagination(props: PaginationProps) {
     ...(pageEnd < (pages - boundary - 1) ? ['ellipsis-b'] : pages - boundary > boundary ? [pages - boundary] : []),
     ...range(pages - boundary + 1, pages)
   ])];
-  const refs = [
-    useRef<SVGSVGElement>(null),
-    useRef<SVGSVGElement>(null),
-    useRef<SVGSVGElement>(null),
-    useRef<SVGSVGElement>(null),
-  ];
-  refs.forEach(useAddAttribution);
   
   function range(start: number, end: number) {
     const length = end - start + 1;
@@ -79,7 +72,7 @@ export function Pagination(props: PaginationProps) {
               aria-label={ariaLabels?.first ?? 'Go to first page'}
             >
               {firstButton ??
-                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 512 512'} ref={refs[0]} className={pagination.svg}>
+                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 512 512'} ref={el => addAttribution(el)} className={pagination.svg}>
                   <path d={'M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z'}/>
                 </svg>
               }
@@ -96,7 +89,7 @@ export function Pagination(props: PaginationProps) {
               aria-label={ariaLabels?.prev ?? 'Go to previous page'}
             >
               {prevButton ??
-                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} ref={refs[1]} className={pagination.svg}>
+                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} ref={el => addAttribution(el)} className={pagination.svg}>
                   <path d={'M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z'}/>
                 </svg>
               }
@@ -132,7 +125,7 @@ export function Pagination(props: PaginationProps) {
               aria-label={ariaLabels?.next ?? 'Go to next page'}
             >
               {nextButton ??
-                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} ref={refs[2]} className={pagination.svg}>
+                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 320 512'} ref={el => addAttribution(el)} className={pagination.svg}>
                   <path d={'M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z'}/>
                 </svg>
               }
@@ -149,7 +142,7 @@ export function Pagination(props: PaginationProps) {
               aria-label={ariaLabels?.last ?? 'Go to last page'}
             >
               {lastButton ??
-                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 512 512'} ref={refs[3]} className={pagination.svg}>
+                <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 512 512'} ref={el => addAttribution(el)} className={pagination.svg}>
                   <path d={'M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z'}/>
                 </svg>
               }
