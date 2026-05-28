@@ -70,7 +70,7 @@
         flex-direction: row-reverse;
       }
 
-      &:has(.input:disabled) {
+      &:has(.input:disabled):not(:has(.decorator.visible)) {
         border-color: var(--uil-grey-alt);
       }
     }
@@ -197,7 +197,15 @@
       }
 
       &.click {
+        display: flex;
+        align-items: center;
         cursor: pointer;
+        padding: 0;
+        
+        &:disabled {
+          color: var(--uil-grey-dark);
+          cursor: default;
+        }
       }
     }
 

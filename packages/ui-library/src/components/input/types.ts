@@ -23,3 +23,7 @@ export type InputDecoratorProps = {
   onFocus?: boolean;
   position?: 'start' | 'end';
 }
+
+export type InternalDecoratorProps = InputDecoratorProps & {
+  disabled?: boolean | undefined;
+}

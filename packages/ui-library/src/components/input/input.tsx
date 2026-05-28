@@ -1,10 +1,10 @@
+import React, {cloneElement, isValidElement, type ReactElement} from 'react';
+import type {InputProps, InternalDecoratorProps} from './types';
 import global from '../common/styles/global.module.scss';
 import {InputDecorator} from './inputDecorator';
-import React, {isValidElement} from 'react';
 import {useStableId} from '@utils/getId';
 import Wrapper from './internal/wrapper';
 import styles from './input.module.scss';
-import type {InputProps} from './types';
 
 export function Input(props: Omit<InputProps, 'placeholder'>) {
   const {
@@ -26,6 +26,8 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
   const ID = id ?? useStableId();
   const helpId = useStableId();
 
+  const decoratedChild = children ? cloneElement(children as ReactElement<InternalDecoratorProps>, { disabled: inputProps.disabled }) : null;
+
   return (
     <Wrapper dark={dark} error={error} helpId={helpId} helpText={helpText} id={ID} label={label} required={required} variant={variant}>
       <input
@@ -37,7 +39,7 @@ export function Input(props: Omit<InputProps, 'placeholder'>) {
         aria-describedby={helpId}
       />
 
-      {children}
+      {decoratedChild}
     </Wrapper>
   );
 }
