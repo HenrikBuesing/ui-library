@@ -197,7 +197,10 @@
       }
 
       &.click {
+        display: flex;
+        align-items: center;
         cursor: pointer;
+        padding: 0;
       }
     }
 
