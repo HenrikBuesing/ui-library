@@ -1,10 +1,10 @@
+import type {InputDecoratorProps, InternalDecoratorProps} from './types';
 import global from '../common/styles/global.module.scss';
-import type {InputDecoratorProps} from './types';
 import cls from '@utils/conditionalClass';
 import style from './input.module.scss';
-import React from 'react';
+import React, {type FC} from 'react';
 
-export function InputDecorator(props: InputDecoratorProps) {
+function InputDecoratorInternal(props: InternalDecoratorProps) {
   const {
     children,
     onClick,
@@ -27,6 +27,7 @@ export function InputDecorator(props: InputDecoratorProps) {
         onMouseDown={(e) => {e.preventDefault()}}
         onClick={onClick}
         type={'button'}
+        disabled={props.disabled}
       >
         {children}
       </button>
@@ -39,3 +40,5 @@ export function InputDecorator(props: InputDecoratorProps) {
     </div>
   );
 }
+
+export const InputDecorator = InputDecoratorInternal as FC<InputDecoratorProps>;
