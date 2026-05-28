@@ -39,6 +39,7 @@ export function DatePicker(props: DatePickerProps) {
         aria-controls={picker.ID}
         aria-haspopup={'dialog'}
         aria-expanded={picker.open}
+        aria-label={value?.toLocaleDateString(locale, dateFormat) ?? placeholder}
       >
         <span>
           {value?.toLocaleDateString(locale, dateFormat)}

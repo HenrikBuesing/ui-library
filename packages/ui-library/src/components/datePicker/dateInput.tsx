@@ -24,7 +24,7 @@ export function DateInput(props: DatePickerProps) {
   
   const [inputValue, setInputValue] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   function handleDateChange(date: Date) {
     setInputValue(date.toLocaleDateString(locale, dateFormat));
