@@ -1,6 +1,6 @@
 .datePicker {
   position: relative;
-  width: 250px;
+  width: 100%;
   
   &.active {
     .fieldset {
@@ -146,9 +146,11 @@
   }
   
   .calendar {
+    z-index: 10;
     position: absolute;
     top: 100%;
-    width: 100%;
+    right: 0.125rem;
+    width: fit-content;
     background-color: var(--uil-white-alt);
     border-radius: 9px;
     padding: .75rem;
