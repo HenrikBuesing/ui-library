@@ -233,6 +233,7 @@ export function useDatePicker(props: DatePickerProps) {
     isNextDisabled,
     today,
     toggleCalendar,
-    selectDate
+    selectDate,
+    setView
   };
 }

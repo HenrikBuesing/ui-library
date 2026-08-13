@@ -1,25 +1,28 @@
+import React, {type KeyboardEvent, useEffect, useRef, useState} from 'react';
 import global from '../common/styles/global.module.scss';
-import React, {useEffect, useRef, useState} from 'react';
+import addAttribution from '@utils/addAttribution';
 import {Input, InputDecorator} from '../input';
 import {useDatePicker} from './useDatePicker';
 import styles from './datePicker.module.scss';
-import type {DatePickerProps} from './types';
+import type {DateInputProps} from './types';
 import CalendarPopup from './calendarPopup';
 import cls from '@utils/conditionalClass';
-import addAttribution from "@utils/addAttribution";
 
-export function DateInput(props: DatePickerProps) {
+export function DateInput(props: DateInputProps) {
   const {
     ariaLabels = {calendar: 'Date picker', next: 'Next month', previous: 'Previous month'},
     dark = false,
-    dateFormat = {year: 'numeric', month: '2-digit', day: '2-digit'},
     disabled,
+    helpText,
     placeholder,
     locale,
     onChange,
+    readOnly = false,
     value,
+    variant = 'basic',
   } = props;
 
+  const dateFormat: Intl.DateTimeFormatOptions = {year: 'numeric', month: '2-digit', day: '2-digit'};
   const picker = useDatePicker(props);
   
   const [inputValue, setInputValue] = useState('');
@@ -33,7 +36,7 @@ export function DateInput(props: DatePickerProps) {
   }
 
   function handleCalendarPopup() {
-    if (disabled) return;
+    if (disabled || readOnly) return;
     if (!picker.open) commitInput();
     
     ref.current?.focus();
@@ -41,27 +44,19 @@ export function DateInput(props: DatePickerProps) {
     picker.toggleCalendar();
   }
 
-  function parseDate(value: string) {
-    const parts = value.split('.');
+  function parseDate(input: string): Date | null {
+    const parts = new Intl.DateTimeFormat(locale, dateFormat)
+      .formatToParts(new Date(2000, 0, 2))
+      .filter(({type}) => type === 'day' || type === 'month' || type === 'year');
 
-    if (parts.length !== 3) return null;
+    const values = input.trim().split(/\D+/);
 
-    const [day, month, year] = parts.map(Number);
+    if (values.length !== parts.length || values.some(value => !/^\d+$/.test(value))) return null;
 
-    if (!day || !month || !year) return null;
-
+    const {day, month, year} = Object.fromEntries(parts.map(({type}, index) => [type, Number(values[index])]));
     const date = new Date(year, month - 1, day);
 
-    // invalid date protection
-    if (
-      date.getFullYear() !== year ||
-      date.getMonth() !== month - 1 ||
-      date.getDate() !== day
-    ) {
-      return null;
-    }
-
-    return date;
+    return (date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day) ? date : null;
   }
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -73,6 +68,13 @@ export function DateInput(props: DatePickerProps) {
   }
 
   function commitInput() {
+    if (!inputValue.trim()) {
+      onChange(null);
+      setInputValue('');
+      setIsEditing(false);
+      return;
+    }
+    
     const parsed = parseDate(inputValue);
 
     if (!parsed || picker.isDayDisabled(parsed)) {
@@ -84,12 +86,20 @@ export function DateInput(props: DatePickerProps) {
 
     onChange(parsed);
 
-    // picker.setView(parsed);
     picker.setFocusedDate(parsed);
+    picker.setView(parsed);
 
     setInputValue(parsed.toLocaleDateString(locale, dateFormat));
 
     setIsEditing(false);
+  }
+  
+  function handleEnter(e: KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      // prevent accidental form submission
+      e.preventDefault();
+      commitInput();
+    }
   }
 
   useEffect(() => {
@@ -100,21 +110,22 @@ export function DateInput(props: DatePickerProps) {
       return;
     }
 
-    setInputValue(
-      value.toLocaleDateString(locale, dateFormat)
-    );
+    setInputValue(value.toLocaleDateString(locale, dateFormat));
   }, [value, locale, dateFormat, isEditing]);
 
   return (
     <div className={cls([styles.datePicker, picker.open && styles.active, value && styles.value, dark && global.dark])} ref={picker.ref}>
       <Input
         label={placeholder}
-        variant={'outlined'}
+        variant={variant}
         value={inputValue}
         onChange={handleInputChange}
         onBlur={commitInput}
-        onKeyDown={e => {if (e.key === 'Enter') commitInput()}}
+        onKeyDown={handleEnter}
         disabled={disabled}
+        helpText={helpText}
+        onClick={() => {handleCalendarPopup()}}
+        readOnly={readOnly}
         ref={ref}
       >
         <InputDecorator onClick={handleCalendarPopup}>

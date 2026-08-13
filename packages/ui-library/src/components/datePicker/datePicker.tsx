@@ -16,6 +16,7 @@ export function DatePicker(props: DatePickerProps) {
     placeholder,
     locale,
     value,
+    variant = 'outlined',
   } = props;
 
   const picker = useDatePicker(props);
@@ -31,7 +32,7 @@ export function DatePicker(props: DatePickerProps) {
   }
   
   return (
-    <div className={cls([styles.datePicker, picker.open && styles.active, value && styles.value, dark && global.dark])} ref={picker.ref}>
+    <div className={cls([styles.datePicker, picker.open && styles.active, value && styles.value, dark && global.dark, styles[variant]])} ref={picker.ref}>
       <button
         className={styles.trigger}
         disabled={disabled}
