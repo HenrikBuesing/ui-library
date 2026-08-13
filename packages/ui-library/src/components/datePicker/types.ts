@@ -13,8 +13,14 @@ export type DatePickerProps = BaseProps & {
   locale?: string;
   max?: Date;
   min?: Date;
+  variant?: 'outlined' | 'basic';
   weekStart?: 'mon' | 'sun';
 };
+
+export type DateInputProps = Omit<DatePickerProps, 'dateFormat'> & {
+  helpText?: string;
+  readOnly?: boolean;
+}
 
 export type AriaLabels = {
   calendar: string;

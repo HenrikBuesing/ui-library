@@ -1,6 +1,20 @@
 .datePicker {
   position: relative;
   width: 100%;
+  min-width: 16rem;
+  
+  &.outlined {
+    .fieldset, .trigger {
+      border: 1px solid;
+    }
+  }
+  
+  &.basic {
+    .fieldset, .trigger {
+      border-bottom: 1px solid;
+      border-radius: 0;
+    }
+  }
   
   &.active {
     .fieldset {
@@ -32,11 +46,16 @@
     .label {
       top: -.6rem;
       font-size: var(--uil-m);
-      opacity: 1;
     }
 
     .trigger {
       border-color: transparent;
+    }
+  }
+  
+  &.active {
+    .label {
+      opacity: 1;
     }
   }
 
@@ -72,6 +91,11 @@
     }
   }
   
+  .fieldset, .trigger {
+    border: hidden;
+    border-color: var(--uil-grey-dark);
+  }
+  
   .fieldset {
     position: absolute;
     top: 0;
@@ -80,7 +104,6 @@
     bottom: 0;
     pointer-events: none;
     visibility: hidden;
-    border: 1px solid var(--uil-grey-dark);
     border-radius: var(--uil-xs);
     padding: 0 .5rem;
     box-sizing: border-box;
@@ -111,7 +134,6 @@
     padding: var(--uil-xs);
     font-size:  1.125rem;
     line-height:  var(--uil-l);
-    border: 1px solid var(--uil-grey-dark);
     background-color: transparent;
     color: var(--uil-black-w);
     border-radius: var(--uil-xs);

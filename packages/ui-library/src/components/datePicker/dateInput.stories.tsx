@@ -110,32 +110,6 @@ export const MinAndMaxDate: Story = {
   },
 };
 
-export const CustomDateFormat: Story = {
-  args: {
-    placeholder: 'Select date',
-    value: null,
-    min: new Date('2026-04-07'),
-    max: new Date('2026-04-28'),
-    locale: 'de-DE',
-    dateFormat: {year: '2-digit', month: 'long', day: 'numeric'},
-    onChange: () => {}
-  },
-  render: (args) => {
-    const [value, setValue] = React.useState<Date | null>(args.value);
-
-    return (
-      <DateInput
-        {...args}
-        value={value}
-        onChange={setValue}
-      />
-    );
-  },
-  parameters: {
-    controls: {exclude: ['dark', 'value', 'dateFormat', 'onChange', 'disabled', 'weekStart']}
-  },
-};
-
 export const ActiveView: Story = {
   args: {
     placeholder: 'Select date',

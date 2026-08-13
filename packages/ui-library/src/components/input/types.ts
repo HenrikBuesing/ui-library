@@ -7,7 +7,7 @@ export type InputProps = BaseComponentProps<'input'> & {
   variant: 'outlined' | 'basic'
   children?: ReactElement<InputDecoratorProps, typeof InputDecorator>;
   error?: boolean;
-  helpText?: string;
+  helpText?: string | undefined;
 };
 
 export type TextareaProps = BaseComponentProps<'textarea'> & {
