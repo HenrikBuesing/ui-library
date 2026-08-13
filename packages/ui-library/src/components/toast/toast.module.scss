@@ -58,13 +58,13 @@
   .toast {
     display: flex;
     align-items: center;
-    gap: var(--uil-s);
+    gap: var(--uil-l);
     opacity: 0;
     color: var(--uil-white-alt);
     background-color: var(--uil-black-lighter);
     padding: var(--uil-xs);
     width: fit-content;
-    border-radius: 3px;
+    border-radius: 6px;
     transition: all .5s linear;
     transform: translateY(6px);
     box-shadow: 1px 5px 6px -1px var(--uil-box-shadow-w);
@@ -94,6 +94,10 @@
     &.warning {
       color: var(--uil-black);
       background-color: var(--uil-warning);
+      
+      .closeButton {
+        fill: var(--uil-black);
+      }
     }
 
     &.error {
@@ -109,8 +113,11 @@
       border-radius: 50%;
       cursor: pointer;
       border: none;
-      background-color: transparent;
       fill: var(--uil-white-b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, .05);
 
       &:hover {
         background-color: rgba(0, 0, 0, .1);
