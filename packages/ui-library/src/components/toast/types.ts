@@ -1,11 +1,11 @@
 import type {BaseProps, Status} from '../common/types';
-import type {ReactElement, ReactNode} from 'react';
-import {Toast} from './toast';
+import type {ReactNode, RefObject} from 'react';
 
-export type ToasterProps = {
+export const fadeDuration = 500;
+
+export type ToasterProps = BaseProps & {
   children: ReactNode;
   alignment?: {vertical: 'top' | 'center' | 'bottom', horizontal: 'left' | 'center' | 'right'};
-  dark?: boolean;
   dismissible?: boolean;
   limit?: number;
   timeout?: number | 'persistent';
@@ -16,10 +16,9 @@ export type ToasterContext = {
   closeToast: (id?: string) => void;
 }
 
-export type ToastOptions = {
+export type ToastOptions = BaseProps & {
   action?: ReactNode;
   closeCallback?: () => void;
-  dark?: boolean;
   dismissible?: boolean;
   timeout?: number | 'persistent';
   variant?: Status;
@@ -35,4 +34,12 @@ export type ToastProps = BaseProps & {
   variant?: Status | undefined;
 }
 
-export type InternalToast = ReactElement<ToastProps, typeof Toast>;
+export type ToastRef = {
+  close: () => void;
+}
+
+export type InternalToast = {
+  id: string;
+  props: ToastProps;
+  ref: RefObject<ToastRef | null>;
+};

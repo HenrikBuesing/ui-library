@@ -1,5 +1,5 @@
-import type {InternalToast, ToasterContext, ToasterProps, ToastOptions, ToastProps} from './types';
-import React, {createContext, useContext, useRef, useState} from 'react';
+import {fadeDuration, type InternalToast, type ToasterContext, type ToasterProps, type ToastOptions, type ToastProps, type ToastRef} from './types';
+import React, {createContext, createRef, useContext, useRef, useState} from 'react';
 import cls from '@utils/conditionalClass';
 import styles from './toast.module.scss';
 import generateKey from '@utils/getId';
@@ -19,69 +19,75 @@ export function ToastProvider(props: ToasterProps) {
     dark = false,
     dismissible = false,
     limit = 4,
-    timeout = 5000
+    timeout = 5000,
   } = props;
 
   const [toasts, setToasts] = useState<InternalToast[]>([]);
-  const timeoutRef = useRef<Promise<void> | null>(null);
   const pendingToasts = useRef<InternalToast[]>([]);
-  
+
   function queueToast(message: string, opt?: ToastOptions) {
-    const {id, toast} = createToast(message, opt);
-    const total = toasts.length + pendingToasts.current.length
+    const toast = createToast(message, opt);
+    const total = toasts.length + pendingToasts.current.length;
 
     pendingToasts.current.push(toast);
 
     if (total >= limit) {
       for (let i = 0; i < (total - limit) + 1; i++) {
-        closeToast(toasts[i].props.id); 
+        closeToast(toasts[i].id);
       }
 
-      timeoutRef.current = new Promise<void>((resolve) => {
-        setTimeout(() => {
-          addToast(toast);
-          resolve();
-          timeoutRef.current = null;
-        }, 500);
-      });
+      setTimeout(() => {
+        addToast(toast);
+      }, fadeDuration);
     } else {
       addToast(toast);
     }
-    
-    return id;
+
+    return toast.id;
   }
-  
+
   function addToast(toast: InternalToast) {
-    setToasts((prev) => {
+    setToasts(prev => {
       pendingToasts.current = pendingToasts.current.filter(t => t !== toast);
       return [...prev, toast];
     });
   }
-  
-  function createToast(message: string, opt?: ToastOptions) {
+
+  function createToast(message: string, opt?: ToastOptions): InternalToast {
     const id = generateKey();
-    const toastProps: ToastProps = {
+    const ref = createRef<ToastRef>();
+
+    const props: ToastProps = {
       action: opt?.action,
-      closeCallback: () => {onToastCloseCallback(id,  opt?.closeCallback)},
+      closeCallback: () => {onToastClosed(id, opt?.closeCallback)},
       dark: opt?.dark ?? dark,
       dismissible: opt?.dismissible ?? dismissible,
       id,
       message,
       timeout: opt?.timeout ?? timeout,
-      variant: opt?.variant
+      variant: opt?.variant,
     };
 
-    return {id, toast: <Toast{...toastProps}/>};
+    return {id, props, ref};
   }
 
   function closeToast(id?: string) {
-    if (!id) return setToasts([]);
-    
-    setToasts(prev => prev.filter(p => p.props.id !== id));
+    // if no id is provided, close all toasts
+    if (!id) return toasts.forEach(toast => {
+      toast.ref.current?.close();
+    });
+
+    const toast = toasts.find(toast => toast.id === id);
+
+    toast?.ref.current?.close();
   }
-  
-  function onToastCloseCallback(id: string,  callback?: () => void) {
-    closeToast(id);
+
+  function removeToast(id: string) {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+  }
+
+  function onToastClosed(id: string, callback?: () => void) {
+    removeToast(id);
     callback?.();
   }
 
@@ -97,10 +103,10 @@ export function ToastProvider(props: ToasterProps) {
   return (
     <ToasterContext.Provider value={{queueToast, closeToast}}>
       {children}
-      
+
       <div className={cls([styles.toaster, setAlignment()])}>
-        {toasts.map((toast) => 
-          <Toast{...toast.props} key={toast.props.id}/>
+        {toasts.map((toast) =>
+          <Toast {...toast.props} ref={toast.ref} key={toast.id}/>
         )}
       </div>
     </ToasterContext.Provider>
