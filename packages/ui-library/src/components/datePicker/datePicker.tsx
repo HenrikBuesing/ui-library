@@ -35,6 +35,7 @@ export function DatePicker(props: DatePickerProps) {
       <button
         className={styles.trigger}
         disabled={disabled}
+        type={'button'}
         onClick={handleCalendarPopup}
         aria-controls={picker.ID}
         aria-haspopup={'dialog'}
