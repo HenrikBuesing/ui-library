@@ -1,10 +1,10 @@
 import React, {type KeyboardEvent, useEffect, useRef, useState} from 'react';
 import global from '../common/styles/global.module.scss';
+import {dateFormat, type DateInputProps} from './types';
 import addAttribution from '@utils/addAttribution';
 import {Input, InputDecorator} from '../input';
 import {useDatePicker} from './useDatePicker';
 import styles from './datePicker.module.scss';
-import type {DateInputProps} from './types';
 import CalendarPopup from './calendarPopup';
 import cls from '@utils/conditionalClass';
 
@@ -13,6 +13,7 @@ export function DateInput(props: DateInputProps) {
     ariaLabels = {calendar: 'Date picker', next: 'Next month', previous: 'Previous month'},
     dark = false,
     disabled,
+    error = false,
     helpText,
     placeholder,
     locale,
@@ -21,8 +22,7 @@ export function DateInput(props: DateInputProps) {
     value,
     variant = 'basic',
   } = props;
-
-  const dateFormat: Intl.DateTimeFormatOptions = {year: 'numeric', month: '2-digit', day: '2-digit'};
+  
   const picker = useDatePicker(props);
   
   const [inputValue, setInputValue] = useState('');
@@ -111,7 +111,7 @@ export function DateInput(props: DateInputProps) {
     }
 
     setInputValue(value.toLocaleDateString(locale, dateFormat));
-  }, [value, locale, dateFormat, isEditing]);
+  }, [value, locale, isEditing]);
 
   return (
     <div className={cls([styles.datePicker, picker.open && styles.active, value && styles.value, dark && global.dark])} ref={picker.ref}>
@@ -124,6 +124,7 @@ export function DateInput(props: DateInputProps) {
         onKeyDown={handleEnter}
         disabled={disabled}
         helpText={helpText}
+        error={error}
         onClick={() => {handleCalendarPopup()}}
         readOnly={readOnly}
         ref={ref}
