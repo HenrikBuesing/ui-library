@@ -1,8 +1,8 @@
+import {dateFormat as format, type DatePickerProps} from './types';
 import global from '../common/styles/global.module.scss';
 import addAttribution from '@utils/addAttribution';
 import {useDatePicker} from './useDatePicker';
 import styles from './datePicker.module.scss';
-import type {DatePickerProps} from './types';
 import CalendarPopup from './calendarPopup';
 import cls from '@utils/conditionalClass';
 import React from 'react';
@@ -11,7 +11,7 @@ export function DatePicker(props: DatePickerProps) {
   const {
     ariaLabels = {calendar: 'Date picker', next: 'Next month', previous: 'Previous month'},
     dark = false,
-    dateFormat = {year: 'numeric', month: '2-digit', day: '2-digit'},
+    dateFormat = format,
     disabled,
     placeholder,
     locale,

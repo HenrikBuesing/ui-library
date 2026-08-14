@@ -1,6 +1,8 @@
 import type {RefObject, KeyboardEvent} from 'react';
 import type {BaseProps} from '../common/types';
 
+export const dateFormat: Intl.DateTimeFormatOptions = {year: 'numeric', month: '2-digit', day: '2-digit'};
+
 export type DatePickerProps = BaseProps & {
   onChange: (date: Date | null) => void;
   placeholder: string;
@@ -20,6 +22,7 @@ export type DatePickerProps = BaseProps & {
 export type DateInputProps = Omit<DatePickerProps, 'dateFormat'> & {
   helpText?: string;
   readOnly?: boolean;
+  error?: boolean;
 }
 
 export type AriaLabels = {
