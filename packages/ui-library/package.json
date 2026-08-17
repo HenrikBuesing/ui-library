@@ -56,7 +56,7 @@
     "@vitest/coverage-v8": "^4.1.10",
     "esbuild": "0.28.2",
     "esbuild-sass-plugin": "^3.7.0",
-    "eslint-plugin-storybook": "^10.5.7",
+    "eslint-plugin-storybook": "^10.5.8",
     "jsdom": "^30.0.1",
     "storybook": "^10.5.7",
     "typescript-plugin-css-modules": "^5.2.0",
