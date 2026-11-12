@@ -27,6 +27,7 @@
     height: var(--uil-pagination-size);
     width: var(--uil-pagination-size);
     font-size: calc(var(--uil-pagination-size) - var(--uil-xs));
+    color: var(--uil-black-w);
 
     &:disabled {
       cursor: default;
